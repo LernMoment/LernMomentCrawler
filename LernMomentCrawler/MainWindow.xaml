@@ -5,8 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LernMomentCrawler"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="LernMoment Crawler" Height="450" Width="800">
+    <ScrollViewer>
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <!--
+                <Label Content="Suchwort:"/>
+                <TextBox x:Name="searchTermTextBox" TextWrapping="NoWrap" MinWidth="120"/>
+                -->
+                <Button x:Name="loadWebSiteButton" Content="Lade LernMomen.de" Click="LoadWebSiteButton_Click"/>
+            </StackPanel>
+            <!--
+            <ListView x:Name="resultListView" MinHeight="120" Height="Auto"/>
+            -->
+            <TextBlock x:Name="resultHtmlView"/>
+        </StackPanel>
+    </ScrollViewer>
 
-    </Grid>
 </Window>
