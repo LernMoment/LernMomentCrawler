@@ -29,7 +29,7 @@ namespace LernMomentCrawler
         private void LoadWebSiteButton_Click(object sender, RoutedEventArgs e)
         {
             using var client = new HttpClient();
-            using var result = client.GetAsync("http://localhost:63093/lernmoment").Result;
+            using var result = client.GetAsync("http://localhost:63093/lernmoment/10").Result;
             resultHtmlView.Text = result.Content.ReadAsStringAsync().Result;
         }
     }

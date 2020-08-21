@@ -13,22 +13,20 @@ namespace FakeLernMomentServer.Controllers
     [Route("lernmoment")]
     public class FakeLernMomentServerController : ControllerBase
     {
-        private readonly ILogger<FakeLernMomentServerController> _logger;
         private IMemoryCache _cache;
 
-        public FakeLernMomentServerController(ILogger<FakeLernMomentServerController> logger, IMemoryCache cache)
+        public FakeLernMomentServerController(IMemoryCache cache)
         {
-            _logger = logger;
             _cache = cache;
         }
 
-        [HttpGet]
-        public string Get()
+        [HttpGet("{delayInSeconds}")]
+        public ActionResult<string> Get(int delayInSeconds)
         {
             var lernMomentIndexSite = _cache.Get<String>("lernMomentIndexSite");
 
             Debug.WriteLine($"{DateTime.Now.ToLongTimeString()} - This is a slow server. Please wait while we prepare for serving ...");
-            Task.Delay(TimeSpan.FromSeconds(10)).Wait();
+            Task.Delay(TimeSpan.FromSeconds(delayInSeconds)).Wait();
             Debug.WriteLine($"{DateTime.Now.ToLongTimeString()} - Now we waited long enough. It's time to rock and roll!");
 
             return lernMomentIndexSite;
