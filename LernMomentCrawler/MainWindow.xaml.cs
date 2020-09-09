@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,9 +39,9 @@ namespace LernMomentCrawler
 
         private void LoadWebSiteButton_Click(object sender, RoutedEventArgs e)
         {
-            using var client = new HttpClient();
-            using var result = client.GetAsync("http://localhost:63093/lernmoment/10").Result;
-            resultHtmlView.Text = result.Content.ReadAsStringAsync().Result;
+            using var wClient = new WebClient();
+            var result = wClient.DownloadString("http://localhost:63093/lernmoment/10");
+            resultHtmlView.Text = result;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
