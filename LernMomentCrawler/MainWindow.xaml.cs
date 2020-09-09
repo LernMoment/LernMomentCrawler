@@ -31,6 +31,7 @@ namespace LernMomentCrawler
         private void LoadWebSiteButton_Click(object sender, RoutedEventArgs e)
         {
             loadWebSiteButton.IsEnabled = false;
+            resultHtmlView.Text = "Hole Daten vom Server!";
 
             try
             {
@@ -46,6 +47,19 @@ namespace LernMomentCrawler
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            resultHtmlView.Text = "Hier werden die geladenen Daten angezeigt!";
+            _secondsSinceStart = new TimeSpan(0);
+            _timer.Start();
+        }
+
+        private void StopTimerButton_Click(object sender, RoutedEventArgs e)
+        {
+            _timer.Stop();
+        }
+
+        private void RestartTimerButton_Click(object sender, RoutedEventArgs e)
+        {
+            _timer.Stop();
             _secondsSinceStart = new TimeSpan(0);
             _timer.Start();
         }
