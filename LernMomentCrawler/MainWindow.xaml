@@ -32,7 +32,7 @@
         <Button x:Name="loadWebSiteButton" Margin="5" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1" HorizontalAlignment="Center" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Content="Lade LernMoment.de" Click="LoadWebSiteButton_Click"/>
         <materialDesign:ColorZone Mode="PrimaryLight" Padding="16" Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="2">
             <ScrollViewer >
-                <TextBlock x:Name="resultHtmlView" Text="Warte auf Daten vom Server!"/>
+                <TextBlock x:Name="resultHtmlView" Foreground="{DynamicResource MaterialDesignDarkForeground}" Text="Warte auf Daten vom Server!"/>
             </ScrollViewer>
         </materialDesign:ColorZone>
     </Grid>
