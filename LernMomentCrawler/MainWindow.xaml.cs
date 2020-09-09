@@ -16,20 +16,32 @@ namespace LernMomentCrawler
         public MainWindow()
         {
             InitializeComponent();
-            var handler = new EventHandler((sender, args) =>
+            var timerTickHandler = new EventHandler((sender, args) =>
             {
                 timerView.Text = _secondsSinceStart.ToString("c");
                 _secondsSinceStart = _secondsSinceStart.Add(TimeSpan.FromSeconds(1));
             });
 
-            _timer = new DispatcherTimer(TimeSpan.FromSeconds(1), DispatcherPriority.Normal, handler, Application.Current.Dispatcher);
+            _timer = new DispatcherTimer(TimeSpan.FromSeconds(1), 
+                DispatcherPriority.Normal, 
+                timerTickHandler, 
+                Application.Current.Dispatcher);
         }
 
         private void LoadWebSiteButton_Click(object sender, RoutedEventArgs e)
         {
-            using var client = new WebClient();
-            var result = client.DownloadString("http://localhost:63093/lernmoment/10");
-            resultHtmlView.Text = result;
+            loadWebSiteButton.IsEnabled = false;
+
+            try
+            {
+                using var client = new WebClient();
+                var result = client.DownloadString("http://localhost:63093/lernmoment/10");
+                resultHtmlView.Text = result;
+            }
+            finally
+            {
+                loadWebSiteButton.IsEnabled = true;
+            }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
