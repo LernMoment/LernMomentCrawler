@@ -6,7 +6,13 @@
         xmlns:local="clr-namespace:LernMomentCrawler"
         mc:Ignorable="d"
         Title="LernMoment Crawler" Height="450" Width="800"
-        Loaded="Window_Loaded">
+        Loaded="Window_Loaded"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
+        FontFamily="{materialDesign:MaterialDesignFont}">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -19,8 +25,10 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <TextBlock x:Name="timerView" FontSize="20" Margin="5" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center"/>
-        <Button x:Name="loadWebSiteButton" Margin="5" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" Content="Lade LernMomen.de" Click="LoadWebSiteButton_Click"/>
-        <TextBlock x:Name="resultHtmlView" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2"/>
+        <Button x:Name="loadWebSiteButton" Margin="5" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Content="Lade LernMoment.de" Click="LoadWebSiteButton_Click"/>
+        <ScrollViewer Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2">
+            <TextBlock x:Name="resultHtmlView"/>
+        </ScrollViewer>
     </Grid>
 
 </Window>
