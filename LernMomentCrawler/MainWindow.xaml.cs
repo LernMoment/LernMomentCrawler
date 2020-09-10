@@ -36,7 +36,7 @@ namespace LernMomentCrawler
             try
             {
                 using var client = new WebClient();
-                var result = client.DownloadString("http://localhost:63093/lernmoment/10");
+                var result = client.DownloadString("http://localhost:63093/lernmoment/20");
                 resultHtmlView.Text = result;
             }
             finally
