@@ -10,7 +10,7 @@ namespace LernMomentCrawler
     /// </summary>
     public partial class MainWindow : Window
     {
-        private DispatcherTimer _timer;
+        private readonly DispatcherTimer _timer;
         private TimeSpan _secondsSinceStart;
 
         public MainWindow()
