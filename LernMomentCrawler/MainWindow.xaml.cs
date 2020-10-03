@@ -28,7 +28,7 @@ namespace LernMomentCrawler
                 Application.Current.Dispatcher);
         }
 
-        private void LoadWebSiteButton_Click(object sender, RoutedEventArgs e)
+        private async void LoadWebSiteButton_Click(object sender, RoutedEventArgs e)
         {
             loadWebSiteButton.IsEnabled = false;
             resultHtmlView.Text = "Hole Daten vom Server!";
@@ -36,7 +36,7 @@ namespace LernMomentCrawler
             try
             {
                 using var client = new WebClient();
-                var result = client.DownloadString("http://localhost:63093/lernmoment/20");
+                var result = await client.DownloadStringTaskAsync("http://localhost:63093/lernmoment/20");
                 resultHtmlView.Text = result;
             }
             finally
