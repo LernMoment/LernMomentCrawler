@@ -37,7 +37,7 @@ namespace LernMomentCrawler
 
             try
             {
-                LoadLernMomentDe();
+                await LoadLernMomentDe();
                 Debug.WriteLine("UI: Wir haben KEINE Exception gefangen!");
             }
             catch(NotImplementedException ex)
@@ -50,7 +50,7 @@ namespace LernMomentCrawler
             }
         }
 
-        private async void LoadLernMomentDe()
+        private async Task LoadLernMomentDe()
         {
             throw new NotImplementedException("Exception aus async void Method!");
         }
