@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Net;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
 
@@ -35,14 +37,22 @@ namespace LernMomentCrawler
 
             try
             {
-                using var client = new WebClient();
-                var result = await client.DownloadStringTaskAsync("http://localhost:63093/lernmoment/20");
-                resultHtmlView.Text = result;
+                LoadLernMomentDe();
+                Debug.WriteLine("UI: Wir haben KEINE Exception gefangen!");
+            }
+            catch(NotImplementedException ex)
+            {
+                Debug.WriteLine($"UI: Wir haben eine Exception gefangen: {ex}");
             }
             finally
             {
                 loadWebSiteButton.IsEnabled = true;
             }
+        }
+
+        private async void LoadLernMomentDe()
+        {
+            throw new NotImplementedException("Exception aus async void Method!");
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
