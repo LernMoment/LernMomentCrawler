@@ -21,7 +21,7 @@ namespace FakeLernMomentServer.Controllers
         }
 
         [HttpGet("{delayInSeconds}")]
-        public ActionResult<string> Get(int delayInSeconds)
+        public async Task<ActionResult<string>> Get(int delayInSeconds)
         {
             var lernMomentIndexSite = _cache.Get<String>("lernMomentIndexSite");
 
@@ -30,7 +30,7 @@ namespace FakeLernMomentServer.Controllers
             while (delayInSeconds > waitedSeconds)
             {
                 waitedSeconds++;
-                Task.Delay(TimeSpan.FromSeconds(1)).Wait();
+                await Task.Delay(TimeSpan.FromSeconds(1));
                 Debug.WriteLine($"{DateTime.Now.ToLongTimeString()} - Still preparing ...");
             }
             Debug.WriteLine($"{DateTime.Now.ToLongTimeString()} - Now we waited long enough. It's time to rock and roll!");
