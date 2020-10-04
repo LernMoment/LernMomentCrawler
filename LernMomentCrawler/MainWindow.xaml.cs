@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LernMomentCrawlerUI;
+using System;
 using System.Diagnostics;
 using System.Net;
 using System.Threading.Tasks;
@@ -15,6 +16,8 @@ namespace LernMomentCrawler
         private readonly DispatcherTimer _timer;
         private TimeSpan _secondsSinceStart;
 
+        private readonly Crawler _crawler;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -28,6 +31,8 @@ namespace LernMomentCrawler
                 DispatcherPriority.Normal, 
                 timerTickHandler, 
                 Application.Current.Dispatcher);
+
+            _crawler = new Crawler("http://localhost:63093/lernmoment/20");
         }
 
         private async void LoadWebSiteButton_Click(object sender, RoutedEventArgs e)
@@ -42,9 +47,7 @@ namespace LernMomentCrawler
 
             try
             {
-                using var client = new WebClient();
-                var result = await client.DownloadStringTaskAsync("http://localhost:63093/lernmoment/20");
-                resultHtmlView.Text = result;
+                resultHtmlView.Text = await _crawler.GetIndexPage();
             }
             finally
             {
