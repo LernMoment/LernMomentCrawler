@@ -32,24 +32,24 @@ namespace LernMomentCrawler
 
         private async void LoadWebSiteButton_Click(object sender, RoutedEventArgs e)
         {
+            await LoadLernMomentDe();
+        }
+
+        private async Task LoadLernMomentDe()
+        {
             loadWebSiteButton.IsEnabled = false;
             resultHtmlView.Text = "Hole Daten vom Server!";
 
             try
             {
-                await LoadLernMomentDe();
+                using var client = new WebClient();
+                var result = await client.DownloadStringTaskAsync("http://localhost:63093/lernmoment/20");
+                resultHtmlView.Text = result;
             }
             finally
             {
                 loadWebSiteButton.IsEnabled = true;
             }
-        }
-
-        private async Task LoadLernMomentDe()
-        {
-            using var client = new WebClient();
-            var result = await client.DownloadStringTaskAsync("http://localhost:63093/lernmoment/20");
-            resultHtmlView.Text = result;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
