@@ -38,11 +38,6 @@ namespace LernMomentCrawler
             try
             {
                 await LoadLernMomentDe();
-                Debug.WriteLine("UI: Wir haben KEINE Exception gefangen!");
-            }
-            catch(NotImplementedException ex)
-            {
-                Debug.WriteLine($"UI: Wir haben eine Exception gefangen: {ex}");
             }
             finally
             {
@@ -52,7 +47,9 @@ namespace LernMomentCrawler
 
         private async Task LoadLernMomentDe()
         {
-            throw new NotImplementedException("Exception aus async void Method!");
+            using var client = new WebClient();
+            var result = await client.DownloadStringTaskAsync("http://localhost:63093/lernmoment/20");
+            resultHtmlView.Text = result;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
