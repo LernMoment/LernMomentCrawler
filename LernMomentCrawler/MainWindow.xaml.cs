@@ -35,19 +35,20 @@ namespace LernMomentCrawler
             _crawler = new Crawler("http://localhost:63093/lernmoment/20");
         }
 
-        private async void LoadWebSiteButton_Click(object sender, RoutedEventArgs e)
+        private void LoadWebSiteButton_Click(object sender, RoutedEventArgs e)
         {
-            await LoadLernMomentDe();
+            LoadLernMomentDe();
         }
 
-        private async Task LoadLernMomentDe()
+        private void LoadLernMomentDe()
         {
             loadWebSiteButton.IsEnabled = false;
             resultHtmlView.Text = "Hole Daten vom Server!";
 
             try
             {
-                resultHtmlView.Text = await _crawler.GetIndexPage();
+                var downloadTask = _crawler.GetIndexPage();
+                resultHtmlView.Text = downloadTask.Result;
             }
             finally
             {
