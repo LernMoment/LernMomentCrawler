@@ -18,7 +18,8 @@ namespace LernMomentCrawlerUI
         public async Task<string> GetIndexPage()
         {
             using var client = new WebClient();
-            var result = await client.DownloadStringTaskAsync(_rootUrl);
+            var aTask = client.DownloadStringTaskAsync(_rootUrl);
+            var result = await aTask;
 
             return result;
         }
