@@ -18,7 +18,11 @@ namespace LernMomentCrawlerUI
 
         public async Task<string> GetIndexPage()
         {
-            throw new TimeoutException("FakeLernMomentServer antwortet nicht!");
+            using var client = new WebClient();
+            var aTask = client.DownloadStringTaskAsync(_rootUrl);
+            var result = await aTask;
+
+            return result;
         }
     }
 }
