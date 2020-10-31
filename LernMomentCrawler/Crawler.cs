@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,11 +18,7 @@ namespace LernMomentCrawlerUI
 
         public async Task<string> GetIndexPage()
         {
-            using var client = new WebClient();
-            var aTask = client.DownloadStringTaskAsync(_rootUrl);
-            var result = await aTask;
-
-            return result;
+            throw new TimeoutException("FakeLernMomentServer antwortet nicht!");
         }
     }
 }
