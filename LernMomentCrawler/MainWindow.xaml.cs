@@ -37,16 +37,9 @@ namespace LernMomentCrawler
 
         private async void LoadWebSiteButton_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                var einAndererTask = LoadLernMomentDe();
-                // hier wird noch was anderes gemacht.
-                // await einAndererTask; -> wurde vergessen!
-            }
-            catch (TimeoutException ex)
-            {
-                Debug.WriteLine($"Irgendwo ist was schief gelaufen ;-): {ex}");
-            }
+            var einAndererTask = LoadLernMomentDe();
+            // hier wird noch was anderes gemacht.
+            // await einAndererTask; -> wurde vergessen!
         }
 
         private async Task LoadLernMomentDe()
