@@ -37,7 +37,16 @@ namespace LernMomentCrawler
 
         private async void LoadWebSiteButton_Click(object sender, RoutedEventArgs e)
         {
-            await LoadLernMomentDe();
+            try
+            {
+                var einAndererTask = LoadLernMomentDe();
+                // hier wird noch was anderes gemacht.
+                // await einAndererTask; -> wurde vergessen!
+            }
+            catch (TimeoutException ex)
+            {
+                Debug.WriteLine($"Irgendwo ist was schief gelaufen ;-): {ex}");
+            }
         }
 
         private async Task LoadLernMomentDe()
@@ -50,10 +59,6 @@ namespace LernMomentCrawler
             {
                 downloadTask = _crawler.GetIndexPage();
                 resultHtmlView.Text = await downloadTask;
-            }
-            catch(TimeoutException ex)
-            {
-                Debug.WriteLine($"Irgendwo ist was schief gelaufen ;-): {ex}");
             }
             finally
             {
