@@ -18,23 +18,16 @@ namespace LernMomentCrawlerUI
             _rootUrl = rootUrl;
         }
 
-        public async Task<string> GetIndexPage()
+        public async Task<string> GetIndexPage(CancellationToken ct)
         {
             string result;
 
-            try
+            // TODO: verwende den übergebenden CancellationToken an der passenden Stelle!
+            
+            using var client = new HttpClient();
+            using (var response = await client.GetAsync(_rootUrl))
             {
-                using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
-
-                using var client = new HttpClient();
-                using (var response = await client.GetAsync(_rootUrl, cts.Token))
-                {
-                    result = await response.Content.ReadAsStringAsync();
-                }
-            }
-            catch (TaskCanceledException)
-            {
-                return "Zeitüberschreitung beim Laden der Index-Seite";
+                result = await response.Content.ReadAsStringAsync();
             }
 
             return result;

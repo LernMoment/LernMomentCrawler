@@ -48,6 +48,7 @@ namespace LernMomentCrawler
             Task<string> downloadTask;
             try
             {
+                // TODO: Woher bekommst du den CancellationToken für den folgenden Aufruf?
                 downloadTask = _crawler.GetIndexPage();
                 resultHtmlView.Text = await downloadTask;
             }
@@ -66,7 +67,7 @@ namespace LernMomentCrawler
 
         private void CancelLoadWebSiteButton_Click(object sender, RoutedEventArgs e)
         {
-            // was tun ???
+            // TODO: Hier soll auch der Download abgebrochen werden können! Verwende die CTS!
         }
 
         private void StopTimerButton_Click(object sender, RoutedEventArgs e)
