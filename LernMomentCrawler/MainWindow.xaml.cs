@@ -50,18 +50,11 @@ namespace LernMomentCrawler
             {
                 downloadTask = _crawler.GetIndexPage();
                 resultHtmlView.Text = await downloadTask;
-                Debug.WriteLine("await downloadTask ist erfolgreich abgeschlossen!");
-            }
-            catch (TimeoutException ex)
-            {
-                resultHtmlView.Text = "Zeitüberschreitung beim Download der Index-Seite.";
-                Debug.WriteLine($"TimeoutException beim async Aufruf von Crawler.GetIndexPage: {ex}");
             }
             finally
             {
                 loadWebSiteButton.IsEnabled = true;
             }
-            Debug.WriteLine("LoadLernMomentDe() ist jetzt beendet.");
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -69,6 +62,11 @@ namespace LernMomentCrawler
             resultHtmlView.Text = "Hier werden die geladenen Daten angezeigt!";
             _secondsSinceStart = new TimeSpan(0);
             _timer.Start();
+        }
+
+        private void CancelLoadWebSiteButton_Click(object sender, RoutedEventArgs e)
+        {
+            // was tun ???
         }
 
         private void StopTimerButton_Click(object sender, RoutedEventArgs e)

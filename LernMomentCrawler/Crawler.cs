@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net;
+using System.Net.Http;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace LernMomentCrawlerUI
@@ -18,25 +20,14 @@ namespace LernMomentCrawlerUI
 
         public async Task<string> GetIndexPage()
         {
-            var webClientTask = DownloadAndTrace(_rootUrl);
-            var timeoutTask = Task.Delay(TimeSpan.FromSeconds(5));
+            string result;
 
-            var completedTask = await Task.WhenAny(webClientTask, timeoutTask);
-
-            if (completedTask == timeoutTask)
+            using var client = new HttpClient();
+            using (var response = await client.GetAsync(_rootUrl))
             {
-                throw new TimeoutException("LernMoment-Server antwortet nicht.");
+                result = await response.Content.ReadAsStringAsync();
             }
 
-            return await webClientTask;
-        }
-
-        private async Task<string> DownloadAndTrace(string url)
-        {
-            using var client = new WebClient();
-            var webClientTask = client.DownloadStringTaskAsync(url);
-            var result = await webClientTask;
-            Debug.WriteLine("DownloadAndTrace ist abgeschlossen!");
             return result;
         }
     }
