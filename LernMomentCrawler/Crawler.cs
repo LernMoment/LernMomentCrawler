@@ -21,9 +21,11 @@ namespace LernMomentCrawlerUI
         public async Task<string> GetIndexPage()
         {
             string result;
+            
+            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
 
             using var client = new HttpClient();
-            using (var response = await client.GetAsync(_rootUrl))
+            using (var response = await client.GetAsync(_rootUrl, cts.Token))
             {
                 result = await response.Content.ReadAsStringAsync();
             }
