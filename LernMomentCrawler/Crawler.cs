@@ -22,10 +22,8 @@ namespace LernMomentCrawlerUI
         {
             string result;
 
-            // TODO: verwende den übergebenden CancellationToken an der passenden Stelle!
-            
             using var client = new HttpClient();
-            using (var response = await client.GetAsync(_rootUrl))
+            using (var response = await client.GetAsync(_rootUrl, ct))
             {
                 result = await response.Content.ReadAsStringAsync();
             }

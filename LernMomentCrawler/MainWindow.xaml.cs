@@ -2,6 +2,7 @@
 using System;
 using System.Diagnostics;
 using System.Net;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
@@ -17,6 +18,7 @@ namespace LernMomentCrawler
         private TimeSpan _secondsSinceStart;
 
         private readonly Crawler _crawler;
+        private CancellationTokenSource _cts;
 
         public MainWindow()
         {
@@ -43,19 +45,33 @@ namespace LernMomentCrawler
         private async Task LoadLernMomentDe()
         {
             loadWebSiteButton.IsEnabled = false;
+            cancelLoadWebSiteButton.IsEnabled = true;
             resultHtmlView.Text = "Hole Daten vom Server!";
+
+            _cts = new CancellationTokenSource(TimeSpan.FromSeconds(10));
 
             Task<string> downloadTask;
             try
             {
-                // TODO: Woher bekommst du den CancellationToken für den folgenden Aufruf?
-                downloadTask = _crawler.GetIndexPage();
+                downloadTask = _crawler.GetIndexPage(_cts.Token);
                 resultHtmlView.Text = await downloadTask;
+            }
+            catch(TaskCanceledException)
+            {
+                resultHtmlView.Text = "Download von Index-Seite abgebrochen.";
             }
             finally
             {
                 loadWebSiteButton.IsEnabled = true;
+                cancelLoadWebSiteButton.IsEnabled = false;
             }
+
+            Debug.WriteLine("LoadLernMomentDe Methode wird verlassen!");
+        }
+
+        private void CancelLoadWebSiteButton_Click(object sender, RoutedEventArgs e)
+        {
+            _cts.Cancel();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -63,11 +79,6 @@ namespace LernMomentCrawler
             resultHtmlView.Text = "Hier werden die geladenen Daten angezeigt!";
             _secondsSinceStart = new TimeSpan(0);
             _timer.Start();
-        }
-
-        private void CancelLoadWebSiteButton_Click(object sender, RoutedEventArgs e)
-        {
-            // TODO: Hier soll auch der Download abgebrochen werden können! Verwende die CTS!
         }
 
         private void StopTimerButton_Click(object sender, RoutedEventArgs e)
