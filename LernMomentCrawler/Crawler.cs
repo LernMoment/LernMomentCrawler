@@ -21,6 +21,15 @@ namespace LernMomentCrawlerUI
             using var client = new WebClient();
             var webClientTask = client.DownloadStringTaskAsync(_rootUrl);
 
+            var timeoutTask = Task.Delay(TimeSpan.FromSeconds(5));
+
+            var completedTask = await Task.WhenAny(webClientTask, timeoutTask);
+
+            if (completedTask == timeoutTask)
+            {
+                throw new TimeoutException("LernMoment-Server antwortet nicht.");
+            }
+
             return await webClientTask;
         }
     }
