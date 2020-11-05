@@ -18,9 +18,7 @@ namespace LernMomentCrawlerUI
 
         public async Task<string> GetIndexPage()
         {
-            using var client = new WebClient();
-            var webClientTask = client.DownloadStringTaskAsync(_rootUrl);
-
+            var webClientTask = DownloadAndTrace(_rootUrl);
             var timeoutTask = Task.Delay(TimeSpan.FromSeconds(5));
 
             var completedTask = await Task.WhenAny(webClientTask, timeoutTask);
@@ -31,6 +29,15 @@ namespace LernMomentCrawlerUI
             }
 
             return await webClientTask;
+        }
+
+        private async Task<string> DownloadAndTrace(string url)
+        {
+            using var client = new WebClient();
+            var webClientTask = client.DownloadStringTaskAsync(url);
+            var result = await webClientTask;
+            Debug.WriteLine("DownloadAndTrace ist abgeschlossen!");
+            return result;
         }
     }
 }
