@@ -48,7 +48,7 @@ namespace LernMomentCrawler
             cancelLoadWebSiteButton.IsEnabled = true;
             resultHtmlView.Text = "Hole Daten vom Server!";
 
-            _cts = new CancellationTokenSource(TimeSpan.FromSeconds(10));
+            _cts = new CancellationTokenSource();
 
             Task<string> downloadTask;
             try
