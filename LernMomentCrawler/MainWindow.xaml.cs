@@ -52,7 +52,7 @@ namespace LernMomentCrawler
 
             try
             {
-                var searchResult = _searchEngine.FindTag("task");
+                var searchResult = _searchEngine.FindTagRecursive("task", 2);
                 resultHtmlView.Text = ConvertToStringWithDetails(searchResult);
             }
             catch(TaskCanceledException)
