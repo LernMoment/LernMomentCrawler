@@ -1,6 +1,8 @@
 ﻿using LernMomentCrawlerUI;
+using LernMomentCrawlerUI.Model;
 using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
@@ -17,7 +19,7 @@ namespace LernMomentCrawler
         private readonly DispatcherTimer _timer;
         private TimeSpan _secondsSinceStart;
 
-        private readonly Crawler _crawler;
+        private readonly TagSearchEngine _searchEngine;
         private CancellationTokenSource _cts;
 
         public MainWindow()
@@ -34,27 +36,24 @@ namespace LernMomentCrawler
                 timerTickHandler, 
                 Application.Current.Dispatcher);
 
-            _crawler = new Crawler("http://localhost:63093/lernmoment/20");
+            _searchEngine = new TagSearchEngine("http://localhost:63093/lernmoment/5", "lernmoment.de");
         }
 
-        private async void LoadWebSiteButton_Click(object sender, RoutedEventArgs e)
+        private void LoadWebSiteButton_Click(object sender, RoutedEventArgs e)
         {
-            await LoadLernMomentDe();
+            LoadLernMomentDe();
         }
 
-        private async Task LoadLernMomentDe()
+        private void LoadLernMomentDe()
         {
             loadWebSiteButton.IsEnabled = false;
             cancelLoadWebSiteButton.IsEnabled = true;
             resultHtmlView.Text = "Hole Daten vom Server!";
 
-            _cts = new CancellationTokenSource();
-
-            Task<string> downloadTask;
             try
             {
-                downloadTask = _crawler.GetIndexPage(_cts.Token);
-                resultHtmlView.Text = await downloadTask;
+                var searchResult = _searchEngine.FindTag("task");
+                resultHtmlView.Text = ConvertToStringWithDetails(searchResult);
             }
             catch(TaskCanceledException)
             {
@@ -74,6 +73,27 @@ namespace LernMomentCrawler
             _cts.Cancel();
         }
 
+        private string ConvertToStringWithDetails(TagSearchResult searchResult)
+        {
+            string result;
+
+            result = $"Es wurde {searchResult.TagCount} mal der Tag '{searchResult.TagName}' und {searchResult.LinksOnPage.Count()} weiterführende Links gefunden.";
+            result += Environment.NewLine;
+
+            result += "Benötigte Zeit (in ms):" + Environment.NewLine;
+            result += $"Download: {searchResult.PageDownloadTimeInMs}" + Environment.NewLine;
+            result += $"Link-Suche: {searchResult.LinkSearchTimeInMs}" + Environment.NewLine;
+            result += $"Tag-Suche: {searchResult.TagCountSearchTimeInMs}" + Environment.NewLine;
+            result += $"Gesamt: {_searchEngine.DurationOfLastSearchInMs}" + Environment.NewLine;
+            result += Environment.NewLine;
+
+            foreach (var link in searchResult.LinksOnPage)
+            {
+                result += link + Environment.NewLine;
+            }
+
+            return result;
+        }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             resultHtmlView.Text = "Hier werden die geladenen Daten angezeigt!";
