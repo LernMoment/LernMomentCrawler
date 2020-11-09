@@ -1,0 +1,275 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Was ist eigentlich Kontravarianz für Generics? &#8211; LernMoment.de</title>
+<meta name="description" content="Verstehe das Konzept mühelos am Beispiel von IComparable.">
+<meta name="keywords" content="Konzept, Generics, Datentypen">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Was ist eigentlich Kontravarianz für Generics?">
+<meta name="twitter:description" content="Verstehe das Konzept mühelos am Beispiel von IComparable.">
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:63266/images/banner/lernmoment-csharp.jpg">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="de_DE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Was ist eigentlich Kontravarianz für Generics?">
+<meta property="og:description" content="Verstehe das Konzept mühelos am Beispiel von IComparable.">
+<meta property="og:url" content="http://localhost:63266/csharp-programmieren/kontravarianz-am-beispiel-von-icomparable/">
+<meta property="og:site_name" content="LernMoment.de">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="sPPXWqQjaSqa_ZgqYPNCyVLLaFzVAFCuf3xDBC-ofwE">
+
+
+
+<link rel="canonical" href="http://localhost:63266/csharp-programmieren/kontravarianz-am-beispiel-von-icomparable/">
+<link href="http://localhost:63266/feed.xml" type="application/atom+xml" rel="alternate" title="LernMoment.de Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:63266/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:63266/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:63266/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:63266/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:63266/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:63266/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:63266/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:63266/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+
+
+<div class="navigation-banner">
+	
+	
+
+	Lerne programmieren mit mir im Kurs: <a href="http://localhost:63266/einstieg-csharp/" >Einstieg in C# -></a>
+</div>
+
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:63266/kurse/" >Kurse</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/schwerpunkt/" >Dein Weg zum C# Entwickler</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/projekt-start/" >Entwicklung & Mentoring</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/blog/" >Blog</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	
+		<div class="wrap">
+			<a href="http://localhost:63266/" class="site-logo" rel="home" title="LernMoment.de"><img src="http://localhost:63266/images/site-logo.png" width="200" height="200" alt="LernMoment.de logo" class="animated fadeInDown"></a>
+		</div>
+	
+</header><!-- /.masthead -->
+
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <img src="http://localhost:63266/images/banner/lernmoment-csharp.jpg" class="entry-feature-image" alt="Was ist eigentlich Kontravarianz für Generics?" >
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"><a href="http://localhost:63266/tags/#Konzept" title="Pages tagged Konzept">Konzept</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Generics" title="Pages tagged Generics">Generics</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Datentypen" title="Pages tagged Datentypen">Datentypen</a></span>
+        
+          <h1 class="entry-title">Was ist eigentlich Kontravarianz für Generics?</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <span class="author vcard">Von <span class="fn">Jan Suchotzki</span></span>
+        <span class="entry-date date published"><time datetime="2015-08-25T06:00:00+02:00"><i class="fa fa-calendar-o"></i> 25. August 2015</time></span>
+        
+        
+        
+        
+      </footer>
+      <div class="entry-content">
+        <p>In <a href="/csharp-programmieren/kovariante-felder/">Kovarianz und Felder</a> hast du gesehen, dass das Konzept der Kovarianz bei Feldern etwas kompliziert ist, aber die praktische Umsetzung sehr einfach. Nun möchte ich dir zeigen wie du generische Interfaces mit kontravarianten Typen verwendest.</p>
+
+<p>Als Beispiel habe ich mal <code class="highlighter-rouge">IComparable&lt;T&gt;</code> genommen. Dies ist eines von vielen Interfaces, welches sich mit dem Vergleich von Objekten beschäftigt. Mit <code class="highlighter-rouge">IComparable&lt;T&gt;</code> kannst du deiner Klasse ein Standardverhalten für das Vergleichen von Objekten deiner Klasse mitgeben. Bei einer Klasse <code class="highlighter-rouge">LernMoment</code> könntest du beispielsweise sagen, dass eine Instanz von <code class="highlighter-rouge">LernMoment</code> größer als eine andere ist, wenn die Eigenschaft <code class="highlighter-rouge">ErschienenAm</code> neuer ist.</p>
+
+<p>Was aber hat das nun mit Kontravarianz zutun? Schau dir dazu mal folgende Aussage für den Typparameter <code class="highlighter-rouge">in T</code> der Definition <code class="highlighter-rouge">public interface IComparable&lt;in T&gt;</code> an:</p>
+
+<blockquote>
+  <p>Dieser Typparameter ist Contravariant. Das heißt, Sie können entweder den angegebenen Typ oder einen weniger abgeleiteten Typ verwenden.
+–<cite><a href="https://msdn.microsoft.com/de-de/library/4d7sx9hd(v=VS.110).aspx">MSDN</a></cite></p>
+</blockquote>
+
+<p>Bei Kontravarianz kannst du anstelle vom Typ <code class="highlighter-rouge">T</code> eine Klasse verwenden von der <code class="highlighter-rouge">T</code> erbt. Um das etwas genauer anzuschauen, nehmen wir folgende Klassenhierarchie:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">LernMoment</span> <span class="p">:</span> <span class="n">IComparable</span><span class="p">&lt;</span><span class="n">LernMoment</span><span class="p">&gt;</span> <span class="p">{</span> <span class="p">}</span>
+<span class="k">class</span> <span class="nc">LernMomentCSharp</span> <span class="p">:</span> <span class="n">LernMoment</span><span class="p">,</span> <span class="n">IComparable</span><span class="p">&lt;</span><span class="n">LernMomentCSharp</span><span class="p">&gt;</span> <span class="p">{</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<p>Das Zitat der MSDN will dir nun sagen, dass du folgendes machen kannst:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">IComparable</span><span class="p">&lt;</span><span class="n">LernMomentCSharp</span><span class="p">&gt;</span> <span class="n">derVergleich</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">LernMoment</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>Die Kontravarianz erlaubt dir, dass du, auch wenn der Typ <code class="highlighter-rouge">IComparable&lt;LernMomentCSharp&gt;</code> gefordert ist, einen weniger abgeleiteten Typen verwenden kannst. In diesem Beispiel ist das <code class="highlighter-rouge">IComparable&lt;LernMoment&gt;</code>. Beide Klassen können <code class="highlighter-rouge">CompareTo</code>, die einzige Methode von <code class="highlighter-rouge">IComparable&lt;T&gt;</code>, nun nach ihren jeweiligen Bedürfnissen realisieren.</p>
+
+<p>So wäre es möglich, dass <code class="highlighter-rouge">LernMoment</code> den Vergleich basierend auf der Eigenschaft <code class="highlighter-rouge">ErschienenAm</code> macht, während <code class="highlighter-rouge">LernMomentCSharp</code> vielleicht eher die Eigenschaft <code class="highlighter-rouge">Name</code> verwendet. Das Interface und die <code class="highlighter-rouge">CompareTo</code> Methode verwendest du übrigens selten direkt. Insbesondere Sortieralgorithmen wie <code class="highlighter-rouge">List&lt;T&gt;.Sort</code> verwenden sie.</p>
+
+<p>Im <a href="https://github.com/LernMoment/csharp/tree/master/IComparableKontravarianz">Beispielquelltext</a> zeige ich dir mit welchem einfachen Trick du <code class="highlighter-rouge">List&lt;LernMomentCSharp&gt;.Sort</code> sagen kannst, welche Variante der <code class="highlighter-rouge">CompareTo</code> Methode verwendet werden soll.</p>
+
+<p>Jetzt erstmal viel Spaß mit dem Vergleich verschiedener Vererbungsstufen</p>
+
+<p>Jan</p>
+
+<p>PS: Eine wirklich sinnvolle Verwendung von Kontravarianz an generischen Interfaces bietet übrigens <code class="highlighter-rouge">IComparer&lt;T&gt;</code>. Das ist aber Stoff für einen weiteren LernMoment.</p>
+
+<h3 id="merke">Merke</h3>
+
+<ul>
+  <li>Kovarianz und Kontravarianz gibt es auch für Delegates und Interfaces mit generischen Typen.</li>
+  <li>Wenn ein generischer Typ in einem Interface kovariant ist, heißt dass, das du den angegebenen Typen oder einen von ihm abgeleiteten verwenden kannst.</li>
+  <li>Wenn ein generischer Typ in einem Interface kontravariant ist, heißt dass, das du den angegebenen Typen oder einen Typen von dem er erbt, verwenden kannst.</li>
+  <li>Mit <code class="highlighter-rouge">IComparable&lt;T&gt;</code> kannst du das Standardverhalten für Vergleiche (insbesondere für Sortieralgorithmen) einer Klasse definieren.</li>
+  <li>Wenn du zusätzliche Vergleiche brauchst, dann kannst du <code class="highlighter-rouge">IComparer&lt;T&gt;</code> verwenden.</li>
+</ul>
+
+<h3 id="lernquiz">Lernquiz</h3>
+
+<p>Verwende folgende Fragen, um das Gelernte von heute zu festigen:</p>
+
+<ul>
+  <li>Was bedeutet es, wenn an einem generischen Interface steht, dass der Typparameter kontravariant ist?</li>
+  <li>Was macht <code class="highlighter-rouge">IComparable</code>?</li>
+  <li>Was ist der Unterschied zwischen Kovarianz und Kontravarianz?</li>
+</ul>
+
+<p>Am besten schaust du dir morgen und dann nochmal in ein paar Tagen die vorherigen Fragen an und beantwortest sie, ohne den Text vorher gelesen zu haben.</p>
+
+<h3 id="weitere-informationen">Weitere Informationen</h3>
+
+<ul>
+  <li>Den kompletten Quelltext zum heutigen Lernmoment findest du <a href="https://github.com/LernMoment/csharp/tree/master/IComparableKontravarianz">hier</a>.</li>
+  <li>Einen groben Überblick inklusive weiterer Links zum Thema Kovarianz und Kontravarianz findest du <a href="http://blogs.msdn.com/b/csharpfaq/archive/2010/02/16/covariance-and-contravariance-faq.aspx">hier</a>.</li>
+  <li>Eine sehr detailierte und mathematische Erklärung gibt <a href="http://tomasp.net/blog/variance-explained.aspx/">dieser</a> Artikel.</li>
+  <li>Eine weitere sehr gute Einführung in das Thema findest du auf <a href="https://msdn.microsoft.com/de-de/library/dd799517(v=vs.110).aspx">MSDN</a></li>
+</ul>
+
+        
+          <div class="subscribe-notice">
+            <h5>Dieser LernMoment hat dir gefallen? <br> Dann melde dich an und du wirst über neue LernMomente informiert:</h5>
+                <form action="https://lernmoment.us9.list-manage.com/subscribe/post" method="POST" target="_blank">
+      <input type="hidden" name="u" value="d0206d57f5002e40b651a0f60">
+      <input type="hidden" name="id" value="8845c28e62">
+      <input type="email" class="subscribe-notice-input-box" autocapitalize="off" autocorrect="off" name="MERGE0" id="MERGE0" size="25" value="" placeholder="Deine E-Mail-Adresse">
+      <input type="text" class="subscribe-notice-input-box" name="MERGE1" id="MERGE1" size="25" value="" placeholder="Dein Vorname (optional)">
+      
+        <input type="checkbox" id="group_1" name="group[20205][1]" value="1" checked="true" style="display:none">
+      
+      <input type="submit" class="subscribe-notice-button" name="submit" value="Ich bin dabei!">
+      <legend class="subscribe-notice-legend">Du bekommst in unregelmäßigen Abständen Mails von mir, in denen ich dich auf neue Artikel oder Angebote hinweise, die in das gleiche Themengebiet fallen wie dieser Artikel.</legend>
+    </form>
+
+          </div>
+        
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:63266/csharp-programmieren/ein-multicast-delegate-erstellen/" class="btn" title="Ein Multicast-Delegate erstellen">Vorheriger</a>
+      
+      
+        <a href="http://localhost:63266/csharp-programmieren/flagge-zeigen-fuer-bitpopelei/" class="btn" title="Flag(ge) zeigen für Bitpopelei">Nächster</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<div class="social-icons">
+	
+	
+	
+	<a href="http://www.youtube.com/channel/UC5jCUQ6IPHtQP5r4y9byCqA" title="Jan Suchotzki on YouTube" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
+	
+	<a href="http://stackoverflow.com/users/5258906/jan-suchotzki" title="Jan Suchotzki on StackExchange" target="_blank"><i class="fa fa-stack-exchange fa-2x"></i></a>
+	
+	
+	<a href="http://github.com/lernmoment" title="Jan Suchotzki on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+    
+	
+  <a href="http://localhost:63266/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+<span>Danke an <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> und <a href="http://mademistakes.com/so-simple/" rel="nofollow">Made Mistakes</a> für hervorragende Tools.</span>
+<br>
+<span><a href="http://localhost:63266/kein-copyright/">Kein Copyright</a>    -    <a href="http://localhost:63266/impressum/">Impressum</a>    -    <a href="http://localhost:63266/datenschutz/">Datenschutz</a></span>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:63266';
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:63266/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:63266/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

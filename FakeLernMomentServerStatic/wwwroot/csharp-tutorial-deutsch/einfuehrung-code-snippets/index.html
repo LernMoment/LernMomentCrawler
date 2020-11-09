@@ -1,0 +1,225 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Code Snippets in Visual Studio 2019 &#8211; LernMoment.de</title>
+<meta name="description" content="Code Snippets (Codeausschnitte) sind eine super Funktionalität in Visual Studio um schnell wiederkehrenden Quellcode generieren zulassen. Hier bekommst du die wichtigsten Infos dazu.">
+<meta name="keywords" content="Werkzeug, Visual Studio">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Code Snippets in Visual Studio 2019">
+<meta name="twitter:description" content="Code Snippets (Codeausschnitte) sind eine super Funktionalität in Visual Studio um schnell wiederkehrenden Quellcode generieren zulassen. Hier bekommst du die wichtigsten Infos dazu.">
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:63266/images/banner/lernmoment-vs.jpg">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="de_DE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Code Snippets in Visual Studio 2019">
+<meta property="og:description" content="Code Snippets (Codeausschnitte) sind eine super Funktionalität in Visual Studio um schnell wiederkehrenden Quellcode generieren zulassen. Hier bekommst du die wichtigsten Infos dazu.">
+<meta property="og:url" content="http://localhost:63266/csharp-tutorial-deutsch/einfuehrung-code-snippets/">
+<meta property="og:site_name" content="LernMoment.de">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="sPPXWqQjaSqa_ZgqYPNCyVLLaFzVAFCuf3xDBC-ofwE">
+
+
+
+<link rel="canonical" href="http://localhost:63266/csharp-tutorial-deutsch/einfuehrung-code-snippets/">
+<link href="http://localhost:63266/feed.xml" type="application/atom+xml" rel="alternate" title="LernMoment.de Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:63266/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:63266/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:63266/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:63266/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:63266/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:63266/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:63266/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:63266/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+
+
+<div class="navigation-banner">
+	
+	
+
+	Lerne programmieren mit mir im Kurs: <a href="http://localhost:63266/einstieg-csharp/" >Einstieg in C# -></a>
+</div>
+
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:63266/kurse/" >Kurse</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/schwerpunkt/" >Dein Weg zum C# Entwickler</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/projekt-start/" >Entwicklung & Mentoring</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/blog/" >Blog</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	
+		<div class="wrap">
+			<a href="http://localhost:63266/" class="site-logo" rel="home" title="LernMoment.de"><img src="http://localhost:63266/images/site-logo.png" width="200" height="200" alt="LernMoment.de logo" class="animated fadeInDown"></a>
+		</div>
+	
+</header><!-- /.masthead -->
+
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <img src="http://localhost:63266/images/banner/lernmoment-vs.jpg" class="entry-feature-image" alt="Code Snippets in Visual Studio 2019" >
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"><a href="http://localhost:63266/tags/#Werkzeug" title="Pages tagged Werkzeug">Werkzeug</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Visual Studio" title="Pages tagged Visual Studio">Visual Studio</a></span>
+        
+          <h1 class="entry-title">Code Snippets in Visual Studio 2019</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <span class="author vcard">Von <span class="fn">Jan Suchotzki</span></span>
+        <span class="entry-date date published"><time datetime="2020-03-02T18:13:09+01:00"><i class="fa fa-calendar-o"></i> 02. March 2020</time></span>
+        
+        
+        
+        
+      </footer>
+      <div class="entry-content">
+        <p>Mit Codeausschnitten (bzw. Code-Snippets auf Englisch) bekommst du eine einfache Möglichkeit um dir einiges an Tipparbeit zu ersparen. <em>Visual Studio</em> hat für Elemente wie eine <code class="highlighter-rouge">foreach</code>-Schleife, <code class="highlighter-rouge">if</code>-Abfragen und vieles mehr bereits Codeausschnitte definiert. Wenn du diese verwendest, dann braquchst du nur 2-3 Buchstaben tippen, 2x die Tabulatortaste drücken und <em>Visual Studio</em> fügt automatisch einen Codeausschnitt ein. Bei der <code class="highlighter-rouge">if</code>-Abfrage bekommst du so z.B. die runden und geschweiften Klammern direkt in der passenden Formatierung eingefügt. Ein paar mehr Details dazu erkläre ich dir <a href="https://youtu.be/teb_83Vxou4?t=295">in diesem Video</a>.</p>
+
+<p><a href="https://docs.microsoft.com/de-de/visualstudio/ide/code-snippets?view=vs-2019">Hier</a> gibt es ein paar Hintergrundinformationen zu Codeausschnitten von Microsoft und <a href="https://docs.microsoft.com/de-de/visualstudio/ide/visual-csharp-code-snippets?view=vs-2019">hier</a> sind alle “Standardcodeausschnitte” aufgelistet und kurz erklärt.</p>
+
+<p>Zusätzlich haben sich jedoch schon viele Entwickler Gedanken gemacht welche weiteren <em>Codeausschnitte</em> noch hilfreich wären. So findest du mit etwas Suchen einige wirklich <strong>hilfreiche <em>Codeausschnitte</em> im Netz</strong>. Es gibt da z.B. <a href="https://www.benday.com/2019/06/20/code-snippets-for-visual-studio-visual-studio-code-and-visual-studio-for-mac/">diese Seite</a> oder auch <a href="http://www.visualstudiocodesnippets.com">diese Seite</a>.
+<strong>WICHTIG:</strong> Wie mit allen Dingen die du aus dem Internet lädst solltest du schauen was du tatsächlich bekommst. Microsoft erklärt <a href="https://docs.microsoft.com/de-de/visualstudio/ide/best-practices-for-using-code-snippets?view=vs-2019#downloaded-code-snippets">hier</a> worauf du bei <em>Codeausschnitten</em> aus dem Internet achten solltest.</p>
+
+<p>Wenn dir das alles nicht reicht, oder du gute Ideen für <strong><em>Codeausschnitte</em></strong> hast, dann kannst du auch <strong>selber welche erstellen</strong>. Deine eigenen <em>Codeausschnitte</em> kannst du entweder als einzelne Dateien speichern oder du kannst sogar deine eigene <em>Visual Studio Erweiterung</em> mit mehreren <em>Codeausschnitten</em> erstellen. In <a href="https://docs.microsoft.com/de-de/visualstudio/ide/walkthrough-creating-a-code-snippet?view=vs-2019">diesem Artikel</a> gibt es eine erste Einführung zu beiden Wegen. Ich werde dazu auch demnächst ein Video veröffentlichen. Solltest du also noch nicht den LernMoment-YouTube-Kanal abonniert haben, kannst du das <a href="https://www.youtube.com/channel/UC5jCUQ6IPHtQP5r4y9byCqA?sub_confirmation=1">hier</a> machen ;-).</p>
+
+<p><em>Tipps für Fortgeschrittene:</em> <a href="https://docs.microsoft.com/de-de/visualstudio/ide/productivity-features?view=vs-2019"><em>Hier</em></a> <em>hat Microsoft einige weitere Produktivitätstipps für Visual Studio zusammengestellt.</em> <a href="https://entwickler.de/online/windowsdeveloper/visual-studio-text-editor-funktionen-254658.html"><em>Auf entwickler.de</em></a> <em>gibt es ebenfalls einen tollen Artikel mit teilweise etwas exotischeren Tipps.</em></p>
+
+<p>Viel Spaß auf deinem Weg vom Einsteiger zum C# Entwickler</p>
+
+<p>Jan von LernMoment.de</p>
+
+        
+          <div class="subscribe-notice">
+            <h5>Dieser LernMoment hat dir gefallen? <br> Dann melde dich an und du wirst über neue LernMomente informiert:</h5>
+                <form action="https://lernmoment.us9.list-manage.com/subscribe/post" method="POST" target="_blank">
+      <input type="hidden" name="u" value="d0206d57f5002e40b651a0f60">
+      <input type="hidden" name="id" value="8845c28e62">
+      <input type="email" class="subscribe-notice-input-box" autocapitalize="off" autocorrect="off" name="MERGE0" id="MERGE0" size="25" value="" placeholder="Deine E-Mail-Adresse">
+      <input type="text" class="subscribe-notice-input-box" name="MERGE1" id="MERGE1" size="25" value="" placeholder="Dein Vorname (optional)">
+      
+        <input type="checkbox" id="group_1" name="group[20205][1]" value="1" checked="true" style="display:none">
+      
+      <input type="submit" class="subscribe-notice-button" name="submit" value="Ich bin dabei!">
+      <legend class="subscribe-notice-legend">Du bekommst in unregelmäßigen Abständen Mails von mir, in denen ich dich auf neue Artikel oder Angebote hinweise, die in das gleiche Themengebiet fallen wie dieser Artikel.</legend>
+    </form>
+
+          </div>
+        
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:63266/csharp-tutorial-deutsch/wichtige-tastaturkuerzel-visual-studio/" class="btn" title="Die 5 wichtigsten Tastaturkürzel in Visual Studio 2019 für Einsteiger">Vorheriger</a>
+      
+      
+        <a href="http://localhost:63266/alle/wpf-grid-panel-xaml-grundlagen/" class="btn" title="Grundlagen des WPF Grid-Panels in XAML">Nächster</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<div class="social-icons">
+	
+	
+	
+	<a href="http://www.youtube.com/channel/UC5jCUQ6IPHtQP5r4y9byCqA" title="Jan Suchotzki on YouTube" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
+	
+	<a href="http://stackoverflow.com/users/5258906/jan-suchotzki" title="Jan Suchotzki on StackExchange" target="_blank"><i class="fa fa-stack-exchange fa-2x"></i></a>
+	
+	
+	<a href="http://github.com/lernmoment" title="Jan Suchotzki on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+    
+	
+  <a href="http://localhost:63266/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+<span>Danke an <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> und <a href="http://mademistakes.com/so-simple/" rel="nofollow">Made Mistakes</a> für hervorragende Tools.</span>
+<br>
+<span><a href="http://localhost:63266/kein-copyright/">Kein Copyright</a>    -    <a href="http://localhost:63266/impressum/">Impressum</a>    -    <a href="http://localhost:63266/datenschutz/">Datenschutz</a></span>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:63266';
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:63266/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:63266/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

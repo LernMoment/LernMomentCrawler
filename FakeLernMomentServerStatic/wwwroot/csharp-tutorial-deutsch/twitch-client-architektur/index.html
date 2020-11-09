@@ -1,0 +1,253 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Twitch Client Teil #2 - Architektur &#8211; LernMoment.de</title>
+<meta name="description" content="Verstehe was TwitchAPI, TwitchChat und TwitchPubSub sind und wie du sie von C# nutzen kannst.">
+<meta name="keywords" content="Twitch, C#, Video">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Twitch Client Teil #2 - Architektur">
+<meta name="twitter:description" content="Verstehe was TwitchAPI, TwitchChat und TwitchPubSub sind und wie du sie von C# nutzen kannst.">
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:63266/images/banner/lernmoment-csharp.jpg">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="de_DE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Twitch Client Teil #2 - Architektur">
+<meta property="og:description" content="Verstehe was TwitchAPI, TwitchChat und TwitchPubSub sind und wie du sie von C# nutzen kannst.">
+<meta property="og:url" content="http://localhost:63266/csharp-tutorial-deutsch/twitch-client-architektur/">
+<meta property="og:site_name" content="LernMoment.de">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="sPPXWqQjaSqa_ZgqYPNCyVLLaFzVAFCuf3xDBC-ofwE">
+
+
+
+<link rel="canonical" href="http://localhost:63266/csharp-tutorial-deutsch/twitch-client-architektur/">
+<link href="http://localhost:63266/feed.xml" type="application/atom+xml" rel="alternate" title="LernMoment.de Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:63266/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:63266/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:63266/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:63266/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:63266/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:63266/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:63266/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:63266/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+
+
+<div class="navigation-banner">
+	
+	
+
+	Lerne programmieren mit mir im Kurs: <a href="http://localhost:63266/einstieg-csharp/" >Einstieg in C# -></a>
+</div>
+
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:63266/kurse/" >Kurse</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/schwerpunkt/" >Dein Weg zum C# Entwickler</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/projekt-start/" >Entwicklung & Mentoring</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/blog/" >Blog</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	
+		<div class="wrap">
+			<a href="http://localhost:63266/" class="site-logo" rel="home" title="LernMoment.de"><img src="http://localhost:63266/images/site-logo.png" width="200" height="200" alt="LernMoment.de logo" class="animated fadeInDown"></a>
+		</div>
+	
+</header><!-- /.masthead -->
+
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <img src="http://localhost:63266/images/banner/lernmoment-csharp.jpg" class="entry-feature-image" alt="Twitch Client Teil #2 - Architektur" >
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"><a href="http://localhost:63266/tags/#Twitch" title="Pages tagged Twitch">Twitch</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#C#" title="Pages tagged C#">C#</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Video" title="Pages tagged Video">Video</a></span>
+        
+          <h1 class="entry-title">Twitch Client Teil #2 - Architektur</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <span class="author vcard">Von <span class="fn">Jan Suchotzki</span></span>
+        <span class="entry-date date published"><time datetime="2016-11-13T00:30:00+01:00"><i class="fa fa-calendar-o"></i> 13. November 2016</time></span>
+        
+        
+        
+        
+      </footer>
+      <div class="entry-content">
+        <blockquote>
+  <p>Die weiteren Teile dieser Mini-Serie findest du hier:
+Teil #1 - <a href="/csharp-tutorial-deutsch/twitch-client-einleitung/">Einleitung  und Authentifizierung</a>
+Teil #3 - <a href="/csharp-tutorial-deutsch/twitch-client-daten-lesen-per-api/">Lesen per TwitchAPI</a>
+Teil #4 - <a href="/csharp-tutorial-deutsch/twitch-client-access-token-erstellen/">AccessToken erstellen</a>
+Teil #5 - <a href="/csharp-tutorial-deutsch/twitch-client-daten-schreiben-per-api/">Schreiben per TwitchAPI - Follow Channel Client</a></p>
+</blockquote>
+
+<p>Grundsätzlich ist eine Kommunikation mit den Twitch-Servern nur über das Internet möglich. Damit du trotzdem einen Client in C# entwickeln kannst, gibt es Bibliotheken wie die <a href="">TwitchLib</a> die die Interaktion via <em>REST API, IRC</em> und <em>Websockets</em> in C# Klassen verpacken. Wie das alles zusammenhängt und funktioniert, erkläre ich dir in diesem Video:</p>
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/N0OPTdTGgTI" frameborder="0" allow="encrypted-media" allowfullscreen=""></iframe>
+
+<p>Hier nochmals der Überblick wofür du die verschiedenen Protokolle die dir über die <em>TwitchLib</em> angeboten werden benutzen kannst:</p>
+
+<p><img src="http://localhost:63266/images/TwitchClientArchitektur.003.jpeg" alt="TwitchAPI, TwitchChat und TwitchPubSub" /></p>
+
+<p>Hier noch ein paar konkretere Beispiele welche Art von Clients du mit den jeweiligen Technologien entwickeln kannst:</p>
+
+<ul>
+  <li><strong>TwitchAPI</strong> - Alleine mit dem Auslesen von Daten über die TwitchAPI kannst du beispielsweise statistische Auswertungen wie bei den <a href="https://www.twitchtools.com/stats?type=channel&amp;method=followers">Twitchtools</a> machen. Darüberhinaus hast du mit dem schreibenden Zugriff aber auch die Möglichkeit Werkzeuge zu entwickeln die einen Broadcaster beim Verwalten seiner <em>Streams</em> und <em>Videos</em> unterstützen. Ein Beispiel dafür ist die <a href="https://help.twitch.tv/customer/en/portal/articles/1540995-overwolf-twitch-streaming-application">Overwolf Twitch Streaming Application</a>.</li>
+  <li><strong>TwitchChat</strong> - Ein großteil der Anwendungen die im Netz zu finden sind bieten Funktionalitäten um den Chat zu verwalten. Dabei bieten Bots wie beispielsweise <a href="http://twitch.moobot.tv">moobot</a> die Möglichkeit Spam-Posts auszufiltern, Umfragen zu starten, Giveaways einfach einzubinden oder auch die Teilnehmer einen Song auswählen zulassen. In eine ganz andere Richtung gehen Kanäle wie <a href="https://www.twitch.tv/battleofthecrowds">BattleOfTheCrowds</a> bei denen es möglich ist mittels des Chats an einem Spiel teilzunehmen. Dazu wird ebenfalls TwitchChat verwendet. Einen ersten Eindruck wie das geht kannst du <a href="https://en.wikipedia.org/wiki/Twitch_Plays_Pokémon">hier bekommen</a>.</li>
+  <li><strong>Twitch PubSub</strong> - Konkrete Beispiele in der das Twitch PubSub System verwendet wird habe ich nicht gefunden. Theoretisch kann ich die Anwendungsfälle von der <a href="https://dev.twitch.tv/docs/PubSub/overview/">offiziellen Dokumentation</a> nachvollziehen. Jedoch bin ich gespannt ob du mir konkrete Projekte zeigen kannst in der das PubSub verwendet wird.</li>
+</ul>
+
+<div class="subscribe-notice">
+<h5>Lerne alles über C# und professionelle Softwareentwicklung</h5>
+<a href="https://www.udemy.com/course/einstieg-in-csharp-software-programmieren-wie-ein-profi/?couponCode=CS_20-1120_LMDE" class="notice-button">Hier geht's zum Online-Kurs "Einstieg in C#" &gt;&gt;</a>
+</div>
+
+<h3 id="weitere-links">Weitere Links</h3>
+
+<ul>
+  <li>Eine detaillierte Erklärung was das <em>Twitch PubSub System (TPS)</em> ist, findest du <a href="https://dev.twitch.tv/docs/PubSub/overview/">hier</a></li>
+  <li>Der Quellcode der TwitchLib ist <a href="https://github.com/swiftyspiffy/TwitchLib">hier bei GitHub verfügbar</a>. Eine erste Beschreibung ist dort ebenfalls vorhanden.</li>
+  <li>Teile der Doku für TwitchLib sind bereits fertig und <a href="http://swiftyspiffy.com/TwitchLib/">hier</a> verfügbar.</li>
+  <li>Wenn du die TwitchLib einfach in deinem Visual Studio Projekt nutzen möchtest, kannst du dir die Binaries von <a href="https://www.nuget.org/packages/TwitchLib">NuGet holen</a></li>
+  <li>Eine wirklich gute Einführung in die Arbeit des Entwicklungsteam bei Twitch gibt dieser <a href="https://blog.twitch.tv/twitch-engineering-an-introduction-and-overview-a23917b71a25#.9gjc5jfay">Blog-Post</a></li>
+</ul>
+
+<p>Viel Erfolg bei der Analyse der Architektur</p>
+
+<p>Jan</p>
+
+        
+          <div class="subscribe-notice">
+            <h5>Dieser LernMoment hat dir gefallen? <br> Dann melde dich an und du wirst über neue LernMomente informiert:</h5>
+                <form action="https://lernmoment.us9.list-manage.com/subscribe/post" method="POST" target="_blank">
+      <input type="hidden" name="u" value="d0206d57f5002e40b651a0f60">
+      <input type="hidden" name="id" value="8845c28e62">
+      <input type="email" class="subscribe-notice-input-box" autocapitalize="off" autocorrect="off" name="MERGE0" id="MERGE0" size="25" value="" placeholder="Deine E-Mail-Adresse">
+      <input type="text" class="subscribe-notice-input-box" name="MERGE1" id="MERGE1" size="25" value="" placeholder="Dein Vorname (optional)">
+      
+        <input type="checkbox" id="group_1" name="group[20205][1]" value="1" checked="true" style="display:none">
+      
+      <input type="submit" class="subscribe-notice-button" name="submit" value="Ich bin dabei!">
+      <legend class="subscribe-notice-legend">Du bekommst in unregelmäßigen Abständen Mails von mir, in denen ich dich auf neue Artikel oder Angebote hinweise, die in das gleiche Themengebiet fallen wie dieser Artikel.</legend>
+    </form>
+
+          </div>
+        
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:63266/alle/erster-geburtstag-danke/" class="btn" title="DANKE für 1 Jahr Unterstützung!">Vorheriger</a>
+      
+      
+        <a href="http://localhost:63266/alle/richtig-ueben/" class="btn" title="Warum und wie du Softwareentwicklung üben kannst">Nächster</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<div class="social-icons">
+	
+	
+	
+	<a href="http://www.youtube.com/channel/UC5jCUQ6IPHtQP5r4y9byCqA" title="Jan Suchotzki on YouTube" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
+	
+	<a href="http://stackoverflow.com/users/5258906/jan-suchotzki" title="Jan Suchotzki on StackExchange" target="_blank"><i class="fa fa-stack-exchange fa-2x"></i></a>
+	
+	
+	<a href="http://github.com/lernmoment" title="Jan Suchotzki on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+    
+	
+  <a href="http://localhost:63266/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+<span>Danke an <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> und <a href="http://mademistakes.com/so-simple/" rel="nofollow">Made Mistakes</a> für hervorragende Tools.</span>
+<br>
+<span><a href="http://localhost:63266/kein-copyright/">Kein Copyright</a>    -    <a href="http://localhost:63266/impressum/">Impressum</a>    -    <a href="http://localhost:63266/datenschutz/">Datenschutz</a></span>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:63266';
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:63266/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:63266/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

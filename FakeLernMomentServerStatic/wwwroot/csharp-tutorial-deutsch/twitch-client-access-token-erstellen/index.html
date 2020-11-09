@@ -1,0 +1,274 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Twitch Client Teil #4 - Access Token erstellen &#8211; LernMoment.de</title>
+<meta name="description" content="Für das Schreiben von Daten auf dem Twitch-Server wird ein AccessToken benötigt.">
+<meta name="keywords" content="Twitch, C#, Video">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Twitch Client Teil #4 - Access Token erstellen">
+<meta name="twitter:description" content="Für das Schreiben von Daten auf dem Twitch-Server wird ein AccessToken benötigt.">
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:63266/images/banner/lernmoment-csharp.jpg">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="de_DE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Twitch Client Teil #4 - Access Token erstellen">
+<meta property="og:description" content="Für das Schreiben von Daten auf dem Twitch-Server wird ein AccessToken benötigt.">
+<meta property="og:url" content="http://localhost:63266/csharp-tutorial-deutsch/twitch-client-access-token-erstellen/">
+<meta property="og:site_name" content="LernMoment.de">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="sPPXWqQjaSqa_ZgqYPNCyVLLaFzVAFCuf3xDBC-ofwE">
+
+
+
+<link rel="canonical" href="http://localhost:63266/csharp-tutorial-deutsch/twitch-client-access-token-erstellen/">
+<link href="http://localhost:63266/feed.xml" type="application/atom+xml" rel="alternate" title="LernMoment.de Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:63266/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:63266/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:63266/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:63266/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:63266/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:63266/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:63266/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:63266/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+
+
+<div class="navigation-banner">
+	
+	
+
+	Lerne programmieren mit mir im Kurs: <a href="http://localhost:63266/einstieg-csharp/" >Einstieg in C# -></a>
+</div>
+
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:63266/kurse/" >Kurse</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/schwerpunkt/" >Dein Weg zum C# Entwickler</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/projekt-start/" >Entwicklung & Mentoring</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/blog/" >Blog</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	
+		<div class="wrap">
+			<a href="http://localhost:63266/" class="site-logo" rel="home" title="LernMoment.de"><img src="http://localhost:63266/images/site-logo.png" width="200" height="200" alt="LernMoment.de logo" class="animated fadeInDown"></a>
+		</div>
+	
+</header><!-- /.masthead -->
+
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <img src="http://localhost:63266/images/banner/lernmoment-csharp.jpg" class="entry-feature-image" alt="Twitch Client Teil #4 - Access Token erstellen" >
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"><a href="http://localhost:63266/tags/#Twitch" title="Pages tagged Twitch">Twitch</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#C#" title="Pages tagged C#">C#</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Video" title="Pages tagged Video">Video</a></span>
+        
+          <h1 class="entry-title">Twitch Client Teil #4 - Access Token erstellen</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <span class="author vcard">Von <span class="fn">Jan Suchotzki</span></span>
+        <span class="entry-date date published"><time datetime="2016-11-17T06:00:00+01:00"><i class="fa fa-calendar-o"></i> 17. November 2016</time></span>
+        
+        
+        
+        
+      </footer>
+      <div class="entry-content">
+        <blockquote>
+  <p>Die weiteren Teile dieser Mini-Serie findest du hier:
+Teil #1 - <a href="/csharp-tutorial-deutsch/twitch-client-einleitung/">Einleitung  und Authentifizierung</a>
+Teil #2 - <a href="/csharp-tutorial-deutsch/twitch-client-architektur/">Architektur eines Twitch Client</a>
+Teil #3 - <a href="/csharp-tutorial-deutsch/twitch-client-daten-lesen-per-api/">Lesen per TwitchAPI</a>
+Teil #5 - <a href="/csharp-tutorial-deutsch/twitch-client-daten-schreiben-per-api/">Schreiben per TwitchAPI - Follow Channel Client</a></p>
+</blockquote>
+
+<p><strong>ACHTUNG:</strong> Der von dir erzeugte <em>AccessToken</em> <strong>muss</strong> “geheim” bleiben. Wenn jemand anders deinen <em>AccessToken</em> (bzw. den deines Anwenders) kennt, könnte er Daten in dem Konto manipulieren!</p>
+
+<p>Links zu den im Video genannten Seiten und Ressourcen findest du am Ende dieses Artikels.</p>
+
+<p>Den <em>AccessToken</em> benötigst du immer dann, wenn du Daten auf dem Twitch-Server verändern willst. Das Erstellen dieses <em>AccessToken</em> ist etwas kompiliziert (zumindestens empfinde ich das so) und daher habe ich dir eine Schritt-für-Schritt-Anleitung erstellt.</p>
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/vUi7Gyo9DzE" frameborder="0" allow="encrypted-media" allowfullscreen=""></iframe>
+
+<p>Die grundlegende Idee ist, dass jeder Benutzer einer Anwendung (welche bei Twitch über die Client-ID identifiziert wird) Zugriffsrecht einräumen muss. D.h. du verwendest in deinem Twitch-Client deine <em>Client-ID</em> und identifizierst damit deine Anwendung gegenüber dem Twitch-Server.</p>
+
+<p>Möchte nun ein Benutzer deine Anwendung verwenden, dann muss er explizit erlauben, dass deine Anwendung die Informationen in seinen Einstellungen verändern darf. Dafür wird über die im Video vorgestellte Methode ein <em>AccessToken</em> erstellt. Dieser <em>AccessToken</em> muss vom Benutzer selber erstellt werden! Möchtest du deinen Twitch-Client an andere Leute verteilen, dann musst du einen Weg finden, der es dem Benutzer erlaubt einen <em>AccessToken</em> zu generieren. Im nächsten Schritt muss der Benutzer dann diesen <em>AccessToken</em> in deine Anwendung bekommen.</p>
+
+<p>Die URL die in diesem Video erstellt wurde, kannst du deinem Benutzer zur Verfügung stellen. Damit kann er dann einfach seinen eigenen <em>AccessToken</em> bekommen. Um diesen <em>AccessToken</em> in deinem Programm zu verwenden, könntest du zum Beispiel beim Programmstart den Benutzer bitten diesen einzugeben.</p>
+
+<p>Wenn du einen Twitch-Client mit grafischer Benutzeroberfläche erstellst, gibt es natürlich noch wesentlich mehr Möglichkeiten. Darin könntest du die <em>AccessToken</em>-Erstellung direkt integrieren und dann den erzeugten <em>AccessToken</em> in deiner Anwendung direkt verwenden. Solltest du für den Benutzer den <em>AccessToken</em> in einer Konfigurationsdatei speichern, hat es <strong>höchste Priorität</strong>, dass du die Datei oder den <em>AccessToken</em> darin gut veschlüsselst. Denke daran, dass es um die Sicherheit der Daten deiner Benutzer geht!</p>
+
+<h3 id="die-scopes">Die “Scopes”</h3>
+
+<p>Wie bereits gesagt kannst du dir einen <em>Scope</em> als eine Art Zugriffsrecht vorstellen. Bei der Erstellung des <em>AccessToken</em> gibst du also an, welche Zugriffsrechte auf das Benutzerkonto des Anwenders, deine Anwendung benötigt. Wenn der Anwender sich einen <em>AccessToken</em> erstellt, wird ihm auf der Twitch-Seite genau gesagt welche Zugriffsrechte er einer Anwendung gewährt. Du solltest also wirklich nur den <em>Scope</em> verwenden, der für deine Anwendung auch tatsächlich benötigt wird.</p>
+
+<p>Hier nochmals die (zum Zeitpunkt der Erstellung dieses Artikels) aktuellen Scopes:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">user_read:</code> lesender Zugriff auf nicht-öffentliche Daten des Benutzers wie beispielsweise E-Mail Adresse.</li>
+  <li><code class="highlighter-rouge">user_blocks_edit:</code> erlaubt Anwendung im Namen des Benutzers andere (Benutzer, ???) zu ignorieren bzw. nicht mehr zu ignorieren.</li>
+  <li><code class="highlighter-rouge">user_blocks_read:</code> lesender Zugriff auf die Liste der vom Benutzer ignorierten Benutzer.</li>
+  <li><code class="highlighter-rouge">user_follows_edit:</code> erlaubt der Anwendung die vom Benutzer gefolgten Kanäle zu ändern.</li>
+  <li><code class="highlighter-rouge">channel_read:</code> lesender Zugriff auf nicht-öffentliche Daten des Kanals (inkl. E-Mail Adresse und Stream-Key).</li>
+  <li><code class="highlighter-rouge">channel_editor:</code> erlaubt der Anwendung die Metadaten des Kanals (game, status, usw.) zu ändern.</li>
+  <li><code class="highlighter-rouge">channel_commercial:</code> erlaubt der Anwendung Werbeanzeigen auf dem Kanal zu veröffentlichen.</li>
+  <li><code class="highlighter-rouge">channel_stream:</code> erlaubt der Anwendung den stream key des Kanals zurück zusetzen.</li>
+  <li><code class="highlighter-rouge">channel_subscriptions:</code> lesender Zugriff auf alle Abonnenten des Kanals.</li>
+  <li><code class="highlighter-rouge">user_subscriptions:</code> lesender Zugriff auf alle Abonnenten des Benutzers.</li>
+  <li><code class="highlighter-rouge">channel_check_subscription:</code> lesender Zugriff zur Überprüfung ob ein angegebener Benutzer den Kanal abonniert hat.</li>
+  <li><code class="highlighter-rouge">chat_login:</code> erlaubt der Anwendung sich in den Chat einzuloggen und darin Nachrichten zu senden.</li>
+  <li><code class="highlighter-rouge">channel_feed_read:</code> lesender Zugriff auf den “Feed” des Kanals.</li>
+  <li><code class="highlighter-rouge">channel_feed_edit:</code> erlaubt der Anwendung Artikel und Reaktionen im “Feed” des Kanals zu veröffentlichen.</li>
+</ul>
+
+<p>Die <a href="https://dev.twitch.tv/docs/authentication/">Twitch Developer Webseite</a> zeigt dir die aktuellsten Definitionen der <em>Scopes</em> an und sollte als gültige Referenz angesehen werden. Ich übernehme keine Garantie für die Richtigkeit der Übersetzung. Wenn ich sie auch nach bestem Wissen gemacht habe ;-).</p>
+
+<p><em>Hinweis:</em> Benötigt deine Anwendung mehrere <em>Scopes</em>, dann kannst du sie “addieren”. Also zum Beispiel: <code class="highlighter-rouge">user_read+channel_stream</code>.</p>
+
+<h3 id="weitere-links">Weitere Links</h3>
+
+<ul>
+  <li>Details zur Authentifizierung findest du <a href="https://dev.twitch.tv/docs/authentication/">hier</a></li>
+  <li><a href="https://github.com/LernMoment/csharp-twitch-client">Das GitHub Projekt</a> beinhaltet den kompletten Quellcode von mir zu diesem Client (inkl. weiterer Beispiele die ich nicht im Video gezeigt habe).</li>
+  <li>Weitere Infos zu <code class="highlighter-rouge">async</code> und <code class="highlighter-rouge">await</code> gibt es im Artikel <a href="/csharp-programmieren/einfuehrung-in-async-und-await/">Einführung in Async / Await</a></li>
+  <li>Auf <a href="https://dev.twitch.tv/docs">Twitch Developers</a> findest du viele Informationen über Daten die der Twitch-Server zurück liefert. Darunter auch beispielsweise eine genau Beschreibung der <a href="https://dev.twitch.tv/docs/api/v3/users/">Benutzerdaten</a>. Diese Beschreibung sind häufig etwas umfangreicher als die Dokumentation der <em>TwitchLib</em>. Allerdings geht es dort immer um <em>HTTP</em> und nicht <em>C#</em>.</li>
+</ul>
+
+<p>Viel Erfolg beim Erstellen deines Clients</p>
+
+<p>Jan</p>
+
+        
+          <div class="subscribe-notice">
+            <h5>Dieser LernMoment hat dir gefallen? <br> Dann melde dich an und du wirst über neue LernMomente informiert:</h5>
+                <form action="https://lernmoment.us9.list-manage.com/subscribe/post" method="POST" target="_blank">
+      <input type="hidden" name="u" value="d0206d57f5002e40b651a0f60">
+      <input type="hidden" name="id" value="8845c28e62">
+      <input type="email" class="subscribe-notice-input-box" autocapitalize="off" autocorrect="off" name="MERGE0" id="MERGE0" size="25" value="" placeholder="Deine E-Mail-Adresse">
+      <input type="text" class="subscribe-notice-input-box" name="MERGE1" id="MERGE1" size="25" value="" placeholder="Dein Vorname (optional)">
+      
+        <input type="checkbox" id="group_1" name="group[20205][1]" value="1" checked="true" style="display:none">
+      
+      <input type="submit" class="subscribe-notice-button" name="submit" value="Ich bin dabei!">
+      <legend class="subscribe-notice-legend">Du bekommst in unregelmäßigen Abständen Mails von mir, in denen ich dich auf neue Artikel oder Angebote hinweise, die in das gleiche Themengebiet fallen wie dieser Artikel.</legend>
+    </form>
+
+          </div>
+        
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:63266/csharp-tutorial-deutsch/twitch-client-daten-lesen-per-api/" class="btn" title="Twitch Client Teil #3 - Daten lesen mit TwitchAPI">Vorheriger</a>
+      
+      
+        <a href="http://localhost:63266/csharp-tutorial-deutsch/twitch-client-daten-schreiben-per-api/" class="btn" title="Twitch Client Teil #5 - Daten per TwitchAPI auf dem Server schreiben">Nächster</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<div class="social-icons">
+	
+	
+	
+	<a href="http://www.youtube.com/channel/UC5jCUQ6IPHtQP5r4y9byCqA" title="Jan Suchotzki on YouTube" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
+	
+	<a href="http://stackoverflow.com/users/5258906/jan-suchotzki" title="Jan Suchotzki on StackExchange" target="_blank"><i class="fa fa-stack-exchange fa-2x"></i></a>
+	
+	
+	<a href="http://github.com/lernmoment" title="Jan Suchotzki on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+    
+	
+  <a href="http://localhost:63266/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+<span>Danke an <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> und <a href="http://mademistakes.com/so-simple/" rel="nofollow">Made Mistakes</a> für hervorragende Tools.</span>
+<br>
+<span><a href="http://localhost:63266/kein-copyright/">Kein Copyright</a>    -    <a href="http://localhost:63266/impressum/">Impressum</a>    -    <a href="http://localhost:63266/datenschutz/">Datenschutz</a></span>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:63266';
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:63266/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:63266/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

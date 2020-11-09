@@ -1,0 +1,204 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>NEU - Erste Schritte mit C# und Visual Studio 2019 &#8211; LernMoment.de</title>
+<meta name="description" content="Erfahre alles über Visual Studio 2019 und die Grundlagen von C#">
+<meta name="keywords" content="C#, Syntax, Werkzeug">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="NEU - Erste Schritte mit C# und Visual Studio 2019">
+<meta name="twitter:description" content="Erfahre alles über Visual Studio 2019 und die Grundlagen von C#">
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:63266/images/banner/lernmoment-csharp.jpg">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="de_DE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NEU - Erste Schritte mit C# und Visual Studio 2019">
+<meta property="og:description" content="Erfahre alles über Visual Studio 2019 und die Grundlagen von C#">
+<meta property="og:url" content="http://localhost:63266/alle/visual-studio-2019-tutorial-verf%C3%BCgbar/">
+<meta property="og:site_name" content="LernMoment.de">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="sPPXWqQjaSqa_ZgqYPNCyVLLaFzVAFCuf3xDBC-ofwE">
+
+
+
+<link rel="canonical" href="http://localhost:63266/alle/visual-studio-2019-tutorial-verf%C3%BCgbar/">
+<link href="http://localhost:63266/feed.xml" type="application/atom+xml" rel="alternate" title="LernMoment.de Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:63266/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:63266/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:63266/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:63266/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:63266/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:63266/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:63266/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:63266/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+
+
+<div class="navigation-banner">
+	
+	
+
+	Lerne programmieren mit mir im Kurs: <a href="http://localhost:63266/einstieg-csharp/" >Einstieg in C# -></a>
+</div>
+
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:63266/kurse/" >Kurse</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/schwerpunkt/" >Dein Weg zum C# Entwickler</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/projekt-start/" >Entwicklung & Mentoring</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/blog/" >Blog</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	
+		<div class="wrap">
+			<a href="http://localhost:63266/" class="site-logo" rel="home" title="LernMoment.de"><img src="http://localhost:63266/images/site-logo.png" width="200" height="200" alt="LernMoment.de logo" class="animated fadeInDown"></a>
+		</div>
+	
+</header><!-- /.masthead -->
+
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <img src="http://localhost:63266/images/banner/lernmoment-csharp.jpg" class="entry-feature-image" alt="NEU - Erste Schritte mit C# und Visual Studio 2019" >
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"><a href="http://localhost:63266/tags/#C#" title="Pages tagged C#">C#</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Syntax" title="Pages tagged Syntax">Syntax</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Werkzeug" title="Pages tagged Werkzeug">Werkzeug</a></span>
+        
+          <h1 class="entry-title">NEU - Erste Schritte mit C# und Visual Studio 2019</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <span class="author vcard">Von <span class="fn">Jan Suchotzki</span></span>
+        <span class="entry-date date published"><time datetime="2019-09-17T02:00:00+02:00"><i class="fa fa-calendar-o"></i> 17. September 2019</time></span>
+        
+        
+        
+        
+      </footer>
+      <div class="entry-content">
+        <p>Bereits Anfang 2016 habe ich im Rahmen meines <a href="/csharp-tutorial-deutsch/">C# Tutorials Deutsch</a> eine erste Einführung in Visual Studio gegeben. Visual Studio 2019 ist zwar schon seit einiger Zeit erschienen, aber ich habe mich mit einem großartigen Video-Team (Danke Michael &amp; Ben) zusammen getan und nun eine Neuauflage des Videos erstellt.</p>
+
+<p>Dabei ist nicht nur die Videoqualität nochmals wesentlich verbessert worden (Danke Michael &amp; Ben), sondern ich habe auch inhaltlich nochmals vieles ergänzt. Das komplette Video zu Visual Studio 2019 findest du <a href="/csharp-tutorial-deutsch/erste-schritte-visual-studio-2019/">hier</a>.</p>
+
+<figure>
+	<a href="/csharp-tutorial-deutsch/erste-schritte-visual-studio-2019/" target="_blank"><img src="/images/VS2019-Erste-Schritte.jpg" alt="image" /></a>
+</figure>
+
+<p>Viel Spaß beim anschauen!</p>
+
+        
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:63266/alle/was-bedeutet-debuggen/" class="btn" title="Was bedeutet Debuggen?">Vorheriger</a>
+      
+      
+        <a href="http://localhost:63266/csharp-tutorial-deutsch/erste-schritte-visual-studio-2019/" class="btn" title="UPDATE: C# Tutorial Deutsch - Erste Schritte (VisualStudio 2019)">Nächster</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<div class="social-icons">
+	
+	
+	
+	<a href="http://www.youtube.com/channel/UC5jCUQ6IPHtQP5r4y9byCqA" title="Jan Suchotzki on YouTube" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
+	
+	<a href="http://stackoverflow.com/users/5258906/jan-suchotzki" title="Jan Suchotzki on StackExchange" target="_blank"><i class="fa fa-stack-exchange fa-2x"></i></a>
+	
+	
+	<a href="http://github.com/lernmoment" title="Jan Suchotzki on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+    
+	
+  <a href="http://localhost:63266/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+<span>Danke an <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> und <a href="http://mademistakes.com/so-simple/" rel="nofollow">Made Mistakes</a> für hervorragende Tools.</span>
+<br>
+<span><a href="http://localhost:63266/kein-copyright/">Kein Copyright</a>    -    <a href="http://localhost:63266/impressum/">Impressum</a>    -    <a href="http://localhost:63266/datenschutz/">Datenschutz</a></span>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:63266';
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:63266/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:63266/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

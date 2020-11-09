@@ -1,0 +1,245 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Übung #3: Spielsteine setzen &#8211; LernMoment.de</title>
+<meta name="description" content="Im dritten Teil des Übungskurses fügst du dem Spiel die erste Logik hinzu. Es soll durch Klick in ein Kästchen immer abwechselnd ein Spielstein gesetzt werden.">
+
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Übung #3: Spielsteine setzen">
+<meta name="twitter:description" content="Im dritten Teil des Übungskurses fügst du dem Spiel die erste Logik hinzu. Es soll durch Klick in ein Kästchen immer abwechselnd ein Spielstein gesetzt werden.">
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:63266/images/banner/lernmoment-wpf-ttt.jpg">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="de_DE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Übung #3: Spielsteine setzen">
+<meta property="og:description" content="Im dritten Teil des Übungskurses fügst du dem Spiel die erste Logik hinzu. Es soll durch Klick in ein Kästchen immer abwechselnd ein Spielstein gesetzt werden.">
+<meta property="og:url" content="http://localhost:63266/lernmail-kurse/wpf-tictactoe-fuer-einsteiger/tag3-spielsteine-setzen/">
+<meta property="og:site_name" content="LernMoment.de">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="sPPXWqQjaSqa_ZgqYPNCyVLLaFzVAFCuf3xDBC-ofwE">
+
+
+
+<link rel="canonical" href="http://localhost:63266/lernmail-kurse/wpf-tictactoe-fuer-einsteiger/tag3-spielsteine-setzen/">
+<link href="http://localhost:63266/feed.xml" type="application/atom+xml" rel="alternate" title="LernMoment.de Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:63266/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:63266/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:63266/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:63266/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:63266/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:63266/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:63266/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:63266/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="page">
+
+
+
+<div class="navigation-banner">
+	
+	
+
+	Sammle Erfahrung in C# mit mir im Kurs: <a href="https://www.udemy.com/csharp-uebungskurs-einfach-verschluesselt/?referralCode=C976277144B75813267C" >C# Grundlagen üben mit System -></a>
+</div>
+
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:63266/kurse/" >Kurse</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/schwerpunkt/" >Dein Weg zum C# Entwickler</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/projekt-start/" >Entwicklung & Mentoring</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/blog/" >Blog</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	
+		<div class="wrap">
+			<a href="http://localhost:63266/" class="site-logo" rel="home" title="LernMoment.de"><img src="http://localhost:63266/images/site-logo.png" width="200" height="200" alt="LernMoment.de logo" class="animated fadeInDown"></a>
+		</div>
+	
+</header><!-- /.masthead -->
+
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="entry">
+    <img src="http://localhost:63266/images/banner/lernmoment-wpf-ttt.jpg" class="entry-feature-image" alt="Übung #3: Spielsteine setzen" >
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <h1 class="entry-title">Übung #3: Spielsteine setzen</h1>
+      </header>
+      <div class="entry-content">
+        <p>Mmmmmoin und willkommen zur <strong>dritten Übung</strong> im WPF-Übungskurs für Einsteiger!</p>
+
+<p>Nun haben wir zwar ein “schönes” Spielfeld (liegt sicherlich im Auge des Betrachters ;), aber von einem Spiel sind noch entfernt. Also wirst du heute die erste Logik einfügen. Die Spieler sollen abwechselnd auf ein leeres Kästchen klicken können und dadurch wird ihr Spielstein dort gesetzt.</p>
+
+<p>Bevor ich nun jedoch weiter ins Detail bezüglich der neuen Aufgabe gehe, hier die Lösung der ersten Aufgabe.</p>
+
+<h2 id="musterlösung-der-letzten-aufgabe">Musterlösung der letzten Aufgabe</h2>
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/ZAg_NGKHdy4" frameborder="0" allow="encrypted-media" allowfullscreen=""></iframe>
+
+<p><strong>Musterlösung:</strong> <a href="https://github.com/LernMoment/tictactoe-wpf/releases/tag/teil2">Hier meine Musterlösung als zip-Datei.</a></p>
+
+<p><strong>Musterlösung Schritt-für-Schritt</strong> (durch Klick auf die Links siehst du die Änderungen im Quellcode von einem Schritt zum nächsten):</p>
+<ol>
+  <li><a href="https://github.com/LernMoment/tictactoe-wpf/commit/cbf4f4082efcc678bf2e2546f202af6307644f9c">Layout für einen Button</a></li>
+  <li><a href="https://github.com/LernMoment/tictactoe-wpf/commit/e91e4c9e97e27ced77998a53cd03fbcaed1fe35a"><code class="highlighter-rouge">Style</code> für alle Buttons</a></li>
+  <li><a href="https://github.com/LernMoment/tictactoe-wpf/commit/fcf2e6d49514eba646275e055435fba3324c317b">Farben eines <code class="highlighter-rouge">Button</code> auf Klick invertieren</a></li>
+</ol>
+
+<p><strong>BONUS:</strong> Wenn du dir den Quellcode nochmals genau anschaust, wirst du sehen, dass (wenigstens bei mir) 3 Punkte unter dem <code class="highlighter-rouge">kaestchen_0_0_Click</code>-EventHandler angezeigt werden. Was sie bedeuten, wie du sie entfernst und welches Tastaturkürzel dir dabei hilft, zeige ich dir im folgenden “Bonus-Video”. Darin erkläre ich auch wie ich Steuerelemente in <em>XAML</em> benenne:</p>
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Rp5eyWhFrnY" frameborder="0" allow="encrypted-media" allowfullscreen=""></iframe>
+
+<p>Wie diese Behebung den Quellcode verändert kannst du dir in <a href="https://github.com/LernMoment/tictactoe-wpf/commit/aa5c089053fb2475fe6644211023d28238b622c2">diesem Commit anschauen</a></p>
+
+<h2 id="die-neue-aufgabe">Die neue Aufgabe</h2>
+<p>Die Arbeit im <em>XAML</em> ist nun erstmal beendet. Heute geht es darum, dass du durch klicken auf die Kästchen einen Spielstein setzen kannst:</p>
+
+<ol>
+  <li>Durch einen Klick auf <strong>ein</strong> Kästchen (<code class="highlighter-rouge">Button</code>) soll darin abwechselnd der Spielstein vom ersten Spieler (<em>X</em>) und zweiten Spieler (<em>O</em>) angezeigt werden.</li>
+  <li>Erstelle die gleiche Funktionalität für <strong>alle</strong> Kästchen.</li>
+  <li>Setze nur einen Spielstein, wenn das angeklickte Kästchen wirklich leer ist. Ansonsten soll ein Hinweis ausgegeben werden und der gleiche Spieler ist nochmals am Zug.</li>
+  <li>Leere das Spielfeld vor dem ersten Zug.</li>
+  <li>Starte das Spiel erneut, wenn ein weiteres Kästchen angeklickt wird nachdem alle Kästchen belegt sind.</li>
+  <li>[optional] Wenn Spieler 2 (<em>O</em>) seinen Spielstein setzt, sollen die Vordergrund- und Hintergrundfarbe getauscht werden. Bei meinen Farben bedeutet das also beiges <em>X</em> auf türkisenem Grund und türkisenes <em>O</em> auf beige Grund. Bedenke auch, dass bei einem Neustart des Spiels alle Kästchen wieder die gleiche Hintergrundfarbe haben sollen.</li>
+  <li>[optional] Sofern du es noch nicht getan hast, mache einen <code class="highlighter-rouge">Commit</code> für deine ganzen Änderungen und schiebe alles via <em>Sync</em> auf GitHub.</li>
+</ol>
+
+<p><strong>BONUS:</strong> Je nachdem wie du die Schritte 1-5 in dieser Aufgabe umgesetzt hast, gibt es einige Fehlerquellen. Schaue deinen Quellcode nochmals genau an und identifiziere mindestens einen problematischen Abschnitt. Teile mit den anderen Teilnehmern des Kurses und mir deine Erkenntnis <a href="https://github.com/LernMoment/tictactoe-wpf/issues/1">an diesem GitHub Issue</a>. Vielleicht hast du selber eine Idee für eine Verbesserung oder wir finden gemeinsam eine.</p>
+
+<h2 id="lösungshinweise">Lösungshinweise</h2>
+
+<ol>
+  <li>Obwohl dieser erste Schritt ganz einfach aussieht, könnte es im Detail doch zu einigen Problemen kommen. Hier ein paar Hinweise:
+    <ul>
+      <li><a href="/alle/zugriff-wpf-controls-code-behind/">Artikel zum Zugriff auf den passenden Button mittels <code class="highlighter-rouge">sender</code></a></li>
+      <li><a href="/csharp-tutorial-deutsch/typkonvertierung-mit-cast/">In diesem Artikel</a> erkläre ich dir was ein <em>Cast</em> und wie du ihn einsetzt um im <em>EventHandler</em> auf die Eigenschaften des aufrufenden <code class="highlighter-rouge">Button</code> zu zugreifen.</li>
+      <li>In <em>XAML</em> wird der “Inhalt” eines <code class="highlighter-rouge">Button</code> über die Eigenschaft <code class="highlighter-rouge">Content</code> gesetzt. Dieses kannst du auch im C# Quellcode machen.</li>
+      <li>Mithilfe eines privaten Attributs in der <code class="highlighter-rouge">MainWindow</code> Klasse kannst du dir merken ob der erste oder zweite Spieler zuletzt am Zug war.</li>
+      <li>Du nutzt am besten den <em>EventHandler</em> den du aus der letzten Übung schon haben solltest. Mehr Hinweise gebe ich nicht ;-)!</li>
+    </ul>
+  </li>
+  <li>Geht es für einen <code class="highlighter-rouge">Button</code>, dann geht es in diesem Fall auch für alle <code class="highlighter-rouge">Buttons</code>. Der Trick ist den <em>EventHandler</em> für jeden <code class="highlighter-rouge">Button</code> im <em>Spielfeld</em> anzumelden. Mehr über Events erkläre ich dir im <a href="https://youtu.be/L99fv0Gzx4Y">2. Teil des BallSpiel Projekts</a>.</li>
+  <li>Hier noch ein paar Hinweise zur Frage ob ein Spielstein gesetzt ist und wie du einen Hinweis anzeigen kannst:
+    <ul>
+      <li>Theoretisch ist die Aufgabe einfach, weil du eigentlich nur überprüfen musst ob der <code class="highlighter-rouge">Content</code> gesetzt ist. Die Herausforderung könnte sein, dass der <code class="highlighter-rouge">Content = null</code> ist, weil den meisten <code class="highlighter-rouge">Button</code> noch kein Text zugewiesen wurde. Du musst also nicht nur schauen ob ein <code class="highlighter-rouge">string</code> mit einem Zeichen im <code class="highlighter-rouge">Content</code> steht sondern auch ob der <code class="highlighter-rouge">Content</code> vielleicht <code class="highlighter-rouge">null</code> ist.</li>
+      <li>Wie du Hinweise anzeigen kannst, erkläre ich dir <a href="/alle/hinweise-anzeigen-mit-messagebox/">in diesem Artikel</a></li>
+    </ul>
+  </li>
+  <li>Aus dem C# Quellcode kannst du auf jeden einzelnen Button zugreifen und den <code class="highlighter-rouge">Content</code> entsprechend setzen.</li>
+  <li>Dieser Schritt könnte für dich schon etwas kniffeliger sein. Für die Lösung kannst du die Eigenschaft <code class="highlighter-rouge">Children</code> des <code class="highlighter-rouge">Grid</code> verwenden. Über diese Eigenschaft bekommst du Zugriff auf alle Steuerelemente die im <em>Spielfeld</em> (also dem <code class="highlighter-rouge">Grid</code>) enthalten sind. Momentan sind das erstmal nur die <em>Kästchen</em> (also <code class="highlighter-rouge">Buttons</code>). Damit kannst du also jedes Kästchen anschauen und überprüfen ob im <code class="highlighter-rouge">Content</code> etwas enthalten ist.</li>
+  <li>Das eigentliche Tauschen der Vorder- und Hintergrundfarbe sofern Spieler 2 klickt schaffst du bestimmt. Hast du jedoch auch berücksichtigt, dass die Farben der Kästchen beim Neustart des Spiels wieder zurück gesetzt werden müssen? Tipp: Es ist einfacher allen Kästchen ihre ursprüngliche Farbe zu zuweisen.</li>
+</ol>
+
+<h2 id="weiterführende-artikel--videos">Weiterführende Artikel / Videos</h2>
+<p>Diese Aufgabe beinhaltet bereits sehr viel Futter für dich. Daher gibt es heute keine weiteren Ressourcen!</p>
+
+<p>In wenigen Tagen bekommst du eine weitere Mail von mir mit meiner Musterlösung und der nächtsen Teilaufgabe.</p>
+
+<p>Bis dahin wünsche ich dir viel Spaß beim Üben</p>
+
+<p>Jan von LernMoment.de</p>
+
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<div class="social-icons">
+	
+	
+	
+	<a href="http://www.youtube.com/channel/UC5jCUQ6IPHtQP5r4y9byCqA" title="Jan Suchotzki on YouTube" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
+	
+	<a href="http://stackoverflow.com/users/5258906/jan-suchotzki" title="Jan Suchotzki on StackExchange" target="_blank"><i class="fa fa-stack-exchange fa-2x"></i></a>
+	
+	
+	<a href="http://github.com/lernmoment" title="Jan Suchotzki on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+    
+	
+  <a href="http://localhost:63266/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+<span>Danke an <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> und <a href="http://mademistakes.com/so-simple/" rel="nofollow">Made Mistakes</a> für hervorragende Tools.</span>
+<br>
+<span><a href="http://localhost:63266/kein-copyright/">Kein Copyright</a>    -    <a href="http://localhost:63266/impressum/">Impressum</a>    -    <a href="http://localhost:63266/datenschutz/">Datenschutz</a></span>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:63266';
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:63266/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:63266/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

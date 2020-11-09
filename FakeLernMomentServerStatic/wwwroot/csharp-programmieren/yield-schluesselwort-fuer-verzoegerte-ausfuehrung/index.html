@@ -1,0 +1,309 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>yield return - Schlüsselwort für verzögerte Ausführung &#8211; LernMoment.de</title>
+<meta name="description" content="Ist deine IEnumerable eifrig oder träge?">
+<meta name="keywords" content="Konzept, Methoden, Generics">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="yield return - Schlüsselwort für verzögerte Ausführung">
+<meta name="twitter:description" content="Ist deine IEnumerable eifrig oder träge?">
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:63266/images/banner/lernmoment-csharp.jpg">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="de_DE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="yield return - Schlüsselwort für verzögerte Ausführung">
+<meta property="og:description" content="Ist deine IEnumerable eifrig oder träge?">
+<meta property="og:url" content="http://localhost:63266/csharp-programmieren/yield-schluesselwort-fuer-verzoegerte-ausfuehrung/">
+<meta property="og:site_name" content="LernMoment.de">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="sPPXWqQjaSqa_ZgqYPNCyVLLaFzVAFCuf3xDBC-ofwE">
+
+
+
+<link rel="canonical" href="http://localhost:63266/csharp-programmieren/yield-schluesselwort-fuer-verzoegerte-ausfuehrung/">
+<link href="http://localhost:63266/feed.xml" type="application/atom+xml" rel="alternate" title="LernMoment.de Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:63266/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:63266/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:63266/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:63266/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:63266/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:63266/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:63266/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:63266/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+
+
+<div class="navigation-banner">
+	
+	
+
+	Lerne programmieren mit mir im Kurs: <a href="http://localhost:63266/einstieg-csharp/" >Einstieg in C# -></a>
+</div>
+
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:63266/kurse/" >Kurse</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/schwerpunkt/" >Dein Weg zum C# Entwickler</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/projekt-start/" >Entwicklung & Mentoring</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/blog/" >Blog</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	
+		<div class="wrap">
+			<a href="http://localhost:63266/" class="site-logo" rel="home" title="LernMoment.de"><img src="http://localhost:63266/images/site-logo.png" width="200" height="200" alt="LernMoment.de logo" class="animated fadeInDown"></a>
+		</div>
+	
+</header><!-- /.masthead -->
+
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <img src="http://localhost:63266/images/banner/lernmoment-csharp.jpg" class="entry-feature-image" alt="yield return - Schlüsselwort für verzögerte Ausführung" >
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"><a href="http://localhost:63266/tags/#Konzept" title="Pages tagged Konzept">Konzept</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Methoden" title="Pages tagged Methoden">Methoden</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Generics" title="Pages tagged Generics">Generics</a></span>
+        
+          <h1 class="entry-title">yield return - Schlüsselwort für verzögerte Ausführung</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <span class="author vcard">Von <span class="fn">Jan Suchotzki</span></span>
+        <span class="entry-date date published"><time datetime="2015-09-24T06:00:00+02:00"><i class="fa fa-calendar-o"></i> 24. September 2015</time></span>
+        
+        
+        
+        
+      </footer>
+      <div class="entry-content">
+        <p>Wenn du eine eigene Methode zum Iterieren von Auflistungen (das muss nicht unbedingt eine <em>Collection</em> sein) schreibst, dann kann dir <code class="highlighter-rouge">yield return</code> Arbeit abnehmen. Dabei musst du dich entscheiden, ob du alle Elemente auf einmal bearbeitest (<em>eager evaluation</em>), oder ob du ein Element immer nur dann bearbeitest, wenn es gerade gebraucht wird (<em>lazy evaluation</em>).</p>
+
+<h4 id="sofortige-ausführung">Sofortige Ausführung</h4>
+
+<p>Wenn du eine Methode wie zum Beispiel <code class="highlighter-rouge">int Quadriere(int wert)</code> hast, und diese auf eine ganze Reihe von Werten anwenden möchtest, kannst du das so machen:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">IEnumerable</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nf">ZahlenreiheQuadrieren</span><span class="p">(</span><span class="kt">int</span> <span class="n">maxIndex</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">[</span><span class="n">maxIndex</span><span class="p">];</span>
+  <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">maxIndex</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+  <span class="p">{</span>
+      <span class="n">result</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="p">=</span> <span class="nf">Quadriere</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Es gibt wesentlich elegantere Möglichkeiten, aber mit dieser Lösung kommst du zum Ziel. Rufst du diese Methode wie folgt auf, dann wird das neue Feld sofort angelegt, mit den entsprechenden Zahlen gefüllt und du hast direkten Zugriff darauf:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">IEnumerable</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">quadrierteZahlen</span> <span class="p">=</span> <span class="nf">ZahlenreiheQuadrieren</span><span class="p">(</span><span class="m">5</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h4 id="verzögerte-aber-eifrige-ausführung">Verzögerte, aber eifrige Ausführung</h4>
+
+<p>Eine ähnliche Lösung kannst du auch mit <code class="highlighter-rouge">yield return</code> erzeugen:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">IEnumerable</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nf">ZahlenreiheQuadrieren</span><span class="p">(</span><span class="kt">int</span> <span class="n">maxIndex</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">[</span><span class="n">maxIndex</span><span class="p">];</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">maxIndex</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+    <span class="p">{</span>
+        <span class="n">result</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="p">=</span> <span class="nf">Quadriere</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">foreach</span><span class="p">(</span><span class="kt">var</span> <span class="k">value</span> <span class="k">in</span> <span class="n">result</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">yield</span> <span class="k">return</span> <span class="k">value</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Rufst du diese Variante auf, ist der Ablauf anders. Denn das Aufrufen, also <code class="highlighter-rouge">IEnumerable&lt;int&gt; quadrierteZahlen = ZahlenreiheQuadrieren(5);</code> erzeugt nun nicht mehr sofort das Feld und macht alle Berechnungen, sondern es wird lediglich ein Objekt angelegt und <code class="highlighter-rouge">quadrierteZahlen</code> zugewiesen. Dieses Objekt weiß, dass bei jedem Zugriff auf <code class="highlighter-rouge">quadrierteZahlen</code> der definiert Methodenrumpf ausgeführt werden muss und speichert für <code class="highlighter-rouge">maxIndex</code> den Wert 5.</p>
+
+<p>Erst wenn du das erstmal auf <code class="highlighter-rouge">quadrierteZahlen</code> zugreifst (z.B. erste Iteration von <code class="highlighter-rouge">foreach(var quadratZahl in quadrierteZahlen) ...</code>), wird das entsprechende Feld angelegt, alle Zahlen berechnet und schließlich die erste berechnete Zahl zurückgegeben. Durch die Verwendung von <code class="highlighter-rouge">yield return</code> gibt es also eine verzögerte Ausführung des Methodenrumpfes. <em>Eager evaluation</em> bedeutet hier, dass bei der ersten Iteration alles bearbeitet wird und in den folge Iterationen nur noch das jeweilige Element zurückgegeben wird.</p>
+
+<h4 id="verzögerte-und-träge-ausführung">Verzögerte und träge Ausführung</h4>
+
+<p>Du kannst das ganze aber auch noch weiter verzögern:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">IEnumerable</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nf">ZahlenreiheQuadrieren</span><span class="p">(</span><span class="kt">int</span> <span class="n">maxIndex</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">maxIndex</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+    <span class="p">{</span>
+        <span class="k">yield</span> <span class="k">return</span> <span class="nf">Quadriere</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Bei dieser Variante wird die Berechnung tatsächlich erst in jeder Iteration von <code class="highlighter-rouge">foreach(var quadratZahl in quadrierteZahlen) ...</code> ausgeführt. Es gibt also keinen initialen Aufwand um das Feld anzulegen und alle Elemente darin zu berechnen, sondern der Aufwand ist gleichmäßig über die Iterationen der <code class="highlighter-rouge">foreach</code> Schleife verteilt.</p>
+
+<h4 id="nicht-jedes-ienumerable-verhält-sich-gleich">Nicht jedes IEnumerable<T> verhält sich gleich</T></h4>
+
+<p>Wenn du dir die 3 Varianten anschaust, gibt es einen wesentlichen Unterschied. Bei der <em>sofortigen Ausführung</em>, bekommst du einen <em>Iterator</em>, der dir direkten Zugriff auf die Auflistung ermöglicht. So kannst du mit dem <em>Iterator</em> Werte direkt in der Auflistung verändern (sofern der Typ der Auflistung dies erlaubt) und siehst bei weiterer Verwendung der gleichen <em>Iterator</em>-Instanz die Änderungen. Im Beispiel oben, referenziert der <em>Iterator</em> das temporäre Feld und bewahrt es so vor dem <em>Garbage Collector</em>.</p>
+
+<p>Bei der <em>verzögerten Ausführung</em>, egal ob eifrig oder träge, ist das anders. Sie bewirkt, dass im Moment des Zugriffs auf ein Element der Auflistung mit dem <em>Iterator</em>, dieses Element erst erzeugt wird. Sofern dieses Element nicht explizit referenziert wird, ist es sofort für den <em>Garbage Collector</em> freigegeben. Nur mit dem <em>Iterator</em> kannst du also die Auflistung nicht ändern. Entsprechende Beispiele findest du im Quelltext zu diesem LernMoment.</p>
+
+<p>Jetzt erstmal viel Spaß mit beim eifrigen oder trägen Zugriff</p>
+
+<p>Jan</p>
+
+<h3 id="merke">Merke</h3>
+
+<ul>
+  <li>Ein <code class="highlighter-rouge">IEnumerable&lt;T&gt;</code> verhält sich bei <em>sofortiger Ausführung</em> wesentlich anders als bei <em>verzögerter Ausführung</em>.</li>
+  <li>Erstellst du eine <em>Iterator</em>-Methode mit <code class="highlighter-rouge">yield return</code>, handelt es sich um verzögerte Ausführung.</li>
+  <li>Bearbeitest du alle Elemente einer Auflistung (z.B. beim Sortieren) und gibst sie dann mit <code class="highlighter-rouge">yield return</code> zurück, heißt das <em>eifrige Ausführung</em> bzw. <em>eager evaluation</em>.</li>
+  <li>Bearbeitest du immer genau ein Element beim Zugriff auf den <em>Iterator</em>, wird das <em>träge Ausführung</em> bzw. <em>lazy evaluation</em> genannt.</li>
+</ul>
+
+<h3 id="lernquiz">Lernquiz</h3>
+
+<p>Verwende folgende Fragen, um das Gelernte von heute zu festigen:</p>
+
+<ul>
+  <li>Was ist der Unterschied zwischen <em>sofortiger Ausführung</em> und <em>verzögerter Ausführung</em>?</li>
+  <li>Wie erstellst du eine <em>“eifrige” Iterator</em>-Methode?</li>
+  <li>Wie erstellst du eine <em>“träge” Iterator</em>-Methode?</li>
+</ul>
+
+<p>Am besten schaust du dir morgen und dann nochmal in ein paar Tagen die vorherigen Fragen an und beantwortest sie, ohne den Text vorher gelesen zu haben.</p>
+
+<h3 id="weitere-informationen">Weitere Informationen</h3>
+
+<ul>
+  <li>Den kompletten Quelltext zum heutigen Lernmoment findest du <a href="https://github.com/LernMoment/csharp/tree/master/YieldAnweisung">hier</a>.</li>
+  <li>Insbesondere die Problematik mit Änderung von Werten bei <em>verzögerter Ausführung</em> ist in <a href="http://www.daedtech.com/getting-too-cute-with-c-yield-return">diesem Artikel</a> beschrieben.</li>
+  <li>Die Einführung in das Thema von Microsoft ist auf <a href="https://msdn.microsoft.com/de-de/library/vstudio/bb943859.aspx">MSDN</a> zu finden.</li>
+  <li>Eine unglaublich präzise Erklärung gibt es in <a href="http://stackoverflow.com/a/2515920/5258906">dieser Antwort</a> auf StackOverflow.</li>
+</ul>
+
+        
+          <div class="subscribe-notice">
+            <h5>Dieser LernMoment hat dir gefallen? <br> Dann melde dich an und du wirst über neue LernMomente informiert:</h5>
+                <form action="https://lernmoment.us9.list-manage.com/subscribe/post" method="POST" target="_blank">
+      <input type="hidden" name="u" value="d0206d57f5002e40b651a0f60">
+      <input type="hidden" name="id" value="8845c28e62">
+      <input type="email" class="subscribe-notice-input-box" autocapitalize="off" autocorrect="off" name="MERGE0" id="MERGE0" size="25" value="" placeholder="Deine E-Mail-Adresse">
+      <input type="text" class="subscribe-notice-input-box" name="MERGE1" id="MERGE1" size="25" value="" placeholder="Dein Vorname (optional)">
+      
+        <input type="checkbox" id="group_1" name="group[20205][1]" value="1" checked="true" style="display:none">
+      
+      <input type="submit" class="subscribe-notice-button" name="submit" value="Ich bin dabei!">
+      <legend class="subscribe-notice-legend">Du bekommst in unregelmäßigen Abständen Mails von mir, in denen ich dich auf neue Artikel oder Angebote hinweise, die in das gleiche Themengebiet fallen wie dieser Artikel.</legend>
+    </form>
+
+          </div>
+        
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:63266/csharp-programmieren/gefilterte-ausnahme-mit-when/" class="btn" title="Gefilterte Ausnahme mit "when"">Vorheriger</a>
+      
+      
+        <a href="http://localhost:63266/csharp-programmieren/mit-csharp-6-noch-mueheloser-werte-in-strings-einfuegen/" class="btn" title="Mit C# 6.0 noch müheloser Werte in Strings einfügen">Nächster</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<div class="social-icons">
+	
+	
+	
+	<a href="http://www.youtube.com/channel/UC5jCUQ6IPHtQP5r4y9byCqA" title="Jan Suchotzki on YouTube" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
+	
+	<a href="http://stackoverflow.com/users/5258906/jan-suchotzki" title="Jan Suchotzki on StackExchange" target="_blank"><i class="fa fa-stack-exchange fa-2x"></i></a>
+	
+	
+	<a href="http://github.com/lernmoment" title="Jan Suchotzki on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+    
+	
+  <a href="http://localhost:63266/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+<span>Danke an <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> und <a href="http://mademistakes.com/so-simple/" rel="nofollow">Made Mistakes</a> für hervorragende Tools.</span>
+<br>
+<span><a href="http://localhost:63266/kein-copyright/">Kein Copyright</a>    -    <a href="http://localhost:63266/impressum/">Impressum</a>    -    <a href="http://localhost:63266/datenschutz/">Datenschutz</a></span>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:63266';
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:63266/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:63266/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

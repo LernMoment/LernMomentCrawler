@@ -1,0 +1,287 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Haben deine Delegates den Func? &#8211; LernMoment.de</title>
+<meta name="description" content="Vereinfache deinen Quelltext mit Func">
+<meta name="keywords" content="Konzept, Delegate, Generics">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Haben deine Delegates den Func?">
+<meta name="twitter:description" content="Vereinfache deinen Quelltext mit Func">
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:63266/images/banner/lernmoment-csharp.jpg">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="de_DE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Haben deine Delegates den Func?">
+<meta property="og:description" content="Vereinfache deinen Quelltext mit Func">
+<meta property="og:url" content="http://localhost:63266/csharp-programmieren/hast-du-den-func/">
+<meta property="og:site_name" content="LernMoment.de">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="sPPXWqQjaSqa_ZgqYPNCyVLLaFzVAFCuf3xDBC-ofwE">
+
+
+
+<link rel="canonical" href="http://localhost:63266/csharp-programmieren/hast-du-den-func/">
+<link href="http://localhost:63266/feed.xml" type="application/atom+xml" rel="alternate" title="LernMoment.de Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:63266/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:63266/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:63266/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:63266/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:63266/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:63266/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:63266/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:63266/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+
+
+<div class="navigation-banner">
+	
+	
+
+	Lerne programmieren mit mir im Kurs: <a href="http://localhost:63266/einstieg-csharp/" >Einstieg in C# -></a>
+</div>
+
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:63266/kurse/" >Kurse</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/schwerpunkt/" >Dein Weg zum C# Entwickler</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/projekt-start/" >Entwicklung & Mentoring</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/blog/" >Blog</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	
+		<div class="wrap">
+			<a href="http://localhost:63266/" class="site-logo" rel="home" title="LernMoment.de"><img src="http://localhost:63266/images/site-logo.png" width="200" height="200" alt="LernMoment.de logo" class="animated fadeInDown"></a>
+		</div>
+	
+</header><!-- /.masthead -->
+
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <img src="http://localhost:63266/images/banner/lernmoment-csharp.jpg" class="entry-feature-image" alt="Haben deine Delegates den Func?" >
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"><a href="http://localhost:63266/tags/#Konzept" title="Pages tagged Konzept">Konzept</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Delegate" title="Pages tagged Delegate">Delegate</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Generics" title="Pages tagged Generics">Generics</a></span>
+        
+          <h1 class="entry-title">Haben deine Delegates den Func?</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <span class="author vcard">Von <span class="fn">Jan Suchotzki</span></span>
+        <span class="entry-date date published"><time datetime="2015-08-17T06:00:00+02:00"><i class="fa fa-calendar-o"></i> 17. August 2015</time></span>
+        
+        
+        
+        
+      </footer>
+      <div class="entry-content">
+        <p>Delegates, insbesondere in Kombination mit <a href="/csharp-programmieren/lambda-ausdruecke-erstellen/">Lambda-Ausdrücken</a>, sind sehr praktisch. Gerade wenn du mehrere Delegates mit unterschiedlichen Parametern und Rückgabewerten brauchst, musst du allerdings einiges deklarieren. Dies macht deinen Quelltext teilweise schwer verständlich.</p>
+
+<p>In C# 3.0 (.NET 3.5) hat Microsoft Linq und Erweiterungsmethoden eingeführt. Bei beiden wird häufig ein Delegate verwendet. Daher wurde in der gleichen Version auch das Func&lt;…&gt;-Delegate eingeführt. Aktuell (.NET 4.6) gibt es 17 verschiedene Func&lt;…&gt;-Delegates. Sie unterscheiden sich jedoch lediglich in der Anzahl der Parameter.</p>
+
+<p>Was aber genau ist denn nun dieses Func&lt;…&gt;-Delegate? Schau dir mal die Syntax an:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">delegate</span> <span class="n">TResult</span> <span class="n">Func</span><span class="p">&lt;</span><span class="k">in</span> <span class="n">T</span><span class="p">,</span> <span class="k">out</span> <span class="n">TResult</span><span class="p">&gt;(</span>
+	<span class="n">T</span> <span class="n">arg</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>Es ist nichts weiter als die Deklaration eines Delegates. Da generische Datentypen (<code class="highlighter-rouge">T</code> und <code class="highlighter-rouge">TResult</code>) verwendet werden, kannst du bei der Verwendung entscheiden was dein Delegate übergeben bekommt und was es zurück gibt. Damit kannst du nun einfach einen Delegate als Methodenparameter definieren, ohne das du selber einen Delegate deklarieren musst:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">void</span> <span class="nf">DruckeLernMomenteDieBedingungErfuellen</span><span class="p">(</span><span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">LernMoment</span><span class="p">&gt;</span> <span class="n">liste</span><span class="p">,</span> <span class="n">Func</span><span class="p">&lt;</span><span class="n">LernMoment</span><span class="p">,</span> <span class="kt">bool</span><span class="p">&gt;</span> <span class="n">bedingung</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">foreach</span><span class="p">(</span><span class="n">LernMoment</span> <span class="n">moment</span> <span class="k">in</span> <span class="n">liste</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="k">if</span><span class="p">(</span> <span class="nf">bedingung</span><span class="p">(</span><span class="n">moment</span><span class="p">)</span> <span class="p">)</span>
+		<span class="p">{</span>
+			<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Der LernMoment - {0} erfüllt die Bedingung."</span><span class="p">,</span> <span class="n">moment</span><span class="p">.</span><span class="n">Name</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In eine Methode wie oben kannst du nun Delegates in verschiedener Form stecken:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// natürlich als Lambda:</span>
+<span class="nf">DruckeLernMomenteDieBedingungErfuellen</span><span class="p">(</span><span class="n">eineListe</span><span class="p">,</span> <span class="n">lm</span> <span class="p">=&gt;</span> <span class="n">lm</span><span class="p">.</span><span class="n">AnzahlLeser</span> <span class="p">&gt;=</span> <span class="m">1000</span><span class="p">);</span>
+
+<span class="c1">// Oder auch in dem du direkt eine Methode übergibst</span>
+<span class="nf">DruckeLernMomenteDieBedingungErfuellen</span><span class="p">(</span><span class="n">eineListe</span><span class="p">,</span> <span class="n">BedingungsMethode</span><span class="p">);</span>
+
+<span class="k">private</span> <span class="k">static</span> <span class="kt">bool</span> <span class="nf">BedingungsMethode</span><span class="p">(</span><span class="n">LernMoment</span> <span class="n">lm</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">return</span> <span class="n">lm</span><span class="p">.</span><span class="n">ErschienenAm</span><span class="p">.</span><span class="n">Month</span> <span class="p">==</span> <span class="m">08</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Die in C# definierten Func&lt;…&gt;-Delegates unterscheiden sich nur in der Anzahl der übergebenen Parameter. Dabei solltest du wissen, dass ein Func&lt;…&gt;-Delegate immer einen Rückgabewert hat. Solltest du mal ein Delegate brauchen ohne Rückgabewert, dann kannst du das Action&lt;…&gt;-Delegate verwenden. Dies ist analog zu Func&lt;…&gt;, jedoch hat es keinen Rückgabewert.</p>
+
+<p>Im Beispiel oben habe ich folgendes verwendet: <code class="highlighter-rouge">Func&lt;LernMoment, bool&gt;</code>. Wenn du es mit dem LernMoment <a href="/csharp-programmieren/predicate-delegate/">Predicate Delegate</a> vergleichst, wird dir eine Ähnlichkeit auffallen. Tatsächlich beschreiben beide das gleiche. Während <code class="highlighter-rouge">Predicate&lt;T&gt;</code> jedoch explizit klar macht, dass es eine Bedingung auf dem spezifiziertem Datentyp angibt, kan <code class="highlighter-rouge">Func&lt;T, bool&gt;</code> so ziemlich alles beschreiben. Obwohl viele empfehlen nur noch den Func&lt;…&gt;-Delegate zu benutzen, solltest du dir bewusst sein, dass dein Quelltext damit wenigstens in einigen Situation an Ausdrucksstärke verliert.</p>
+
+<p>Jetzt erstmal viel Spaß beim Entdecken des Func</p>
+
+<p>Jan</p>
+
+<h3 id="merke">Merke</h3>
+
+<ul>
+  <li>Func&lt;…&gt; ist ein vordefiniertes Delegate mit generischen Datentypen.</li>
+  <li>Der Unterschied zum Action-Delegate ist, dass Func-Delegates immer einen Rückgabewert haben müssen.</li>
+  <li>Durch die Verwendung von Func&lt;…&gt;-Delegates ersparst du dir die Deklaration eines eigenen Delegate-Typen</li>
+  <li>Viele Erweiterungsmethoden und Methoden in Linq verwenden Func&lt;…&gt;-Delegates. Du kannst ihnen direkt eine Methode, ein Lambda-Ausdruck oder auch eine anonyme Methode übergeben.</li>
+  <li>Situationsabhängig solltest du überlegen ob du Func&lt;…&gt;-Delegates oder einen eigenen Delegate-Typen verwendest. Den letzterer kann deine Intention im Quelltext klarer ausdrücken.</li>
+</ul>
+
+<h3 id="lernquiz">Lernquiz</h3>
+
+<p>Verwende folgende Fragen, um das Gelernte von heute zu festigen:</p>
+
+<ul>
+  <li>Wie definierst du einen Func&lt;…&gt;-Delegate mit einem Rückgabewert vom Typ <code class="highlighter-rouge">string</code> und 2 Parametern vom Typ <code class="highlighter-rouge">int</code>?</li>
+  <li>Was ist der Unterschied zwischen <code class="highlighter-rouge">Predicate&lt;T&gt;</code> und <code class="highlighter-rouge">Func&lt;T, bool&gt;</code>?</li>
+  <li>Was solltest du allgemein bei der Verwendung von Func&lt;…&gt;-Delegates beachten?</li>
+</ul>
+
+<p>Am besten schaust du dir morgen und dann nochmal in ein paar Tagen die vorherigen Fragen an und beantwortest sie, ohne den Text vorher gelesen zu haben.</p>
+
+<h3 id="weitere-informationen">Weitere Informationen</h3>
+
+<ul>
+  <li>Den kompletten Quelltext zum heutigen Lernmoment findest du <a href="https://github.com/LernMoment/csharp/tree/master/FuncDelegate">hier</a>.</li>
+  <li>Die verschiedenen Func&lt;…&gt;-Delegates sind <a href="https://msdn.microsoft.com/de-de/library/bb534960(v=vs.110).aspx">hier</a> beschrieben.</li>
+  <li>Eine ziemlich gute Einführung in das Thema Delegates (inkl. Func &amp; Lambda) findest du <a href="http://www.codeproject.com/Articles/47887/C-Delegates-Anonymous-Methods-and-Lambda-Expressio">hier</a>.</li>
+</ul>
+
+        
+          <div class="subscribe-notice">
+            <h5>Dieser LernMoment hat dir gefallen? <br> Dann melde dich an und du wirst über neue LernMomente informiert:</h5>
+                <form action="https://lernmoment.us9.list-manage.com/subscribe/post" method="POST" target="_blank">
+      <input type="hidden" name="u" value="d0206d57f5002e40b651a0f60">
+      <input type="hidden" name="id" value="8845c28e62">
+      <input type="email" class="subscribe-notice-input-box" autocapitalize="off" autocorrect="off" name="MERGE0" id="MERGE0" size="25" value="" placeholder="Deine E-Mail-Adresse">
+      <input type="text" class="subscribe-notice-input-box" name="MERGE1" id="MERGE1" size="25" value="" placeholder="Dein Vorname (optional)">
+      
+        <input type="checkbox" id="group_1" name="group[20205][1]" value="1" checked="true" style="display:none">
+      
+      <input type="submit" class="subscribe-notice-button" name="submit" value="Ich bin dabei!">
+      <legend class="subscribe-notice-legend">Du bekommst in unregelmäßigen Abständen Mails von mir, in denen ich dich auf neue Artikel oder Angebote hinweise, die in das gleiche Themengebiet fallen wie dieser Artikel.</legend>
+    </form>
+
+          </div>
+        
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:63266/csharp-programmieren/tap-eap-apm-asynchron-abgekuerzt/" class="btn" title="Asynchron abgekürzt: APM, EAP und TAP">Vorheriger</a>
+      
+      
+        <a href="http://localhost:63266/csharp-programmieren/kombinierte-formatierung-zahlenformate/" class="btn" title="Kombinierte Formatierung - Zahlenformate">Nächster</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<div class="social-icons">
+	
+	
+	
+	<a href="http://www.youtube.com/channel/UC5jCUQ6IPHtQP5r4y9byCqA" title="Jan Suchotzki on YouTube" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
+	
+	<a href="http://stackoverflow.com/users/5258906/jan-suchotzki" title="Jan Suchotzki on StackExchange" target="_blank"><i class="fa fa-stack-exchange fa-2x"></i></a>
+	
+	
+	<a href="http://github.com/lernmoment" title="Jan Suchotzki on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+    
+	
+  <a href="http://localhost:63266/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+<span>Danke an <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> und <a href="http://mademistakes.com/so-simple/" rel="nofollow">Made Mistakes</a> für hervorragende Tools.</span>
+<br>
+<span><a href="http://localhost:63266/kein-copyright/">Kein Copyright</a>    -    <a href="http://localhost:63266/impressum/">Impressum</a>    -    <a href="http://localhost:63266/datenschutz/">Datenschutz</a></span>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:63266';
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:63266/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:63266/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

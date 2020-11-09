@@ -1,0 +1,283 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Twitch Client Teil #3 - Daten lesen mit TwitchAPI &#8211; LernMoment.de</title>
+<meta name="description" content="Verwende Methoden wie SetClientId und GetUser der TwitchAPI um Daten eines Benutzer vom Twitch-Server zu holen.">
+<meta name="keywords" content="Twitch, C#, Video">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Twitch Client Teil #3 - Daten lesen mit TwitchAPI">
+<meta name="twitter:description" content="Verwende Methoden wie SetClientId und GetUser der TwitchAPI um Daten eines Benutzer vom Twitch-Server zu holen.">
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:63266/images/banner/lernmoment-csharp.jpg">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="de_DE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Twitch Client Teil #3 - Daten lesen mit TwitchAPI">
+<meta property="og:description" content="Verwende Methoden wie SetClientId und GetUser der TwitchAPI um Daten eines Benutzer vom Twitch-Server zu holen.">
+<meta property="og:url" content="http://localhost:63266/csharp-tutorial-deutsch/twitch-client-daten-lesen-per-api/">
+<meta property="og:site_name" content="LernMoment.de">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="sPPXWqQjaSqa_ZgqYPNCyVLLaFzVAFCuf3xDBC-ofwE">
+
+
+
+<link rel="canonical" href="http://localhost:63266/csharp-tutorial-deutsch/twitch-client-daten-lesen-per-api/">
+<link href="http://localhost:63266/feed.xml" type="application/atom+xml" rel="alternate" title="LernMoment.de Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:63266/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:63266/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:63266/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:63266/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:63266/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:63266/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:63266/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:63266/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+
+
+<div class="navigation-banner">
+	
+	
+
+	Lerne programmieren mit mir im Kurs: <a href="http://localhost:63266/einstieg-csharp/" >Einstieg in C# -></a>
+</div>
+
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:63266/kurse/" >Kurse</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/schwerpunkt/" >Dein Weg zum C# Entwickler</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/projekt-start/" >Entwicklung & Mentoring</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/blog/" >Blog</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	
+		<div class="wrap">
+			<a href="http://localhost:63266/" class="site-logo" rel="home" title="LernMoment.de"><img src="http://localhost:63266/images/site-logo.png" width="200" height="200" alt="LernMoment.de logo" class="animated fadeInDown"></a>
+		</div>
+	
+</header><!-- /.masthead -->
+
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <img src="http://localhost:63266/images/banner/lernmoment-csharp.jpg" class="entry-feature-image" alt="Twitch Client Teil #3 - Daten lesen mit TwitchAPI" >
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"><a href="http://localhost:63266/tags/#Twitch" title="Pages tagged Twitch">Twitch</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#C#" title="Pages tagged C#">C#</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Video" title="Pages tagged Video">Video</a></span>
+        
+          <h1 class="entry-title">Twitch Client Teil #3 - Daten lesen mit TwitchAPI</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <span class="author vcard">Von <span class="fn">Jan Suchotzki</span></span>
+        <span class="entry-date date published"><time datetime="2016-11-15T06:00:00+01:00"><i class="fa fa-calendar-o"></i> 15. November 2016</time></span>
+        
+        
+        
+        
+      </footer>
+      <div class="entry-content">
+        <blockquote>
+  <p>Die weiteren Teile dieser Mini-Serie findest du hier:
+Teil #1 - <a href="/csharp-tutorial-deutsch/twitch-client-einleitung/">Einleitung  und Authentifizierung</a>
+Teil #2 - <a href="/csharp-tutorial-deutsch/twitch-client-architektur/">Architektur eines Twitch Client</a>
+Teil #4 - <a href="/csharp-tutorial-deutsch/twitch-client-access-token-erstellen/">AccessToken erstellen</a>
+Teil #5 - <a href="/csharp-tutorial-deutsch/twitch-client-daten-schreiben-per-api/">Schreiben per TwitchAPI - Follow Channel Client</a></p>
+</blockquote>
+
+<p>Links zu den im Video genannten Seiten und Ressourcen findest du am Ende dieses Artikels.</p>
+
+<p>Nach der ganzen Theorie geht es nun endlich in die Praxis. Als ersten Schritt zeige ich dir wie du lesend die TwitchAPI nutzt um Daten über Benutzer, Kanäle, Videos usw. abrufen kannst. Damit kannst du beispielsweise Statistiken erstellen.</p>
+
+<p>In diesem Video erfährst du, wie du:</p>
+
+<ul>
+  <li>die <a href="https://www.nuget.org/packages/TwitchLib">TwitchLib</a> in ein Konsolenprojekt bekommst,</li>
+  <li>die Client-Id an der TwitchAPI (<code class="highlighter-rouge">TwitchAPI.SetClientId</code>) setzt um im nächsten Schritt Daten abzufragen und</li>
+  <li>Informationen über einen Twitch-Benutzer mit <code class="highlighter-rouge">TwitchAPI.GetUser</code> bekommst.</li>
+</ul>
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/eO8vX7oQ1bs" frameborder="0" allow="encrypted-media" allowfullscreen=""></iframe>
+
+<h3 id="die-twitchapi-und-async--await">Die TwitchAPI und async / await</h3>
+
+<p>Die wichtigsten Punkte zur TwitchAPI habe ich dir bereits in <a href="/csharp-tutorial-deutsch/twitch-client-architektur/">Architektur eines Twitch Client</a> erläutert. Hier geht es mir nun mehr um die Syntax.</p>
+
+<p>Wie du <a href="https://github.com/swiftyspiffy/TwitchLib/blob/master/TwitchLib/TwitchAPI.cs">im Quellcode</a> zur Klasse <code class="highlighter-rouge">TwitchAPI</code> sehen kannst, handelt es sich um eine statische Klasse. Das bedeutet du brauchst kein Objekt von dieser Klasse sondern nimmst einfach den Klassennamen und kannst damit alle zur Verfügung gestellten Methoden aufrufen. Das macht in diesem Kontext auch Sinn, weil es keinen Zustand gibt, der in einem Objekt zwischen verschiedenen Methodenaufrufen gespeichert werden müsst.</p>
+
+<p>Wenn du eine Methode wie beispielsweise <code class="highlighter-rouge">TwitchAPI.GetUser()</code> ausführst, dann macht die TwitchAPI nichts anderes als dem Twitch-Server eine Nachricht (per HTTP) zu schicken und auf eine entsprechende Antwort zu warten. Sobald der Server die Antwort gesendet hat, wird diese in ein Objekt einer entsprechenden C#-Klasse (z.B. <code class="highlighter-rouge">User</code> - hier <a href="https://github.com/swiftyspiffy/TwitchLib/blob/master/TwitchLib/TwitchAPIClasses/User.cs">der Quellcode dieser Klasse</a>) extrahiert und an dein Programm zurück gegeben. Damit ist die Aufgabe erledigt. Da alle Methoden in der TwitchAPI als asynchron definiert sind, reicht ein Methodenaufruf aus, um den Vorgang komplett abzuarbeiten und alle relevanten Resultate zurück zugeben. Die nächste Anfrage beim Twitch-Server ist dann komplett unabhängig und somit ist es gut und richtig, dass die Klasse <code class="highlighter-rouge">TwitchAPI</code> komplett <code class="highlighter-rouge">static</code> ist.</p>
+
+<p>Was aber nun bedeutet dieses <code class="highlighter-rouge">async</code>? Mit den Schlüsselwörtern <code class="highlighter-rouge">async</code> und <code class="highlighter-rouge">await</code> wird eine Technologie in .NET verwendet die sich <em>Task Parallel Library (TPL)</em> nennt. Die Idee ist, dass du Aufgaben die eine gewisse Zeit dauern in den Hintergrund auslagerst. Somit ist es möglich, dass der Benutzer Eingaben macht und Ausgaben sieht während <em>“nebenbei”</em> andere Aufgaben ablaufen. In unserem Fall ist das die Interaktion mit dem Twitch-Server. Das ganze nennt sich asynchrone Programmierung und ist insbesondere bei Anwendungen mit grafischer Oberfläche oder “rechenintensiven” Anwendungen wichtig. Für unsere Konsolenanwendung ist das nun nicht unbedingt wichtig, weil wir ein paar Sekunden warten könnten bis die TwitchAPI alle Daten gesammelt und extrahiert hat. Da jedoch alle Methoden in der Klasse <code class="highlighter-rouge">TwitchAPI</code> als <code class="highlighter-rouge">async</code> definiert sind, haben wir hier keine andere Möglichkeit als die Methoden asychron aufzurufen.</p>
+
+<p>Was bei der Verwendung von <code class="highlighter-rouge">async</code> und <code class="highlighter-rouge">await</code> passiert, habe ich im Artikel <a href="/csharp-programmieren/einfuehrung-in-async-und-await/">Einführung in Async / Await</a> bereits erklärt. Wenn du die TwitchAPI in deinem Projekt verwenden willst, dann solltest du folgende Punkte berücksichtigen:</p>
+
+<ol>
+  <li>Alle Methoden der <code class="highlighter-rouge">TwitchAPI</code> (mit Ausnahme von <code class="highlighter-rouge">SetClientId()</code>) müssen mit <code class="highlighter-rouge">await</code> aufgerufen werden.</li>
+  <li>Das Schlüsselwort <code class="highlighter-rouge">await</code> kann nur in einer Methode verwendet werden die selber als asynchron definiert ist und den Rückgabewert <code class="highlighter-rouge">Task</code> verwendet.</li>
+  <li>Du definierst eine Methode als asynchron in dem du das Schlüsselwort <code class="highlighter-rouge">async</code> vor dem Rückgabewert im Methodenkopf verwendest.</li>
+  <li>Im <code class="highlighter-rouge">Main</code> eines Konsolenprojekts kannst du nicht <code class="highlighter-rouge">await</code> verwenden. Du musst eine eigene Methode definieren (egal ob diese <code class="highlighter-rouge">static</code> ist oder nicht).</li>
+  <li>In einem Projekt mit Grafischeroberfläche kannst du <code class="highlighter-rouge">async</code> in <em>EventHandlern</em> verwenden. Somit kannst du Methoden von <code class="highlighter-rouge">TwitchAPI</code> aufrufen, wenn beispielsweise ein Button gedrückt wird.</li>
+</ol>
+
+<div class="subscribe-notice">
+<h5>Du kennst static nicht, oder weißt nicht wie du Methoden definierst?</h5>
+<a href="https://www.udemy.com/course/einstieg-in-csharp-software-programmieren-wie-ein-profi/?couponCode=CS_20-1120_LMDE" class="notice-button">Hier geht's zum Online-Kurs "Einstieg in C#" &gt;&gt;</a>
+</div>
+
+<h3 id="in-wenigen-schritten-die-passenden-daten-bekommen">In wenigen Schritten die passenden Daten bekommen</h3>
+
+<p>Nachdem wir uns nun mit den Grundlagen vertraut gemacht haben, geht das eigentliche holen der entsprechenden Daten sehr einfach. Ich habe dir im folgenden die wichtigsten Schritte nochmals aufgeschrieben:</p>
+
+<ol>
+  <li><code class="highlighter-rouge">TwitchAPI.SetClientId</code> aufrufen, oder sicherstellen, dass es bereits aufgerufen wurde.</li>
+  <li>Herausfinden welche Methode der <code class="highlighter-rouge">TwitchAPI</code> die von dir gewünschten Daten liefert. <a href="https://github.com/swiftyspiffy/TwitchLib#twitchapi">Dieser Überblick</a> sollte dir eine erste Idee liefern. Machmal ist es auch notwendig, dass du mehrere Methoden aufrufst um alle gewünschten Informationen zu bekommen.</li>
+  <li>Erstelle eine statische und asychrone Methode in der du die entsprechende Methode der <code class="highlighter-rouge">TwitchAPI</code> mit <code class="highlighter-rouge">await</code> aufrufst und dir erstmal die für dich relevanten Werte der Antwort auf der Konsole ausgibst. Du siehst du genau was zurück kommt und du kannst dir Überlegen wie du die Daten weiterverarbeiten möchtest.</li>
+</ol>
+
+<p>Nun kommt es auf deine Anwendung an. Möchtest du die Daten einfach nur ausgeben, dann bist du ja bereits fertig. Vielleicht möchtest du die Daten aber auch sammeln. Dann kannst du das erhaltene Objekt mit der Antwort einfach in einer Kollektion speichern. Eine weitere Möglichkeit ist, dass du die Daten in eine Datei schreibst. Diese könntest du dann beispielsweise mit Excel einlesen und darin weiterverarbeiten. Das schreiben von Daten in eine Textdatei habe ich im <a href="https://youtu.be/KjP9v7xPUQE">C# Tutorial Deutsch - Dateien lesen und schreiben mit File</a> beschrieben.</p>
+
+<h3 id="weitere-links">Weitere Links</h3>
+
+<ul>
+  <li>Wenn du nicht weißt, wie du mit NuGet die TwitchLib in dein Projekt bekommst, dann habe ich das in <a href="https://youtu.be/bsuEqUelxvg?list=PLP2TrPpx5VNkr-wmkjguVZAvN4T5EPJbF">dieser Episode des C# Tutorials Deutsch</a> für dich erklärt.</li>
+  <li><a href="https://github.com/LernMoment/csharp-twitch-client">Das GitHub Projekt</a> beinhaltet den kompletten Quellcode von mir zu diesem Client (inkl. weiterer Beispiele die ich nicht im Video gezeigt habe).</li>
+  <li>Weitere Infos zu <code class="highlighter-rouge">async</code> und <code class="highlighter-rouge">await</code> gibt es im Artikel <a href="/csharp-programmieren/einfuehrung-in-async-und-await/">Einführung in Async / Await</a></li>
+  <li>Auf <a href="https://dev.twitch.tv/docs">Twitch Developers</a> findest du viele Informationen über Daten die der Twitch-Server zurück liefert. Darunter auch beispielsweise eine genau Beschreibung der <a href="https://dev.twitch.tv/docs/api/v3/users/">Benutzerdaten</a>. Diese Beschreibung sind häufig etwas umfangreicher als die Dokumentation der <em>TwitchLib</em>. Allerdings geht es dort immer um <em>HTTP</em> und nicht <em>C#</em>.</li>
+  <li><a href="https://youtu.be/KjP9v7xPUQE">C# Tutorial Deutsch - Dateien lesen und schreiben mit File</a> beschreibt wie du Daten in eine Textdatei schreiben kannst.</li>
+</ul>
+
+<p>Viel Erfolg beim Erstellen deines Clients</p>
+
+<p>Jan</p>
+
+        
+          <div class="subscribe-notice">
+            <h5>Dieser LernMoment hat dir gefallen? <br> Dann melde dich an und du wirst über neue LernMomente informiert:</h5>
+                <form action="https://lernmoment.us9.list-manage.com/subscribe/post" method="POST" target="_blank">
+      <input type="hidden" name="u" value="d0206d57f5002e40b651a0f60">
+      <input type="hidden" name="id" value="8845c28e62">
+      <input type="email" class="subscribe-notice-input-box" autocapitalize="off" autocorrect="off" name="MERGE0" id="MERGE0" size="25" value="" placeholder="Deine E-Mail-Adresse">
+      <input type="text" class="subscribe-notice-input-box" name="MERGE1" id="MERGE1" size="25" value="" placeholder="Dein Vorname (optional)">
+      
+        <input type="checkbox" id="group_1" name="group[20205][1]" value="1" checked="true" style="display:none">
+      
+      <input type="submit" class="subscribe-notice-button" name="submit" value="Ich bin dabei!">
+      <legend class="subscribe-notice-legend">Du bekommst in unregelmäßigen Abständen Mails von mir, in denen ich dich auf neue Artikel oder Angebote hinweise, die in das gleiche Themengebiet fallen wie dieser Artikel.</legend>
+    </form>
+
+          </div>
+        
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:63266/alle/richtig-ueben/" class="btn" title="Warum und wie du Softwareentwicklung üben kannst">Vorheriger</a>
+      
+      
+        <a href="http://localhost:63266/csharp-tutorial-deutsch/twitch-client-access-token-erstellen/" class="btn" title="Twitch Client Teil #4 - Access Token erstellen">Nächster</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<div class="social-icons">
+	
+	
+	
+	<a href="http://www.youtube.com/channel/UC5jCUQ6IPHtQP5r4y9byCqA" title="Jan Suchotzki on YouTube" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
+	
+	<a href="http://stackoverflow.com/users/5258906/jan-suchotzki" title="Jan Suchotzki on StackExchange" target="_blank"><i class="fa fa-stack-exchange fa-2x"></i></a>
+	
+	
+	<a href="http://github.com/lernmoment" title="Jan Suchotzki on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+    
+	
+  <a href="http://localhost:63266/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+<span>Danke an <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> und <a href="http://mademistakes.com/so-simple/" rel="nofollow">Made Mistakes</a> für hervorragende Tools.</span>
+<br>
+<span><a href="http://localhost:63266/kein-copyright/">Kein Copyright</a>    -    <a href="http://localhost:63266/impressum/">Impressum</a>    -    <a href="http://localhost:63266/datenschutz/">Datenschutz</a></span>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:63266';
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:63266/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:63266/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

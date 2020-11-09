@@ -1,0 +1,316 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Extension Method - Wie du in 4 trivialen Schritten jede Klasse erweitern kannst &#8211; LernMoment.de</title>
+<meta name="description" content="Und warum du es nicht so häufig tun solltest">
+<meta name="keywords" content="Syntax, Datentypen, Methoden">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Extension Method - Wie du in 4 trivialen Schritten jede Klasse erweitern kannst">
+<meta name="twitter:description" content="Und warum du es nicht so häufig tun solltest">
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:63266/images/banner/lernmoment-csharp.jpg">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="de_DE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Extension Method - Wie du in 4 trivialen Schritten jede Klasse erweitern kannst">
+<meta property="og:description" content="Und warum du es nicht so häufig tun solltest">
+<meta property="og:url" content="http://localhost:63266/csharp-programmieren/extension-method-in-4-trivialen-schritten-jede-klasse-erweitern/">
+<meta property="og:site_name" content="LernMoment.de">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="sPPXWqQjaSqa_ZgqYPNCyVLLaFzVAFCuf3xDBC-ofwE">
+
+
+
+<link rel="canonical" href="http://localhost:63266/csharp-programmieren/extension-method-in-4-trivialen-schritten-jede-klasse-erweitern/">
+<link href="http://localhost:63266/feed.xml" type="application/atom+xml" rel="alternate" title="LernMoment.de Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:63266/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:63266/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:63266/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:63266/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:63266/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:63266/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:63266/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:63266/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+
+
+<div class="navigation-banner">
+	
+	
+
+	Lerne programmieren mit mir im Kurs: <a href="http://localhost:63266/einstieg-csharp/" >Einstieg in C# -></a>
+</div>
+
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:63266/kurse/" >Kurse</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/schwerpunkt/" >Dein Weg zum C# Entwickler</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/projekt-start/" >Entwicklung & Mentoring</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/blog/" >Blog</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	
+		<div class="wrap">
+			<a href="http://localhost:63266/" class="site-logo" rel="home" title="LernMoment.de"><img src="http://localhost:63266/images/site-logo.png" width="200" height="200" alt="LernMoment.de logo" class="animated fadeInDown"></a>
+		</div>
+	
+</header><!-- /.masthead -->
+
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <img src="http://localhost:63266/images/banner/lernmoment-csharp.jpg" class="entry-feature-image" alt="Extension Method - Wie du in 4 trivialen Schritten jede Klasse erweitern kannst" >
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"><a href="http://localhost:63266/tags/#Syntax" title="Pages tagged Syntax">Syntax</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Datentypen" title="Pages tagged Datentypen">Datentypen</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Methoden" title="Pages tagged Methoden">Methoden</a></span>
+        
+          <h1 class="entry-title">Extension Method - Wie du in 4 trivialen Schritten jede Klasse erweitern kannst</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <span class="author vcard">Von <span class="fn">Jan Suchotzki</span></span>
+        <span class="entry-date date published"><time datetime="2015-09-28T06:00:00+02:00"><i class="fa fa-calendar-o"></i> 28. September 2015</time></span>
+        
+        
+        
+        
+      </footer>
+      <div class="entry-content">
+        <p>Mit <em>Extension Methods</em>, oder <em>Erweiterungsmethoden</em> wie sie auf Deutsch heißen, kannst du auch Klassen erweitern, von denen du keinen Quelltext hast. Dabei solltest du allerdings aufpassen, dass du nicht plötzlich eine Sammlung von Funktionalität hast, die du sonst nirgendwo unterbringen konntest. Denn das ist ein (erstes) klares Indiz, dass dein <em>Design</em> ein Problem hat.</p>
+
+<p>Die Schritte zum Erstellen und Verwenden einer <em>Extension Method</em> sind die folgenden.</p>
+
+<h4 id="1-entscheiden-welchen-typen-du-erweitern-willst">1. Entscheiden welchen Typen du erweitern willst</h4>
+
+<p>Du kannst jeden Typen erweitern. Egal ob es sich um einen Typen aus dem <em>.NET-Framework</em>, eine deiner eigenen Klassen, eine Klasse von einem anderen Entwickler oder auch ein <em>Interface</em> handelt. Es ist auch egal wo in der Vererbungshierarchie du ansetzt. So kannst du beispielsweise für <code class="highlighter-rouge">System.Object</code> wie auch für das <em>Interface</em> <code class="highlighter-rouge">System.Collections.Concurrent.IProducerConsumerCollection&lt;T&gt;</code> eine <em>Extension Method</em> definieren. Wobei es für das genannte <em>Interface</em> bereits knapp <strong>135</strong> <em>Extension Methods</em> gibt.</p>
+
+<h4 id="2-eine-statische-klasse-definieren">2. Eine statische Klasse definieren</h4>
+
+<p>Eine <em>Extension Method</em> ist eine statische Methode die durch den <em>Compiler</em> so umgesetzt wird, dass sie sich wie eine <em>Instanzmethode</em> verhält. Diese statische Methode muss in einer statischen Klasse definiert sein.</p>
+
+<p>Damit du entscheiden kannst, ob du deine <em>Extension Methods</em> in einer Klasse benutzen willst, oder nicht, ist es sinnvoll, dass du einen eigenen <em>Namensraum</em> dafür definierst. Das Beispiel von <code class="highlighter-rouge">IProducerConsumerCollection&lt;T&gt;</code> mit seinen 135 <em>Extension Methods</em> zeigt, dass es in <em>Intellisense</em> unübersichtlich werden kann, wenn so viele <em>Extension Methods</em> existieren. Hast du einen eigenen <em>Namensraum</em> für sie, dann kannst du per <code class="highlighter-rouge">using</code> entscheiden ob sie für eine Klasse relevant sind.</p>
+
+<h4 id="3-die-methode-implementieren-mit-this">3. Die Methode implementieren mit this</h4>
+
+<p>Deine <em>Extension Method</em> definierst du nun in der statischen Klasse aus dem vorherigen Schritt mit dem Schlüsselwort <code class="highlighter-rouge">this</code>. Dieses kommt vor den ersten Parameter der Methode. Dabei ist der erste Parameter von dem Typ, den du erweitern willst. Also jenen für den du dich in Schritt 1 entschieden hast.</p>
+
+<p>Für die sonstige Implementierung der <em>Extension Method</em> gelten die gleichen Regeln wie für jede andere statischen Methode auch. Schließlich ist es ja auch eine statische Methode, die lediglich eine kleine Besonderheit hat.</p>
+
+<h4 id="4-verwende-die-methode-wie-eine-instanzmethode">4. Verwende die Methode wie eine Instanzmethode</h4>
+
+<p>Du kannst deine <em>Extension Methode</em> nun verwenden, wie jede andere <em>Instanzmethode</em> deines Typs auch.</p>
+
+<p>Abschließend noch Auszüge aus einem Beispiel welches <a href="http://geekswithblogs.net/BlackRabbitCoder/BlackRabbitCoder/archive/2013/03/08/c.net-little-wonders-extension-methods-demystified.aspx">hier</a> genauer beschrieben ist. Für dieses Beispiel hat sich <a href="http://geekswithblogs.net/BlackRabbitCoder/Default.aspx">James Michael Hare</a> entschieden das <em>Interface</em> <code class="highlighter-rouge">IEnumerable&lt;T&gt;</code> zu erweitern (Schritt 1) und ich habe es in der Klasse <code class="highlighter-rouge">LernMoment.Utils.EnumerableExtensions</code> realisiert (Schritt 2).</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">namespace</span> <span class="nn">LernMoment.Utils</span>
+<span class="p">{</span>
+  <span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">EnumerableExtensions</span>
+  <span class="p">{</span>
+    <span class="c1">// first argument is the source,second is the max size of each slice</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;&gt;</span> <span class="n">Slice</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="k">this</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">source</span><span class="p">,</span> <span class="kt">int</span> <span class="n">size</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="c1">// can't slice null sequence</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">source</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nf">ArgumentNullException</span><span class="p">(</span><span class="s">"source"</span><span class="p">);</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">size</span> <span class="p">&lt;</span> <span class="m">1</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nf">ArgumentOutOfRangeException</span><span class="p">(</span><span class="s">"size"</span><span class="p">,</span> <span class="s">"The size must be positive."</span><span class="p">);</span>
+
+      <span class="c1">// force into a list to take advantage of direct indexing. Could also force into an </span>
+      <span class="c1">// array, use LINQ grouping, do a Skip()/Take(), etc...</span>
+      <span class="kt">var</span> <span class="n">sourceList</span> <span class="p">=</span> <span class="n">source</span><span class="p">.</span><span class="nf">ToList</span><span class="p">();</span>
+      <span class="kt">int</span> <span class="n">current</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+
+      <span class="c1">// while there are still items to "slice" off, keep going</span>
+      <span class="k">while</span> <span class="p">(</span><span class="n">current</span> <span class="p">&lt;</span> <span class="n">sourceList</span><span class="p">.</span><span class="n">Count</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="c1">// return a sub-slice using an iterator for deferred execution</span>
+        <span class="k">yield</span> <span class="k">return</span> <span class="n">sourceList</span><span class="p">.</span><span class="nf">GetRange</span><span class="p">(</span><span class="n">current</span><span class="p">,</span> <span class="n">Math</span><span class="p">.</span><span class="nf">Min</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">sourceList</span><span class="p">.</span><span class="n">Count</span> <span class="p">-</span> <span class="n">current</span><span class="p">));</span>
+        <span class="n">current</span> <span class="p">+=</span> <span class="n">size</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">namespace</span> <span class="nn">LernMoment</span>
+<span class="p">{</span>
+  <span class="k">using</span> <span class="nn">LernMoment.Utils</span><span class="p">;</span>
+  <span class="c1">// die restlichen usings fehlen um das Beispiel klein zu halten</span>
+  <span class="k">class</span> <span class="nc">Beispiel</span>
+  <span class="p">{</span>
+    <span class="kt">int</span><span class="p">[]</span> <span class="n">items</span> <span class="p">=</span> <span class="n">Enumerable</span><span class="p">.</span><span class="nf">Range</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">1000</span><span class="p">).</span><span class="nf">ToArray</span><span class="p">();</span>
+
+    <span class="n">Parallel</span><span class="p">.</span><span class="nf">ForEach</span><span class="p">(</span><span class="n">items</span><span class="p">.</span><span class="nf">Slice</span><span class="p">(</span><span class="m">10</span><span class="p">),</span> <span class="n">s</span> <span class="p">=&gt;</span>
+      <span class="p">{</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">item</span> <span class="k">in</span> <span class="n">s</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Jetzt erstmal viel Spaß mit dem Erweitern von nicht erweiterbaren Typen</p>
+
+<p>Jan</p>
+
+<h3 id="merke">Merke</h3>
+
+<ul>
+  <li>Mit einer <em>Extension Method</em> kannst du Funktionalität zu Typen hinzufügen, die du sonst nicht verändern kannst. Wie zum Beispiel alle Klassen, <em>Interfaces</em> und <em>Enums</em> aus dem <em>.NET-Framework</em>.</li>
+  <li>Durch <em>Extension Methods</em> kommst du leicht in die Versuchung dein <em>objekt-orientiertes Design</em> aufzuweichen.</li>
+  <li>Eine <em>Extension Method</em> ist eine statische Methode in einer statischen Klassen.</li>
+  <li>Der Typen, den du erweitern willst, ist der erste Parameter in der statischen Methode. Wobei du ihm voran ein <code class="highlighter-rouge">this</code> stellst.</li>
+  <li>Eine <em>Extension Method</em> kannst du an dem erweiterten Typ wie eine <em>Instanzmethode</em> verwenden.</li>
+</ul>
+
+<h3 id="lernquiz">Lernquiz</h3>
+
+<p>Verwende folgende Fragen, um das Gelernte von heute zu festigen:</p>
+
+<ul>
+  <li>Wie sieht der Quelltext für eine <em>Extension Method</em> aus, mit der du <code class="highlighter-rouge">String</code> erweiterst?</li>
+  <li>Für welche Typen kannst du eine <em>Extension Method</em> definieren?</li>
+  <li>Wie sieht der Quelltext aus in dem du eine <em>Extension Method</em> verwendest?</li>
+</ul>
+
+<p>Am besten schaust du dir morgen und dann nochmal in ein paar Tagen die vorherigen Fragen an und beantwortest sie, ohne den Text vorher gelesen zu haben.</p>
+
+<h3 id="weitere-informationen">Weitere Informationen</h3>
+
+<ul>
+  <li>Eine Einführung in das Thema gibt es bei <a href="https://msdn.microsoft.com/de-de/library/bb383977.aspx">MSDN</a>.</li>
+  <li>In <a href="http://geekswithblogs.net/BlackRabbitCoder/BlackRabbitCoder/archive/2013/03/08/c.net-little-wonders-extension-methods-demystified.aspx">diesem Artikel</a> gibt James Michael Hare eine detailierte Einführung in das Thema (in Englisch).</li>
+  <li>Scott Hanselman erklärt in <a href="http://www.hanselman.com/blog/HowDoExtensionMethodsWorkAndWhyWasANewCLRNotRequired.aspx">seinem Artikel</a> warum <em>Extension Methods</em> keine Änderung an der <em>CLR</em> sondern nur am <em>Compiler</em> benötigen. Auch diesen Artikel gibt es nur in Englisch.</li>
+</ul>
+
+        
+          <div class="subscribe-notice">
+            <h5>Dieser LernMoment hat dir gefallen? <br> Dann melde dich an und du wirst über neue LernMomente informiert:</h5>
+                <form action="https://lernmoment.us9.list-manage.com/subscribe/post" method="POST" target="_blank">
+      <input type="hidden" name="u" value="d0206d57f5002e40b651a0f60">
+      <input type="hidden" name="id" value="8845c28e62">
+      <input type="email" class="subscribe-notice-input-box" autocapitalize="off" autocorrect="off" name="MERGE0" id="MERGE0" size="25" value="" placeholder="Deine E-Mail-Adresse">
+      <input type="text" class="subscribe-notice-input-box" name="MERGE1" id="MERGE1" size="25" value="" placeholder="Dein Vorname (optional)">
+      
+        <input type="checkbox" id="group_1" name="group[20205][1]" value="1" checked="true" style="display:none">
+      
+      <input type="submit" class="subscribe-notice-button" name="submit" value="Ich bin dabei!">
+      <legend class="subscribe-notice-legend">Du bekommst in unregelmäßigen Abständen Mails von mir, in denen ich dich auf neue Artikel oder Angebote hinweise, die in das gleiche Themengebiet fallen wie dieser Artikel.</legend>
+    </form>
+
+          </div>
+        
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:63266/csharp-programmieren/mit-csharp-6-noch-mueheloser-werte-in-strings-einfuegen/" class="btn" title="Mit C# 6.0 noch müheloser Werte in Strings einfügen">Vorheriger</a>
+      
+      
+        <a href="http://localhost:63266/csharp-programmieren/fertige-extension-methods-das-rad-nicht-neu-erfinden/" class="btn" title="Fertige Extension Methods - Das Rad nicht neu erfinden">Nächster</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<div class="social-icons">
+	
+	
+	
+	<a href="http://www.youtube.com/channel/UC5jCUQ6IPHtQP5r4y9byCqA" title="Jan Suchotzki on YouTube" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
+	
+	<a href="http://stackoverflow.com/users/5258906/jan-suchotzki" title="Jan Suchotzki on StackExchange" target="_blank"><i class="fa fa-stack-exchange fa-2x"></i></a>
+	
+	
+	<a href="http://github.com/lernmoment" title="Jan Suchotzki on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+    
+	
+  <a href="http://localhost:63266/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+<span>Danke an <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> und <a href="http://mademistakes.com/so-simple/" rel="nofollow">Made Mistakes</a> für hervorragende Tools.</span>
+<br>
+<span><a href="http://localhost:63266/kein-copyright/">Kein Copyright</a>    -    <a href="http://localhost:63266/impressum/">Impressum</a>    -    <a href="http://localhost:63266/datenschutz/">Datenschutz</a></span>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:63266';
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:63266/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:63266/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

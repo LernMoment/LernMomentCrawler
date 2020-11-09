@@ -1,0 +1,335 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Eigenschaften von WPF-Steuerelementen im Quellcode setzen &#8211; LernMoment.de</title>
+<meta name="description" content="Eigenschaften (z.B. Text, Farbe, ...) von Steuerelementen kannst du zur Laufzeit aus dem C# Quellcode ändern.">
+<meta name="keywords" content="WPF, XAML, Controls">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Eigenschaften von WPF-Steuerelementen im Quellcode setzen">
+<meta name="twitter:description" content="Eigenschaften (z.B. Text, Farbe, ...) von Steuerelementen kannst du zur Laufzeit aus dem C# Quellcode ändern.">
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:63266/images/banner/lernmoment-wpf.jpg">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="de_DE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Eigenschaften von WPF-Steuerelementen im Quellcode setzen">
+<meta property="og:description" content="Eigenschaften (z.B. Text, Farbe, ...) von Steuerelementen kannst du zur Laufzeit aus dem C# Quellcode ändern.">
+<meta property="og:url" content="http://localhost:63266/alle/zugriff-wpf-controls-code-behind/">
+<meta property="og:site_name" content="LernMoment.de">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="sPPXWqQjaSqa_ZgqYPNCyVLLaFzVAFCuf3xDBC-ofwE">
+
+
+
+<link rel="canonical" href="http://localhost:63266/alle/zugriff-wpf-controls-code-behind/">
+<link href="http://localhost:63266/feed.xml" type="application/atom+xml" rel="alternate" title="LernMoment.de Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:63266/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:63266/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:63266/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:63266/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:63266/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:63266/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:63266/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:63266/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+
+
+<div class="navigation-banner">
+	
+	
+
+	Sammle Erfahrung in C# mit mir im Kurs: <a href="https://www.udemy.com/csharp-uebungskurs-einfach-verschluesselt/?referralCode=C976277144B75813267C" >C# Grundlagen üben mit System -></a>
+</div>
+
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:63266/kurse/" >Kurse</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/schwerpunkt/" >Dein Weg zum C# Entwickler</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/projekt-start/" >Entwicklung & Mentoring</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/blog/" >Blog</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	
+		<div class="wrap">
+			<a href="http://localhost:63266/" class="site-logo" rel="home" title="LernMoment.de"><img src="http://localhost:63266/images/site-logo.png" width="200" height="200" alt="LernMoment.de logo" class="animated fadeInDown"></a>
+		</div>
+	
+</header><!-- /.masthead -->
+
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <img src="http://localhost:63266/images/banner/lernmoment-wpf.jpg" class="entry-feature-image" alt="Eigenschaften von WPF-Steuerelementen im Quellcode setzen" >
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"><a href="http://localhost:63266/tags/#WPF" title="Pages tagged WPF">WPF</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#XAML" title="Pages tagged XAML">XAML</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Controls" title="Pages tagged Controls">Controls</a></span>
+        
+          <h1 class="entry-title">Eigenschaften von WPF-Steuerelementen im Quellcode setzen</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <span class="author vcard">Von <span class="fn">Jan Suchotzki</span></span>
+        <span class="entry-date date published"><time datetime="2020-04-03T10:00:09+02:00"><i class="fa fa-calendar-o"></i> 03. April 2020</time></span>
+        
+        
+        
+        
+      </footer>
+      <div class="entry-content">
+        <p>Mmmmmoin und willkommen zu deinem LernMoment!</p>
+
+<p>Ein zentraler Aspekt der Entwicklung von Oberflächen ist, dass du zur Laufzeit Daten mithilfe der Steuerelemente auf der Oberfläche visualisieren kannst. Hier ein paar übliche Szenarien und wie sie ein Steuerelement beeinflussen können:</p>
+
+<ul>
+  <li>Speichern von Einstellungen nur erlauben, wenn es tatsächlich Änderungen an den Einstellungen gab - Du hast das vielleicht schon bei einigen Anwendungen gesehen. Ein <code class="highlighter-rouge">Button</code> (z.B. <em>Ok</em> oder <em>Speichern</em>) kann erst dann angeklickt werden, wenn du in dem Fenster auch tatsächlich Änderungen vorgenommen hast.</li>
+  <li>Anzeigen von Daten die während der Ausführung der Anwendung erzeugt werden - In einer Auftragsverwaltung gibt es beispielsweise die Möglichkeit einen neuen Auftrag anzulegen. Dieser wird dann als neuer Eintrag in einer tabellarischen Übersicht (z.B. in einem <code class="highlighter-rouge">DataGrid</code>) angezeigt, wenn er erfolgreich angelegt wurde.</li>
+  <li>Anzeigen des aktuellen Verbindunsstatus zu einem Gerät (z.B. einem Server, einer Kamera, …) - Um dem Anwender zu signalisieren ob eine Verbindung (z.B. zu einem benötigten Server) besteht, wird der Status beispielsweise in einem <code class="highlighter-rouge">Label</code> oder der <code class="highlighter-rouge">StatusBar</code> aktualisiert, wenn die Anwendung erkennt, dass die Verbindung hergestellt wurde oder abgebrochen ist.</li>
+</ul>
+
+<p>Um diese Szenarien in <em>WPF</em> umzusetzen, gibt es folgende Möglichkeiten:</p>
+<ol>
+  <li>Verändern von Steuerelementen aus dem <em>code-behind</em> (eine Erklärung was <em>code-behind</em> ist findest du im Artikel <a href="/alle/xaml-code-behind/">XAML, *.g.i.cs und code-behind in WPF</a>)</li>
+  <li>Datenbindung</li>
+</ol>
+
+<p>Im folgenden erkläre ich dir Möglichkeit 1 genauer. Das Thema Datenbindung gibt es dann in einem separaten Artikel.</p>
+
+<h3 id="steuerelemente-via-sender-im-eventhandler-verändern">Steuerelemente via <code class="highlighter-rouge">sender</code> im EventHandler verändern</h3>
+<p>Eine Möglichkeit im <em>C#</em> Quellcode auf ein Steuerelement zu zugreifen, bietet dir jeder mit dem Steuerelement verbundene <em>EventHandler</em>. Das möchte ich dir anhand eines Beispiels zeigen. Nehmen wir dazu die Definition eines <code class="highlighter-rouge">Button</code> in einem <code class="highlighter-rouge">MainWindow.xaml</code>:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;Window</span> <span class="na">x:Class=</span><span class="s">"AnwendungWPF.MainWindow"</span>
+        <span class="na">xmlns=</span><span class="s">"http://schemas.microsoft.com/winfx/2006/xaml/presentation"</span>
+        <span class="na">xmlns:x=</span><span class="s">"http://schemas.microsoft.com/winfx/2006/xaml"</span>
+        <span class="na">xmlns:d=</span><span class="s">"http://schemas.microsoft.com/expression/blend/2008"</span>
+        <span class="na">xmlns:mc=</span><span class="s">"http://schemas.openxmlformats.org/markup-compatibility/2006"</span>
+        <span class="na">xmlns:local=</span><span class="s">"clr-namespace:AnwendungWPF"</span>
+        <span class="na">mc:Ignorable=</span><span class="s">"d"</span>
+        <span class="na">Title=</span><span class="s">"MainWindow"</span> <span class="na">Height=</span><span class="s">"500"</span> <span class="na">Width=</span><span class="s">"500"</span><span class="nt">&gt;</span>
+  
+  <span class="nt">&lt;Grid</span> <span class="na">x:Name=</span><span class="s">"einContainer"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Button</span> <span class="na">x:Name=</span><span class="s">"einTollerButton"</span> <span class="na">Click=</span><span class="s">"EinTollerButton_Click"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/Grid&gt;</span>
+<span class="nt">&lt;/Window&gt;</span>
+</code></pre></div></div>
+
+<p>Dazu erzeugt dir <em>Visual Studio</em> automatisch (wenn du möchtest) einen <em>EventHandler</em> im <em>code-behind</em>:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">namespace</span> <span class="nn">AnwendungWPF</span>
+<span class="p">{</span>
+    <span class="c1">/// &lt;summary&gt;</span>
+    <span class="c1">/// Interaction logic for MainWindow.xaml</span>
+    <span class="c1">/// &lt;/summary&gt;</span>
+    <span class="k">public</span> <span class="k">partial</span> <span class="k">class</span> <span class="nc">MainWindow</span> <span class="p">:</span> <span class="n">Window</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="nf">MainWindow</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="nf">InitializeComponent</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="k">private</span> <span class="k">void</span> <span class="nf">EinTollerButton_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">RoutedEventArgs</span> <span class="n">e</span><span class="p">)</span>
+        <span class="p">{</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Darin wird als erster Parameter der <code class="highlighter-rouge">sender</code> übergeben. Dieses ist bei allen <em>Events</em> von <em>WPF</em>-Elementen gleich. D.h. innerhalb des <em>EventHandlers</em> hast du immer Zugriff auf das Steuerelement welches den <em>EventHandler</em> zur Laufzeit aufruft. Da während der Entwicklung (damit meine ich bevor kompiliert und ausgeführt wird) noch nicht klar ist, welches konkrete Steuerelement (also insbesondere welcher Datentypen) der Aufrufer ist, hat der Parameter <code class="highlighter-rouge">sender</code> den Datenytyp <code class="highlighter-rouge">object</code>.</p>
+
+<p>Möchtest du an dem aufrufendem Steuerelement etwas ändern, musst du wissen von welchem Datentyp es ist und dann kannst du den <code class="highlighter-rouge">sender</code> in diesen Datentyp umwandeln (im Artikel <a href="/csharp-tutorial-deutsch/typkonvertierung-mit-cast/">Was macht ein Cast (Typkonvertierung / Umwandlung) in C#?</a> erkläre ich dir was das bedeutet). Da in unserem Beispiel nur der eine <code class="highlighter-rouge">Button</code> mit dem <em>EventHandler</em> <code class="highlighter-rouge">EinTollerButton_Click</code> verbunden ist, ist klar, dass es sich bei dem <code class="highlighter-rouge">sender</code> um einen <code class="highlighter-rouge">Button</code> handeln muss. Somit kannst du also den <code class="highlighter-rouge">sender</code> per <em>Cast</em> in einen <code class="highlighter-rouge">Button</code> umwandeln und dann kannst du auf seine Eigenschaften zugreifen.</p>
+
+<p>Möchtest du beispielsweise den <code class="highlighter-rouge">Button</code> deaktivieren nachdem er geklickt wurde, dann würde dein <em>EventHandler</em> so aussehen:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">private</span> <span class="k">void</span> <span class="nf">EinTollerButton_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">RoutedEventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">Button</span> <span class="n">derSenderAlsButton</span> <span class="p">=</span> <span class="p">(</span><span class="n">Button</span><span class="p">)</span><span class="n">sender</span><span class="p">;</span> <span class="c1">// Cast auf Button -&gt; gibt InvalidCastException, wenn sender kein Button ist!</span>
+  <span class="n">derSenderAlsButton</span><span class="p">.</span><span class="n">IsEnabled</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span> <span class="c1">// ab jetzt wird der Button grau dargestellt und kann nicht mehr geklickt werden.</span>
+
+  <span class="c1">// hier folgt weiterer Quellcode den du bei einem Click ausführen möchtest</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Wie im Kommentar geschrieben, musst du jedoch aufpassen, dass der <code class="highlighter-rouge">sender</code> wirklich ein <code class="highlighter-rouge">Button</code> ist. Ist er kein <code class="highlighter-rouge">Button</code> bekommst du an der Stelle eine <code class="highlighter-rouge">InvalidCastException</code> geschmissen. Weitere Details findest du wie gesagt im Artikel <a href="/csharp-tutorial-deutsch/typkonvertierung-mit-cast/">Was macht ein Cast (Typkonvertierung / Umwandlung) in C#?</a>.</p>
+
+<h3 id="steuerelement-über-das-umgebende-window-verändern">Steuerelement über das umgebende <code class="highlighter-rouge">Window</code> verändern</h3>
+<p>Nun hat nicht jedes Steuerelement einen <em>EventHandler</em> und du möchtest vielleicht auch an einem Steuerelement etwas verändern, wenn nicht gerade ein <code class="highlighter-rouge">Event</code> ausgelöst wurde. Dann kannst du im <em>code-behind</em> direkt auf das Steuerelement über seinen Namen zugreifen. Warum die Steuerelemente im <em>code-behind</em> verfügbar sind, erkläre ich dir im Artikel <a href="/alle/xaml-code-behind/">XAML, *.g.i.cs und code-behind in WPF</a>.</p>
+
+<p>Kommen wir auf das Beispiel von eben zurück. Wenn du dir nochmals das <em>XAML</em> anschaust, siehst du, dass ich dort einen <code class="highlighter-rouge">Button</code> mit dem Namen <code class="highlighter-rouge">einTollerButton</code> angelegt habe. Nachdem die <code class="highlighter-rouge">InitializeComponent</code> Methode im <em>Konstruktor</em> vom <code class="highlighter-rouge">MainWindow</code> aufgerufen wurde, kannst du über den Namen auf das Steuerelement zugreifen:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">partial</span> <span class="k">class</span> <span class="nc">MainWindow</span> <span class="p">:</span> <span class="n">Window</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nf">MainWindow</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nf">InitializeComponent</span><span class="p">();</span>
+        
+        <span class="n">einTollerButton</span><span class="p">.</span><span class="n">Content</span> <span class="p">=</span> <span class="s">"Text auf Button!"</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">void</span> <span class="nf">EineBeliebigeMethode</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// auch hier kann auf den Button zugegriffen werden, weil wir im Kontext des MainWindow sind.</span>
+        <span class="n">einTollerButton</span><span class="p">.</span><span class="n">IsEnabled</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Wichtig:</strong> Durch die <code class="highlighter-rouge">InitializeComponent</code> Methode werden erst die ganzen Steuerelemente angelegt. Versuchst du vor dem Aufruf der Methode auf ein Steuerelement zu zugreifen, oder entfernst du den Aufruf dieser Methode, gibt es zur Laufzeit eine <code class="highlighter-rouge">NullReferenceException</code>!!!</p>
+
+<h3 id="zugriff-auf-steuerelemente-über-den-umgebenden-container">Zugriff auf Steuerelemente über den umgebenden Container</h3>
+<p>In jedem <em>XAML Root Element</em> muss mindestens ein <em>Container</em> definiert sein. Ein solcher <em>Container</em> ist beispielsweise das <code class="highlighter-rouge">Grid</code>-Panel (Mehr dazu im Artikel <a href="/alle/wpf-grid-panel-xaml-grundlagen/">Grundlagen des WPF Grid-Panels in XAML</a>).</p>
+
+<p>Steuerelemente werden nur angezeigt, wenn sie in einem <em>Container</em> enthalten sind. In <em>XAML</em> kannst du sogar ein <em>Steuerelement</em> nur innerhalb eines <em>Container</em> anlegen. Ansonsten beschwert sich der <em>Compiler</em>.</p>
+
+<p>Jeder <em>Container</em> hat die Eigenschaft <code class="highlighter-rouge">Children</code> vom Typ <code class="highlighter-rouge">UIElementCollection</code>. Darin sind alle Steuerelemente enthalten, die im Kontext des <em>Container</em> definiert sind. Somit kannst du über die Eigenschaft <code class="highlighter-rouge">Children</code> auf die Steuerelemente zugreifen.</p>
+
+<p>Um das am Beispiel zu zeigen, lege ich erstmal ein paar weitere Steuerelemente im <em>XAML</em> an (ich zeige jetzt nur noch das <code class="highlighter-rouge">Grid</code>, der Rest bleibt wie vorher):</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;Grid</span> <span class="na">x:Name=</span><span class="s">"einContainer"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Label</span> <span class="na">x:Name=</span><span class="s">"einLabel"</span> <span class="na">Content=</span><span class="s">"Gib etwas ein:"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;TextBox</span> <span class="na">x:Name=</span><span class="s">"eineTextBox"</span> <span class="na">ToolTip=</span><span class="s">"Gib einen Text ein!"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;Button</span> <span class="na">x:Name=</span><span class="s">"okButton"</span> <span class="na">Content=</span><span class="s">"Ok"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;Button</span> <span class="na">x:Name=</span><span class="s">"speichernButton"</span> <span class="na">Content=</span><span class="s">"Speichern"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/Grid&gt;</span>
+</code></pre></div></div>
+
+<p>Möchtest du nun beispielsweise alle Steuerelemente vom Typ <code class="highlighter-rouge">Button</code> deaktivieren (z.B. um erst eine Aktion auszuführen, wenn in der <code class="highlighter-rouge">TextBox</code> etwas eingegeben wurde), dann könntest du das so machen:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">foreach</span> <span class="p">(</span><span class="n">UIElement</span> <span class="n">item</span> <span class="k">in</span> <span class="n">einContainer</span><span class="p">.</span><span class="n">Children</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">item</span> <span class="k">is</span> <span class="n">Button</span> <span class="n">derButton</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">derButton</span><span class="p">.</span><span class="n">IsEnabled</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Da die Eigenschaft <code class="highlighter-rouge">Children</code> vom Typ <code class="highlighter-rouge">UIElementCollection</code> ist, kannst du mithilfe der <code class="highlighter-rouge">foreach</code>-Schleife über alle enthaltenen Steuerelemente laufen. Um nun auf die jeweiligen Details der <code class="highlighter-rouge">UIElement</code> zugreifen zu können, teste ich mithilfe von <code class="highlighter-rouge">item is Button derButton</code> ob <code class="highlighter-rouge">item</code> vielleicht ein <code class="highlighter-rouge">Button</code> ist und wenn ja, dann deaktiviere ich ihn.</p>
+
+<p>Wie du anhand des Beispiels siehst, ist diese Art des Zugriffs hauptsächlich dafür geeignet, alle Steuerelemente eines gewissen Typs zu manipulieren. Ansonsten ist der Zugriff über den <em>Namen</em> (wie im letzten Abschnitt beschrieben) wesentlich einfacher.</p>
+
+<p>Nun kennst du die 3 wichtigsten Arten um auf die Steuerelemente im <em>code-behind</em> zu zugreifen. Das hier gewonnene theoretische Wissen kannst du im <em>WPF</em>-Übungskurs direkt in die Praxis umsetzen:</p>
+
+<div class="subscribe-notice">
+  <h5>Melde dich jetzt (unverbindlich und kostenlos) für den WPF Übungskurs an:</h5>
+  <a href="http://localhost:63266/lernmail-kurse/wpf-tictactoe-fuer-einsteiger/" class="notice-button">Los gehts &gt;&gt;</a>
+</div>
+
+<p>Viel Spaß auf deinem Weg vom Einsteiger zum C# Entwickler</p>
+
+<p>Jan von LernMoment.de</p>
+
+        
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:63266/alle/hinweise-anzeigen-mit-messagebox/" class="btn" title="Hinweise anzeigen mit WPF-MessageBox">Vorheriger</a>
+      
+      
+        <a href="http://localhost:63266/alle/wpf-controls-deaktivieren-verstecken/" class="btn" title="WPF-Steuerelementen deaktivieren und verstecken">Nächster</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<div class="social-icons">
+	
+	
+	
+	<a href="http://www.youtube.com/channel/UC5jCUQ6IPHtQP5r4y9byCqA" title="Jan Suchotzki on YouTube" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
+	
+	<a href="http://stackoverflow.com/users/5258906/jan-suchotzki" title="Jan Suchotzki on StackExchange" target="_blank"><i class="fa fa-stack-exchange fa-2x"></i></a>
+	
+	
+	<a href="http://github.com/lernmoment" title="Jan Suchotzki on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+    
+	
+  <a href="http://localhost:63266/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+<span>Danke an <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> und <a href="http://mademistakes.com/so-simple/" rel="nofollow">Made Mistakes</a> für hervorragende Tools.</span>
+<br>
+<span><a href="http://localhost:63266/kein-copyright/">Kein Copyright</a>    -    <a href="http://localhost:63266/impressum/">Impressum</a>    -    <a href="http://localhost:63266/datenschutz/">Datenschutz</a></span>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:63266';
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:63266/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:63266/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

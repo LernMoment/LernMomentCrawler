@@ -1,0 +1,261 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Settings - (benutzerspezifische) Konfigurationseinstellungen &#8211; LernMoment.de</title>
+<meta name="description" content="Wie du anwendungs- oder benutzerspezifische Konfigurationen speichern und laden kannst.">
+<meta name="keywords" content="Anwendungseinstellungen, C#, Video, Tutorial">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Settings - (benutzerspezifische) Konfigurationseinstellungen">
+<meta name="twitter:description" content="Wie du anwendungs- oder benutzerspezifische Konfigurationen speichern und laden kannst.">
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:63266/images/banner/lernmoment-vs.jpg">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="de_DE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Settings - (benutzerspezifische) Konfigurationseinstellungen">
+<meta property="og:description" content="Wie du anwendungs- oder benutzerspezifische Konfigurationen speichern und laden kannst.">
+<meta property="og:url" content="http://localhost:63266/csharp-tutorial-deutsch/anwendungseinstellungen-visual-studio/">
+<meta property="og:site_name" content="LernMoment.de">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="sPPXWqQjaSqa_ZgqYPNCyVLLaFzVAFCuf3xDBC-ofwE">
+
+
+
+<link rel="canonical" href="http://localhost:63266/csharp-tutorial-deutsch/anwendungseinstellungen-visual-studio/">
+<link href="http://localhost:63266/feed.xml" type="application/atom+xml" rel="alternate" title="LernMoment.de Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:63266/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:63266/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:63266/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:63266/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:63266/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:63266/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:63266/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:63266/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+
+
+<div class="navigation-banner">
+	
+	
+
+	Lerne programmieren mit mir im Kurs: <a href="http://localhost:63266/einstieg-csharp/" >Einstieg in C# -></a>
+</div>
+
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:63266/kurse/" >Kurse</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/schwerpunkt/" >Dein Weg zum C# Entwickler</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/projekt-start/" >Entwicklung & Mentoring</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/blog/" >Blog</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	
+		<div class="wrap">
+			<a href="http://localhost:63266/" class="site-logo" rel="home" title="LernMoment.de"><img src="http://localhost:63266/images/site-logo.png" width="200" height="200" alt="LernMoment.de logo" class="animated fadeInDown"></a>
+		</div>
+	
+</header><!-- /.masthead -->
+
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <img src="http://localhost:63266/images/banner/lernmoment-vs.jpg" class="entry-feature-image" alt="Settings - (benutzerspezifische) Konfigurationseinstellungen" >
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"><a href="http://localhost:63266/tags/#Anwendungseinstellungen" title="Pages tagged Anwendungseinstellungen">Anwendungseinstellungen</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#C#" title="Pages tagged C#">C#</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Video" title="Pages tagged Video">Video</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Tutorial" title="Pages tagged Tutorial">Tutorial</a></span>
+        
+          <h1 class="entry-title">Settings - (benutzerspezifische) Konfigurationseinstellungen</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <span class="author vcard">Von <span class="fn">Jan Suchotzki</span></span>
+        <span class="entry-date date published"><time datetime="2016-12-12T07:00:00+01:00"><i class="fa fa-calendar-o"></i> 12. December 2016</time></span>
+        
+        
+        
+        
+      </footer>
+      <div class="entry-content">
+        <blockquote>
+  <p>Schau dir auch die weiteren Folgen des <a href="/csharp-tutorial-deutsch/">C# Tutorial Deutsch</a> an.</p>
+</blockquote>
+
+<p>Es gibt einige Fälle in denen es hilfreich ist Konfigurationseinstellungen für deine Anwendung zu speichern. Typische Szenarien sind beispielsweise:</p>
+
+<ul>
+  <li>Der zuletzt verwendete Dateipfad (benutzerspezifisch)</li>
+  <li>Zuletzt verwendete Position und Größe des Fensters deiner Anwendung (benutzerspezifisch)</li>
+  <li>Verbindungsdaten zum Zugriff auf einen Server (anwendungs- und/oder benutzerspezifisch)</li>
+</ul>
+
+<p>In .NET nennt Microsoft diese Funktionalität <em>Anwendungseinstellungen</em> oder <em>Application Settings</em> auf Englisch.</p>
+
+<p>Da solche Szenarien in vielen Anwendung benötigt werden hat Microsoft vorgesorgt und stellt einen <em>“Designer”</em> und die Klasse <code class="highlighter-rouge">Properties.Settings</code> bereit. In diesem Artikel/Video zeige ich dir, wie du für eine Konsolenanwendung (bei WinForms- und WPF-Anwendungen geht es genauso) zur Entwurfszeit eine entsprechende Datei erstellst, deine Konfigurationsparameter definierst und Werte der Konfiguration zur Laufzeit lesen und ändern kannst.</p>
+
+<p><strong>ACHTUNG:</strong> Die so angelegte Datei mit den Konfigurationseinstellungen liegt unverschlüsselt auf der Festplatte deines Anwenders. Wenn du also sicherheitsrelevante Daten wie Passwörter in der Datei speichern möchtest, solltest du unbedingt die Datei verschlüsseln!</p>
+
+<p>Alles weitere erfährst du hier im Video:</p>
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/2HDA11673pU" frameborder="0" allow="encrypted-media" allowfullscreen=""></iframe>
+
+<div class="subscribe-notice">
+<h5>Du willst selber einen YouTube Client oder eine andere Anwendung entwickeln?</h5>
+<a href="https://www.udemy.com/course/einstieg-in-csharp-software-programmieren-wie-ein-profi/?couponCode=CS_20-1120_LMDE" class="notice-button">Hier geht's zum Online-Kurs "Einstieg in C#" &gt;&gt;</a>
+</div>
+
+<p><strong>FRAGEN?</strong> Du hast noch Fragen zum Thema Konfigurationseinstellungen? Dann stelle sie mir direkt unter diesem Video in den Kommentaren oder schicke sie mir <a href="mailto:jan@lernmoment,de">per Mail</a>. Ich würde mich freuen, wenn ich diesen Artikel noch für dich erweitern kann.</p>
+
+<h3 id="konfiguration-per-databinding-in-wpf">Konfiguration per Databinding in WPF</h3>
+
+<p>Wenn du schon etwas weiter bist und deine ersten WPF-Anwendungen schreibst, dann kannst du die Werte aus <code class="highlighter-rouge">Properties.Settings.Default</code> auch direkt an Oberflächenelemente via <em>Databinding</em> binden. Möchtest du beispielsweise den Konfigurationsparameter <code class="highlighter-rouge">ApiKey</code> an eine <code class="highlighter-rouge">TextBox</code> binden, dann könntest du die <code class="highlighter-rouge">Text</code>-Eigenschaft wie folgt binden: <code class="highlighter-rouge">Text="{Binding Source={x:Static properties:Settings.Default}, Path=ApiKey, Mode=TwoWay}"</code>.</p>
+
+<p>Wenn du dieses <code class="highlighter-rouge">Binding</code> ausprobierst, solltest du den Namensraum <code class="highlighter-rouge">properties</code> beachten. In <em>XAML</em> kannst du diesen so einbinden: <code class="highlighter-rouge">xmlns:properties="clr-namespace:MyYouTubeTestClient.Properties"</code>. Dabei ist <code class="highlighter-rouge">MyYouTubeTestClient</code> der Name deines Visual Studio Projekts.</p>
+
+<p>Ein weiterer wichtiger Punkt ist, dass du <code class="highlighter-rouge">Properties.Settings.Default</code> spätestens vor dem Verlassen der Anwendung noch speichern musst. Das könntest du beispielsweise in einem <em>EventHandler</em> am <code class="highlighter-rouge">Window.Closing</code> Event machen.</p>
+
+<h3 id="weitere-links">Weitere Links</h3>
+
+<ul>
+  <li>Den Quellcode zum <em>“Simple YouTube Client”</em> (inkl. Verwendung von <code class="highlighter-rouge">Settings</code>) findest du <a href="https://github.com/LernMoment/simple-youtube-client/">hier auf GitHub</a></li>
+  <li>Die allgemeine Einführung in das Thema findest in diesem <a href="https://msdn.microsoft.com/de-de/library/a65txexh.aspx">MSDN Artikel</a>.</li>
+  <li>Antworten auf die häufigst gestellten Fragen zu diesem Thema (nur in Englisch) gibt es <a href="https://blogs.msdn.microsoft.com/rprabhu/2005/06/29/client-settings-faq/">in diesem Artikel</a></li>
+  <li>In dieser Folge des Tutorials habe ich einen einfachen YouTube Client entwickelt. Die Dokumentation der <a href="https://developers.google.com/api-client-library/dotnet/apis/youtube/v3">YouTube Data API Client Library for .NET</a> hilft dir (ein wenig) bei den ersten Schritten.</li>
+  <li>Die <em>YouTube Data API</em> als <a href="https://www.nuget.org/packages/Google.Apis.YouTube.v3/">NuGet-Paket</a>.</li>
+</ul>
+
+<p>Viel Erfolg beim Konfigurieren deiner Anwendung</p>
+
+<p>Jan</p>
+
+        
+          <div class="subscribe-notice">
+            <h5>Dieser LernMoment hat dir gefallen? <br> Dann melde dich an und du wirst über neue LernMomente informiert:</h5>
+                <form action="https://lernmoment.us9.list-manage.com/subscribe/post" method="POST" target="_blank">
+      <input type="hidden" name="u" value="d0206d57f5002e40b651a0f60">
+      <input type="hidden" name="id" value="8845c28e62">
+      <input type="email" class="subscribe-notice-input-box" autocapitalize="off" autocorrect="off" name="MERGE0" id="MERGE0" size="25" value="" placeholder="Deine E-Mail-Adresse">
+      <input type="text" class="subscribe-notice-input-box" name="MERGE1" id="MERGE1" size="25" value="" placeholder="Dein Vorname (optional)">
+      
+        <input type="checkbox" id="group_1" name="group[20205][1]" value="1" checked="true" style="display:none">
+      
+      <input type="submit" class="subscribe-notice-button" name="submit" value="Ich bin dabei!">
+      <legend class="subscribe-notice-legend">Du bekommst in unregelmäßigen Abständen Mails von mir, in denen ich dich auf neue Artikel oder Angebote hinweise, die in das gleiche Themengebiet fallen wie dieser Artikel.</legend>
+    </form>
+
+          </div>
+        
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:63266/alle/einfach-schnell-effektiv-programmieren-ueben/" class="btn" title="Einfach, schnell und effektiv Programmieren üben. So geht's!">Vorheriger</a>
+      
+      
+        <a href="http://localhost:63266/csharp-tutorial-deutsch/methodenaufruf-und-stack/" class="btn" title="Der Stack und was beim Methodenaufruf passiert">Nächster</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<div class="social-icons">
+	
+	
+	
+	<a href="http://www.youtube.com/channel/UC5jCUQ6IPHtQP5r4y9byCqA" title="Jan Suchotzki on YouTube" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
+	
+	<a href="http://stackoverflow.com/users/5258906/jan-suchotzki" title="Jan Suchotzki on StackExchange" target="_blank"><i class="fa fa-stack-exchange fa-2x"></i></a>
+	
+	
+	<a href="http://github.com/lernmoment" title="Jan Suchotzki on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+    
+	
+  <a href="http://localhost:63266/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+<span>Danke an <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> und <a href="http://mademistakes.com/so-simple/" rel="nofollow">Made Mistakes</a> für hervorragende Tools.</span>
+<br>
+<span><a href="http://localhost:63266/kein-copyright/">Kein Copyright</a>    -    <a href="http://localhost:63266/impressum/">Impressum</a>    -    <a href="http://localhost:63266/datenschutz/">Datenschutz</a></span>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:63266';
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:63266/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:63266/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

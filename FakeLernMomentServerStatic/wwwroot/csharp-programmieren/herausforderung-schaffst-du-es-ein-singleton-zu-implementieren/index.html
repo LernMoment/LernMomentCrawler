@@ -1,0 +1,276 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Herausforderung - Schaffst du es ein Singleton zu implementieren? &#8211; LernMoment.de</title>
+<meta name="description" content="In 5 Minuten und ohne Hilfe?">
+<meta name="keywords" content="Übung, Pattern, Async">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Herausforderung - Schaffst du es ein Singleton zu implementieren?">
+<meta name="twitter:description" content="In 5 Minuten und ohne Hilfe?">
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:63266/images/banner/lernmoment-csharp.jpg">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="de_DE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Herausforderung - Schaffst du es ein Singleton zu implementieren?">
+<meta property="og:description" content="In 5 Minuten und ohne Hilfe?">
+<meta property="og:url" content="http://localhost:63266/csharp-programmieren/herausforderung-schaffst-du-es-ein-singleton-zu-implementieren/">
+<meta property="og:site_name" content="LernMoment.de">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="sPPXWqQjaSqa_ZgqYPNCyVLLaFzVAFCuf3xDBC-ofwE">
+
+
+
+<link rel="canonical" href="http://localhost:63266/csharp-programmieren/herausforderung-schaffst-du-es-ein-singleton-zu-implementieren/">
+<link href="http://localhost:63266/feed.xml" type="application/atom+xml" rel="alternate" title="LernMoment.de Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:63266/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:63266/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:63266/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:63266/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:63266/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:63266/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:63266/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:63266/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+
+
+<div class="navigation-banner">
+	
+	
+
+	Lerne programmieren mit mir im Kurs: <a href="http://localhost:63266/einstieg-csharp/" >Einstieg in C# -></a>
+</div>
+
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:63266/kurse/" >Kurse</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/schwerpunkt/" >Dein Weg zum C# Entwickler</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/projekt-start/" >Entwicklung & Mentoring</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/blog/" >Blog</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	
+		<div class="wrap">
+			<a href="http://localhost:63266/" class="site-logo" rel="home" title="LernMoment.de"><img src="http://localhost:63266/images/site-logo.png" width="200" height="200" alt="LernMoment.de logo" class="animated fadeInDown"></a>
+		</div>
+	
+</header><!-- /.masthead -->
+
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <img src="http://localhost:63266/images/banner/lernmoment-csharp.jpg" class="entry-feature-image" alt="Herausforderung - Schaffst du es ein Singleton zu implementieren?" >
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"><a href="http://localhost:63266/tags/#Übung" title="Pages tagged Übung">Übung</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Pattern" title="Pages tagged Pattern">Pattern</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Async" title="Pages tagged Async">Async</a></span>
+        
+          <h1 class="entry-title">Herausforderung - Schaffst du es ein Singleton zu implementieren?</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <span class="author vcard">Von <span class="fn">Jan Suchotzki</span></span>
+        <span class="entry-date date published"><time datetime="2015-10-06T06:00:00+02:00"><i class="fa fa-calendar-o"></i> 06. October 2015</time></span>
+        <span class="entry-date date modified"><time datetime="2015-10-07 13:00:00 +0200"><i class="fa fa-pencil"></i> 07. October 2015</time></span>
+        
+        
+        
+      </footer>
+      <div class="entry-content">
+        <p>Heute will ich es wissen. Bist du zu 100% bereit ein Meister der Softwareentwicklung in C# zu werden? Hier auf LernMoment.de findest du verschiedene Wege dein Wissen und deine Fähigkeiten zu erweitern. Du bekommst kleine Lerneinheiten und kontinuierliche Wissensabfrage. Es fehlt aber noch das Üben.</p>
+
+<p>Kontinuierliches und fokussiertes Üben ist ein weiterer wichtiger Schlüssel zur professionellen Softwareentwicklung. Ganz wichtig dabei ist, dass es einen Unterschied macht ob du dir Zeit nimmst eine Fähigkeit zu üben, oder ob du “nur” diese Fähigkeiten beim Arbeiten übst. Gerade eine fokussierte Übungseinheit bringt dich wesentlich weiter.</p>
+
+<p>Auch das Üben machst du hier auf LernMoment.de in kleinen Einheiten. Somit brauchst du wenig bis gar keine Motivation dafür.</p>
+
+<h3 id="herausforderung---thread-safe-singleton">Herausforderung - thread-safe Singleton</h3>
+
+<p>Ich habe eine Herausforderung für dich. Letzte Woche gab es den LernMoment <a href="/csharp-programmieren/ist-dein-singleton-thread-safe/">“Ist dein Singleton thread-safe?”</a> Heute ist es Zeit festzustellen, wie viel du davon umsetzen kannst. Dabei ist es ganz wichtig, dass du nur deine Entwicklungsumgebung oder einen Editor öffnest und ohne irgendeine Hilfe die Klasse implementierst. Also nicht mal gerade im LernMoment oder auf einer anderen Webseite nachschauen. Einfach nur dein Quelltext und du!</p>
+
+<p>Stelle dir einen Timer (z.B. in deinem Mobiltelefon) auf 5 Minuten. Nun implementiere innerhalb dieser 5 Minuten eine Klasse die das <em>Singleton Pattern</em> in einer Variante umsetzt, die <em>thread-safe</em> ist. Wenn du möchtest kannst du noch ein kleines Hauptprogramm schreiben, welches dein <em>Singleton</em> benutzt, aber das ist optional.</p>
+
+<p>Ich werde heute genau diese Herausforderung angehen und meine Lösung dann hier veröffentlichen. Wenn du möchtest, kannst du mir deine Lösung per <a href="mailto:jan@lernmoment.de">E-Mail</a> schicken. Du bekommst dann von mir eine kurze Rückmeldung dazu.</p>
+
+<h3 id="update---07-oktober-2015-mein-singleton">Update - 07. Oktober 2015: Mein Singleton</h3>
+
+<p>Wie ist es dir ergangen mit dieser Herausforderung? Ich muss sagen, dass ich heute nicht auswendig mein <em>Singleton</em> realisieren konnte. Da muss ich wohl noch ein wenig üben! Wenn du willst, kannst du mir immer noch deine Lösung schicken. Es würde mich unglaublich freuen, wenn neben meiner Version die ich dann mit “ein paar mal” nachschauen erstellt habe, noch weitere Lösungen hier veröffentlicht werden.</p>
+
+<p>Ich habe mich für die Version entschieden, bei der <code class="highlighter-rouge">Lazy&lt;T&gt;</code> benutzt wird. Sie kann also nur in .NET 4+ verwendet werden. Diese Lösung findest du ebenfalls im <a href="https://github.com/LernMoment/csharp/tree/master/Singleton">LernMoment GitHub Repository</a>.</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+
+<span class="c1">/// &lt;summary&gt;</span>
+<span class="c1">/// Ein Singleton basierend auf Lazy&lt;T&gt;</span>
+<span class="c1">/// &lt;/summary&gt;</span>
+<span class="k">sealed</span> <span class="k">class</span> <span class="nc">MeinSingleton</span>
+<span class="p">{</span>
+	<span class="k">private</span> <span class="k">static</span> <span class="k">readonly</span> <span class="n">Lazy</span><span class="p">&lt;</span><span class="n">MeinSingleton</span><span class="p">&gt;</span> <span class="n">dieInstanz</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Lazy</span><span class="p">&lt;</span><span class="n">MeinSingleton</span><span class="p">&gt;(()</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="nf">MeinSingleton</span><span class="p">());</span>
+
+	<span class="k">public</span> <span class="k">static</span> <span class="n">MeinSingleton</span> <span class="n">Instanz</span> <span class="p">{</span> <span class="k">get</span> <span class="p">{</span><span class="k">return</span> <span class="n">dieInstanz</span><span class="p">.</span><span class="n">Value</span><span class="p">;}}</span>
+
+	<span class="k">private</span> <span class="nf">MeinSingleton</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="c1">// Keinen öffentlichen Standardkonstruktor erlauben.</span>
+	<span class="p">}</span>
+
+	<span class="k">public</span> <span class="k">void</span> <span class="nf">SagHallo</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Hallo da draußen!"</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">/// &lt;summary&gt;</span>
+<span class="c1">/// Zeigt wie das Singleton verwendet werden kann</span>
+<span class="c1">/// &lt;/summary&gt;</span>
+<span class="k">class</span> <span class="nc">UebungSingletonImplementieren</span>
+<span class="p">{</span>
+	<span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">MeinSingleton</span> <span class="n">halloSager</span> <span class="p">=</span> <span class="n">MeinSingleton</span><span class="p">.</span><span class="n">Instanz</span><span class="p">;</span>
+
+		<span class="n">halloSager</span><span class="p">.</span><span class="nf">SagHallo</span><span class="p">();</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="vorsicht-bei-der-verwendung-von-singletons">Vorsicht bei der Verwendung von Singletons</h3>
+
+<p>Bereits im LernMoment <a href="/csharp-programmieren/ist-dein-singleton-thread-safe/">“Ist dein Singleton thread-safe?”</a> habe ich darauf hingewiesen, dass ein <em>Singleton</em> nicht immer praktisch ist. Beim Versuch diese Herausforderung zu lösen mit dem Ziel ein <em>“testbares” Singleton</em> zu erstellen, bin ich auf einige Artikel und Videos von <a href="http://misko.hevery.com/about/">Misko Hevery</a> gestoßen. Die absolut anschaulich zeigen welche Probleme ein <em>Singleton</em> beim Testen machen kann. Einen Überblick der relevanten Artikel (alle nur in Englisch verfügbar) findest du auf <a href="http://stackoverflow.com/a/2085988/5258906">StackOverflow</a>.</p>
+
+<p>Viel Spaß beim fokussierten Üben des <em>Singleton Patterns</em></p>
+
+<p>Jan</p>
+
+<p>PS: Hast du Fragen zu dieser Herausforderung, oder anderen Themen auf LernMoment.de? Dann schicke mir eine <a href="mailto:jan@lernmoment.de">E-Mail</a>. Ich werde dir persönlich antworten. Versprochen!</p>
+
+        
+          <div class="subscribe-notice">
+            <h5>Dieser LernMoment hat dir gefallen? <br> Dann melde dich an und du wirst über neue LernMomente informiert:</h5>
+                <form action="https://lernmoment.us9.list-manage.com/subscribe/post" method="POST" target="_blank">
+      <input type="hidden" name="u" value="d0206d57f5002e40b651a0f60">
+      <input type="hidden" name="id" value="8845c28e62">
+      <input type="email" class="subscribe-notice-input-box" autocapitalize="off" autocorrect="off" name="MERGE0" id="MERGE0" size="25" value="" placeholder="Deine E-Mail-Adresse">
+      <input type="text" class="subscribe-notice-input-box" name="MERGE1" id="MERGE1" size="25" value="" placeholder="Dein Vorname (optional)">
+      
+        <input type="checkbox" id="group_1" name="group[20205][1]" value="1" checked="true" style="display:none">
+      
+      <input type="submit" class="subscribe-notice-button" name="submit" value="Ich bin dabei!">
+      <legend class="subscribe-notice-legend">Du bekommst in unregelmäßigen Abständen Mails von mir, in denen ich dich auf neue Artikel oder Angebote hinweise, die in das gleiche Themengebiet fallen wie dieser Artikel.</legend>
+    </form>
+
+          </div>
+        
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:63266/csharp-programmieren/datatemplate-stelle-mhelos-details-deiner-objekte-in-wpf-dar/" class="btn" title="Data-Templates - Stelle mühelos Details deiner Objekte in WPF dar">Vorheriger</a>
+      
+      
+        <a href="http://localhost:63266/csharp-programmieren/kannst-du-den-namen-einer-klasse-methode-ausgeben/" class="btn" title="Kannst du den Namen einer Klasse, Methode, ... ausgeben?">Nächster</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<div class="social-icons">
+	
+	
+	
+	<a href="http://www.youtube.com/channel/UC5jCUQ6IPHtQP5r4y9byCqA" title="Jan Suchotzki on YouTube" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
+	
+	<a href="http://stackoverflow.com/users/5258906/jan-suchotzki" title="Jan Suchotzki on StackExchange" target="_blank"><i class="fa fa-stack-exchange fa-2x"></i></a>
+	
+	
+	<a href="http://github.com/lernmoment" title="Jan Suchotzki on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+    
+	
+  <a href="http://localhost:63266/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+<span>Danke an <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> und <a href="http://mademistakes.com/so-simple/" rel="nofollow">Made Mistakes</a> für hervorragende Tools.</span>
+<br>
+<span><a href="http://localhost:63266/kein-copyright/">Kein Copyright</a>    -    <a href="http://localhost:63266/impressum/">Impressum</a>    -    <a href="http://localhost:63266/datenschutz/">Datenschutz</a></span>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:63266';
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:63266/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:63266/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

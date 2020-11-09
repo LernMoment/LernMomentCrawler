@@ -1,0 +1,388 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Was macht ein Cast (Typkonvertierung / Umwandlung) in C#? &#8211; LernMoment.de</title>
+<meta name="description" content="Manchmal stehst du vor dem Problem, dass du ein Objekt von Typ X hast, aber eins vom Typ Y benötigst. Dann kann dir ein Cast helfen.">
+<meta name="keywords" content="Syntax, Konzept, Datentypen">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Was macht ein Cast (Typkonvertierung / Umwandlung) in C#?">
+<meta name="twitter:description" content="Manchmal stehst du vor dem Problem, dass du ein Objekt von Typ X hast, aber eins vom Typ Y benötigst. Dann kann dir ein Cast helfen.">
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:63266/images/banner/lernmoment-csharp.jpg">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="de_DE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Was macht ein Cast (Typkonvertierung / Umwandlung) in C#?">
+<meta property="og:description" content="Manchmal stehst du vor dem Problem, dass du ein Objekt von Typ X hast, aber eins vom Typ Y benötigst. Dann kann dir ein Cast helfen.">
+<meta property="og:url" content="http://localhost:63266/csharp-tutorial-deutsch/typkonvertierung-mit-cast/">
+<meta property="og:site_name" content="LernMoment.de">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="sPPXWqQjaSqa_ZgqYPNCyVLLaFzVAFCuf3xDBC-ofwE">
+
+
+
+<link rel="canonical" href="http://localhost:63266/csharp-tutorial-deutsch/typkonvertierung-mit-cast/">
+<link href="http://localhost:63266/feed.xml" type="application/atom+xml" rel="alternate" title="LernMoment.de Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:63266/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:63266/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:63266/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:63266/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:63266/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:63266/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:63266/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:63266/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+
+
+<div class="navigation-banner">
+	
+	
+
+	Lerne programmieren mit mir im Kurs: <a href="http://localhost:63266/einstieg-csharp/" >Einstieg in C# -></a>
+</div>
+
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:63266/kurse/" >Kurse</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/schwerpunkt/" >Dein Weg zum C# Entwickler</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/projekt-start/" >Entwicklung & Mentoring</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/blog/" >Blog</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	
+		<div class="wrap">
+			<a href="http://localhost:63266/" class="site-logo" rel="home" title="LernMoment.de"><img src="http://localhost:63266/images/site-logo.png" width="200" height="200" alt="LernMoment.de logo" class="animated fadeInDown"></a>
+		</div>
+	
+</header><!-- /.masthead -->
+
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <img src="http://localhost:63266/images/banner/lernmoment-csharp.jpg" class="entry-feature-image" alt="Was macht ein Cast (Typkonvertierung / Umwandlung) in C#?" >
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"><a href="http://localhost:63266/tags/#Syntax" title="Pages tagged Syntax">Syntax</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Konzept" title="Pages tagged Konzept">Konzept</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Datentypen" title="Pages tagged Datentypen">Datentypen</a></span>
+        
+          <h1 class="entry-title">Was macht ein Cast (Typkonvertierung / Umwandlung) in C#?</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <span class="author vcard">Von <span class="fn">Jan Suchotzki</span></span>
+        <span class="entry-date date published"><time datetime="2020-03-26T09:13:09+01:00"><i class="fa fa-calendar-o"></i> 26. March 2020</time></span>
+        
+        
+        
+        
+      </footer>
+      <div class="entry-content">
+        <p>Mmmmmoin und willkommen zu deinem LernMoment!</p>
+
+<p>Bei der Entwicklung von Oberflächen (wie z.B. im <a href="/lernmail-kurse/wpf-tictactoe-fuer-einsteiger/tag1-spielfeld-anlegen-new-sub/">kostenlosen WPF-Übungskurs</a>) wie auch an einigen anderen Stellen, hast du einen Wert vom Datentyp X, aber du bräuchtest eigentlich Datentyp Y. Unter gewissen Randbedingungen hilft dir dann ein <em>Cast</em>. Hier ein Beispiel für das eigentliche Problem:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">private</span> <span class="k">void</span> <span class="nf">Kaestchen_0_0_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">RoutedEventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">sender</span><span class="p">.</span><span class="n">Content</span> <span class="p">=</span> <span class="s">"X"</span><span class="p">;</span> <span class="c1">// IntelliSense zeigt Fehler CS1061 "object" enthält keine Defintion für "Content", ....</span>
+
+  <span class="c1">// es folgt weiterer Code, aber dieser ist für den cast nicht wichtig.</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In diesem Beispiel ist ein <em>EventHandler</em> (also letztlich eine Methode) mit dem <em>Parameter</em> <code class="highlighter-rouge">sender</code> vom Datentyp <code class="highlighter-rouge">object</code> definiert. Nur möchte ich in dem Beispiel gewisse Eigenschaften des <code class="highlighter-rouge">sender</code> verändern. Versuche ich direkt mit dem <code class="highlighter-rouge">sender</code> zu arbeiten, dann bekomme ich sofort den <a href="https://docs.microsoft.com/de-de/dotnet/csharp/language-reference/compiler-messages/cs1061">Compiler-Fehler <code class="highlighter-rouge">CS1061</code></a>. Was also tun?</p>
+
+<h3 id="typumwandlung-mit-explicit-cast">Typumwandlung mit explicit cast</h3>
+<p>Bevor wir zur Lösung des vorherigen Beispiels kommen, möchte ich dir das Prinzip und die grundlegende Idee eines <em>Cast</em> erklären.</p>
+
+<h4 id="typumwandlung-bei-werttypen-int-double-">Typumwandlung bei Werttypen (<code class="highlighter-rouge">int</code>, <code class="highlighter-rouge">double</code>, …)</h4>
+<p>Es gibt in C# doch einige Werttypen wie z.B. <code class="highlighter-rouge">int</code>, <code class="highlighter-rouge">short</code> oder auch <code class="highlighter-rouge">double</code> die sich in ihrem Wertebereich (und einigen anderen Aspekten) unterscheiden. Nehmen wir beispielsweise an, dass du die Variable <code class="highlighter-rouge">aShortValue</code> hast vom Datentyp <code class="highlighter-rouge">short</code>. Dieser Datentyp hat einen Wertebereich von <em>-32.768</em> bis <em>32.767</em> (siehe <a href="https://docs.microsoft.com/de-de/dotnet/csharp/language-reference/builtin-types/integral-numeric-types">hier</a> für weitere Details). Möchtest du nun den Wert aus dieser Variable der Variablen <code class="highlighter-rouge">anIntValue</code> vom Datentyp <code class="highlighter-rouge">int</code> (Wertebereich von <em>-2.147.483.648</em> bis <em>2.147.483.647</em>) zuweisen, ist das kein Problem. Egal welchen Wert <code class="highlighter-rouge">aShortValues</code> besitzt, er passt immer in <code class="highlighter-rouge">anIntValue</code> rein. Der Wertebereich von <code class="highlighter-rouge">short</code> ist ja wesentlich kleiner als der von <code class="highlighter-rouge">int</code>. Bei einer solchen Zuweisung wird der <em>Datentyp</em> implizit von <code class="highlighter-rouge">short</code> nach <code class="highlighter-rouge">int</code> umgewandelt.</p>
+
+<p>Wenn du das jedoch andersrum probierst (also <code class="highlighter-rouge">aShortValue = anIntValue</code>), dann bekommst du den Fehler <code class="highlighter-rouge">CS0266</code> vom <em>Compiler</em> angezeigt. Der <em>Compiler</em> weiß nämlich nicht welchen tatsächlichen Wert die Variable <code class="highlighter-rouge">anIntValue</code> zur Laufzeit haben wird. Daher schaut er auf die Datentypen und merkt, dass der Wertebereich von <code class="highlighter-rouge">int</code> wesentlich größer ist als der von <code class="highlighter-rouge">short</code>. Würde er die Zuweisung nun zulassen und <code class="highlighter-rouge">anIntValue</code> hätte beispielsweise den Wert <em>32.768</em> (also exakt um eins größer als der zulässige Wertebereich von <code class="highlighter-rouge">short</code>), dann gäbe es einen Überlauf. D.h. der Wert von <code class="highlighter-rouge">aShortValue</code> wäre dann <em>-32.768</em>. Er wird also plötzlich negativ. Dies kann dann potentiell alle möglichen anderen Fehler nach sich ziehen.</p>
+
+<p>Um solche Fehler zu vermeiden, wurde <em>C#</em> als <em>statisch typisierte</em> Programmiersprache entworfen. D.h. du bekommst einen Compilerfehler, wenn du versuchst Datentypen in einander zu konvertieren bei denen ein Überlauf stattfinden kann. Hier das passende Beispiel zu der ganzen Theorie (probiere es ruhig als Konsolenanwendung aus):</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">short</span> <span class="n">aShortValue</span> <span class="p">=</span> <span class="m">10</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">anIntValue</span> <span class="p">=</span> <span class="n">aShortValue</span><span class="p">;</span> <span class="c1">//hier findet eine implizite Typumwandlung statt - OKAY!</span>
+
+    <span class="n">anIntValue</span> <span class="p">=</span> <span class="kt">short</span><span class="p">.</span><span class="n">MaxValue</span> <span class="p">+</span> <span class="m">1</span><span class="p">;</span>
+    <span class="c1">//aShortValue = anIntValue; //CS0266 - Der Typ "int" kann nicht implizit in "short" konvertiert werden.</span>
+
+    <span class="n">aShortValue</span> <span class="p">=</span> <span class="p">(</span><span class="kt">short</span><span class="p">)</span><span class="n">anIntValue</span><span class="p">;</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">$"anIntValue hat den Wert </span><span class="p">{</span><span class="n">anIntValue</span><span class="p">}</span><span class="s">"</span><span class="p">);</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">$"aShortValue hat den Wert </span><span class="p">{</span><span class="n">aShortValue</span><span class="p">}</span><span class="s"> nach dem explicit Cast"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Wie du in diesem Beispiel siehst, habe ich dann doch die Zuweisung <code class="highlighter-rouge">aShortValue = (short)anIntValue;</code> gemacht (ohne Fehler vom Comipler). Dies liegt an dem Zusatz <code class="highlighter-rouge">(short)</code>. Dabei handelt es sich um eine explizite Typumwandlung (oder <em>Cast</em> auf Englisch). Damit sage ich dem <em>Compiler</em>: “Ja ich weiß, dass das dumm ist, aber ich will es trotzdem machen!” Wenn du dir dann die Ausgabe in dem Beispiel ansiehst, siehst du auch prompt den Überlauf.</p>
+
+<p>Es gibt verschiedene Szenarien in denen ein <em>Cast</em> angewendet wird. Üblicherweise dann, wenn du dir sicher bist, dass dadurch keine Informationen verloren gehen oder wenn der Informationsverlust für die weitere Bearbeitung nicht wichtig ist. Grundsätzlich solltest du jedoch bei jedem <em>Cast</em> misstrauisch sein.</p>
+
+<p>Das grundlegende Konzept eines <em>Cast</em> sollte dir nun bekannt sein. Ein Zuweisung mithilfe einer expliziten Typumwandlung folgt immer dem gleichen Muster:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">short</span> <span class="n">aShortValue</span><span class="p">;</span>
+<span class="c1">//Variable vom Zieltyp = (Zieltyp)Variable vom Ausgangstyp</span>
+<span class="kt">double</span> <span class="n">aDoubleValue</span> <span class="p">=</span> <span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="n">aShortValue</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h4 id="typumwandlung-bei-referenztypen">Typumwandlung bei Referenztypen</h4>
+<p>Bei den Referenztypen, also Klassen, Arrays, <code class="highlighter-rouge">string</code> usw., gibt es sowohl implizite wie auch explizite Typumwandlung. Eine implizite Typumwandlung passiert, wenn du von einer <em>abgeleiteten Klasse</em> in eine <em>Basisklasse</em> konvertieren möchtest. Ein einfaches Beispiel könnte so aussehen:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">MeineTolleKlasse</span> <span class="p">{</span> <span class="p">}</span> <span class="c1">// jede Klasse in C# erbt automatisch von object</span>
+
+<span class="k">class</span> <span class="nc">Program</span>
+<span class="p">{</span>
+    <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">MeinTolleKlasse</span> <span class="n">eineVariable</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">MeineTolleKlasse</span><span class="p">();</span>
+      <span class="c1">//im folgenden findet eine implizite Konvertierung statt</span>
+      <span class="kt">object</span> <span class="n">eineAndereVariable</span> <span class="p">=</span> <span class="n">eineVariable</span><span class="p">;</span> 
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Durch die Definition der Klasse ist dem <em>Compiler</em> (während des kompilierens) klar, dass eine abgeleitete Klasse den Anteil jeder Basisklasse enthält. Somit kann es zu keinen Problemen kommen.</p>
+
+<p>Versuchst du es jedoch in die andere Richtung (Umwandlung einer Variablen der Basisklasse in eine abgeleitete Klasse), dann bockt der <em>Compiler</em> wieder mit der Meldung <code class="highlighter-rouge">CS0266</code>. Die vollständige Fehlermeldung ist dann:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Fehler	CS0266	Der Typ "object" kann nicht implizit in "MeineTolleKlasse" konvertiert werden. 
+Es ist bereits eine explizite Konvertierung vorhanden (möglicherweise fehlt eine Umwandlung).
+</code></pre></div></div>
+
+<p>Wie es bei einer “guten” Fehlermeldung sein sollte, gibt sie uns bereits einen Hinweis wie eine Behebung aussehen könnte. Machen wir wie uns geheißen und verwenden einen <em>Cast</em>, dann funktioniert das plötzlich ganz hervorragend:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">MeineTolleKlasse</span> <span class="p">{</span> <span class="p">}</span> <span class="c1">// jede Klasse in C# erbt automatisch von object</span>
+
+<span class="k">class</span> <span class="nc">Program</span>
+<span class="p">{</span>
+    <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">MeinTolleKlasse</span> <span class="n">eineVariable</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">MeineTolleKlasse</span><span class="p">();</span>
+      <span class="kt">object</span> <span class="n">eineAndereVariable</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">MeineTolleKlasse</span><span class="p">();</span>
+      <span class="c1">//im folgenden findet eine explizite Umwandlung statt</span>
+      <span class="n">eineVariable</span> <span class="p">=</span> <span class="p">(</span><span class="n">MeineTolleKlasse</span><span class="p">)</span><span class="n">eineAndereVariable</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Dafür das dieser <em>Cast</em> funktioniert, muss jedoch die Variable vom Typ der Basisklasse (in diesem Beispiel also <code class="highlighter-rouge">eineAndereVariable</code>) auf ein Objekt der abgeleiteten Klassen in die der Typ umgewandelt werden soll (in diesem Beispiel also <code class="highlighter-rouge">MeineTolleKlasse</code>) zeigen. Ist das nicht der Fall, dann gibt es eine <code class="highlighter-rouge">InvalidCastException</code>:</p>
+
+<p><img src="http://localhost:63266/images/typkonvertierung-mit-cast/invalid-cast-exception.jpg" alt="InvalidCastException" /></p>
+
+<p>Wie du siehst, hebelst du also mit einem <em>Cast</em> die Typisierung aus. Wie bereits erwähnt solltest du dir also wirklich sicher sein was du tust und vor allem was <strong>zur Laufzeit</strong> in deiner Anwendung passieren kann, wenn du einen <em>Cast</em> verwendest.</p>
+
+<p>Nach diesem umfangreichen Exkurs geht es nun zum Beispiel vom Anfang des Kapitels zurück. Dort gab es einen <em>EventHandler</em> in dem ich auf den <code class="highlighter-rouge">sender</code> zugreifen wollte:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">private</span> <span class="k">void</span> <span class="nf">Kaestchen_0_0_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">RoutedEventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">Button</span> <span class="n">kaestchen</span> <span class="p">=</span> <span class="p">(</span><span class="n">Button</span><span class="p">)</span><span class="n">sender</span><span class="p">;</span>
+  <span class="n">kaestchen</span><span class="p">.</span><span class="n">Content</span> <span class="p">=</span> <span class="s">"X"</span><span class="p">;</span>
+
+  <span class="c1">// es folgt weiterer Code, aber dieser ist für den cast nicht wichtig.</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Wie du siehst ist die Lösung ganz einfach. Ich verwende einen <em>Cast</em> um den <code class="highlighter-rouge">sender</code> vom Typ <code class="highlighter-rouge">object</code> in einen <code class="highlighter-rouge">Button</code> zu wandeln mit dem ich dann arbeiten kann. In diesem Fall habe ich mich für den <em>Cast</em> entschieden, weil ich die Gefahr einer <code class="highlighter-rouge">InvalidCastException</code> für vertretbar halte. Solange ich den <em>EventHandler</em> nicht an einem Steuerelemente anmelde welches nicht vom Typ <code class="highlighter-rouge">Button</code> ist, läuft alles ohne Probleme.</p>
+
+<h3 id="as-operator-als-sicherheitsnetz-für-die-typkonvertierung"><code class="highlighter-rouge">as</code> Operator als Sicherheitsnetz für die Typkonvertierung</h3>
+<p>Bisher habe ich immer auf die Gefahren des <em>Cast</em> hingewiesen. Um diese abzumildern, gibt es 2 weitere Operatoren in C# die dich bei Typumwandlungen unterstützen. Einer davon ist <code class="highlighter-rouge">as</code>.</p>
+
+<p>Bevor ich in die Details gehe, gibt es eine Frage die du dir im Zusammenhang mit einem <em>Cast</em> eines <strong>Referenztypen</strong> stellen solltest:</p>
+
+<p><em>Wie sicher ist es, dass die Referenz auf ein Objekt zeigt, welches vom gewünschten Typ ist?</em></p>
+
+<p>Im Beispiel mit dem <code class="highlighter-rouge">Button</code> ist also die Frage wie sicher bin ich mir, dass hinter dem <code class="highlighter-rouge">sender</code> tatsächlich ein <code class="highlighter-rouge">Button</code> steckt? Dafür möchte ich 2 mögiche Antworten betrachten:</p>
+
+<ol>
+  <li><em><code class="highlighter-rouge">sender</code> <strong>sollte</strong> auf einen <code class="highlighter-rouge">Button</code> zeigen</em> -&gt; Wenn <code class="highlighter-rouge">sender</code> nicht auf einen <code class="highlighter-rouge">Button</code> zeigt ist irgendwas komplett falsch gelaufen. In diesem Beispiel könnte es sein, dass ich z.B. den <em>EventHandler</em> an einem anderen Steuerelement als einem <code class="highlighter-rouge">Button</code> anmelde. Das ist jedoch ein Fehler und die <code class="highlighter-rouge">InvalidCastException</code> die durch den <em>Cast</em> entsteht macht dieses eindeutig.</li>
+  <li><em><code class="highlighter-rouge">sender</code> <strong>könnte</strong> auf einen <code class="highlighter-rouge">Button</code> zeigen</em> -&gt; Wenn ich beispielsweise eine Auflistung von verschiedenen Steuerelementen durchlaufe und möchte eine gewisse Aktion für alle <code class="highlighter-rouge">Button</code> darin ausführen, dann ist der <em>Cast</em> nicht das passenden Mittel. Ich gehe ja von Anfang an davon aus, dass auch etwas anderes als ein <code class="highlighter-rouge">Button</code> kommt und somit wäre eine <code class="highlighter-rouge">InvalidCastException</code> nicht der richtige Weg. Vorhang auf für den <code class="highlighter-rouge">as</code> Operator!</li>
+</ol>
+
+<p>Dazu ein weiteres Beispiel aus dem <a href="/lernmail-kurse/wpf-tictactoe-fuer-einsteiger/tag1-spielfeld-anlegen-new-sub/">kostenlosen WPF-Übungskurs</a>:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// "Spielfeld" ist eine Instanz vom Grid-Steuerelement</span>
+<span class="k">private</span> <span class="kt">bool</span> <span class="nf">IstSpielfeldVoll</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">item</span> <span class="k">in</span> <span class="n">Spielfeld</span><span class="p">.</span><span class="n">Children</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">Button</span> <span class="n">kaestchen</span> <span class="p">=</span> <span class="n">item</span> <span class="k">as</span> <span class="n">Button</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">kaestchen</span> <span class="p">==</span> <span class="k">null</span> <span class="p">||</span> <span class="n">kaestchen</span><span class="p">.</span><span class="n">Content</span><span class="p">.</span><span class="nf">ToString</span><span class="p">()</span> <span class="p">==</span> <span class="s">""</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Der <code class="highlighter-rouge">as</code> Operator probiert (zur Laufzeit) ob eine Konvertierung möglich ist. Wenn ja, dann wird die Konvertierung durchgeführt und wenn nein, dann gibt der Operator <code class="highlighter-rouge">null</code> zurück. Somit ist es wichtig, dass nach der Verwendung des <code class="highlighter-rouge">as</code>-Operator, <strong>immer</strong> das Resultat auf <code class="highlighter-rouge">null</code> überprüft wird.</p>
+
+<p>Im Gegensatz zum <em>Cast</em>, gibt es beim <code class="highlighter-rouge">as</code>-Operator keine <code class="highlighter-rouge">InvalidCastException</code>!</p>
+
+<h3 id="alternative-is-operator-mit-pattern-matching-ab-c-70">Alternative: <code class="highlighter-rouge">is</code>-Operator mit Pattern-Matching (ab C# 7.0)</h3>
+<p>2017 wurde die <a href="https://docs.microsoft.com/de-de/dotnet/csharp/whats-new/csharp-7">Sprachversion 7.0 von C#</a> eingeführt. Verwendest du <em>Visual Studio 2019</em> oder auch <em>Visual Studio 2017</em> in der aktuellsten Version, dann hast du immer mindestens die C#-Sprachversion 7.0 verfügbar. <a href="https://docs.microsoft.com/de-de/dotnet/csharp/language-reference/configure-language-version">Hier ein Artikel auf Microsoft Docs</a> der dir die ganzen Details der Sprachversionen erklärt.</p>
+
+<p>Ab C# 7.0 gibt es eine Funktionalität die nennt sich <em>Pattern Matching</em>. Ohne hier im Detail weiter darauf einzugehen (Thema für den nächsten Artikel ;), möchte ich dir diese Schreibweise noch zeigen. Sie ist dem <code class="highlighter-rouge">as</code>-Operator sehr ähnlich, aber sogar noch etwas kürzer:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// "Spielfeld" ist eine Instanz vom Grid-Steuerelement</span>
+<span class="k">private</span> <span class="kt">bool</span> <span class="nf">IstSpielfeldVoll</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">item</span> <span class="k">in</span> <span class="n">Spielfeld</span><span class="p">.</span><span class="n">Children</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">item</span> <span class="k">is</span> <span class="n">Button</span> <span class="n">kaestchen</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">kaestchen</span><span class="p">.</span><span class="n">Content</span><span class="p">.</span><span class="nf">ToString</span><span class="p">()</span> <span class="p">==</span> <span class="s">""</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Wie su siehst wird durch den <code class="highlighter-rouge">is</code> Operator getestet ob <code class="highlighter-rouge">item</code> ein <code class="highlighter-rouge">Button</code> ist. Zusätzlich wird, <strong>wenn die Bedingung erfüllt ist</strong>, direkt eine Variable mit dem Namen <code class="highlighter-rouge">kaestchen</code> angelegt. <strong>Wichtig:</strong> Auf diese Weise ist die Variable <code class="highlighter-rouge">kaestchen</code> innerhalb der <code class="highlighter-rouge">foreach</code>-Schleife verfügbar. Es wird jedoch <strong>nicht</strong> garantiert, dass sie auch tatsächlich auf einen <code class="highlighter-rouge">Button</code> zeigt. <strong>Nur innerhalb</strong> der <code class="highlighter-rouge">if</code>-Abfrage kannst du dich darauf verlassen, dass du über die Variable einen <code class="highlighter-rouge">Button</code> ansprechen kannst. Außerhalb der <code class="highlighter-rouge">if</code>-Abfrage ist <code class="highlighter-rouge">kaestchen null</code>, wenn <code class="highlighter-rouge">item</code> kein <code class="highlighter-rouge">Button</code> ist.</p>
+
+<p>Es gibt noch viele weitere spannende Punkte bezüglich Typkonvertierung, aber an dieser Stelle hast du erstmal das wichtigste im Kontext eines <em>Cast</em> gelernt. Einige der Informationen in diesem Artikel habe ich einer sehr guten Antwort von Jon Skeet auf StackOverflow entnommen. Wenn du etwas mehr ins Detail gehen möchtest, z.B. auch was die Performance angeht, dann kann ich dir <a href="https://stackoverflow.com/a/496167/5258906">diese Antwort (in Englisch)</a> absolut empfehlen.</p>
+
+<p>Weiteres (auf Deutsch und von mir) dann in späteren Artikeln.</p>
+
+<p>Viel Spaß auf deinem Weg vom Einsteiger zum C# Entwickler</p>
+
+<p>Jan von LernMoment.de</p>
+
+        
+          <div class="subscribe-notice">
+            <h5>Dieser LernMoment hat dir gefallen? <br> Dann melde dich an und du wirst über neue LernMomente informiert:</h5>
+                <form action="https://lernmoment.us9.list-manage.com/subscribe/post" method="POST" target="_blank">
+      <input type="hidden" name="u" value="d0206d57f5002e40b651a0f60">
+      <input type="hidden" name="id" value="8845c28e62">
+      <input type="email" class="subscribe-notice-input-box" autocapitalize="off" autocorrect="off" name="MERGE0" id="MERGE0" size="25" value="" placeholder="Deine E-Mail-Adresse">
+      <input type="text" class="subscribe-notice-input-box" name="MERGE1" id="MERGE1" size="25" value="" placeholder="Dein Vorname (optional)">
+      
+        <input type="checkbox" id="group_1" name="group[20205][1]" value="1" checked="true" style="display:none">
+      
+      <input type="submit" class="subscribe-notice-button" name="submit" value="Ich bin dabei!">
+      <legend class="subscribe-notice-legend">Du bekommst in unregelmäßigen Abständen Mails von mir, in denen ich dich auf neue Artikel oder Angebote hinweise, die in das gleiche Themengebiet fallen wie dieser Artikel.</legend>
+    </form>
+
+          </div>
+        
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:63266/alle/wpf-style-xaml-grundlagen/" class="btn" title="Grundlagen vom WPF Style Element in XAML">Vorheriger</a>
+      
+      
+        <a href="http://localhost:63266/alle/projekt-auf-github-veroeffentlichen/" class="btn" title="Synchronisiere dein Visual Studio 2019 Projekt mit GitHub">Nächster</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<div class="social-icons">
+	
+	
+	
+	<a href="http://www.youtube.com/channel/UC5jCUQ6IPHtQP5r4y9byCqA" title="Jan Suchotzki on YouTube" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
+	
+	<a href="http://stackoverflow.com/users/5258906/jan-suchotzki" title="Jan Suchotzki on StackExchange" target="_blank"><i class="fa fa-stack-exchange fa-2x"></i></a>
+	
+	
+	<a href="http://github.com/lernmoment" title="Jan Suchotzki on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+    
+	
+  <a href="http://localhost:63266/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+<span>Danke an <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> und <a href="http://mademistakes.com/so-simple/" rel="nofollow">Made Mistakes</a> für hervorragende Tools.</span>
+<br>
+<span><a href="http://localhost:63266/kein-copyright/">Kein Copyright</a>    -    <a href="http://localhost:63266/impressum/">Impressum</a>    -    <a href="http://localhost:63266/datenschutz/">Datenschutz</a></span>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:63266';
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:63266/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:63266/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

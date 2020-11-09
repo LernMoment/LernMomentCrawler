@@ -1,0 +1,294 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Kovarianz und Felder &#8211; LernMoment.de</title>
+<meta name="description" content="In der Praxis (fast) ganz einfach, aber in der Theorie echt abgefahren">
+<meta name="keywords" content="Konzept, Datentypen, Vererbung">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Kovarianz und Felder">
+<meta name="twitter:description" content="In der Praxis (fast) ganz einfach, aber in der Theorie echt abgefahren">
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:63266/images/banner/lernmoment-csharp.jpg">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="de_DE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kovarianz und Felder">
+<meta property="og:description" content="In der Praxis (fast) ganz einfach, aber in der Theorie echt abgefahren">
+<meta property="og:url" content="http://localhost:63266/csharp-programmieren/kovariante-felder/">
+<meta property="og:site_name" content="LernMoment.de">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="sPPXWqQjaSqa_ZgqYPNCyVLLaFzVAFCuf3xDBC-ofwE">
+
+
+
+<link rel="canonical" href="http://localhost:63266/csharp-programmieren/kovariante-felder/">
+<link href="http://localhost:63266/feed.xml" type="application/atom+xml" rel="alternate" title="LernMoment.de Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:63266/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:63266/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:63266/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:63266/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:63266/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:63266/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:63266/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:63266/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+
+
+<div class="navigation-banner">
+	
+	
+
+	Lerne programmieren mit mir im Kurs: <a href="http://localhost:63266/einstieg-csharp/" >Einstieg in C# -></a>
+</div>
+
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:63266/kurse/" >Kurse</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/schwerpunkt/" >Dein Weg zum C# Entwickler</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/projekt-start/" >Entwicklung & Mentoring</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/blog/" >Blog</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	
+		<div class="wrap">
+			<a href="http://localhost:63266/" class="site-logo" rel="home" title="LernMoment.de"><img src="http://localhost:63266/images/site-logo.png" width="200" height="200" alt="LernMoment.de logo" class="animated fadeInDown"></a>
+		</div>
+	
+</header><!-- /.masthead -->
+
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <img src="http://localhost:63266/images/banner/lernmoment-csharp.jpg" class="entry-feature-image" alt="Kovarianz und Felder" >
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"><a href="http://localhost:63266/tags/#Konzept" title="Pages tagged Konzept">Konzept</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Datentypen" title="Pages tagged Datentypen">Datentypen</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Vererbung" title="Pages tagged Vererbung">Vererbung</a></span>
+        
+          <h1 class="entry-title">Kovarianz und Felder</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <span class="author vcard">Von <span class="fn">Jan Suchotzki</span></span>
+        <span class="entry-date date published"><time datetime="2015-08-03T09:04:46+02:00"><i class="fa fa-calendar-o"></i> 03. August 2015</time></span>
+        
+        
+        
+        
+      </footer>
+      <div class="entry-content">
+        <p>Es gibt Collections, es gibt Generic Collections, es gibt threadsichere (Generic) Collections und bestimmt noch eine Menge andere Auflistungsklassen. Wann verwendest du also überhaupt noch Felder? Sicherlich verwendest du sie nicht sehr häufig. Wenn du sie verwendest, dann solltest du aber auch das Problem kennen, welches sich durch Kovarianz bei Feldern ergibt.</p>
+
+<p>Bei Kovarianz geht es um das zuweisen von Objekten aus unterschiedlichen Vererbungsebenen. Wenn du dich bereits mit Vererbung beschäftigt hast, dann kennst du sicherlich ein ähnliches Beispiel wie dieses:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">LernMoment</span> <span class="p">{</span> <span class="p">}</span>
+<span class="k">class</span> <span class="nc">LernMomentCSharp</span> <span class="p">:</span> <span class="n">LernMoment</span> <span class="p">{</span> <span class="p">}</span>
+
+<span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="n">LernMoment</span> <span class="n">deinMoment</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">LernMomentCSharp</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Du kannst eine Objekt einer abgeleiteten Klasse einem Objekt seiner Basisklasse zuweisen. Das ist erstmal nicht erstaunlich und eine der Grundideen bei Objekt-Orientierter-Programmierung. Nicht sonderlich überraschend ist dann auch, dass folgendes ebenfalls geht:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">LernMoment</span> <span class="p">{</span> <span class="p">}</span>
+<span class="k">class</span> <span class="nc">LernMomentCSharp</span> <span class="p">:</span> <span class="n">LernMoment</span> <span class="p">{</span> <span class="p">}</span>
+
+<span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="n">LernMoment</span><span class="p">[]</span> <span class="n">deineMomente</span> <span class="p">=</span> <span class="k">new</span> <span class="n">LernMomentCSharp</span><span class="p">[</span><span class="m">10</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Die Theorie dazu ist, dass “erstelle ein Feld”, eine kovariante Aktion auf Datentypen ist. Hä? Die Entwickler von C# wollen dir damit sagen, dass du dich darauf verlassen kannst, dass du ein Feld eines abgeleiteten Typs einem entsprechenden Speicherplatz seines Basistyps zuweisen kannst. Für sich genommen ist diese Theorie sicherlich nicht sonderlich wichtig.</p>
+
+<p>Nun solltest du jedoch wissen, dass es auch Kontravarianz gibt. Diese besagt, dass sich eine Aktion genau umgekehrt verhält. Es gibt also Stellen in C# wo du nur einen Basistypen in einen abgeleiteten Typen stecken kannst. Die Unterscheidung zwischen Kovarianz und Kontravarianz ist insbesondere bei den Generics wichtig. Entsprechend wird es dazu einen weiteren LernMoment geben.</p>
+
+<p>Eine Inkonsistenz ergibt sich jedoch in C# durch die Kovarianz von Feldern. Hier das Beispiel:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">LernMoment</span> <span class="p">{</span> <span class="p">}</span>
+<span class="k">class</span> <span class="nc">LernMomentCSharp</span> <span class="p">:</span> <span class="n">LernMoment</span> <span class="p">{</span> <span class="p">}</span>
+<span class="k">class</span> <span class="nc">LernMomentC</span> <span class="p">:</span> <span class="n">LernMoment</span> <span class="p">{</span> <span class="p">}</span>
+
+<span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="n">LernMoment</span><span class="p">[]</span> <span class="n">deineMomente</span> <span class="p">=</span> <span class="k">new</span> <span class="n">LernMomentCSharp</span><span class="p">[</span><span class="m">10</span><span class="p">];</span>
+	<span class="n">deineMomente</span><span class="p">[</span><span class="m">3</span><span class="p">]</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">LernMomentC</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Grundsätzlich sollte es möglich sein, dass du einen <code class="highlighter-rouge">LernMomentC</code> in dein Feld vom Typ <code class="highlighter-rouge">LernMoment</code> steckst. Dies wird dir ja gerade durch die Kovarianz zugesichert. Allerdings ist es in diesem konkreten Fall so, dass hinter <code class="highlighter-rouge">deineMomente</code> ein Feld vom Typ <code class="highlighter-rouge">LernMomentCSharp</code> steckt. Das wiederum, darf keine Objekte vom Typ <code class="highlighter-rouge">LernMomentC</code> aufnehmen, weil sie nicht von <code class="highlighter-rouge">LernMomentCSharp</code>, sondern von <code class="highlighter-rouge">LernMoment</code> abgeleitet sind.</p>
+
+<p>Dieses “Problem”, kann nicht mal vom Compiler erkannt werden. Sondern die C# Entwickler mussten teure (bezüglich der Laufzeit) Laufzeitüberprüfungen integrieren. So kommt es, dass das vorherige Beispiel zwar ohne Fehler kompiliert werden kann, aber es eine Excpetion bei der Ausführung gibt.</p>
+
+<p>Jetzt erstmal viel Spaß mit kleinen und großen Datentypen</p>
+
+<p>Jan</p>
+
+<h3 id="merke">Merke</h3>
+
+<ul>
+  <li>Variablen eines Typ X, kann eine andere Variable des Typ Y zugewiesen werden, wenn Y von X abgeleitet ist. Du könntest auch sagen, dass Y kleiner X ist.</li>
+  <li>Von Kovarianz wird gesprochen, wenn eine Aktion auf Datentypen (z.B. erstelle ein Feld des Typs oder erstelle ein IEnumerable des Typs) sich genauso verhält. Es muss also möglich sein, dass du <code class="highlighter-rouge">X[] test = new Y[2];</code> machst, wenn gilt Y kleiner X.</li>
+  <li>Kovarianz ist ein theoretisches Konzept. Du kommst sicherlich ohne das Verständnis darum aus, aber es kann dir durch aus helfen einige Sachverhalte in C# im Detail zu verstehen.</li>
+  <li>Wegen der Kovarianz wird bei jedem zuweisen eines Objekts an ein Feld eine Laufzeitüberprüfung statt finden.</li>
+  <li>Probleme die sich aus der Kovarianz bei Feldern ergeben, können erst zur Laufzeit festgestellt werden.</li>
+</ul>
+
+<h3 id="lernquiz">Lernquiz</h3>
+
+<p>Verwende folgende Fragen um das gelernte von heute zu festigen:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">object</span><span class="p">[]</span> <span class="n">a</span> <span class="p">=</span> <span class="k">new</span> <span class="n">String</span><span class="p">[</span><span class="m">10</span><span class="p">];</span>
+<span class="n">a</span><span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="p">=</span> <span class="m">10</span><span class="p">;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Wenn um die beiden Zeilen ein komplettes C#-Programm steht, wird der Compiler einen Fehler melden?</li>
+  <li>Es gilt <code class="highlighter-rouge">String</code> und <code class="highlighter-rouge">Int</code> erben von <code class="highlighter-rouge">object</code>. Verstoßen die beiden Zeilen gegen das Konzept der Kovarianz?</li>
+  <li>Wird es einen Fehler geben, wenn du die zwei Zeilen oben in ein korrekts C#-Programm integrierst und ausführst?</li>
+</ul>
+
+<p>Am besten du schaust dir morgen und dann nochmal in ein paar Tagen die vorherigen Fragen an und beantwortest sie ohne den Text vorher gelesen zu haben.</p>
+
+<h3 id="weitere-informationen">Weitere Informationen</h3>
+
+<ul>
+  <li>Den kompletten Quellcode zum heutigen Lernmoment findest du <a href="https://github.com/LernMoment/csharp/tree/master/KovarianteFelder">hier</a>.</li>
+  <li><a href="https://msdn.microsoft.com/de-de/library/ee207183(v=vs.140).aspx">MSDN</a> hat eine gute Erklärung, aber nur auf Englisch.</li>
+  <li>Eric Lippert hat C# in diesem Bereich maßgeblich entwickelt und dazu einiges zu sagen. Eine ganze Serie zum Thema Kovarianz und Kontravarianz findest du auf seinem <a href="http://blogs.msdn.com/b/ericlippert/archive/tags/covariance+and+contravariance/">Blog</a>. Der erste Artikel der Serie ist ganz unten.</li>
+</ul>
+
+
+        
+          <div class="subscribe-notice">
+            <h5>Dieser LernMoment hat dir gefallen? <br> Dann melde dich an und du wirst über neue LernMomente informiert:</h5>
+                <form action="https://lernmoment.us9.list-manage.com/subscribe/post" method="POST" target="_blank">
+      <input type="hidden" name="u" value="d0206d57f5002e40b651a0f60">
+      <input type="hidden" name="id" value="8845c28e62">
+      <input type="email" class="subscribe-notice-input-box" autocapitalize="off" autocorrect="off" name="MERGE0" id="MERGE0" size="25" value="" placeholder="Deine E-Mail-Adresse">
+      <input type="text" class="subscribe-notice-input-box" name="MERGE1" id="MERGE1" size="25" value="" placeholder="Dein Vorname (optional)">
+      
+        <input type="checkbox" id="group_1" name="group[20205][1]" value="1" checked="true" style="display:none">
+      
+      <input type="submit" class="subscribe-notice-button" name="submit" value="Ich bin dabei!">
+      <legend class="subscribe-notice-legend">Du bekommst in unregelmäßigen Abständen Mails von mir, in denen ich dich auf neue Artikel oder Angebote hinweise, die in das gleiche Themengebiet fallen wie dieser Artikel.</legend>
+    </form>
+
+          </div>
+        
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:63266/csharp-programmieren/predicate-delegate/" class="btn" title="Predicate Delegate">Vorheriger</a>
+      
+      
+        <a href="http://localhost:63266/csharp-programmieren/automatisch-implementierte-eigenschaften-syntax/" class="btn" title="Automatisch Implementierte Eigenschaften - Die C# 6.0 Syntax">Nächster</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<div class="social-icons">
+	
+	
+	
+	<a href="http://www.youtube.com/channel/UC5jCUQ6IPHtQP5r4y9byCqA" title="Jan Suchotzki on YouTube" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
+	
+	<a href="http://stackoverflow.com/users/5258906/jan-suchotzki" title="Jan Suchotzki on StackExchange" target="_blank"><i class="fa fa-stack-exchange fa-2x"></i></a>
+	
+	
+	<a href="http://github.com/lernmoment" title="Jan Suchotzki on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+    
+	
+  <a href="http://localhost:63266/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+<span>Danke an <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> und <a href="http://mademistakes.com/so-simple/" rel="nofollow">Made Mistakes</a> für hervorragende Tools.</span>
+<br>
+<span><a href="http://localhost:63266/kein-copyright/">Kein Copyright</a>    -    <a href="http://localhost:63266/impressum/">Impressum</a>    -    <a href="http://localhost:63266/datenschutz/">Datenschutz</a></span>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:63266';
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:63266/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:63266/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,278 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>readonly oder const? Wie konstant darf deine Konstante sein? &#8211; LernMoment.de</title>
+<meta name="description" content="Ein readonly Attribut ist nicht unbedingt unveränderlich!">
+<meta name="keywords" content="Syntax, Initialisierung, Datentypen">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="readonly oder const? Wie konstant darf deine Konstante sein?">
+<meta name="twitter:description" content="Ein readonly Attribut ist nicht unbedingt unveränderlich!">
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:63266/images/banner/lernmoment-csharp.jpg">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="de_DE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="readonly oder const? Wie konstant darf deine Konstante sein?">
+<meta property="og:description" content="Ein readonly Attribut ist nicht unbedingt unveränderlich!">
+<meta property="og:url" content="http://localhost:63266/csharp-programmieren/readonly-oder-const-wie-konstant-darf-deine-konstante-sein/">
+<meta property="og:site_name" content="LernMoment.de">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="sPPXWqQjaSqa_ZgqYPNCyVLLaFzVAFCuf3xDBC-ofwE">
+
+
+
+<link rel="canonical" href="http://localhost:63266/csharp-programmieren/readonly-oder-const-wie-konstant-darf-deine-konstante-sein/">
+<link href="http://localhost:63266/feed.xml" type="application/atom+xml" rel="alternate" title="LernMoment.de Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:63266/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:63266/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:63266/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:63266/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:63266/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:63266/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:63266/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:63266/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+
+
+<div class="navigation-banner">
+	
+	
+
+	Lerne programmieren mit mir im Kurs: <a href="http://localhost:63266/einstieg-csharp/" >Einstieg in C# -></a>
+</div>
+
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:63266/kurse/" >Kurse</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/schwerpunkt/" >Dein Weg zum C# Entwickler</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/projekt-start/" >Entwicklung & Mentoring</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/blog/" >Blog</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	
+		<div class="wrap">
+			<a href="http://localhost:63266/" class="site-logo" rel="home" title="LernMoment.de"><img src="http://localhost:63266/images/site-logo.png" width="200" height="200" alt="LernMoment.de logo" class="animated fadeInDown"></a>
+		</div>
+	
+</header><!-- /.masthead -->
+
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <img src="http://localhost:63266/images/banner/lernmoment-csharp.jpg" class="entry-feature-image" alt="readonly oder const? Wie konstant darf deine Konstante sein?" >
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"><a href="http://localhost:63266/tags/#Syntax" title="Pages tagged Syntax">Syntax</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Initialisierung" title="Pages tagged Initialisierung">Initialisierung</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Datentypen" title="Pages tagged Datentypen">Datentypen</a></span>
+        
+          <h1 class="entry-title">readonly oder const? Wie konstant darf deine Konstante sein?</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <span class="author vcard">Von <span class="fn">Jan Suchotzki</span></span>
+        <span class="entry-date date published"><time datetime="2015-10-08T06:00:00+02:00"><i class="fa fa-calendar-o"></i> 08. October 2015</time></span>
+        
+        
+        
+        
+      </footer>
+      <div class="entry-content">
+        <p>Gerade erst im LernMoment <a href="/csharp-programmieren/ist-dein-singleton-thread-safe/">“Ist dein Singleton thread-safe?”</a> hast du das Schlüsselwort <code class="highlighter-rouge">readonly</code> verwendet. Was aber kann denn dadurch nur gelesen werden? Und welche Unterschiede gibt es zu <code class="highlighter-rouge">const</code> und Eigenschaften mit nur <code class="highlighter-rouge">get</code>?</p>
+
+<p>Das <code class="highlighter-rouge">readonly</code> Schlüsselwort kann nur auf Attribute angewendet werden. Dabei ist es allerdings egal, ob du diese <code class="highlighter-rouge">static</code> definierst oder nicht. Die Aussage von <code class="highlighter-rouge">readonly</code> ist, dass dem Attribut kein neuer Wert zugewiesen werden kann außer im Konstruktor der Klasse oder dem <em>Object Initializer</em> des Attributs.</p>
+
+<h4 id="ein-readonly-attribut-ist-nicht-unbedingt-unveränderlich">Ein readonly Attribut ist nicht unbedingt unveränderlich</h4>
+
+<p>Wichtig ist hier, dass sich <code class="highlighter-rouge">readonly</code> auf das Attribut und nicht seinen Inhalt bezieht. So kannst du zum Beispiel folgendes ohne Probleme ausführen:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">LernMoment</span>
+<span class="p">{</span>
+	<span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">LernMomentUebung</span>
+<span class="p">{</span>
+	<span class="k">private</span> <span class="k">readonly</span> <span class="n">LernMoment</span> <span class="n">derMoment</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">LernMoment</span><span class="p">(){</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"Singleton"</span><span class="p">};</span>
+
+	<span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">derMoment</span><span class="p">.</span><span class="n">Name</span> <span class="p">=</span> <span class="s">"Readonly"</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Mit <code class="highlighter-rouge">readonly</code> wird also nicht das Objekt hinter einem Attribut unveränderlich, sondern lediglich die Referenz darauf. Für Werttypen gilt dies allerdings nicht. Die sind unveränderlich ohne wenn und aber.</p>
+
+<h4 id="wie-konstant-soll-deine-konstante-sein">Wie konstant soll deine Konstante sein?</h4>
+
+<p>Mit <code class="highlighter-rouge">readonly</code> kannst du also eine Konstante definieren die zur Laufzeit initialisiert wird. Dies ist ein großer Unterschied zu Konstanten, die mit <code class="highlighter-rouge">const</code> definiert werden. Jedes Attribut und jede Variable die <code class="highlighter-rouge">const</code> definiert ist, muss bereits zur Zeit der Kompilierung einen festen Wert bekommen. Somit kannst du zwar einen Referenztyp als <code class="highlighter-rouge">const</code> definieren, aber nur, wenn du ihm <code class="highlighter-rouge">null</code> oder einen <code class="highlighter-rouge">string</code> zuweist.</p>
+
+<p>Ein weiterer Unterschied ist, dass der Compiler den Name deiner <code class="highlighter-rouge">const</code>-Konstanten durch ihren Wert ersetzt. Verwendest du also solch eine Konstante in der öffentlichen Schnittstelle deiner Klasse, wird ihr <strong>Wert</strong> direkt in alle Aufrufer eingefügt. Solltest du später diesen Wert ändern wollen, dann musst du alle abhängigen Klassen (Assemblies, …) erneut übersetzten. Dann ist allerdings auch fraglich, ob es sich tatsächlich um eine Konstante handelt. Übrigens, wenn du <code class="highlighter-rouge">const</code> verwendest, kannst du dies nicht mit <code class="highlighter-rouge">static</code> kombinieren. <code class="highlighter-rouge">const</code> ist nach C# Sprachdefinition implizit <code class="highlighter-rouge">static</code>.</p>
+
+<p>Neben <code class="highlighter-rouge">readonly</code> und <code class="highlighter-rouge">const</code> kannst du auch eine Eigenschaft verwenden, die lediglich ein <code class="highlighter-rouge">get</code> hat und einen festen Wert zurück gibt. Gerade für die öffentliche Schnittstelle einer Klasse ist diese Variante häufig die beste, weil du damit später die Implementierung dieser Eigenschaft noch ändern kannst. So kannst du beispielsweise später entscheiden, dass der Wert bzw. das Objekt der Eigenschaft aus einer Konfigurationsdatei gelesen werden soll.</p>
+
+<p>Jetzt erstmal viel Spaß mit dem Realisieren deiner Konstanten</p>
+
+<p>Jan</p>
+
+<h3 id="merke">Merke</h3>
+
+<ul>
+  <li>Hast du eine Konstante, die sich auch in Zukunft nicht ändern wird, dann ist <code class="highlighter-rouge">const</code> ein guter Kandidat. Beispiel: <code class="highlighter-rouge">privat const float pi = 3.14f</code> (<code class="highlighter-rouge">Math.PI</code> wäre wahrscheinlich die bessere Alternative!)</li>
+  <li>Wenn du zur Laufzeit entscheiden willst, wie eine Konstante initialisiert wird, oder wenn du vermeiden willst, dass einem Attribut ein neues Objekt zugewiesen wird, dann schaue dir <code class="highlighter-rouge">readonly</code> genauer an. Beispiel: <code class="highlighter-rouge">private static readonly object singletonLock = new object();</code></li>
+  <li>Verwendest du eine Konstante in der öffentlichen Schnittstelle deiner Klasse, dann solltest du über eine Eigenschaft nachdenken. Davon kannst du später die Realisierung anpassen, ohne das die Aufrufer davon beeinträchtigt sind.</li>
+  <li>Ein <code class="highlighter-rouge">readonly</code> Attribut kannst du sowohl über einen <em>Object-Initializer</em> wie auch den <em>Konstruktor</em> initialisieren.</li>
+  <li>Verwendest du einen Referenztypen in der Definition eines <code class="highlighter-rouge">readonly</code> Attributs, ist das referenzierte Objekt veränderlich! Du kannst lediglich dem Attribut kein neues Objekt zuweisen.</li>
+</ul>
+
+<h3 id="lernquiz">Lernquiz</h3>
+
+<p>Verwende folgende Fragen, um das Gelernte von heute zu festigen:</p>
+
+<ul>
+  <li>Wie definierst du eine Konstante für die Fallbeschleunigung auf der Erde (9,81 m/s2)?</li>
+  <li>Was musst du bei der Verwendung von <code class="highlighter-rouge">readonly</code> mit Referenztypen beachten?</li>
+  <li>Warum solltest du in einigen Situationen eine Eigenschaft mit nur <code class="highlighter-rouge">get</code> verwenden anstelle von <code class="highlighter-rouge">readonly</code>?</li>
+</ul>
+
+<p>Am besten schaust du dir morgen und dann nochmal in ein paar Tagen die vorherigen Fragen an und beantwortest sie, ohne den Text vorher gelesen zu haben.</p>
+
+<h3 id="weitere-informationen">Weitere Informationen</h3>
+
+<ul>
+  <li>Das Beispiel findest du auch im <a href="https://github.com/LernMoment/csharp/tree/master/Readonly">Quelltext zum LernMoment</a></li>
+  <li>Die Beschreibung von <a href="https://msdn.microsoft.com/de-de/library/acdd6hb7(v=vs.140).aspx">readonly bei MSDN</a></li>
+  <li>Die Beschreibung von <a href="https://msdn.microsoft.com/de-de/library/e6w8fe1b.aspx">const bei MSDN</a></li>
+</ul>
+
+        
+          <div class="subscribe-notice">
+            <h5>Dieser LernMoment hat dir gefallen? <br> Dann melde dich an und du wirst über neue LernMomente informiert:</h5>
+                <form action="https://lernmoment.us9.list-manage.com/subscribe/post" method="POST" target="_blank">
+      <input type="hidden" name="u" value="d0206d57f5002e40b651a0f60">
+      <input type="hidden" name="id" value="8845c28e62">
+      <input type="email" class="subscribe-notice-input-box" autocapitalize="off" autocorrect="off" name="MERGE0" id="MERGE0" size="25" value="" placeholder="Deine E-Mail-Adresse">
+      <input type="text" class="subscribe-notice-input-box" name="MERGE1" id="MERGE1" size="25" value="" placeholder="Dein Vorname (optional)">
+      
+        <input type="checkbox" id="group_1" name="group[20205][1]" value="1" checked="true" style="display:none">
+      
+      <input type="submit" class="subscribe-notice-button" name="submit" value="Ich bin dabei!">
+      <legend class="subscribe-notice-legend">Du bekommst in unregelmäßigen Abständen Mails von mir, in denen ich dich auf neue Artikel oder Angebote hinweise, die in das gleiche Themengebiet fallen wie dieser Artikel.</legend>
+    </form>
+
+          </div>
+        
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:63266/csharp-programmieren/kannst-du-den-namen-einer-klasse-methode-ausgeben/" class="btn" title="Kannst du den Namen einer Klasse, Methode, ... ausgeben?">Vorheriger</a>
+      
+      
+        <a href="http://localhost:63266/csharp-programmieren/thread-safe-addieren-und-mehr-mit-interlocked/" class="btn" title="Thread-safe addieren und mehr mit Interlocked">Nächster</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<div class="social-icons">
+	
+	
+	
+	<a href="http://www.youtube.com/channel/UC5jCUQ6IPHtQP5r4y9byCqA" title="Jan Suchotzki on YouTube" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
+	
+	<a href="http://stackoverflow.com/users/5258906/jan-suchotzki" title="Jan Suchotzki on StackExchange" target="_blank"><i class="fa fa-stack-exchange fa-2x"></i></a>
+	
+	
+	<a href="http://github.com/lernmoment" title="Jan Suchotzki on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+    
+	
+  <a href="http://localhost:63266/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+<span>Danke an <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> und <a href="http://mademistakes.com/so-simple/" rel="nofollow">Made Mistakes</a> für hervorragende Tools.</span>
+<br>
+<span><a href="http://localhost:63266/kein-copyright/">Kein Copyright</a>    -    <a href="http://localhost:63266/impressum/">Impressum</a>    -    <a href="http://localhost:63266/datenschutz/">Datenschutz</a></span>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:63266';
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:63266/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:63266/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

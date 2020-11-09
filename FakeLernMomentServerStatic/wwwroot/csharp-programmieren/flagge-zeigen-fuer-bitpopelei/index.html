@@ -1,0 +1,282 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Flag(ge) zeigen für Bitpopelei &#8211; LernMoment.de</title>
+<meta name="description" content="Wie du mit [Flags] schnell ein Bitfeld aus deiner Enum machst.">
+<meta name="keywords" content="Syntax, Datentypen, Enum">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Flag(ge) zeigen für Bitpopelei">
+<meta name="twitter:description" content="Wie du mit [Flags] schnell ein Bitfeld aus deiner Enum machst.">
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:63266/images/banner/lernmoment-csharp.jpg">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="de_DE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flag(ge) zeigen für Bitpopelei">
+<meta property="og:description" content="Wie du mit [Flags] schnell ein Bitfeld aus deiner Enum machst.">
+<meta property="og:url" content="http://localhost:63266/csharp-programmieren/flagge-zeigen-fuer-bitpopelei/">
+<meta property="og:site_name" content="LernMoment.de">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="sPPXWqQjaSqa_ZgqYPNCyVLLaFzVAFCuf3xDBC-ofwE">
+
+
+
+<link rel="canonical" href="http://localhost:63266/csharp-programmieren/flagge-zeigen-fuer-bitpopelei/">
+<link href="http://localhost:63266/feed.xml" type="application/atom+xml" rel="alternate" title="LernMoment.de Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:63266/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:63266/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:63266/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:63266/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:63266/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:63266/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:63266/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:63266/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+
+
+<div class="navigation-banner">
+	
+	
+
+	Lerne programmieren mit mir im Kurs: <a href="http://localhost:63266/einstieg-csharp/" >Einstieg in C# -></a>
+</div>
+
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:63266/kurse/" >Kurse</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/schwerpunkt/" >Dein Weg zum C# Entwickler</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/projekt-start/" >Entwicklung & Mentoring</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/blog/" >Blog</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	
+		<div class="wrap">
+			<a href="http://localhost:63266/" class="site-logo" rel="home" title="LernMoment.de"><img src="http://localhost:63266/images/site-logo.png" width="200" height="200" alt="LernMoment.de logo" class="animated fadeInDown"></a>
+		</div>
+	
+</header><!-- /.masthead -->
+
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <img src="http://localhost:63266/images/banner/lernmoment-csharp.jpg" class="entry-feature-image" alt="Flag(ge) zeigen für Bitpopelei" >
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"><a href="http://localhost:63266/tags/#Syntax" title="Pages tagged Syntax">Syntax</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Datentypen" title="Pages tagged Datentypen">Datentypen</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Enum" title="Pages tagged Enum">Enum</a></span>
+        
+          <h1 class="entry-title">Flag(ge) zeigen für Bitpopelei</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <span class="author vcard">Von <span class="fn">Jan Suchotzki</span></span>
+        <span class="entry-date date published"><time datetime="2015-08-26T06:00:00+02:00"><i class="fa fa-calendar-o"></i> 26. August 2015</time></span>
+        
+        
+        
+        
+      </footer>
+      <div class="entry-content">
+        <p>Insbesondere wenn du Daten mit eingebetteten Systemen austauschst, kommst du früher oder später an den Punkt, dass du auf einzelne Bits zugreifen musst. Für die Wartbarkeit und Verständlichkeit deines Quelltextes ist es da gut, wenn du <code class="highlighter-rouge">Enum</code> verwendest. So können auch andere verstehen was die Bits und Bytes bedeuten.</p>
+
+<p>Das Attribut <code class="highlighter-rouge">[Flags]</code> an einem <code class="highlighter-rouge">Enum</code> sagt, dass die Enumeration als Bitfeld verwendet werden soll. Um deine <code class="highlighter-rouge">Enum</code> tatsächlich so verwenden zu können, musst du allerdings noch ein paar weitere Vorkehrungen treffen.</p>
+
+<p>Auch eine <code class="highlighter-rouge">Enum</code> mit <code class="highlighter-rouge">[Flags]</code> wird nicht automatisch in zweier Potenzen nummeriert. Wenn du also ein Bitfeld aufbauen willst, dann musst du die Nummerierung von Hand machen. Dies ist in den meisten Fällen auch sinnvoll, weil die Beziehung zwischen Name und Nummer vordefiniert ist (z.B. in einem Kommunikationsprotokoll). Ein Bitfeld, welches Informationen über den Gerätefehlerzustand liefert, könnte dementsprechend so erstellt werden:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="n">Flags</span><span class="p">]</span>
+<span class="k">enum</span> <span class="n">DeviceErrorStatus</span> <span class="p">:</span> <span class="kt">byte</span>
+<span class="p">{</span>
+	<span class="n">None</span> <span class="p">=</span> <span class="m">0</span><span class="p">,</span>
+	<span class="n">HardwareError</span> <span class="p">=</span> <span class="m">1</span><span class="p">,</span>
+	<span class="n">Hardware_CommunicationError</span> <span class="p">=</span> <span class="m">2</span><span class="p">,</span>
+	<span class="n">Hardware_TemperatureTooHigh</span> <span class="p">=</span> <span class="m">4</span><span class="p">,</span>
+	<span class="n">Hardware_MemoryCrcError</span> <span class="p">=</span> <span class="m">8</span><span class="p">,</span>
+	<span class="n">WatchdogError</span> <span class="p">=</span> <span class="m">16</span><span class="p">,</span>
+	<span class="n">SoftwareError</span> <span class="p">=</span> <span class="m">32</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Ein weiterer wichtiger Aspekt bei der Definition eines Bitfeldes ist die Verwendung von 0. Jede Variable vom Typ deiner <code class="highlighter-rouge">Enum</code> wird mit <code class="highlighter-rouge">0</code> initialisiert. Du solltest also bei der Definition deiner <code class="highlighter-rouge">Enum</code> darauf achten, dass der Eintrag mit der Enumerationskonstanten <code class="highlighter-rouge">0</code> entweder ein Standardwert ist oder <code class="highlighter-rouge">None</code>.</p>
+
+<p>Eine andere Möglichkeit um Werte in Zweierpotenzen für die Einträge zu definieren ist der Schiebeoperator:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="n">Flags</span><span class="p">]</span>
+<span class="k">enum</span> <span class="n">AccessRights</span> <span class="p">:</span> <span class="kt">byte</span>
+<span class="p">{</span>
+	<span class="n">None</span>	<span class="p">=</span> <span class="m">0</span><span class="p">,</span>
+	<span class="n">Read</span>	<span class="p">=</span> <span class="m">1</span> <span class="p">&lt;&lt;</span> <span class="m">0</span><span class="p">,</span> <span class="c1">// 1</span>
+	<span class="n">Write</span>	<span class="p">=</span> <span class="m">1</span> <span class="p">&lt;&lt;</span> <span class="m">1</span><span class="p">,</span> <span class="c1">// 2</span>
+	<span class="n">Execute</span>	<span class="p">=</span> <span class="m">1</span> <span class="p">&lt;&lt;</span> <span class="m">2</span><span class="p">,</span> <span class="c1">// 4</span>
+
+	<span class="n">ReadWrite</span> <span class="p">=</span> <span class="n">Read</span> <span class="p">|</span> <span class="n">Write</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In dem vorherigen Beispiel siehst du gleich noch eine weitere Möglichkeit von <code class="highlighter-rouge">Enum</code> mit <code class="highlighter-rouge">[Flags]</code> Attribut. Du kannst einzelne Bits mit <code class="highlighter-rouge">OR</code> bzw. <code class="highlighter-rouge">|</code> kombinieren. So kannst du für häufig genutzte Kombinationen auch einen passenden Namen definieren. Dies macht deinen Quelltext verständlicher.</p>
+
+<p>Jetzt erstmal viel Spaß beim Definieren von Bitfeldern</p>
+
+<p>Jan</p>
+
+<p>PS: Methoden und Operatoren, die dir bei der Verwendung eines Bitfelds behilflich sind, gibt es in einem weiteren LernMoment.</p>
+
+<h3 id="merke">Merke</h3>
+
+<ul>
+  <li>Das <code class="highlighter-rouge">[Flags]</code> Attribut an einer <code class="highlighter-rouge">Enum</code> sagt, dass es für die <code class="highlighter-rouge">Enum</code> nicht nur einen ausgewählten Wert gibt, sondern das sie als Bitfeld behandelt werden soll.</li>
+  <li>Trotz <code class="highlighter-rouge">[Flags]</code> Attribut musst du selber für eine gültige Nummerierung in zweier Potenzen sorgen.</li>
+  <li>Der Wert <code class="highlighter-rouge">0</code> sollte entweder ein Standardwert sein oder <code class="highlighter-rouge">None</code>, da jede Instanz deines <code class="highlighter-rouge">Enums</code> mit <code class="highlighter-rouge">0</code> initialisiert wird.</li>
+  <li>Wenn du häufig Kombinationen von Bits verwendest, kannst du dafür einen Eintrag in deiner <code class="highlighter-rouge">Enum</code> definieren.</li>
+  <li>Neben der expliziten Nummerierung (0, 1, 2, 4, 8, …) kannst du auch den Schiebeoperator <code class="highlighter-rouge">&lt;&lt;</code> bei der Definition verwenden.</li>
+</ul>
+
+<h3 id="lernquiz">Lernquiz</h3>
+
+<p>Verwende folgende Fragen, um das Gelernte von heute zu festigen:</p>
+
+<ul>
+  <li>Wie nummerierst du eine <code class="highlighter-rouge">Enum</code> die als Bitfeld verwendet werden soll?</li>
+  <li>Wie kannst du einen eigenen Eintrag für eine Kombination von Bits in einem Bitfeld machen?</li>
+  <li>Was passiert, wenn du das <code class="highlighter-rouge">[Flags]</code> Attribut an eine <code class="highlighter-rouge">Enum</code> schreibst?</li>
+</ul>
+
+<p>Am besten schaust du dir morgen und dann nochmal in ein paar Tagen die vorherigen Fragen an und beantwortest sie, ohne den Text vorher gelesen zu haben.</p>
+
+<h3 id="weitere-informationen">Weitere Informationen</h3>
+
+<ul>
+  <li>Den kompletten Quelltext zum heutigen Lernmoment findest du <a href="https://github.com/LernMoment/csharp/tree/master/FlagsAttribut">hier</a>.</li>
+  <li>Eine gute Beschreibung zum Thema Bitfelder findest du auf <a href="https://msdn.microsoft.com/de-de/library/system.flagsattribute(v=vs.110).aspx">MSDN</a>.</li>
+</ul>
+
+        
+          <div class="subscribe-notice">
+            <h5>Dieser LernMoment hat dir gefallen? <br> Dann melde dich an und du wirst über neue LernMomente informiert:</h5>
+                <form action="https://lernmoment.us9.list-manage.com/subscribe/post" method="POST" target="_blank">
+      <input type="hidden" name="u" value="d0206d57f5002e40b651a0f60">
+      <input type="hidden" name="id" value="8845c28e62">
+      <input type="email" class="subscribe-notice-input-box" autocapitalize="off" autocorrect="off" name="MERGE0" id="MERGE0" size="25" value="" placeholder="Deine E-Mail-Adresse">
+      <input type="text" class="subscribe-notice-input-box" name="MERGE1" id="MERGE1" size="25" value="" placeholder="Dein Vorname (optional)">
+      
+        <input type="checkbox" id="group_1" name="group[20205][1]" value="1" checked="true" style="display:none">
+      
+      <input type="submit" class="subscribe-notice-button" name="submit" value="Ich bin dabei!">
+      <legend class="subscribe-notice-legend">Du bekommst in unregelmäßigen Abständen Mails von mir, in denen ich dich auf neue Artikel oder Angebote hinweise, die in das gleiche Themengebiet fallen wie dieser Artikel.</legend>
+    </form>
+
+          </div>
+        
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:63266/csharp-programmieren/kontravarianz-am-beispiel-von-icomparable/" class="btn" title="Was ist eigentlich Kontravarianz für Generics?">Vorheriger</a>
+      
+      
+        <a href="http://localhost:63266/csharp-programmieren/mccabe-cyclomatic-complexity-metrik/" class="btn" title="Mit zyklomatischer Komplexität Quelltext vereinfachen">Nächster</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<div class="social-icons">
+	
+	
+	
+	<a href="http://www.youtube.com/channel/UC5jCUQ6IPHtQP5r4y9byCqA" title="Jan Suchotzki on YouTube" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
+	
+	<a href="http://stackoverflow.com/users/5258906/jan-suchotzki" title="Jan Suchotzki on StackExchange" target="_blank"><i class="fa fa-stack-exchange fa-2x"></i></a>
+	
+	
+	<a href="http://github.com/lernmoment" title="Jan Suchotzki on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+    
+	
+  <a href="http://localhost:63266/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+<span>Danke an <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> und <a href="http://mademistakes.com/so-simple/" rel="nofollow">Made Mistakes</a> für hervorragende Tools.</span>
+<br>
+<span><a href="http://localhost:63266/kein-copyright/">Kein Copyright</a>    -    <a href="http://localhost:63266/impressum/">Impressum</a>    -    <a href="http://localhost:63266/datenschutz/">Datenschutz</a></span>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:63266';
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:63266/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:63266/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

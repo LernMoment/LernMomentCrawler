@@ -1,0 +1,235 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Übung #4: Gewinner ermitteln und anzeigen &#8211; LernMoment.de</title>
+<meta name="description" content="In diesem Teil geht es darum, dass du ermittelst ob ein Spieler gewonnen hat und die Gewinnerreihe hervor hebst.">
+
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Übung #4: Gewinner ermitteln und anzeigen">
+<meta name="twitter:description" content="In diesem Teil geht es darum, dass du ermittelst ob ein Spieler gewonnen hat und die Gewinnerreihe hervor hebst.">
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:63266/images/banner/lernmoment-wpf-ttt.jpg">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="de_DE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Übung #4: Gewinner ermitteln und anzeigen">
+<meta property="og:description" content="In diesem Teil geht es darum, dass du ermittelst ob ein Spieler gewonnen hat und die Gewinnerreihe hervor hebst.">
+<meta property="og:url" content="http://localhost:63266/lernmail-kurse/wpf-tictactoe-fuer-einsteiger/tag4-gewinner-ermitteln/">
+<meta property="og:site_name" content="LernMoment.de">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="sPPXWqQjaSqa_ZgqYPNCyVLLaFzVAFCuf3xDBC-ofwE">
+
+
+
+<link rel="canonical" href="http://localhost:63266/lernmail-kurse/wpf-tictactoe-fuer-einsteiger/tag4-gewinner-ermitteln/">
+<link href="http://localhost:63266/feed.xml" type="application/atom+xml" rel="alternate" title="LernMoment.de Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:63266/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:63266/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:63266/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:63266/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:63266/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:63266/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:63266/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:63266/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="page">
+
+
+
+<div class="navigation-banner">
+	
+	
+
+	Sammle Erfahrung in C# mit mir im Kurs: <a href="https://www.udemy.com/csharp-uebungskurs-einfach-verschluesselt/?referralCode=C976277144B75813267C" >C# Grundlagen üben mit System -></a>
+</div>
+
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:63266/kurse/" >Kurse</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/schwerpunkt/" >Dein Weg zum C# Entwickler</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/projekt-start/" >Entwicklung & Mentoring</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/blog/" >Blog</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	
+		<div class="wrap">
+			<a href="http://localhost:63266/" class="site-logo" rel="home" title="LernMoment.de"><img src="http://localhost:63266/images/site-logo.png" width="200" height="200" alt="LernMoment.de logo" class="animated fadeInDown"></a>
+		</div>
+	
+</header><!-- /.masthead -->
+
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="entry">
+    <img src="http://localhost:63266/images/banner/lernmoment-wpf-ttt.jpg" class="entry-feature-image" alt="Übung #4: Gewinner ermitteln und anzeigen" >
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <h1 class="entry-title">Übung #4: Gewinner ermitteln und anzeigen</h1>
+      </header>
+      <div class="entry-content">
+        <p>Mmmmmoin und willkommen zur <strong>vierten Übung</strong> im WPF-Übungskurs für Einsteiger!</p>
+
+<p>Heute ist es soweit! Du fügst die weitere Logik hinzu und hast damit bereits ein <strong>komplett funktionsfähiges TicTacToe-Spiel</strong>. Damit sind wir zwar noch nicht am Ende des Übungskurses, schließlich will ich dir noch coole Dinge wie das <code class="highlighter-rouge">DataGrid</code> und <em>Datenbindung</em> zeigen, aber du hast einen ersten wichtigen Meilenstein geschafft.</p>
+
+<h2 id="musterlösung-der-letzten-aufgabe">Musterlösung der letzten Aufgabe</h2>
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/JF8sW2fJHXY" frameborder="0" allow="encrypted-media" allowfullscreen=""></iframe>
+
+<p><strong>Musterlösung:</strong> <a href="https://github.com/LernMoment/tictactoe-wpf/releases/tag/teil3">Hier meine Musterlösung als zip-Datei.</a></p>
+
+<p><strong>Musterlösung Schritt-für-Schritt</strong> (durch Klick auf die Links siehst du die Änderungen im Quellcode von einem Schritt zum nächsten):</p>
+<ol>
+  <li><a href="https://github.com/LernMoment/tictactoe-wpf/commit/fcb37762201ad5291ba4da4fd54276148f03a337">Spielstein in einem Kästchen setzen</a></li>
+  <li><a href="https://github.com/LernMoment/tictactoe-wpf/commit/d684feff03bde8e93b097b235843836c1ed021e6">Spielstein in allen Kästchen setzen</a></li>
+  <li><a href="https://github.com/LernMoment/tictactoe-wpf/commit/863fea9c1e1ee2d2493115f5206cef7849e93915">Überprüfung ob Kästchen bereits belegt ist</a></li>
+  <li><a href="https://github.com/LernMoment/tictactoe-wpf/commit/ef436ba596b6804bb3fcdfdb3a382f6978f7b621">Spielfeld leeren vor Spielbeginn</a></li>
+  <li><a href="https://github.com/LernMoment/tictactoe-wpf/commit/9807f02b25c3c46d9ba3258200d3660563e5d5f5">Neustart des Spiels, wenn alle Kästchen belegt</a></li>
+  <li>[optional] <a href="https://github.com/LernMoment/tictactoe-wpf/commit/5304b8eaf53e0c9f957b15007550f1cd19f3bc3d">Unterschiedliche Farben für die Spieler</a> - Die Erkärung dieses Schrittes habe ich im Video nicht mehr gemacht, weil das Video schon sehr lang war. Wenn du Probleme hast, dann schreib mir eine Mail. Ich beantworte deine Fragen gerne!</li>
+</ol>
+
+<p><strong>Bonus:</strong> Welche Fehlerquellen hast du in deinem Quellcode gefunden? Teile sie mit uns oder schaue was andere Teilnehmer an ihrer Lösung für Fehlerquellen erkannt haben. <a href="https://github.com/LernMoment/tictactoe-wpf/issues/1">An diesem GitHub Issue</a> kannst du in die Diskussion einsteigen.</p>
+
+<h2 id="die-neue-aufgabe">Die neue Aufgabe</h2>
+<p>Im folgenden geht es darum, dass du ermittelst ob es einen Gewinner gibt. Dabei spreche ich teilweise von einer Gewinnreihe. Damit meine ich eine Zeile, Spalte oder Diagonale mit 3 gleichen Spielsteinen.</p>
+
+<ol>
+  <li>Schreibe eine Methode die ermittelt ob in der obersten Zeile einer der beiden Spieler alle 3 Kästchen (<code class="highlighter-rouge">Kaestchen_0_0</code> bis <code class="highlighter-rouge">Kaestchen_0_2</code>) belegt hat und somit gewonnen hat.</li>
+  <li>Nun stelle fest ob ein Spieler in einer der anderen 7 möglichen Gewinnreihen gewonnen hat.</li>
+  <li>Wenn ein Spieler gewonnen hat, dann gebe einen Hinweis aus welcher Spieler gewonnen hat.</li>
+  <li>Hebe die Gewinnreihe hervor indem du den Hintergrund der 3 Kästchen Gelb einfärbst.</li>
+  <li>Bei einem Neustart des Spiels müssen alle Kästchen wieder die gleiche Hintergrundfarbe haben.</li>
+  <li>[optional] Sofern du es noch nicht getan hast, mache einen <code class="highlighter-rouge">Commit</code> für deine ganzen Änderungen und schiebe alles via <em>Sync</em> auf GitHub.</li>
+</ol>
+
+<p><strong>Bonus:</strong> Auch heute finde ich es wieder super wichtig, dass du dir Gedanken machst über mögliche Fehlerquellen in deiner Lösung. Am besten du teilst dein Gedanken gleich mit uns <a href="https://github.com/LernMoment/tictactoe-wpf/issues/1">an diesem GitHub Issue</a>. Das bringt dich beim Lernen wirklich weiter!</p>
+
+<h2 id="lösungshinweise">Lösungshinweise</h2>
+
+<ol>
+  <li>Ob ein Kästchen belegt ist oder nicht, zeigt dir momentan die <code class="highlighter-rouge">Content</code> Eigenschaft des jeweiligen <code class="highlighter-rouge">Button</code> an. Da im <code class="highlighter-rouge">Content</code> jedoch mehr als nur ein Text gespeichert werden kann, ist diese Eigenschaft nicht vom Typ <code class="highlighter-rouge">string</code>. Zum Glück gibt es jedoch die <code class="highlighter-rouge">ToString()</code> Methode. Sofern im <code class="highlighter-rouge">Content</code> tatsächlich ein <code class="highlighter-rouge">string</code> enthalten ist, gibt dir die <code class="highlighter-rouge">ToString()</code> Methode diesen Text im passenden Typ zurück.</li>
+  <li>Bedenke, dass jedes Steuerelement ein ganz <em>normales</em> Objekt ist, welches du im C# Quellcode “herumreichen” kannst. Wenn du eine Methode schreibst die 3 Kästchen vergleicht ob sie den gleichen Inhalt haben (wie in Schritt 1 beschrieben) und diese dann für alle möglichen “Gewinnreihen” mit den jeweiligen <code class="highlighter-rouge">Button</code> aufrufst, bekommst du eine recht übersichtliche Lösung.</li>
+  <li>Ausser <code class="highlighter-rouge">MessageBox</code> brauche ich hier nichts weiter sagen, oder?</li>
+  <li>Das kannst du auch ohne Hinweis!</li>
+  <li>Wird wahrscheinlich schon “automagisch” klappen bei dir. Aber testen solltest du es trotzdem.</li>
+</ol>
+
+<h2 id="weiterführende-artikel--videos">Weiterführende Artikel / Videos</h2>
+<p>Im Lösungsvideo zur Übung #3 habe ich dir u.a. einige Tastaturkürzel für <em>Visual Studio</em> vorgestellt. In diesem Kontext könnten auch folgende Ressourcen für dich spannend sein:</p>
+
+<ul>
+  <li><a href="/schwerpunkt/visual-studio/">Die Schwerpunktseite <em>Visual Studio</em> auf LernMoment.de</a> - auf dieser Seite sind meine wichtigsten Ressourcen zu <em>Visual Studio</em> verlinkt. Dort findest du u.a. auch einen Artikel zu den Tastaturkürzeln.</li>
+  <li><a href="https://youtu.be/teb_83Vxou4">Tipps für Einsteiger in <em>Visual Studio</em> - Video</a> - in diesem Video zeige ich dir neben einigen Tastaturkürzeln weitere Tipps zum Umgang mit <em>Visual Studio</em>.</li>
+  <li><a href="/alle/zugriff-wpf-controls-code-behind/">Zugriff auf XAML-Elemente aus dem code-behind</a> - wenn du nochmals nachlesen möchtest wie die verschiedenen Zugriffe auf die Steuerelemente aus dem code-behind funktionieren.</li>
+  <li><a href="/alle/hinweise-anzeigen-mit-messagebox/">Einführung in die MessageBox</a> - hier nochmals der Artikel über die <code class="highlighter-rouge">MessageBox</code>. Vielleicht magst du heute nochmals ein paar Details nachlesen 😉.</li>
+  <li><a href="https://youtu.be/g71JndA-0qA">Mehr Details zur <code class="highlighter-rouge">ToString()</code> Methode in diesem Video</a> - In diesem Video erkläre ich dir was die <code class="highlighter-rouge">ToString()</code> Methode macht und wie du selber eine für deine Klasse schreiben kannst.</li>
+</ul>
+
+<p>In wenigen Tagen bekommst du eine weitere Mail von mir mit meiner Musterlösung und der nächtsen Teilaufgabe.</p>
+
+<p>Bis dahin wünsche ich dir viel Spaß beim Üben</p>
+
+<p>Jan von LernMoment.de</p>
+
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<div class="social-icons">
+	
+	
+	
+	<a href="http://www.youtube.com/channel/UC5jCUQ6IPHtQP5r4y9byCqA" title="Jan Suchotzki on YouTube" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
+	
+	<a href="http://stackoverflow.com/users/5258906/jan-suchotzki" title="Jan Suchotzki on StackExchange" target="_blank"><i class="fa fa-stack-exchange fa-2x"></i></a>
+	
+	
+	<a href="http://github.com/lernmoment" title="Jan Suchotzki on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+    
+	
+  <a href="http://localhost:63266/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+<span>Danke an <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> und <a href="http://mademistakes.com/so-simple/" rel="nofollow">Made Mistakes</a> für hervorragende Tools.</span>
+<br>
+<span><a href="http://localhost:63266/kein-copyright/">Kein Copyright</a>    -    <a href="http://localhost:63266/impressum/">Impressum</a>    -    <a href="http://localhost:63266/datenschutz/">Datenschutz</a></span>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:63266';
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:63266/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:63266/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

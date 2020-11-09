@@ -1,0 +1,307 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>ParallelLoopState.Break - Wie du Parallel.For und Parallel.ForEach verlassen kannst &#8211; LernMoment.de</title>
+<meta name="description" content="Bei der parallelen Abarbeitung von Schleifen ist das Verlassen komplizierter.">
+<meta name="keywords" content="Konzept, Async, Schleifen">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="ParallelLoopState.Break - Wie du Parallel.For und Parallel.ForEach verlassen kannst">
+<meta name="twitter:description" content="Bei der parallelen Abarbeitung von Schleifen ist das Verlassen komplizierter.">
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:63266/images/banner/lernmoment-csharp.jpg">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="de_DE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ParallelLoopState.Break - Wie du Parallel.For und Parallel.ForEach verlassen kannst">
+<meta property="og:description" content="Bei der parallelen Abarbeitung von Schleifen ist das Verlassen komplizierter.">
+<meta property="og:url" content="http://localhost:63266/csharp-programmieren/parallelloopstate-break-wie-du-parallel-for-und-parallel-foreach-verlassen-kannst/">
+<meta property="og:site_name" content="LernMoment.de">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="sPPXWqQjaSqa_ZgqYPNCyVLLaFzVAFCuf3xDBC-ofwE">
+
+
+
+<link rel="canonical" href="http://localhost:63266/csharp-programmieren/parallelloopstate-break-wie-du-parallel-for-und-parallel-foreach-verlassen-kannst/">
+<link href="http://localhost:63266/feed.xml" type="application/atom+xml" rel="alternate" title="LernMoment.de Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:63266/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:63266/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:63266/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:63266/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:63266/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:63266/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:63266/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:63266/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+
+
+<div class="navigation-banner">
+	
+	
+
+	Lerne programmieren mit mir im Kurs: <a href="http://localhost:63266/einstieg-csharp/" >Einstieg in C# -></a>
+</div>
+
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:63266/kurse/" >Kurse</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/schwerpunkt/" >Dein Weg zum C# Entwickler</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/projekt-start/" >Entwicklung & Mentoring</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/blog/" >Blog</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	
+		<div class="wrap">
+			<a href="http://localhost:63266/" class="site-logo" rel="home" title="LernMoment.de"><img src="http://localhost:63266/images/site-logo.png" width="200" height="200" alt="LernMoment.de logo" class="animated fadeInDown"></a>
+		</div>
+	
+</header><!-- /.masthead -->
+
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <img src="http://localhost:63266/images/banner/lernmoment-csharp.jpg" class="entry-feature-image" alt="ParallelLoopState.Break - Wie du Parallel.For und Parallel.ForEach verlassen kannst" >
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"><a href="http://localhost:63266/tags/#Konzept" title="Pages tagged Konzept">Konzept</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Async" title="Pages tagged Async">Async</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Schleifen" title="Pages tagged Schleifen">Schleifen</a></span>
+        
+          <h1 class="entry-title">ParallelLoopState.Break - Wie du Parallel.For und Parallel.ForEach verlassen kannst</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <span class="author vcard">Von <span class="fn">Jan Suchotzki</span></span>
+        <span class="entry-date date published"><time datetime="2015-10-12T06:00:00+02:00"><i class="fa fa-calendar-o"></i> 12. October 2015</time></span>
+        
+        
+        
+        
+      </footer>
+      <div class="entry-content">
+        <p>Im LernMoment <a href="/csharp-programmieren/parallel-foreach-und-threadlokale-daten/">“Parallel.ForEach und thread-lokale Variablen”</a> hast du gesehen, wie einfach die parallele Ausführung von komplexeren Schleifen sein kann. Willst du deine parallel laufende Schleife allerdings verlassen, dann wird es komplizierter.</p>
+
+<p>Du kannst eine <code class="highlighter-rouge">Parallel.For</code> oder <code class="highlighter-rouge">Parallel.ForEach</code> nicht einfach mit <code class="highlighter-rouge">break</code> unterbrechen. <code class="highlighter-rouge">break</code> ist ein Schlüsselwort, welches nur in Schleifen (bzw. <code class="highlighter-rouge">switch</code>-Anweisungen) verwendet werden kann. Um nun die parallele Schleife nicht immer bis zum Ende laufen lassen zu müssen, gibt es die Klasse <code class="highlighter-rouge">ParallelLoopState</code>. Diese bietet dir eine <code class="highlighter-rouge">Break</code> Methode an.</p>
+
+<p>Die <code class="highlighter-rouge">ParallelLoopState.Break</code> Methode ist in ihrem Verhalten dem <code class="highlighter-rouge">break</code> für sequentielle Schleifen nach empfunden. Hier eine einfache <code class="highlighter-rouge">for</code>-Schleife:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;=</span> <span class="m">40</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+<span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">Write</span><span class="p">(</span><span class="n">i</span> <span class="p">+</span> <span class="s">" "</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="p">&gt;=</span> <span class="m">35</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Schleife wurde verlassen bei Index: {0}"</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Es ist somit klar, dass alle Iterationen bis zur Abbruchbedingung ausgeführt wurden. Genauso ist es auch bei der parallelen Abarbeitung. Dabei gilt zu beachten, dass je nach Anzahl von vorhandenen Prozessoren bzw. Kernen und vielen weiteren Bedingungen der Datenbereich, der in der Schleife bearbeitet werden soll, partitioniert wird.</p>
+
+<p>Bei dem vorherigen Beispiel könnte es beispielsweise sein, dass die Ausführung der Iterationen mit Index 1 bis 20 der Partition A zugewiesen werden, während die verbleibenden Iterationen der Partition B zugewiesen werden. Wenn diese Partitionen nun parallel bearbeitet werden, wird Partition B sofort abgebrochen. Die Abarbeitung von Partition A wird allerdings nicht gestoppt, weil die Daten bzw. der Index in dieser Partition die Abbruchbedingung noch nicht erfüllen.</p>
+
+<p>Selbst wenn die Abarbeitung von Partition A noch nicht gestartet wurde, und in Partition B bereits die Abbruchbedingung erkannt wurde, wird Partition A ganz normal abgearbeitet. Bei <code class="highlighter-rouge">ParallelLoopState.Break</code> kannst du also nicht vorhersagen welches Ergebnis du bekommst. Alles hängt von der Partitionierung und der Zuweisung der Partitionen zu Tasks ab.</p>
+
+<p>Ein Objekt der Klasse <code class="highlighter-rouge">ParallelLoopState</code> wird automatisch angelegt, wenn du eine entsprechende Variante der <code class="highlighter-rouge">Parallel.For</code> oder <code class="highlighter-rouge">Parallel.ForEach</code> Methode benutzt. Du kannst bestimmen wie die Instanz heißen soll. Die Aufgabe dieser Klasse ist es Informationen zwischen parallel laufenden Partitionen auszutauschen. Allerdings kannst du darin keine Nutzdaten transportieren, sondern es wird lediglich der Zustand der Schleife ausgetauscht.</p>
+
+<p>Im Kontext von <code class="highlighter-rouge">ParallelLoopState.Break</code> ist die Eigenschaft <code class="highlighter-rouge">LowestBreakIteration</code> von Interesse. Damit kannst du feststellen, ob für eine Partition bereits <code class="highlighter-rouge">Break</code> aufgerufen wurde und wenn ja bei welchem Index. Mit dieser Eigenschaft kannst du ein weiteres Phänomen erkunden. Wie bereits gesagt, mit <code class="highlighter-rouge">ParallelLoopState.Break</code> wird dir garantiert, dass alle Iterationen bis zur Abbruchbedingung ausgeführt werden. Es kann allerdings auch passieren, dass (wesentlich) mehr Iterationen ausgeführt werden:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Parallel</span><span class="p">.</span><span class="nf">For</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">40</span><span class="p">,</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">loopState</span><span class="p">)</span> <span class="p">=&gt;</span>
+<span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span>
+        <span class="s">"Index: {0}, LowestBreakIteration: {1}"</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">loopState</span><span class="p">.</span><span class="n">LowestBreakIteration</span><span class="p">));</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="p">&gt;=</span> <span class="m">15</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">loopState</span><span class="p">.</span><span class="nf">Break</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+ 
+<span class="cm">/* Die vorherige Parallel.For könnte diese Ausgabe erzeugen              
+Index: 10 LowestBreakIteration: 
+Index: 11 LowestBreakIteration: 
+Index: 21 LowestBreakIteration: 
+Index: 1 LowestBreakIteration: 
+Index: 2 LowestBreakIteration: 21
+Index: 3 LowestBreakIteration: 21
+Index: 6 LowestBreakIteration: 21
+Index: 7 LowestBreakIteration: 21
+Index: 8 LowestBreakIteration: 21
+Index: 9 LowestBreakIteration: 21
+Index: 12 LowestBreakIteration: 21
+Index: 13 LowestBreakIteration: 21
+Index: 14 LowestBreakIteration: 21
+Index: 15 LowestBreakIteration: 21
+Index: 4 LowestBreakIteration: 21
+Index: 5 LowestBreakIteration: 15
+*/</span>
+</code></pre></div></div>
+
+<p>In diesem Beispiel siehst du, dass auch die Iteration mit <em>Index 21</em> bearbeitet wurde. Dieses ist ein wesentlicher Unterschied zum Verlassen einer sequentiellen Schleife. Gäbe es in diesem Beispiel einen größeren Datenbereich (z.B. 1 - 9999), dann könnten noch wesentlich mehr Iterationen bearbeitet worden sein, als du womöglich erwartet hast.</p>
+
+<p>Das Beispiel zeigt auch, dass <code class="highlighter-rouge">LowestBreakIteration</code> langsam der eigentlichen Abbruchbedingung entgegenkommen kann. Da durch die Partitionierung die Abbruchbedingung (<code class="highlighter-rouge">i &gt;= 15</code>) für eine Partition sofort erfüllt war (bei <code class="highlighter-rouge">i == 21</code>), wurde diese Iteration erstmal als <code class="highlighter-rouge">LowestBreakIteration</code> benutzt. Möchtest du nach der parallelen Schleife wissen, bei welchem Index aufgehört wurde, stellt dir ein Objekt der Klasse <code class="highlighter-rouge">ParallelLoopResult</code> diesen Wert in seinr <code class="highlighter-rouge">LowestBreakIteration</code> bereit.</p>
+
+<p>Jetzt erstmal viel Spaß mit dem vorzeitigem Verlassen von parallelen Schleifen</p>
+
+<p>Jan</p>
+
+<h3 id="merke">Merke</h3>
+
+<ul>
+  <li>Obwohl die Verwendung von <code class="highlighter-rouge">Parallel.For</code> und <code class="highlighter-rouge">Parallel.ForEach</code> einfach ist, hast du es immer noch mit Parallelität zutun. Somit kann auch dieses scheinbar einfache Konstrukt kompliziert werden.</li>
+  <li>Die konkrete Abarbeitung von parallelen Schleifen ist abhängig von der Partitionierung der Daten.</li>
+  <li>Auch wenn <code class="highlighter-rouge">ParallelLoopState.Break</code> in einer Partition bereits aufgerufen wurde, kann es noch Partitionen geben, die komplett oder teilweise abgearbeitet werden.</li>
+  <li>Genau wie bei einer sequentiellen Schleife werden alle Elemente vom Start bis zur Abbruchbedingung in einer parallelen Schleife bearbeitet. Es kann allerdings auch passieren, dass noch mehr Elemente bearbeitet werden.</li>
+  <li>Die Eigenschaft <code class="highlighter-rouge">LowestBreakIteration</code> ist innerhalb der parallelen Schleife über eine Instanz von <code class="highlighter-rouge">ParallelLoopState</code> verfügbar und außerhalb der Schleife über <code class="highlighter-rouge">ParallelLoopResult</code>.</li>
+</ul>
+
+<h3 id="lernquiz">Lernquiz</h3>
+
+<p>Verwende folgende Fragen, um das Gelernte von heute zu festigen:</p>
+
+<ul>
+  <li>Wenn du eine <code class="highlighter-rouge">Parallel.For</code>-Schleife von Index 1 bis 1000 hast und diese bei Index 250 verlassen wird, welche Indizes werden auf garantiert bearbeitet?</li>
+  <li>Wie heißt die Methode zum Verlassen einer parallelen Schleife?</li>
+  <li>Was sagt die Eigenschaft <code class="highlighter-rouge">LowestBreakIteration</code> aus und an welchen Klassen gibt es sie?</li>
+</ul>
+
+<p>Am besten schaust du dir morgen und dann nochmal in ein paar Tagen die vorherigen Fragen an und beantwortest sie, ohne den Text vorher gelesen zu haben.</p>
+
+<h3 id="weitere-informationen">Weitere Informationen</h3>
+
+<ul>
+  <li>In <a href="https://magazin.c-plusplus.net/artikel/Parallelisierung%20mit%20.NET%204.0%20-%20Teil%20I">diesem umfangreichen Artikel</a> gibt es eine kurze Beschreibung von <code class="highlighter-rouge">ParallelLoopState.Break</code> auf Deutsch.</li>
+  <li>Eine verständliche Beschreibung (nur in Englisch) zu diesem Theam findest du im <a href="http://www.blackwasp.co.uk/ParallelLoopBreak.aspx">Artikel</a> auf BlackWasp.</li>
+  <li>Eine umfangreiche Erläuterung zu parallelen Schleifen gibt es auf <a href="https://msdn.microsoft.com/en-us/library/ff963552.aspx">MSDN</a>. Diese gibt es nicht auf Deutsch und ist teilweise auch schwer verständlich.</li>
+  <li>Die Klasse <code class="highlighter-rouge">Parallel</code> wird in vielen der <a href="https://code.msdn.microsoft.com/ParExtSamples">“Samples for Parallel Programming with the .NET Framework”</a> verwendet.</li>
+  <li>Die Beschreibung der Klasse <a href="https://msdn.microsoft.com/de-de/library/system.threading.tasks.parallelloopstate(v=vs.110).aspx">ParallelLoopState</a> findest bei MSDN auch in Deutsch.</li>
+</ul>
+
+        
+          <div class="subscribe-notice">
+            <h5>Dieser LernMoment hat dir gefallen? <br> Dann melde dich an und du wirst über neue LernMomente informiert:</h5>
+                <form action="https://lernmoment.us9.list-manage.com/subscribe/post" method="POST" target="_blank">
+      <input type="hidden" name="u" value="d0206d57f5002e40b651a0f60">
+      <input type="hidden" name="id" value="8845c28e62">
+      <input type="email" class="subscribe-notice-input-box" autocapitalize="off" autocorrect="off" name="MERGE0" id="MERGE0" size="25" value="" placeholder="Deine E-Mail-Adresse">
+      <input type="text" class="subscribe-notice-input-box" name="MERGE1" id="MERGE1" size="25" value="" placeholder="Dein Vorname (optional)">
+      
+        <input type="checkbox" id="group_1" name="group[20205][1]" value="1" checked="true" style="display:none">
+      
+      <input type="submit" class="subscribe-notice-button" name="submit" value="Ich bin dabei!">
+      <legend class="subscribe-notice-legend">Du bekommst in unregelmäßigen Abständen Mails von mir, in denen ich dich auf neue Artikel oder Angebote hinweise, die in das gleiche Themengebiet fallen wie dieser Artikel.</legend>
+    </form>
+
+          </div>
+        
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:63266/csharp-programmieren/thread-safe-addieren-und-mehr-mit-interlocked/" class="btn" title="Thread-safe addieren und mehr mit Interlocked">Vorheriger</a>
+      
+      
+        <a href="http://localhost:63266/csharp-programmieren/wie-gefaellt-dir-der-lernmoment-csharp/" class="btn" title="Wie gefällt dir der LernMoment C#?">Nächster</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<div class="social-icons">
+	
+	
+	
+	<a href="http://www.youtube.com/channel/UC5jCUQ6IPHtQP5r4y9byCqA" title="Jan Suchotzki on YouTube" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
+	
+	<a href="http://stackoverflow.com/users/5258906/jan-suchotzki" title="Jan Suchotzki on StackExchange" target="_blank"><i class="fa fa-stack-exchange fa-2x"></i></a>
+	
+	
+	<a href="http://github.com/lernmoment" title="Jan Suchotzki on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+    
+	
+  <a href="http://localhost:63266/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+<span>Danke an <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> und <a href="http://mademistakes.com/so-simple/" rel="nofollow">Made Mistakes</a> für hervorragende Tools.</span>
+<br>
+<span><a href="http://localhost:63266/kein-copyright/">Kein Copyright</a>    -    <a href="http://localhost:63266/impressum/">Impressum</a>    -    <a href="http://localhost:63266/datenschutz/">Datenschutz</a></span>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:63266';
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:63266/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:63266/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

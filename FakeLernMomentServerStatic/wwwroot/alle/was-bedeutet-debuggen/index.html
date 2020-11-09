@@ -1,0 +1,274 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Was bedeutet Debuggen? &#8211; LernMoment.de</title>
+<meta name="description" content="Beim Debugging geht es darum Syntaxfehler, Laufzeitfehler, Logikfehler und Ausnahmefehler zu beseitigen. Die Grundlagen und insbesondere wie du Haltepunkte (Breakpoints) verwendest, erfährst du in diesem Artikel.">
+<meta name="keywords" content="C#, Begriffe, Werkzeug">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Was bedeutet Debuggen?">
+<meta name="twitter:description" content="Beim Debugging geht es darum Syntaxfehler, Laufzeitfehler, Logikfehler und Ausnahmefehler zu beseitigen. Die Grundlagen und insbesondere wie du Haltepunkte (Breakpoints) verwendest, erfährst du in diesem Artikel.">
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:63266/images/banner/lernmoment-csharp.jpg">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="de_DE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Was bedeutet Debuggen?">
+<meta property="og:description" content="Beim Debugging geht es darum Syntaxfehler, Laufzeitfehler, Logikfehler und Ausnahmefehler zu beseitigen. Die Grundlagen und insbesondere wie du Haltepunkte (Breakpoints) verwendest, erfährst du in diesem Artikel.">
+<meta property="og:url" content="http://localhost:63266/alle/was-bedeutet-debuggen/">
+<meta property="og:site_name" content="LernMoment.de">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="sPPXWqQjaSqa_ZgqYPNCyVLLaFzVAFCuf3xDBC-ofwE">
+
+
+
+<link rel="canonical" href="http://localhost:63266/alle/was-bedeutet-debuggen/">
+<link href="http://localhost:63266/feed.xml" type="application/atom+xml" rel="alternate" title="LernMoment.de Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:63266/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:63266/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:63266/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:63266/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:63266/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:63266/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:63266/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:63266/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+
+
+<div class="navigation-banner">
+	
+	
+
+	Lerne programmieren mit mir im Kurs: <a href="http://localhost:63266/einstieg-csharp/" >Einstieg in C# -></a>
+</div>
+
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:63266/kurse/" >Kurse</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/schwerpunkt/" >Dein Weg zum C# Entwickler</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/projekt-start/" >Entwicklung & Mentoring</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/blog/" >Blog</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	
+		<div class="wrap">
+			<a href="http://localhost:63266/" class="site-logo" rel="home" title="LernMoment.de"><img src="http://localhost:63266/images/site-logo.png" width="200" height="200" alt="LernMoment.de logo" class="animated fadeInDown"></a>
+		</div>
+	
+</header><!-- /.masthead -->
+
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <img src="http://localhost:63266/images/banner/lernmoment-csharp.jpg" class="entry-feature-image" alt="Was bedeutet Debuggen?" >
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"><a href="http://localhost:63266/tags/#C#" title="Pages tagged C#">C#</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Begriffe" title="Pages tagged Begriffe">Begriffe</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Werkzeug" title="Pages tagged Werkzeug">Werkzeug</a></span>
+        
+          <h1 class="entry-title">Was bedeutet Debuggen?</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <span class="author vcard">Von <span class="fn">Daniel Gustorff</span></span>
+        <span class="entry-date date published"><time datetime="2018-05-02T02:00:00+02:00"><i class="fa fa-calendar-o"></i> 02. May 2018</time></span>
+        
+        
+        
+        
+      </footer>
+      <div class="entry-content">
+        <blockquote>
+  <p>Debuggen beschreibt in der Softwareentwicklung den Prozess der Fehlersuche.</p>
+</blockquote>
+
+<p>Das Wort Debuggen kommt daher, dass es in der Frühzeit der Computer immer wieder vor gekommen ist, dass Käfer oder andere Kleintiere in den Computern herumgekrochen sind und dort zu Kurzschlüssen und damit Fehlverhalten geführt haben. Damals wurden zum Durchführen der Rechenoperationen Relais verwendet, die durch Tiere zusätzlich blockiert werden konnten. Es kam also zu Fehlern im Programmablauf durch Käfer (englisch Bugs). Um diese Fehler zu beseitigen, mussten die Tiere aus dem Gerät entfernt werden. Der Computer musste also Entkäfert (debugged) werden. Diese Bezeichnung hat sich bis heute für die Fehlersuche gehalten, auch wenn heute in der Regel keine Tiere mehr für die Fehler verantwortlich sind.</p>
+
+<p>Wenn heute niemand mehr mit Lampen durch Computer krabbeln muss, was passiert dann, wenn es um Fehlerbeseitigung geht?</p>
+
+<p>Es gibt grob 2 Arten von Fehlern, die in der Softwareentwicklung vorkommen können.</p>
+
+<h3 id="syntaxfehler">Syntaxfehler</h3>
+
+<p>Bereits während der Entwicklung können Syntaxfehler auftreten. Diese Fehler führen dazu, dass der Code nicht kompiliert werden kann. Die meisten Entwicklungsumgebungen zeigen diese beim Kompilieren oder bereits während der Codeerstellung an. Dadurch ist es häufig nicht sehr aufwändig diese Fehler zu finden. VisualStudio unterstreicht fehlerhafte Eingaben zum Beispiel, um den Entwickler darauf hin zu weisen, dass hier ein Fehler vorliegt.</p>
+
+<p class="pull-left"><img src="http://localhost:63266/images/was-bedeutet-debuggen/syntaxfehler-code.png" alt="Syntaxfehler im Quellcode" /></p>
+
+<p>Hier fehlt das Semikolon am Ende der Zeile. Wenn man nun versucht den Code auszuführen, wird in der Fehlerliste ein Hinweis gegeben, dass ein Fehler vorliegt und um was für eine Art Fehler es sich handelt.</p>
+
+<p class="pull-left"><img src="http://localhost:63266/images/was-bedeutet-debuggen/syntaxfehler-visualstudio.png" alt="Syntaxfehler iin Visual Studio" /></p>
+
+<p>Durch diese Fehlermeldung ist es sehr einfach den Fehler zu beheben. Leider sind nicht alle Fehlermeldungen so eindeutig. Wodurch es auch beim Beheben von Syntaxfehlern die eine oder andere Schwierigkeit geben kann. Es gibt jedoch im Umfeld von VisualStudio auch die Möglichkeit eine Hilfe zu den Fehlermeldungen auf zu rufen, die bei der Behebung helfen können.</p>
+
+<h3 id="laufzeitfehler">Laufzeitfehler</h3>
+
+<p>Eine andere Fehlerart sind Laufzeitfehler. Wie der Name bereits sagt, treten diese Fehler erst zur Laufzeit auf. Hier kann man wiederum zwischen zwei Arten unterscheiden. Logische Fehler, das heißt das Programm tut nicht das, was man erwartet. Außerdem gibt Laufzeitfehler, die zum Absturz des Programms oder Endlosschleifen (Deadlock) während der Ausführung führen. Laufzeitfehler, die dazu führen, dass ein Programm nicht mehr Funktioniert, sind mit VisualStudio verhältnismäßig einfach zu entdecken. Hier hilft das Werkzeug mit. Kommt das Programm an eine Stelle, an der zum Beispiel durch 0 geteilt werden soll (das Ergebnis wäre unendlich, es lässt sich durch einen Computer jedoch nicht berechnen, so entsteht ein Ausnahmefehler, der bei der Ausführung angezeigt wird.</p>
+
+<p><img src="http://localhost:63266/images/was-bedeutet-debuggen/divide-by-zero-exception.png" alt="Divide by zero exception" /></p>
+
+<p>Fehler die ähnlich geartet sind, führen in der Regel zu solchen Ausnahmefehlern. Wenn man sein Programm aus der Entwicklungsumgebung startet, kann man sie sehr einfach erkennen und hoffentlich auch entsprechend schnell beseitigen. Klassische Fehler diese Art sind z.B. StackOverflow Fehler, hierbei wir eine Funktion immer wieder aufgerufen, oft z.B. weil man eine Funktion beim Verändern eines Parameters aufruft und darin wieder auf den Parameter zugreift. Immer wieder treten auch NullReferenz Fehler auf. In diesem Fall versucht man auf eine Instanz eines Objekts (oder Methoden bzw. Eigenschaften davon) zuzugreifen, welche noch gar nicht erstellt wurde.</p>
+
+<p>Die andere Kategorie von Laufzeitfehlern sind logische Fehler. Diese zu erkennen und zu finden ist deutlich schwieriger. Ein Beispiel für einen logischen Fehler ist das nicht einhalten von Punkt-vor-Strich Rechnung bei der Berechnung von Zahlen.</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Program</span>
+<span class="p">{</span>
+  <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">=</span><span class="m">3</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">j</span><span class="p">=</span><span class="m">4</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">k</span><span class="p">=</span><span class="m">5</span><span class="p">;</span>
+
+    <span class="kt">int</span> <span class="n">ergebnis</span> <span class="p">=</span> <span class="n">i</span> <span class="p">+</span> <span class="n">j</span> <span class="p">*</span> <span class="n">k</span><span class="p">;</span>
+
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Ergebnis ist {0}"</span><span class="p">,</span> <span class="n">ergebnis</span><span class="p">);</span>
+
+    <span class="n">ergebnis</span> <span class="p">=</span> <span class="p">(</span><span class="n">i</span> <span class="p">+</span> <span class="n">j</span><span class="p">)</span> <span class="p">*</span> <span class="n">k</span><span class="p">;</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Ergebnis ist {0}"</span><span class="p">,</span> <span class="n">ergebnis</span><span class="p">);</span>
+
+    <span class="n">Console</span><span class="p">.</span><span class="nf">ReadLine</span><span class="p">();</span>    
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In diesem Beispiel kann man sehen, dass es zu zwei unterschiedlichen Ergebnissen kommt, abhängig davon, ob man die Klammern gesetzt hat oder nicht. Diese Fehler kann man nur durch gezieltes Testen oder Ausprobieren finden.</p>
+
+<h4 id="haltepunkt-breakpoint">Haltepunkt (Breakpoint)</h4>
+
+<p>Für andere logische Fehler kann es hilfreich sein, sich Haltepunkte im Programm zu setzten, um sich den momentanen Werte einer Variablen anzusehen. In diesem Beispiel wurde die Variable “Ergebnis” zwei Mal hintereinander auf unterschiedliche Wert gesetzt. Die erste Ausgabe zeigt den Wert, nach der ersten Berechnung, die zweite Ausgabe den Wert nach der zweiten Berechnung. Um nun nachvollziehen zu können, wann die Variable welchen Wert hat, kann man einen Breakpoint im Quellcode einfügen.</p>
+
+<p class="pull-left"><img src="http://localhost:63266/images/was-bedeutet-debuggen/ergebnis-punkt-vor-strich.png" alt="Ergebnis Punkt vor Strich Rechnung" /></p>
+
+<p>In diesem Beispiel kann man sehen, dass es zu zwei unterschiedlichen Ergebnissen kommt, abhängig davon, ob man die Klammern gesetzt hat oder nicht. Diese Fehler kann man nur durch gezieltes Testen oder Ausprobieren finden.</p>
+
+<p>Für andere logische Fehler kann es hilfreich sein, sich Haltepunkte im Programm zu setzten, um sich den momentanen Werte einer Variablen anzusehen. In diesem Beispiel wurde die Variable “Ergebnis” zwei Mal hintereinander auf unterschiedliche Wert gesetzt. Die erste Ausgabe zeigt den Wert, nach der ersten Berechnung, die zweite Ausgabe den Wert nach der zweiten Berechnung. Um nun nachvollziehen zu können, wann die Variable welchen Wert hat, kann man einen Breakpoint im Quellcode einfügen.</p>
+
+<p><img src="http://localhost:63266/images/was-bedeutet-debuggen/breakpoint.png" alt="Quellcode mit Breakpoint in Visual Studio" /></p>
+
+<p>Während der Ausführung unterbricht das Programm an dieser Stelle und man kann sich die Variablen Werte bequem ansehen um Fehler oder ein bestimmtes Verhalten nachvollziehen zu können. In diesem Fall hat “Ergebnis” noch den Wert nach der ersten Berechnung, da diese Codezeile noch nicht ausgeführt wurde. Man kann nun Schritt für Schritt durch den Code gehen und jede einzelne Operation nachvollziehen. Finden muss man den Fehler jedoch immer noch selbst.</p>
+
+<div class="notice">
+  Dies ist ein Gastartikel von Daniel Gustorff. Seit einiger Zeit unterstützt mich Daniel bei Entwicklungsarbeiten für Kunden. Als erfahrener Softwareentwickler beschäftigt sich Daniel viel mit der Interaktion zwischen Software auf einem Rechner und technischen Geräten (z.B. im Bereich der Gebäudeautomation). Er hält bei LernMoment die Fahne hoch für ein praktisches und pragmatisches Vorgehen. Daher freut es mich um so mehr, dass er nun auch seine Erfahrung mit dir teilt. DANKE!
+  <br />
+  Du erreichst Daniel unter: 
+  
+  
+	
+	<a href="http://github.com/gustda" title="Daniel Gustorff auf Github" target="_blank"><i class="fa fa-github-square"></i></a>
+	<a href="mailto:daniel@lernmoment.de" title="Schreib Daniel Gustorff eine Mail" target="_blank"><i class="fa fa-envelope-square"></i></a>
+		 
+</div>
+
+        
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:63266/csharp-tutorial-deutsch/erste-schritte-visual-studio-2017/" class="btn" title="UPDATE: C# Tutorial Deutsch - Erste Schritte">Vorheriger</a>
+      
+      
+        <a href="http://localhost:63266/alle/visual-studio-2019-tutorial-verf%C3%BCgbar/" class="btn" title="NEU - Erste Schritte mit C# und Visual Studio 2019">Nächster</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<div class="social-icons">
+	
+	
+	
+	<a href="http://www.youtube.com/channel/UC5jCUQ6IPHtQP5r4y9byCqA" title="Jan Suchotzki on YouTube" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
+	
+	<a href="http://stackoverflow.com/users/5258906/jan-suchotzki" title="Jan Suchotzki on StackExchange" target="_blank"><i class="fa fa-stack-exchange fa-2x"></i></a>
+	
+	
+	<a href="http://github.com/lernmoment" title="Jan Suchotzki on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+    
+	
+  <a href="http://localhost:63266/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+<span>Danke an <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> und <a href="http://mademistakes.com/so-simple/" rel="nofollow">Made Mistakes</a> für hervorragende Tools.</span>
+<br>
+<span><a href="http://localhost:63266/kein-copyright/">Kein Copyright</a>    -    <a href="http://localhost:63266/impressum/">Impressum</a>    -    <a href="http://localhost:63266/datenschutz/">Datenschutz</a></span>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:63266';
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:63266/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:63266/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

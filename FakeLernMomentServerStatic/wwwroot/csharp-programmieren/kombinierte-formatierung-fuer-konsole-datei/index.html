@@ -1,0 +1,273 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Kombinierte Formatierung für Konsole, Datei, ... &#8211; LernMoment.de</title>
+<meta name="description" content="Tipps wie du mühelos Werte in Strings einfügst und formatierst">
+<meta name="keywords" content="Syntax, Konzept, String">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Kombinierte Formatierung für Konsole, Datei, ...">
+<meta name="twitter:description" content="Tipps wie du mühelos Werte in Strings einfügst und formatierst">
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:63266/images/banner/lernmoment-csharp.jpg">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="de_DE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kombinierte Formatierung für Konsole, Datei, ...">
+<meta property="og:description" content="Tipps wie du mühelos Werte in Strings einfügst und formatierst">
+<meta property="og:url" content="http://localhost:63266/csharp-programmieren/kombinierte-formatierung-fuer-konsole-datei/">
+<meta property="og:site_name" content="LernMoment.de">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="sPPXWqQjaSqa_ZgqYPNCyVLLaFzVAFCuf3xDBC-ofwE">
+
+
+
+<link rel="canonical" href="http://localhost:63266/csharp-programmieren/kombinierte-formatierung-fuer-konsole-datei/">
+<link href="http://localhost:63266/feed.xml" type="application/atom+xml" rel="alternate" title="LernMoment.de Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:63266/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:63266/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:63266/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:63266/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:63266/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:63266/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:63266/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:63266/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+
+
+<div class="navigation-banner">
+	
+	
+
+	Lerne programmieren mit mir im Kurs: <a href="http://localhost:63266/einstieg-csharp/" >Einstieg in C# -></a>
+</div>
+
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:63266/kurse/" >Kurse</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/schwerpunkt/" >Dein Weg zum C# Entwickler</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/projekt-start/" >Entwicklung & Mentoring</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/blog/" >Blog</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	
+		<div class="wrap">
+			<a href="http://localhost:63266/" class="site-logo" rel="home" title="LernMoment.de"><img src="http://localhost:63266/images/site-logo.png" width="200" height="200" alt="LernMoment.de logo" class="animated fadeInDown"></a>
+		</div>
+	
+</header><!-- /.masthead -->
+
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <img src="http://localhost:63266/images/banner/lernmoment-csharp.jpg" class="entry-feature-image" alt="Kombinierte Formatierung für Konsole, Datei, ..." >
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"><a href="http://localhost:63266/tags/#Syntax" title="Pages tagged Syntax">Syntax</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Konzept" title="Pages tagged Konzept">Konzept</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#String" title="Pages tagged String">String</a></span>
+        
+          <h1 class="entry-title">Kombinierte Formatierung für Konsole, Datei, ...</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <span class="author vcard">Von <span class="fn">Jan Suchotzki</span></span>
+        <span class="entry-date date published"><time datetime="2015-08-12T06:00:00+02:00"><i class="fa fa-calendar-o"></i> 12. August 2015</time></span>
+        <span class="entry-date date modified"><time datetime="2015-09-03 17:00:00 +0200"><i class="fa fa-pencil"></i> 03. September 2015</time></span>
+        
+        
+        
+      </footer>
+      <div class="entry-content">
+        <p>Du schreibst häufiger Konsolenanwendungen, bearbeitest Dateien, manipulierst Zeichenketten oder gibst einfach ein paar Informationen auf <code class="highlighter-rouge">Console</code>, <code class="highlighter-rouge">Debug</code> oder <code class="highlighter-rouge">Trace</code> aus? Dann hast du die kombinierte Formatierung bereits verwendet. Da es sich dabei um eine mächtige Funktion von C# handelt, solltest du sie wirklich beherrschen. Deshalb gibt es in den nächsten Wochen immer mal wieder einen LernMoment zu diesem Thema.</p>
+
+<p>Bevor ich dir Details zeige, hier erstmal die grundlegende Idee:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="kt">string</span> <span class="n">name</span> <span class="p">=</span> <span class="s">"Kombinierte Formatierung"</span><span class="p">;</span>
+	<span class="n">DateTime</span> <span class="n">datum</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">DateTime</span><span class="p">(</span><span class="m">2015</span><span class="p">,</span> <span class="m">08</span><span class="p">,</span> <span class="m">12</span><span class="p">,</span> <span class="m">09</span><span class="p">,</span> <span class="m">30</span><span class="p">,</span> <span class="m">00</span><span class="p">);</span>
+
+	<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"LernMoment '{0}', erschienen am {1:D}, um {1:t}"</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">datum</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Wenn du dies Programm ausführst, solltest du eine Ausgabe wie diese bekommen:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bash<span class="nv">$ </span> mono Einfuehrung.exe
+
+LernMoment <span class="s1">'Kombinierte Formatierung'</span>, erschienen am Wednesday, 12 August 2015, um 09:30
+</code></pre></div></div>
+
+<p>Die kombinierte Formatierung kann für Methoden verschiedener Klassen angewendet werden. Dazu zählen unter anderem <code class="highlighter-rouge">String.Format</code>, <code class="highlighter-rouge">Console.WriteLine</code>, <code class="highlighter-rouge">TextWriter.WriteLine</code> und seine Erben <code class="highlighter-rouge">StreamWriter</code> und <code class="highlighter-rouge">HtmlTextWriter</code>.</p>
+
+<p>Wie du im Beispiel oben bei <code class="highlighter-rouge">Console.WriteLine</code> sehen kannst, besteht die kombinierte Formatierung aus statischem Text mit Formatierungselementen und einer Liste von Objekten. Über die Formatierungselemente kannst du steuern, welche Objekte wo in deinen Text eingesetzt werden und wie sie formatiert werden sollen.</p>
+
+<p>Du machst ein Formatierungselement kenntlich durch die geschweiften Klammern. Darin verwendest du den Index eines Objekts aus der Objektliste. Dabei ist wichtig, dass die Liste mit Index 0 startet. Der Compiler überprüft nicht die richtige Verwendung des Index. Wenn du also einen Index verwendest, den es nicht gibt, dann merkst du dies erst bei der Ausführung in Form einer <code class="highlighter-rouge">FormatException</code>.</p>
+
+<p>Du kannst Objekte in mehreren Formatierungselementen verwenden. So ist es möglich, dass du den Wert eines Objektes mit unterschiedlichen Formatierungen anzeigst. Dies siehst du in dem Beispiel oben. Dort habe ich einmal <code class="highlighter-rouge">datum</code> mit dem langen Datumsmuster (<code class="highlighter-rouge">:D</code>) und einmal mit dem kurzen Zeitmuster (<code class="highlighter-rouge">:t</code>) formatiert.</p>
+
+<p>Neben vielen weiteren Mustern für Datum und Zeit gibt es auch verschiedenste Formatierungsoptionen für Zahlen, Enums und andere Typen. Dabei musst du auch noch die jeweiligen Spracheinstellungen berücksichtigen. Bei mir ist zum Beispiel Englisch als Sprache des Betriebssystems eingestellt. Daher sieht die Ausgabe des Beispiels noch etwas komisch aus. Auch das lässt sich ändern. Dazu mehr in dem nächsten LernMoment in dieser Serie.</p>
+
+<p>Jetzt erstmal viel Spaß mit dem Formatieren deiner Ausgaben</p>
+
+<p>Jan</p>
+
+<h3 id="merke">Merke</h3>
+
+<ul>
+  <li>Mit der kombinierten Formatierung kannst du Werte aus Objekten in einen String einfügen und formatieren.</li>
+  <li>Es gibt Methoden an verschiedenen Klassen, die diese Formatierung unterstützen (u.a. <code class="highlighter-rouge">String.Format</code>, <code class="highlighter-rouge">Console.WriteLine</code>, <code class="highlighter-rouge">TextWriter.WriteLine</code> und <code class="highlighter-rouge">Console.WriteLine</code>)</li>
+  <li>Die kombinierte Formatierung besteht aus zwei Teilen: 1) einem String mit Formatierungselementen und 2) einer Liste von Objekten, deren Werte in den String eingefügt werden.</li>
+  <li>Das Formatierungselement besteht mindestens aus einem Paar geschweifter Klammern und dem Index des Objektes, dessen Wert eingefügt werden soll. Das erste Objekt hat den Index 0.</li>
+  <li>Im Formatierungselement kann nach dem Index ein Doppelpunkt gefolgt von Formatierungsinformationen stehen.</li>
+</ul>
+
+<h3 id="lernquiz">Lernquiz</h3>
+
+<p>Verwende folgende Fragen, um das Gelernte von heute zu festigen:</p>
+
+<ul>
+  <li>Welche Bestandteile hat ein Formatierungselement?</li>
+  <li>An welchen Klassen kann die kombinierte Formatierung eingesetzt werden?</li>
+  <li>Wie kannst du ein Datum inklusive Wochentag ausgeben?</li>
+</ul>
+
+<p>Am besten schaust du dir morgen und dann nochmal in ein paar Tagen die vorherigen Fragen an und beantwortest sie, ohne den Text vorher gelesen zu haben.</p>
+
+<h3 id="weitere-informationen">Weitere Informationen</h3>
+
+<ul>
+  <li>Den Quelltext zum heutigen LernMoment findest du <a href="https://github.com/LernMoment/csharp/tree/master/KombinierteFormatierung">hier</a></li>
+  <li>Eine sehr gute Beschreibung der kombinierten Formatierung gibt es bei <a href="https://msdn.microsoft.com/de-de/library/txafckwd(v=vs.110).aspx">MSDN</a>.</li>
+</ul>
+
+        
+          <div class="subscribe-notice">
+            <h5>Dieser LernMoment hat dir gefallen? <br> Dann melde dich an und du wirst über neue LernMomente informiert:</h5>
+                <form action="https://lernmoment.us9.list-manage.com/subscribe/post" method="POST" target="_blank">
+      <input type="hidden" name="u" value="d0206d57f5002e40b651a0f60">
+      <input type="hidden" name="id" value="8845c28e62">
+      <input type="email" class="subscribe-notice-input-box" autocapitalize="off" autocorrect="off" name="MERGE0" id="MERGE0" size="25" value="" placeholder="Deine E-Mail-Adresse">
+      <input type="text" class="subscribe-notice-input-box" name="MERGE1" id="MERGE1" size="25" value="" placeholder="Dein Vorname (optional)">
+      
+        <input type="checkbox" id="group_1" name="group[20205][1]" value="1" checked="true" style="display:none">
+      
+      <input type="submit" class="subscribe-notice-button" name="submit" value="Ich bin dabei!">
+      <legend class="subscribe-notice-legend">Du bekommst in unregelmäßigen Abständen Mails von mir, in denen ich dich auf neue Artikel oder Angebote hinweise, die in das gleiche Themengebiet fallen wie dieser Artikel.</legend>
+    </form>
+
+          </div>
+        
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:63266/csharp-programmieren/unsicher-per-design/" class="btn" title="Ist C# unsicher per Design?">Vorheriger</a>
+      
+      
+        <a href="http://localhost:63266/csharp-programmieren/wartungsfreundliches-inotifypropertychanged/" class="btn" title="Wartungsfreundliches INotifyPropertyChanged">Nächster</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<div class="social-icons">
+	
+	
+	
+	<a href="http://www.youtube.com/channel/UC5jCUQ6IPHtQP5r4y9byCqA" title="Jan Suchotzki on YouTube" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
+	
+	<a href="http://stackoverflow.com/users/5258906/jan-suchotzki" title="Jan Suchotzki on StackExchange" target="_blank"><i class="fa fa-stack-exchange fa-2x"></i></a>
+	
+	
+	<a href="http://github.com/lernmoment" title="Jan Suchotzki on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+    
+	
+  <a href="http://localhost:63266/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+<span>Danke an <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> und <a href="http://mademistakes.com/so-simple/" rel="nofollow">Made Mistakes</a> für hervorragende Tools.</span>
+<br>
+<span><a href="http://localhost:63266/kein-copyright/">Kein Copyright</a>    -    <a href="http://localhost:63266/impressum/">Impressum</a>    -    <a href="http://localhost:63266/datenschutz/">Datenschutz</a></span>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:63266';
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:63266/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:63266/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

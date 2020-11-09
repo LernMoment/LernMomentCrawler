@@ -1,0 +1,255 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Verwende deine C# Bibliothek in anderen .NET Sprachen &#8211; LernMoment.de</title>
+<meta name="description" content="Der Trick mit CLSCompliant">
+<meta name="keywords" content="Konzept, Compiler, Runtime">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Verwende deine C# Bibliothek in anderen .NET Sprachen">
+<meta name="twitter:description" content="Der Trick mit CLSCompliant">
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:63266/images/banner/lernmoment-csharp.jpg">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="de_DE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Verwende deine C# Bibliothek in anderen .NET Sprachen">
+<meta property="og:description" content="Der Trick mit CLSCompliant">
+<meta property="og:url" content="http://localhost:63266/csharp-programmieren/verwende-deine-bibliothek-in-anderen-net-sprachen/">
+<meta property="og:site_name" content="LernMoment.de">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="sPPXWqQjaSqa_ZgqYPNCyVLLaFzVAFCuf3xDBC-ofwE">
+
+
+
+<link rel="canonical" href="http://localhost:63266/csharp-programmieren/verwende-deine-bibliothek-in-anderen-net-sprachen/">
+<link href="http://localhost:63266/feed.xml" type="application/atom+xml" rel="alternate" title="LernMoment.de Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:63266/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:63266/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:63266/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:63266/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:63266/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:63266/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:63266/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:63266/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+
+
+<div class="navigation-banner">
+	
+	
+
+	Lerne programmieren mit mir im Kurs: <a href="http://localhost:63266/einstieg-csharp/" >Einstieg in C# -></a>
+</div>
+
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:63266/kurse/" >Kurse</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/schwerpunkt/" >Dein Weg zum C# Entwickler</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/projekt-start/" >Entwicklung & Mentoring</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/blog/" >Blog</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	
+		<div class="wrap">
+			<a href="http://localhost:63266/" class="site-logo" rel="home" title="LernMoment.de"><img src="http://localhost:63266/images/site-logo.png" width="200" height="200" alt="LernMoment.de logo" class="animated fadeInDown"></a>
+		</div>
+	
+</header><!-- /.masthead -->
+
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <img src="http://localhost:63266/images/banner/lernmoment-csharp.jpg" class="entry-feature-image" alt="Verwende deine C# Bibliothek in anderen .NET Sprachen" >
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"><a href="http://localhost:63266/tags/#Konzept" title="Pages tagged Konzept">Konzept</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Compiler" title="Pages tagged Compiler">Compiler</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Runtime" title="Pages tagged Runtime">Runtime</a></span>
+        
+          <h1 class="entry-title">Verwende deine C# Bibliothek in anderen .NET Sprachen</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <span class="author vcard">Von <span class="fn">Jan Suchotzki</span></span>
+        <span class="entry-date date published"><time datetime="2015-09-01T06:00:00+02:00"><i class="fa fa-calendar-o"></i> 01. September 2015</time></span>
+        
+        
+        
+        
+      </footer>
+      <div class="entry-content">
+        <p>Knapp 60 Programmiersprachen werden, laut <a href="https://de.wikipedia.org/wiki/Liste_von_.NET-Sprachen">Wikipedia</a>, aktuell von .NET unterstützt. Dabei hat jede ihre Stärken und Schwächen. Du kannst, je nach Aufgabe entsprechend, dir eine passende auswählen. So kannst du beispielsweise für die Automatisierung von Administrationsaufgaben Windows Power Shell oder auch IronRuby verwenden. Du könntest auch entscheiden, dass du einige Algorithmen in F#, aber die Oberfläche deiner Anwendung lieber in C# mit WPF, entwickeln möchtest.</p>
+
+<p>Dies wird dir ermöglicht durch die <em>Common Language Specification (CLS)</em>. Diese, durch die <a href="http://www.ecma-international.org/publications/standards/Ecma-335.htm">ECMA</a> standardisierte Spezifikation, definiert welche Features alle Sprachen in .NET gemeinsam haben. Wenn du dich bei der Entwicklung einer Bibliothek in C# an die Regeln der <em>CLS</em> hälst, kann deine Bibliothek aus Anwendungen benutzt werden, die in einer anderen <em>CLS</em> konformen Sprache geschrieben wird. So ist es beispielsweise sehr einfach möglich, dass du Klassen aus einer C#-Assembly in einem PowerShell-Skript oder einer VB.NET Anwendung benutzt.</p>
+
+<p>Grundsätzlich kannst du in diesem Kontext zwischen <em>Language Independence</em> und <em>Cross-Language Interop</em> unterscheiden. Bei der <em>Language Independence</em>, also Sprachunabhängigkeit, geht es darum, dass du eine Komponente (z.B. eine Bibliothek verpackt in eine Assembly) so erstellst, dass sie von jeder anderen .NET-Sprache benutzt werden kann. Das <em>Cross-Language Interop</em> geht sogar noch einen Schritt weiter. Dabei geht es darum, dass du in einer Komponente mehrere Sprachen verwendest.</p>
+
+<p>Wenn du eine Bibliothek in C# erstellen willst, die sprachunabhängig verwendet werden kann, dann benötigst du das Attribut <code class="highlighter-rouge">CLSCompliant</code>. Möchtest du deine ganze Assembly so definieren, fügst du einfach der Datei <code class="highlighter-rouge">AssemblyInfo.cs</code> folgende Zeile hinzu: <code class="highlighter-rouge">[assembly: CLSCompliant(true)]</code>.</p>
+
+<p>Damit prüft der Compiler die öffentliche Schnittstelle deiner Assembly, ob sie gegen Regeln der <em>CLS</em> verstößt. Eine dieser Regeln besagt, dass Ganzzahlen nicht <code class="highlighter-rouge">unsigned</code> definiert sein dürfen (mit Ausnahme von <code class="highlighter-rouge">Byte</code>). Sollte die öffentliche Schnittstelle deiner Assembly dennoch einen <code class="highlighter-rouge">unsigned</code> Datentypen verwenden, musst du dies entweder ändern, oder die Methode / Eigenschaft mit <code class="highlighter-rouge">[CLSCompliant(false)]</code> definieren. Dadurch sagst du, dass diese Methode / Eigenschaft nicht in einer anderen Sprache verwendet werden kann.</p>
+
+<p>Sprachunabhängigkeit bekommst du nicht umsonst. Wenn du also sicher bist, dass du sie nicht brauchst, dann solltest du auch <code class="highlighter-rouge">CLSCompliant</code> nicht verwenden, oder <code class="highlighter-rouge">[assembly: CLSCompliant(false)]</code> definieren. Jedoch gerade für Bibliotheken oder sehr wichtige Teile deiner Anwendung, wie das Model mit der Businesslogik, ist <em>CLS</em>-Konformität eine super Möglichkeit für Wiederverwendung.</p>
+
+<p>Jetzt erstmal viel Spaß mit der Erkundung von Sprachunabhängigkeit</p>
+
+<p>Jan</p>
+
+<h3 id="merke">Merke</h3>
+
+<ul>
+  <li>Die <em>Common Language Specification (CLS)</em> definiert welche Features alle Sprachen in .NET gemeinsam haben.</li>
+  <li>Sprachunabhängigkeit (<em>Language Independence</em>) besagt, dass eine Komponente in jeder anderen .NET-Sprache verwendet werden kann.</li>
+  <li>Es gibt die Möglichkeit mehrere Sprachen innerhalb einer Komponente (z.B. Assembly) zu verwenden. Dies wird <em>Cross-Language Interop</em> genannt.</li>
+  <li>Mit <code class="highlighter-rouge">[assembly: CLSCompliant(true)]</code> definierst du eine ganze Assembly als sprachunabhängig. Diese Anweisung kann außerhalb von Klassen und Namensräumen verwendet werden. Am besten in der Datei <code class="highlighter-rouge">AssemblyInfo.cs</code>.</li>
+</ul>
+
+<h3 id="lernquiz">Lernquiz</h3>
+
+<p>Verwende folgende Fragen, um das Gelernte von heute zu festigen:</p>
+
+<ul>
+  <li>Was bedeutet Sprachunabhängigkeit?</li>
+  <li>Wie kannst du einzelne Methoden / Eigenschaften als nicht sprachunabhängig definieren?</li>
+  <li>Wie wird eine Assembly als sprachunabhängig definiert?</li>
+</ul>
+
+<p>Am besten schaust du dir morgen und dann nochmal in ein paar Tagen die vorherigen Fragen an und beantwortest sie, ohne den Text vorher gelesen zu haben.</p>
+
+<h3 id="weitere-informationen">Weitere Informationen</h3>
+
+<ul>
+  <li>Ein gutes Beispiel für Sprachunabhängigkeit zeigt dir die <a href="https://github.com/Tinkerforge/generators/blob/master/csharp/IPConnection.cs">C#-Anbindung von Tinkerforge</a></li>
+  <li>Das <code class="highlighter-rouge">CLSCompliant</code> Attribut ist auf <a href="https://msdn.microsoft.com/de-de/library/system.clscompliantattribute(v=vs.110).aspx">MSDN</a> genauer beschrieben.</li>
+  <li>Eine sehr umfangreiche Einführung in das Thema gibt es ebenfalls auf <a href="https://msdn.microsoft.com/de-de/library/vstudio/12a7a7h3(v=vs.110).aspx">MSDN</a></li>
+</ul>
+
+        
+          <div class="subscribe-notice">
+            <h5>Dieser LernMoment hat dir gefallen? <br> Dann melde dich an und du wirst über neue LernMomente informiert:</h5>
+                <form action="https://lernmoment.us9.list-manage.com/subscribe/post" method="POST" target="_blank">
+      <input type="hidden" name="u" value="d0206d57f5002e40b651a0f60">
+      <input type="hidden" name="id" value="8845c28e62">
+      <input type="email" class="subscribe-notice-input-box" autocapitalize="off" autocorrect="off" name="MERGE0" id="MERGE0" size="25" value="" placeholder="Deine E-Mail-Adresse">
+      <input type="text" class="subscribe-notice-input-box" name="MERGE1" id="MERGE1" size="25" value="" placeholder="Dein Vorname (optional)">
+      
+        <input type="checkbox" id="group_1" name="group[20205][1]" value="1" checked="true" style="display:none">
+      
+      <input type="submit" class="subscribe-notice-button" name="submit" value="Ich bin dabei!">
+      <legend class="subscribe-notice-legend">Du bekommst in unregelmäßigen Abständen Mails von mir, in denen ich dich auf neue Artikel oder Angebote hinweise, die in das gleiche Themengebiet fallen wie dieser Artikel.</legend>
+    </form>
+
+          </div>
+        
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:63266/csharp-programmieren/tastatureingabe-an-icommands-binden/" class="btn" title="Unterstützt deine WPF-Anwendung Tastenkombinationen?">Vorheriger</a>
+      
+      
+        <a href="http://localhost:63266/csharp-programmieren/datacontract-flatrate-zum-serialisieren-deiner-objekte/" class="btn" title="DataContract - Die Flatrate zum Serialisieren deiner Objekte">Nächster</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<div class="social-icons">
+	
+	
+	
+	<a href="http://www.youtube.com/channel/UC5jCUQ6IPHtQP5r4y9byCqA" title="Jan Suchotzki on YouTube" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
+	
+	<a href="http://stackoverflow.com/users/5258906/jan-suchotzki" title="Jan Suchotzki on StackExchange" target="_blank"><i class="fa fa-stack-exchange fa-2x"></i></a>
+	
+	
+	<a href="http://github.com/lernmoment" title="Jan Suchotzki on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+    
+	
+  <a href="http://localhost:63266/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+<span>Danke an <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> und <a href="http://mademistakes.com/so-simple/" rel="nofollow">Made Mistakes</a> für hervorragende Tools.</span>
+<br>
+<span><a href="http://localhost:63266/kein-copyright/">Kein Copyright</a>    -    <a href="http://localhost:63266/impressum/">Impressum</a>    -    <a href="http://localhost:63266/datenschutz/">Datenschutz</a></span>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:63266';
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:63266/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:63266/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

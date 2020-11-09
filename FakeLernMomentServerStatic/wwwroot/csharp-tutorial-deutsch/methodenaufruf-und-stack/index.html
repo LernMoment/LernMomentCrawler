@@ -1,0 +1,253 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Der Stack und was beim Methodenaufruf passiert &#8211; LernMoment.de</title>
+<meta name="description" content="Damit du dir bildlich vorstellen kannst was bei einem Methodenaufruf passiert erkläre ich dir den Stack (mit Lego-Steinen)!">
+<meta name="keywords" content="Methoden, C#, Video, Tutorial">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Der Stack und was beim Methodenaufruf passiert">
+<meta name="twitter:description" content="Damit du dir bildlich vorstellen kannst was bei einem Methodenaufruf passiert erkläre ich dir den Stack (mit Lego-Steinen)!">
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:63266/images/banner/lernmoment-csharp.jpg">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="de_DE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Der Stack und was beim Methodenaufruf passiert">
+<meta property="og:description" content="Damit du dir bildlich vorstellen kannst was bei einem Methodenaufruf passiert erkläre ich dir den Stack (mit Lego-Steinen)!">
+<meta property="og:url" content="http://localhost:63266/csharp-tutorial-deutsch/methodenaufruf-und-stack/">
+<meta property="og:site_name" content="LernMoment.de">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="sPPXWqQjaSqa_ZgqYPNCyVLLaFzVAFCuf3xDBC-ofwE">
+
+
+
+<link rel="canonical" href="http://localhost:63266/csharp-tutorial-deutsch/methodenaufruf-und-stack/">
+<link href="http://localhost:63266/feed.xml" type="application/atom+xml" rel="alternate" title="LernMoment.de Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:63266/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:63266/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:63266/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:63266/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:63266/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:63266/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:63266/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:63266/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+
+
+<div class="navigation-banner">
+	
+	
+
+	Lerne programmieren mit mir im Kurs: <a href="http://localhost:63266/einstieg-csharp/" >Einstieg in C# -></a>
+</div>
+
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:63266/kurse/" >Kurse</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/schwerpunkt/" >Dein Weg zum C# Entwickler</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/projekt-start/" >Entwicklung & Mentoring</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/blog/" >Blog</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	
+		<div class="wrap">
+			<a href="http://localhost:63266/" class="site-logo" rel="home" title="LernMoment.de"><img src="http://localhost:63266/images/site-logo.png" width="200" height="200" alt="LernMoment.de logo" class="animated fadeInDown"></a>
+		</div>
+	
+</header><!-- /.masthead -->
+
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <img src="http://localhost:63266/images/banner/lernmoment-csharp.jpg" class="entry-feature-image" alt="Der Stack und was beim Methodenaufruf passiert" >
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"><a href="http://localhost:63266/tags/#Methoden" title="Pages tagged Methoden">Methoden</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#C#" title="Pages tagged C#">C#</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Video" title="Pages tagged Video">Video</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Tutorial" title="Pages tagged Tutorial">Tutorial</a></span>
+        
+          <h1 class="entry-title">Der Stack und was beim Methodenaufruf passiert</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <span class="author vcard">Von <span class="fn">Jan Suchotzki</span></span>
+        <span class="entry-date date published"><time datetime="2016-12-22T06:00:00+01:00"><i class="fa fa-calendar-o"></i> 22. December 2016</time></span>
+        
+        
+        
+        
+      </footer>
+      <div class="entry-content">
+        <blockquote>
+  <p>Schau dir auch die weiteren Folgen des <a href="/csharp-tutorial-deutsch/">C# Tutorial Deutsch</a> an.</p>
+</blockquote>
+
+<p>Den Teilnehmern meines Kurses <a href="/einstieg-sharp/">“Einstieg in C# - Software programmieren wie ein Profi”</a> biete ich die Aktion <em>#FragLernMoment</em> an. Das bedeutet, dass sie im Diskussionsforum eine Frage stellen können. Diese beantworte ich natürlich schriftlich, aber jede Woche gebe ich die Antwort zu einer Frage auch per Video.</p>
+
+<p>Diese Folge des <em>C# Tutorial Deutsch</em> ist genau solch ein Video. Darin erkläre ich dir (sehr anschaulich ;) was der <em>Stack</em> ist und was er mit einem Methodenaufruf zutun hat. Die Frage dazu kam von einem Kursteilnehmer der zwar Methoden allgemein verstanden hatte sich aber nicht <em>bildlich</em> vorstellen konnte wie das mit der Wertübergabe und Rückgabe zur Laufzeit funktioniert.</p>
+
+<p>Alles weitere erfährst du hier im Video:</p>
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/ma8wA5LmNXg" frameborder="0" allow="encrypted-media" allowfullscreen=""></iframe>
+
+<div class="subscribe-notice">
+<h5>Du willst mehr über Methoden erfahren?</h5>
+<a href="https://www.udemy.com/course/einstieg-in-csharp-software-programmieren-wie-ein-profi/?couponCode=CS_20-1120_LMDE" class="notice-button">Hier geht's zum Online-Kurs "Einstieg in C#" &gt;&gt;</a>
+</div>
+
+<h3 id="was-ist-ein-stack">Was ist ein Stack?</h3>
+
+<p>Im Bereich von <em>Algorithmen und Datenstrukturen</em>, einem Teilgebiet der Informatik, wird ein <em>Stack</em> häufig mit <em>Keller</em> übersetzt. Du kannst Elemente von oben in den Keller legen und musst immer das zuletzt reingelegte zu erst raus nehmen.</p>
+
+<p>Im Speichermanagement von <em>.NET</em> wird ein <em>Stack</em> verwendet um zur Laufzeit lokale Daten einer Methode zu speichern. Dabei bekommt jeder Methodenaufruf seinen eigenen <em>Stack-Frame</em>. In diesem Container legt die Laufzeitumgebung von .NET dann die ganzen Werte von Variablen ab.</p>
+
+<p>Die allgemeine Funktionsweise eines <em>Stack</em> ist sehr gut auf <a href="https://de.wikipedia.org/wiki/Stapelspeicher">Wikipedia erklärt</a>.</p>
+
+<h3 id="warum-braucht-ein-methodenaufruf-einen-stack-frame">Warum braucht ein Methodenaufruf einen Stack-Frame?</h3>
+
+<p>Alles was in einer Methode lokal verwendet wird, wird lediglich während der Ausführung dieser Methode benötigt. Es ist allerdings möglich, dass eine Methode unterbrochen wird, weil sie eine andere Methode aufruft. Wenn dies geschieht, müssen alle Werte so wie sie momentan in der aufrufenden Methode sind gesichert werden.</p>
+
+<p>Die aufgerufene Methode ihrerseits braucht allerdings auch einen Bereich wo ihre Werte gespeichert werden. Somit wird für jede Methode einfach ein <em>Stack-Frame</em> angelegt und auf den <em>Stack</em> gelegt. Ist diese Methode nun abgearbeitet, dann werden auch alle ihre lokalen Variablen gelöscht, denn diese werden später nie wieder gebraucht.</p>
+
+<p>Damit lässt sich auch sehr anschaulich erklären warum zwei Methodenaufrufe (der gleichen Methode) komplett unabhängig sind. Es wird zwar immer der gleiche Quellcode ausgeführt, aber die Daten mit denen die Methode arbeitet sind jedesmal “neu”, weil mit jedem Aufruf der Methode ein neuer <em>Stack-Frame</em> angelegt wird. Das kann übrigens sehr häufig passieren, wenn eine Methode in einer Schleife (z.B. <em>foreach</em>) ausgeführt wird.</p>
+
+<h3 id="weitere-links">Weitere Links</h3>
+
+<p>Eine geniale Beschreibung von <em>Stack</em> und vielen weiteren Teilen des <em>.NET Speichermanagements</em> sind im (nur auf Englisch verfügbaren) Artikel <a href="https://www.simple-talk.com/dotnet/net-framework/net-memory-management-basics/"><em>“.NET Memory Management Basics”</em></a> beschrieben. Wenn dich das Thema interessiert und du ein wenig Englisch kannst, dann solltest du den Artikel unbedingt lesen.</p>
+
+<p>Auch wenn ich im Quellcode zu diesem Video nichts besonderes gemacht habe, kannst du ihn <a href="https://gist.github.com/suchja/a08ffacdbdf23a9077a03b7510deeb15">hier anschauen</a> falls du etwas ausprobieren möchtest.</p>
+
+<p>Viel Erfolg mit den nächsten Methodenaufrufen</p>
+
+<p>Jan</p>
+
+        
+          <div class="subscribe-notice">
+            <h5>Dieser LernMoment hat dir gefallen? <br> Dann melde dich an und du wirst über neue LernMomente informiert:</h5>
+                <form action="https://lernmoment.us9.list-manage.com/subscribe/post" method="POST" target="_blank">
+      <input type="hidden" name="u" value="d0206d57f5002e40b651a0f60">
+      <input type="hidden" name="id" value="8845c28e62">
+      <input type="email" class="subscribe-notice-input-box" autocapitalize="off" autocorrect="off" name="MERGE0" id="MERGE0" size="25" value="" placeholder="Deine E-Mail-Adresse">
+      <input type="text" class="subscribe-notice-input-box" name="MERGE1" id="MERGE1" size="25" value="" placeholder="Dein Vorname (optional)">
+      
+        <input type="checkbox" id="group_1" name="group[20205][1]" value="1" checked="true" style="display:none">
+      
+      <input type="submit" class="subscribe-notice-button" name="submit" value="Ich bin dabei!">
+      <legend class="subscribe-notice-legend">Du bekommst in unregelmäßigen Abständen Mails von mir, in denen ich dich auf neue Artikel oder Angebote hinweise, die in das gleiche Themengebiet fallen wie dieser Artikel.</legend>
+    </form>
+
+          </div>
+        
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:63266/csharp-tutorial-deutsch/anwendungseinstellungen-visual-studio/" class="btn" title="Settings - (benutzerspezifische) Konfigurationseinstellungen">Vorheriger</a>
+      
+      
+        <a href="http://localhost:63266/csharp-tutorial-deutsch/erste-schritte-visual-studio-2017/" class="btn" title="UPDATE: C# Tutorial Deutsch - Erste Schritte">Nächster</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<div class="social-icons">
+	
+	
+	
+	<a href="http://www.youtube.com/channel/UC5jCUQ6IPHtQP5r4y9byCqA" title="Jan Suchotzki on YouTube" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
+	
+	<a href="http://stackoverflow.com/users/5258906/jan-suchotzki" title="Jan Suchotzki on StackExchange" target="_blank"><i class="fa fa-stack-exchange fa-2x"></i></a>
+	
+	
+	<a href="http://github.com/lernmoment" title="Jan Suchotzki on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+    
+	
+  <a href="http://localhost:63266/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+<span>Danke an <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> und <a href="http://mademistakes.com/so-simple/" rel="nofollow">Made Mistakes</a> für hervorragende Tools.</span>
+<br>
+<span><a href="http://localhost:63266/kein-copyright/">Kein Copyright</a>    -    <a href="http://localhost:63266/impressum/">Impressum</a>    -    <a href="http://localhost:63266/datenschutz/">Datenschutz</a></span>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:63266';
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:63266/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:63266/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

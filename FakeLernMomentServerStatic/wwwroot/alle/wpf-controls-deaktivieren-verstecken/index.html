@@ -1,0 +1,263 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>WPF-Steuerelementen deaktivieren und verstecken &#8211; LernMoment.de</title>
+<meta name="description" content="Die Eigenschaften Visibility und IsEnabled verändern das Aussehen und Verhalten eines Controls.">
+<meta name="keywords" content="WPF, XAML, Controls">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="WPF-Steuerelementen deaktivieren und verstecken">
+<meta name="twitter:description" content="Die Eigenschaften Visibility und IsEnabled verändern das Aussehen und Verhalten eines Controls.">
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:63266/images/banner/lernmoment-wpf.jpg">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="de_DE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WPF-Steuerelementen deaktivieren und verstecken">
+<meta property="og:description" content="Die Eigenschaften Visibility und IsEnabled verändern das Aussehen und Verhalten eines Controls.">
+<meta property="og:url" content="http://localhost:63266/alle/wpf-controls-deaktivieren-verstecken/">
+<meta property="og:site_name" content="LernMoment.de">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="sPPXWqQjaSqa_ZgqYPNCyVLLaFzVAFCuf3xDBC-ofwE">
+
+
+
+<link rel="canonical" href="http://localhost:63266/alle/wpf-controls-deaktivieren-verstecken/">
+<link href="http://localhost:63266/feed.xml" type="application/atom+xml" rel="alternate" title="LernMoment.de Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:63266/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:63266/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:63266/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:63266/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:63266/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:63266/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:63266/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:63266/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+
+
+<div class="navigation-banner">
+	
+	
+
+	Sammle Erfahrung in C# mit mir im Kurs: <a href="https://www.udemy.com/csharp-uebungskurs-einfach-verschluesselt/?referralCode=C976277144B75813267C" >C# Grundlagen üben mit System -></a>
+</div>
+
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:63266/kurse/" >Kurse</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/schwerpunkt/" >Dein Weg zum C# Entwickler</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/projekt-start/" >Entwicklung & Mentoring</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/blog/" >Blog</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	
+		<div class="wrap">
+			<a href="http://localhost:63266/" class="site-logo" rel="home" title="LernMoment.de"><img src="http://localhost:63266/images/site-logo.png" width="200" height="200" alt="LernMoment.de logo" class="animated fadeInDown"></a>
+		</div>
+	
+</header><!-- /.masthead -->
+
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <img src="http://localhost:63266/images/banner/lernmoment-wpf.jpg" class="entry-feature-image" alt="WPF-Steuerelementen deaktivieren und verstecken" >
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"><a href="http://localhost:63266/tags/#WPF" title="Pages tagged WPF">WPF</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#XAML" title="Pages tagged XAML">XAML</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Controls" title="Pages tagged Controls">Controls</a></span>
+        
+          <h1 class="entry-title">WPF-Steuerelementen deaktivieren und verstecken</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <span class="author vcard">Von <span class="fn">Jan Suchotzki</span></span>
+        <span class="entry-date date published"><time datetime="2020-04-18T10:00:09+02:00"><i class="fa fa-calendar-o"></i> 18. April 2020</time></span>
+        
+        
+        
+        
+      </footer>
+      <div class="entry-content">
+        <p>Mmmmmoin und willkommen zu deinem LernMoment!</p>
+
+<p>Im <a href="/lernmail-kurse/wpf-tictactoe-fuer-einsteiger/">WPF-Übungskurs für Einsteiger</a> ist eine Aufgabe einen Hinweis in einem <code class="highlighter-rouge">Label</code> anzuzeigen. Grundsätzlich ist das erstmal keine Herausforderung, weil die einzige Aufgabe die ein <code class="highlighter-rouge">Label</code> hat, ist einen Text anzuzeigen 😁. Da das <code class="highlighter-rouge">Label</code> in diesem Fall jedoch über anderen Steuerelementen liegt, soll es ausgeblendet werden, solange kein Hinweis angezeigt wird.</p>
+
+<p>Doch wie kann ein <code class="highlighter-rouge">Label</code> oder auch jedes anderen Steuerelement eigentlich ausgeblendet werden? Wenn du die Suchmaschine deines Vertrauens fragst, kommst du ziemlich schnell auf eine von 2 Eigenschaften:</p>
+<ul>
+  <li><code class="highlighter-rouge">IsEnabled</code> - Gibt an ob ein Steuerelement aktiv ist</li>
+  <li><code class="highlighter-rouge">Visibility</code> - Gibt an ob ein Steuerelement sichtbar ist</li>
+</ul>
+
+<p>Dabei ist es wichtig zu verstehen, dass Aktivierung und Sichtbarkeit zwei unterschiedliche Dinge sind.</p>
+
+<h3 id="steuerelemente-deaktivieren-isenabled">Steuerelemente deaktivieren <code class="highlighter-rouge">IsEnabled</code></h3>
+<p>Wenn du ein Steuerelement über <code class="highlighter-rouge">IsEnabled = false</code> deaktivierst, dann ist es immer noch sichtbar. Ein deaktiviertes Steuerelement ist allerdings nicht bedienbar. Um dem Benutzer zu zeigen, dass es nicht verwendet werden kann, ist ein deaktiviertes Steuerelement gräulich dargestellt.</p>
+
+<p>Das hast du vielleicht schon mal bei einem <code class="highlighter-rouge">Button</code> zum speichern oder so gesehen. Solange es keine Änderungen gibt diee gespeichert werden können, kannst du einen solchen <code class="highlighter-rouge">Button</code> deaktivieren. Das signalisiert dem Benutzer, dass die Aktion momentan nicht verfügbar ist. Als Entwickler hilft es dir, dass du dir sicher sein kannst, dass eine Aktion nur dann ausgeführt wird, wenn sie auch tatsächlich sinnvolle Resultate liefern kann.</p>
+
+<p>In folgendem Bild siehst du ein paar Steuerelemente und wie sie aussehen wenn sie aktiv bzw. nicht aktiv sind:</p>
+
+<p><img src="http://localhost:63266/images/wpf-controls-deaktivieren/isenabled-example.jpg" alt="Aussehen von Steuerelementen die aktiv bzw. nicht aktiv sind" /></p>
+
+<h3 id="steuerelemente-verstecken-visibility">Steuerelemente verstecken <code class="highlighter-rouge">Visibility</code></h3>
+<p>Die Sichbarkeit eines Steuerelements wird durch die Eigenschaft <code class="highlighter-rouge">Visibility</code> beeeinflußt. Dabei gibt es die folgenden möglichen Werte für diese Eigenschaft:</p>
+<ul>
+  <li><code class="highlighter-rouge">Visible</code> - Das Steuerelement ist sichtbar</li>
+  <li><code class="highlighter-rouge">Hidden</code> - Das Steuerelement ist nicht sichtbar, aber es wird im Layout berücksichtigt, als wäre es sichtbar. Es entsteht also eine Lücke auf der Oberfläche wo ansonsten das Steuerelement angezeigt würde.</li>
+  <li><code class="highlighter-rouge">Collapsed</code> - Das Steuerelement ist nicht sichtbar und wird nicht im Layout berücksichtigt. Die umgebenden Steuerelement nehmen also den entstehenden Platz ein.</li>
+</ul>
+
+<p><img src="http://localhost:63266/images/wpf-controls-deaktivieren/visibility-hidden.jpg" alt="Steuerelementen mit Visibility.Hidden" /></p>
+
+<p><img src="http://localhost:63266/images/wpf-controls-deaktivieren/visibility-collapsed.jpg" alt="Steuerelementen mit Visibility.Collapsed" /></p>
+
+<p>Wichtig ist dabei, dass du nur einen Unterschied zwischen <code class="highlighter-rouge">Hidden</code> und <code class="highlighter-rouge">Collapsed</code> siehst, wenn dein Layout dieses zu lässt. In dem eingangs erwähnten Beispiel im <a href="/lernmail-kurse/wpf-tictactoe-fuer-einsteiger/">WPF-Übungskurs für Einsteiger</a> verwenden wir ein <code class="highlighter-rouge">Grid</code>. Da jedes Steuerelement in seiner eigenen Zelle ist, wirst du dort zwischen <code class="highlighter-rouge">Hidden</code> und <code class="highlighter-rouge">Collapsed</code> keinen Unterschied sehen.</p>
+
+<p>Nachfolgend noch der <em>XAML</em>-Code den ich verwendet habe für die beiden Bilder. Darin siehst du, dass die drei <code class="highlighter-rouge">Button</code> nebeneinander in einem <code class="highlighter-rouge">StackPanel</code> liegen. Daher ergibt sich auch ein Unterschied im Layout, weil so mit <code class="highlighter-rouge">Collapsed</code> der Platz frei wird, dass <code class="highlighter-rouge">Test3-Button</code> nach links rutschen kann.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;Grid</span> <span class="na">TextElement.FontSize=</span><span class="s">"30"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Grid.RowDefinitions&gt;</span>
+        <span class="nt">&lt;RowDefinition</span> <span class="na">Height=</span><span class="s">"*"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;RowDefinition</span> <span class="na">Height=</span><span class="s">"*"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/Grid.RowDefinitions&gt;</span>
+    <span class="nt">&lt;StackPanel</span> <span class="na">Orientation=</span><span class="s">"Horizontal"</span> <span class="na">Grid.Row=</span><span class="s">"0"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">"Test1"</span> <span class="na">Margin=</span><span class="s">"10"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">"Test2"</span> <span class="na">Margin=</span><span class="s">"10"</span> 
+                <span class="na">Visibility=</span><span class="s">"{Binding ElementName=VisibilitySelector, Path=SelectedValue.Content}"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">"Test3"</span> <span class="na">Margin=</span><span class="s">"10"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/StackPanel&gt;</span>
+
+    <span class="nt">&lt;ComboBox</span> <span class="na">x:Name=</span><span class="s">"VisibilitySelector"</span> <span class="na">Grid.Row=</span><span class="s">"1"</span> <span class="na">Margin=</span><span class="s">"50"</span> <span class="na">SelectedIndex=</span><span class="s">"0"</span> 
+              <span class="na">HorizontalAlignment=</span><span class="s">"Center"</span> <span class="na">VerticalAlignment=</span><span class="s">"Center"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;ComboBox.Items&gt;</span>
+            <span class="nt">&lt;ComboBoxItem</span> <span class="na">Content=</span><span class="s">"Visible"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;ComboBoxItem</span> <span class="na">Content=</span><span class="s">"Collapsed"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;ComboBoxItem</span> <span class="na">Content=</span><span class="s">"Hidden"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/ComboBox.Items&gt;</span>
+    <span class="nt">&lt;/ComboBox&gt;</span>
+<span class="nt">&lt;/Grid&gt;</span>
+</code></pre></div></div>
+
+<p>Möchtest du dein Wissen testen und etwas Erfahrung in der Erstellung von Windows-Oberflächen mit WPF und C# sammeln?</p>
+
+<div class="subscribe-notice">
+<h5>Dann melde dich hier zum kostenlosen WPF Übungskurs für Einsteiger an.</h5>
+<a href="http://localhost:63266/lernmail-kurse/wpf-tictactoe-fuer-einsteiger/" class="notice-button">Erfahre mehr &gt;&gt;</a>
+</div>
+
+<p>Viel Spaß auf deinem Weg vom Einsteiger zum C# Entwickler</p>
+
+<p>Jan von LernMoment.de</p>
+
+        
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:63266/alle/zugriff-wpf-controls-code-behind/" class="btn" title="Eigenschaften von WPF-Steuerelementen im Quellcode setzen">Vorheriger</a>
+      
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<div class="social-icons">
+	
+	
+	
+	<a href="http://www.youtube.com/channel/UC5jCUQ6IPHtQP5r4y9byCqA" title="Jan Suchotzki on YouTube" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
+	
+	<a href="http://stackoverflow.com/users/5258906/jan-suchotzki" title="Jan Suchotzki on StackExchange" target="_blank"><i class="fa fa-stack-exchange fa-2x"></i></a>
+	
+	
+	<a href="http://github.com/lernmoment" title="Jan Suchotzki on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+    
+	
+  <a href="http://localhost:63266/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+<span>Danke an <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> und <a href="http://mademistakes.com/so-simple/" rel="nofollow">Made Mistakes</a> für hervorragende Tools.</span>
+<br>
+<span><a href="http://localhost:63266/kein-copyright/">Kein Copyright</a>    -    <a href="http://localhost:63266/impressum/">Impressum</a>    -    <a href="http://localhost:63266/datenschutz/">Datenschutz</a></span>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:63266';
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:63266/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:63266/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

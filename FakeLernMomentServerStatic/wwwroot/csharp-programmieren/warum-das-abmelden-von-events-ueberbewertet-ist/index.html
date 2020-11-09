@@ -1,0 +1,270 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Warum das Abmelden von Events überbewertet ist. &#8211; LernMoment.de</title>
+<meta name="description" content="Und wann du es trotzdem machen solltest.">
+<meta name="keywords" content="Konzept, Memory Leak, Event">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Warum das Abmelden von Events überbewertet ist.">
+<meta name="twitter:description" content="Und wann du es trotzdem machen solltest.">
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:63266/images/banner/lernmoment-csharp.jpg">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="de_DE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Warum das Abmelden von Events überbewertet ist.">
+<meta property="og:description" content="Und wann du es trotzdem machen solltest.">
+<meta property="og:url" content="http://localhost:63266/csharp-programmieren/warum-das-abmelden-von-events-ueberbewertet-ist/">
+<meta property="og:site_name" content="LernMoment.de">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="sPPXWqQjaSqa_ZgqYPNCyVLLaFzVAFCuf3xDBC-ofwE">
+
+
+
+<link rel="canonical" href="http://localhost:63266/csharp-programmieren/warum-das-abmelden-von-events-ueberbewertet-ist/">
+<link href="http://localhost:63266/feed.xml" type="application/atom+xml" rel="alternate" title="LernMoment.de Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:63266/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:63266/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:63266/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:63266/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:63266/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:63266/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:63266/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:63266/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+
+
+<div class="navigation-banner">
+	
+	
+
+	Lerne programmieren mit mir im Kurs: <a href="http://localhost:63266/einstieg-csharp/" >Einstieg in C# -></a>
+</div>
+
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:63266/kurse/" >Kurse</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/schwerpunkt/" >Dein Weg zum C# Entwickler</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/projekt-start/" >Entwicklung & Mentoring</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/blog/" >Blog</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	
+		<div class="wrap">
+			<a href="http://localhost:63266/" class="site-logo" rel="home" title="LernMoment.de"><img src="http://localhost:63266/images/site-logo.png" width="200" height="200" alt="LernMoment.de logo" class="animated fadeInDown"></a>
+		</div>
+	
+</header><!-- /.masthead -->
+
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <img src="http://localhost:63266/images/banner/lernmoment-csharp.jpg" class="entry-feature-image" alt="Warum das Abmelden von Events überbewertet ist." >
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"><a href="http://localhost:63266/tags/#Konzept" title="Pages tagged Konzept">Konzept</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Memory Leak" title="Pages tagged Memory Leak">Memory Leak</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Event" title="Pages tagged Event">Event</a></span>
+        
+          <h1 class="entry-title">Warum das Abmelden von Events überbewertet ist.</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <span class="author vcard">Von <span class="fn">Jan Suchotzki</span></span>
+        <span class="entry-date date published"><time datetime="2015-09-21T06:00:00+02:00"><i class="fa fa-calendar-o"></i> 21. September 2015</time></span>
+        
+        
+        
+        
+      </footer>
+      <div class="entry-content">
+        <p>Hast du eine Ahnung was in fast jedem Artikel zum Thema <em>Memory Leak</em> in .NET vorkommt? Es ist das Abmelden von Events. Nun bin ich bei <em>Stack Overflow</em> über <a href="http://stackoverflow.com/questions/4526829/why-and-how-to-avoid-event-handler-memory-leaks/4526840#4526840">eine Aussage</a> von C# Autorität <a href="http://stackoverflow.com/users/22656/jon-skeet">Jon Skeet</a> gestolpert, die mich verwundert hat:</p>
+
+<blockquote>
+  <p>However, in my experience this is rarely actually a problem - because typically I find that the publisher and subscriber have roughly equal lifetimes anyway.
+It is a possible cause… but in my experience it’s rather over-hyped. Your mileage may vary, of course… you just need to be careful.
+–<cite><a href="http://stackoverflow.com/a/4526840/5258906">Jon Skeet</a></cite></p>
+</blockquote>
+
+<p>Hinzu kommt, dass mit <em>anonymen Methoden</em>, <em>Lambda-Ausdrücken</em>, … C# um Konstrukte erweitert wurde, die sich gar nicht so einfach abmelden lassen. Ist das alles also nur ein Hype wie Jon Skeet sagt? Die Antwort ist wie so häufig: Es kommt darauf an.</p>
+
+<p>Wichtig in diesem Kontext ist die Überlegung was überhaupt ein <em>Memory Leak</em> ist. Da managed .NET in einem Sandkasten ausgeführt wird, gibt es <strong>keine</strong> Speicherlöcher, die die Lebenszeit einer Anwendung überdauern. Du hast ein <em>Memory Leak</em> in deiner Anwendung, wenn Objekte nicht vom <em>Garbage Collector</em> abgeräumt werden, von denen du es erwartet hättest. Es geht also darum, dass deine .NET Anwendung unnötig viel Speicher während ihrer Ausführung benötigt.</p>
+
+<p>Nun zurück zum Abmelden von Events. Aus dem Zitat wird klar, dass Jon darüber spricht, dass <em>Publisher</em> und <em>Subscriber</em> eine ähnlich hohe Lebenserwartung haben. So ist es zum Beispiel häufig bei Oberflächen. Du meldest ein Objekt für einen <em>Button-Click</em> an. Dieses Objekt wird nun ungefähr so lange existieren wie der Button. Selbst, wenn das Objekt wesentlich eher abgeräumt werden könnte, ist es immer noch die Frage, wie groß das potentielle <em>“Memory Leak”</em> welches dadurch entsteht, ist.</p>
+
+<p>Anders sieht es aus, wenn du es mit langen Lebenszyklen zutun hast. Damit meine ich sowohl die Lebensdauer der Anwendung wie auch die Lebensdauer des <em>Publishers</em> eines <em>Events</em>. Hast du eine Anwendung, die über Tage, Wochen oder Monate kontinuierlich Speicher verbraucht, ist das schon problematisch.</p>
+
+<p>Die wesentliche Frage die du dir in diesem Zusammenhang stellen solltest, ist, lebt der <em>Publisher</em> wensentlich länger als der <em>Subscriber</em>. Dies kann zum Beispiel der Fall sein, wenn du ein <code class="highlighter-rouge">event</code> als <code class="highlighter-rouge">static</code> definierst. Eine andere Möglichkeit ist, wenn dein <em>Publisher</em> ein <em>Singleton</em> ist.</p>
+
+<p>Haben deine Klassen beispielsweise ein <em>Service, Server, Manager, Repository oder Controller</em> im Namen und bieten <em>Events</em> an? Dann solltest du schon mal über die Lebenszeit deren Objekte nachdenken.</p>
+
+<p>Neben dem eigentlichen Speicherverbrauch, der für eine kurzlebige Anwendung, manchmal nicht so problematisch ist, kannst du auch ein Performanceproblem bekommen. Stell dir vor, dass du einen <em>Service</em> hast, an dem sich kontinuierlich neue <em>Subscriber</em> für ein <em>Event</em> anmelden. Nun verteilen die <em>Subscriber</em> diese <em>Events</em> unter Umständen auch noch an einige “Unterobjekte” weiter.</p>
+
+<p>Was passiert? Korrekt! Es kann nun schnell dazu kommen, dass das Auslösen eines <em>Events</em>, tausende von weiteren <em>Events</em> nach sich zieht. Das alles nur, weil du zwar deine <em>Subscriber</em> richtig freigegeben hast (z.B. <code class="highlighter-rouge">Dispose</code> aufgerufen hast oder alle weiteren Referenzen gelöscht hast), aber das <em>Event</em> nicht abgemeldet hast.</p>
+
+<p>Einige tausend <em>Events</em> wirst du auf einem aktuellen Rechner meistens noch nicht merken, aber wenn es mehr werden, dann dies deine Performance schon negativ beeinflussen.</p>
+
+<p>Jetzt erstmal viel Spaß mit dem Überlegen ob du deine Events abmeldest oder nicht</p>
+
+<p>Jan</p>
+
+<h3 id="merke">Merke</h3>
+
+<ul>
+  <li>Ein <em>Memory Leak</em> oder <em>Speicherloch</em> in .NET bedeutet, dass Objekte nicht vom <em>Garbage Collector</em> abgeräumt werden, von denen du es erwartet hättest.</li>
+  <li>Wenn <em>Publisher</em> und <em>Subscriber</em> eine ähnliche Lebensdauer haben, dann ist das Abmelden nicht notwendig.</li>
+  <li>Langlebige Objekte, welche <em>Events</em> anbieten, können nicht nur ein Speicher-, sondern auch ein Performanceproblem, erzeugen, wenn kurzlebige Objekte sich von dem <em>Event</em> nicht wieder abmelden.</li>
+  <li>Insbesondere bei <em>static event</em> und <em>Singletons</em> mit <em>Events</em> musst du vorsichtig sein.</li>
+  <li>Klassen die im Namen <em>Service, Server, Manager, Repository oder Controller</em> haben und <em>Events</em> anbieten, sind potentielle Quellen für <em>Speicherlöcher</em>.</li>
+</ul>
+
+<h3 id="lernquiz">Lernquiz</h3>
+
+<p>Verwende folgende Fragen, um das Gelernte von heute zu festigen:</p>
+
+<ul>
+  <li>Was bedeutet es, wenn du ein <em>Speicherloch / Memory Leak</em> in deiner .NET Anwendung hast?</li>
+  <li>Warum kann das Abmelden von <em>Events</em> nicht nötig / wichtig sein?</li>
+  <li>Wann solltest du <em>Events</em> auf jeden Fall abmelden?</li>
+</ul>
+
+<p>Am besten schaust du dir morgen und dann nochmal in ein paar Tagen die vorherigen Fragen an und beantwortest sie, ohne den Text vorher gelesen zu haben.</p>
+
+<h3 id="weitere-informationen">Weitere Informationen</h3>
+
+<ul>
+  <li>Zu diesem LernMoment gibt es keinen Quellcode.</li>
+  <li>Ein Beispiel in dem nicht nur der Speicher, sondern auch die Performance zum Problem wird, findest du in <a href="http://blogs.msdn.com/b/tess/archive/2006/01/23/net-memory-leak-case-study-the-event-handlers-that-made-the-memory-baloon.aspx">diesem Artikel</a> im MSDN-Blog von Tess Ferrandez.</li>
+  <li>In <a href="http://blog.scottlogic.com/2010/02/19/forcing-event-consumer-cleanup-without-weak-events.html">diesem Artikel</a> von Collin Eberhardt findest du eine Methode, welche du zum Auffinden von noch bestehenden <em>Event-Referenzen</em> verwenden kannst. Nach Aussage von WPF-Guru Josh Smith ein Ansatz der in keinem <code class="highlighter-rouge">ViewModelBase</code> fehlen sollte.</li>
+</ul>
+
+        
+          <div class="subscribe-notice">
+            <h5>Dieser LernMoment hat dir gefallen? <br> Dann melde dich an und du wirst über neue LernMomente informiert:</h5>
+                <form action="https://lernmoment.us9.list-manage.com/subscribe/post" method="POST" target="_blank">
+      <input type="hidden" name="u" value="d0206d57f5002e40b651a0f60">
+      <input type="hidden" name="id" value="8845c28e62">
+      <input type="email" class="subscribe-notice-input-box" autocapitalize="off" autocorrect="off" name="MERGE0" id="MERGE0" size="25" value="" placeholder="Deine E-Mail-Adresse">
+      <input type="text" class="subscribe-notice-input-box" name="MERGE1" id="MERGE1" size="25" value="" placeholder="Dein Vorname (optional)">
+      
+        <input type="checkbox" id="group_1" name="group[20205][1]" value="1" checked="true" style="display:none">
+      
+      <input type="submit" class="subscribe-notice-button" name="submit" value="Ich bin dabei!">
+      <legend class="subscribe-notice-legend">Du bekommst in unregelmäßigen Abständen Mails von mir, in denen ich dich auf neue Artikel oder Angebote hinweise, die in das gleiche Themengebiet fallen wie dieser Artikel.</legend>
+    </form>
+
+          </div>
+        
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:63266/csharp-programmieren/kennst-du-den-quellcode-deiner-lieblingsmethode/" class="btn" title="Kennst Du Den Quellcode Deiner Lieblingsmethode?">Vorheriger</a>
+      
+      
+        <a href="http://localhost:63266/csharp-programmieren/pfade-trennen-sich-auf-allen-plattformen-anders/" class="btn" title="Pfade trennen sich auf allen Plattformen anders">Nächster</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<div class="social-icons">
+	
+	
+	
+	<a href="http://www.youtube.com/channel/UC5jCUQ6IPHtQP5r4y9byCqA" title="Jan Suchotzki on YouTube" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
+	
+	<a href="http://stackoverflow.com/users/5258906/jan-suchotzki" title="Jan Suchotzki on StackExchange" target="_blank"><i class="fa fa-stack-exchange fa-2x"></i></a>
+	
+	
+	<a href="http://github.com/lernmoment" title="Jan Suchotzki on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+    
+	
+  <a href="http://localhost:63266/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+<span>Danke an <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> und <a href="http://mademistakes.com/so-simple/" rel="nofollow">Made Mistakes</a> für hervorragende Tools.</span>
+<br>
+<span><a href="http://localhost:63266/kein-copyright/">Kein Copyright</a>    -    <a href="http://localhost:63266/impressum/">Impressum</a>    -    <a href="http://localhost:63266/datenschutz/">Datenschutz</a></span>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:63266';
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:63266/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:63266/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

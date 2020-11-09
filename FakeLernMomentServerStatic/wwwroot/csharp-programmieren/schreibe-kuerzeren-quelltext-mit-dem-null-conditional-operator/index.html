@@ -1,0 +1,295 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Schreibe kürzeren Quelltext mit dem null-conditional Operator. &#8211; LernMoment.de</title>
+<meta name="description" content="Mit ?. zu weniger Null-Abfragen.">
+<meta name="keywords" content="Syntax, C# 6.0, Operator">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Schreibe kürzeren Quelltext mit dem null-conditional Operator.">
+<meta name="twitter:description" content="Mit ?. zu weniger Null-Abfragen.">
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:63266/images/banner/lernmoment-csharp.jpg">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="de_DE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Schreibe kürzeren Quelltext mit dem null-conditional Operator.">
+<meta property="og:description" content="Mit ?. zu weniger Null-Abfragen.">
+<meta property="og:url" content="http://localhost:63266/csharp-programmieren/schreibe-kuerzeren-quelltext-mit-dem-null-conditional-operator/">
+<meta property="og:site_name" content="LernMoment.de">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="sPPXWqQjaSqa_ZgqYPNCyVLLaFzVAFCuf3xDBC-ofwE">
+
+
+
+<link rel="canonical" href="http://localhost:63266/csharp-programmieren/schreibe-kuerzeren-quelltext-mit-dem-null-conditional-operator/">
+<link href="http://localhost:63266/feed.xml" type="application/atom+xml" rel="alternate" title="LernMoment.de Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:63266/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:63266/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:63266/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:63266/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:63266/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:63266/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:63266/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:63266/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+
+
+<div class="navigation-banner">
+	
+	
+
+	Lerne programmieren mit mir im Kurs: <a href="http://localhost:63266/einstieg-csharp/" >Einstieg in C# -></a>
+</div>
+
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:63266/kurse/" >Kurse</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/schwerpunkt/" >Dein Weg zum C# Entwickler</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/projekt-start/" >Entwicklung & Mentoring</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/blog/" >Blog</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	
+		<div class="wrap">
+			<a href="http://localhost:63266/" class="site-logo" rel="home" title="LernMoment.de"><img src="http://localhost:63266/images/site-logo.png" width="200" height="200" alt="LernMoment.de logo" class="animated fadeInDown"></a>
+		</div>
+	
+</header><!-- /.masthead -->
+
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <img src="http://localhost:63266/images/banner/lernmoment-csharp.jpg" class="entry-feature-image" alt="Schreibe kürzeren Quelltext mit dem null-conditional Operator." >
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"><a href="http://localhost:63266/tags/#Syntax" title="Pages tagged Syntax">Syntax</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#C# 6.0" title="Pages tagged C# 6.0">C# 6.0</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Operator" title="Pages tagged Operator">Operator</a></span>
+        
+          <h1 class="entry-title">Schreibe kürzeren Quelltext mit dem null-conditional Operator.</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <span class="author vcard">Von <span class="fn">Jan Suchotzki</span></span>
+        <span class="entry-date date published"><time datetime="2015-10-19T06:00:00+02:00"><i class="fa fa-calendar-o"></i> 19. October 2015</time></span>
+        
+        
+        
+        
+      </footer>
+      <div class="entry-content">
+        <p>Wie häufig hast du schon am Anfang einer Methode die Parameter auf <code class="highlighter-rouge">null</code> überprüft um eine <code class="highlighter-rouge">NullReferenceException</code> zu vermeiden? In C# 6.0 kommt Microsoft dir zur Hilfe. In dieser Version wurde ein Operator eingeführt, der direkt beim Zugriff auf ein Objekt dieses auf <code class="highlighter-rouge">null</code> überprüft.</p>
+
+<p>Es geht also um Aufrufe wie diesen:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>static void GebeMetaDatenAus(LernMoment moment)
+{
+	if(moment != null &amp;&amp; moment.Author != null)
+	{
+		Console.WriteLine($"Hier die Meta-Daten des LernMoments: Author = {moment.Author}");
+	}
+}
+</code></pre></div></div>
+
+<p>Dieses Überprüfen auf <code class="highlighter-rouge">null</code> gibt es in verschiedensten Geschmacksvarianten. Wobei alle Varianten den Quelltext nicht gerade leserlicher machen. In C# 6.0 wurde dafür der null-conditional Operator eingeführt. Damit kannst du das Beispiel von oben anpassen:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>static void GebeMetaDatenAus(LernMoment moment)
+{
+	Console.WriteLine($"Hier die Meta-Daten des LernMoments: Author = {moment?.Author}");
+}
+</code></pre></div></div>
+
+<p>Findest du den Operator? Jup, es ist <code class="highlighter-rouge">?.</code>. Du verwendest also ein zusätzliches Fragezeichen um Methoden und Eigenschaften an einem Objekt aufzurufen. Dadurch werden drei wichtig Schritte ausgeführt:</p>
+
+<ol>
+  <li>Der Operand wird auf <code class="highlighter-rouge">null</code> geprüft.</li>
+  <li>Aufrufe werden unterdrück, wenn der Operand <code class="highlighter-rouge">null</code> ist.</li>
+  <li>Es wird <code class="highlighter-rouge">null</code> zurück gegeben, wenn der Operand <code class="highlighter-rouge">null</code> ist.</li>
+</ol>
+
+<p>Was würde also in dem Beispiel oben passieren, wenn ich die Methode so aufrufe <code class="highlighter-rouge">GebeMetaDatenAus(null);</code>? In der <a href="/csharp-programmieren/mit-csharp-6-noch-mueheloser-werte-in-strings-einfuegen/">String-Interpolation</a>, wird <code class="highlighter-rouge">moment</code> auf <code class="highlighter-rouge">null</code> geprüft. Dieses passiert, bevor die Eigenschaft <code class="highlighter-rouge">Author</code> aufgerufen wird. Somit wird keine <code class="highlighter-rouge">NullReferenceException</code> geworfen. Es wird <code class="highlighter-rouge">null</code> anstelle eines String mit dem Namen des Authors zurückgegeben. Die Ausgabe würde also so auf der Kommandozeile aussehen:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$&gt;</span> Hier die Meta-Daten des LernMoments: Author <span class="o">=</span> null
+</code></pre></div></div>
+
+<p>Den <em>null-conditional</em> Operator kannst du auch in einer Kette von Aufrufen verwenden:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">static</span> <span class="kt">string</span> <span class="nf">ExtrahiereVeroeffentlichungsDatum</span><span class="p">(</span><span class="n">LernMoment</span> <span class="n">moment</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">return</span>	<span class="n">moment</span><span class="p">?.</span><span class="n">VeroeffentlichtAm</span><span class="p">?.</span><span class="nf">ToString</span><span class="p">(</span><span class="s">"dd. MMM yyyy"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Nun wird sowohl <code class="highlighter-rouge">moment</code> als auch die Eigenschaft <code class="highlighter-rouge">VeroeffentlichtAm</code> auf <code class="highlighter-rouge">null</code> geprüft.</p>
+
+<p>Wie du siehst, bietet dir dieser Operator einige Vorteile. Wichtig ist allerdings, dass du dir überlegst wann und wie du ihn einsetzen kannst und willst. Ich persönlich finde, dass Quelltext möglichst für jeden verständlich sein sollte.</p>
+
+<p>Daraus folgt, dass ich versuche den verwendeten Sprachumfang möglichst gering zu halten. Es ist wie mit einer Fremdsprache. Es ist toll, wenn du dich gewählt ausdrücken kannst und viele spezielle Vokabeln kennst, allerdings läufst du damit auch Gefahr, dass dich andere nicht verstehen können, weil sie die Vokabel nicht kennen. Ich werde diesen Operator zukünftig häufiger einsetzen. Allerdings nicht um jeden Preis.</p>
+
+<p>Viele Beispiele die ich zu diesem Thema gefunden haben, zeigen insbesondere die Vorteile des <em>null-conditional</em> Operator in längeren Aufrufketten. Auch wenn das sicherlich korrekt ist, solltest du immer bedenken, dass eine längere Aufrufkette häufig ein Indiz für fragwürdigen Quelltext ist. Ich denke da an das <em>Law of Demeter</em>. Dazu mehr in einem weiteren LernMoment.</p>
+
+<p>Jetzt erstmal viel Spaß mit dem <code class="highlighter-rouge">?.</code></p>
+
+<p>Jan</p>
+
+<h3 id="merke">Merke</h3>
+
+<ul>
+  <li>Der <em>null-conditional</em> Operator gibt <code class="highlighter-rouge">null</code> zurück, wenn der Operand null ist.</li>
+  <li>Durch die Verwendung des <em>null-conditional</em> Operators werden Aufrufe auf einem Operandem unterdrückt, wenn dieser <code class="highlighter-rouge">null</code> ist.</li>
+  <li>In einer Aufrufkette mit mehreren <code class="highlighter-rouge">?.</code> Operatoren, wird an der Stelle “unterbrochen”, an der <code class="highlighter-rouge">null</code> identifiziert wird.</li>
+  <li>Dieser Operator ist nicht gerade selbsterklärend. Daher gibt es einige Entwickler, die mit der Syntax nicht vertraut sind. Überlege dir, ob dir Verständlichkeit für jeden, oder “Aussehen” wichtiger sind.</li>
+  <li>Wenn du diesen Operator in einer Aufrufkette einsetzen willst, überprüfe erst, ob du nicht die Aufrufkette entfernen solltest (<em>Law of Demeter</em>).</li>
+</ul>
+
+<h3 id="lernquiz">Lernquiz</h3>
+
+<p>Verwende folgende Fragen, um das Gelernte von heute zu festigen:</p>
+
+<ul>
+  <li>Was passiert, wenn du <code class="highlighter-rouge">?.</code> anstelle von <code class="highlighter-rouge">.</code> beim Zugriff auf Eigenschaften oder Methoden eines Objektes verwendest?</li>
+  <li>Wann solltest du den <em>null-conditional</em> Operator nicht einsetzen?</li>
+  <li>Wie sieht ein Beispiel für die Verwendung des <em>null-conditional</em> Operators in einer Aufrufkette aus?</li>
+</ul>
+
+<p>Am besten schaust du dir morgen und dann nochmal in ein paar Tagen die vorherigen Fragen an und beantwortest sie, ohne den Text vorher gelesen zu haben.</p>
+
+<h3 id="weitere-informationen">Weitere Informationen</h3>
+
+<ul>
+  <li>Die Beschreibung des <em>NULL-bedingten Operators</em> findest du auf <a href="https://msdn.microsoft.com/de-de/library/dn986595.aspx">MSDN</a>.</li>
+  <li>Eine ausführliche Beschreibung (in Englisch) gibt es beim <a href="http://geekswithblogs.net/BlackRabbitCoder/archive/2015/06/05/c.net-little-wonders-null-conditional-operator-in-c-6.aspx">BlackRabbitCoder</a></li>
+  <li>Eine weitere Beschreibung findest du in diesem <a href="https://msdn.microsoft.com/en-us/magazine/dn802602.aspx">MSDN Magazine Artikel</a></li>
+  <li>Wenn dich das <em>Law of Demeter</em> interessiert, dann bekommst du bei <a href="http://coders-corner.net/2013/04/01/real-world-softwaredesign-teil-2-law-of-demeter/">coder corner</a> eine lange und detaillierte Einführung.</li>
+</ul>
+
+        
+          <div class="subscribe-notice">
+            <h5>Dieser LernMoment hat dir gefallen? <br> Dann melde dich an und du wirst über neue LernMomente informiert:</h5>
+                <form action="https://lernmoment.us9.list-manage.com/subscribe/post" method="POST" target="_blank">
+      <input type="hidden" name="u" value="d0206d57f5002e40b651a0f60">
+      <input type="hidden" name="id" value="8845c28e62">
+      <input type="email" class="subscribe-notice-input-box" autocapitalize="off" autocorrect="off" name="MERGE0" id="MERGE0" size="25" value="" placeholder="Deine E-Mail-Adresse">
+      <input type="text" class="subscribe-notice-input-box" name="MERGE1" id="MERGE1" size="25" value="" placeholder="Dein Vorname (optional)">
+      
+        <input type="checkbox" id="group_1" name="group[20205][1]" value="1" checked="true" style="display:none">
+      
+      <input type="submit" class="subscribe-notice-button" name="submit" value="Ich bin dabei!">
+      <legend class="subscribe-notice-legend">Du bekommst in unregelmäßigen Abständen Mails von mir, in denen ich dich auf neue Artikel oder Angebote hinweise, die in das gleiche Themengebiet fallen wie dieser Artikel.</legend>
+    </form>
+
+          </div>
+        
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:63266/csharp-programmieren/datacontract-von-der-einfachheit-objekte-in-eine-xml-datei-zu-schreiben/" class="btn" title="DataContract - Von der Einfachheit Objekte in eine XML-Datei zu schreiben.">Vorheriger</a>
+      
+      
+        <a href="http://localhost:63266/csharp-programmieren/wenn-du-antworten-zu-csharp-in-deutsch-brauchst/" class="btn" title="Wenn du Antworten zu C# in Deutsch brauchst, ...">Nächster</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<div class="social-icons">
+	
+	
+	
+	<a href="http://www.youtube.com/channel/UC5jCUQ6IPHtQP5r4y9byCqA" title="Jan Suchotzki on YouTube" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
+	
+	<a href="http://stackoverflow.com/users/5258906/jan-suchotzki" title="Jan Suchotzki on StackExchange" target="_blank"><i class="fa fa-stack-exchange fa-2x"></i></a>
+	
+	
+	<a href="http://github.com/lernmoment" title="Jan Suchotzki on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+    
+	
+  <a href="http://localhost:63266/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+<span>Danke an <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> und <a href="http://mademistakes.com/so-simple/" rel="nofollow">Made Mistakes</a> für hervorragende Tools.</span>
+<br>
+<span><a href="http://localhost:63266/kein-copyright/">Kein Copyright</a>    -    <a href="http://localhost:63266/impressum/">Impressum</a>    -    <a href="http://localhost:63266/datenschutz/">Datenschutz</a></span>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:63266';
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:63266/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:63266/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,309 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Variablen einfangen mit Lambda-Ausdrücken &#8211; LernMoment.de</title>
+<meta name="description" content="Die 2 wichtigsten Grundsätze für externe Variablen in Lambda-Ausdrücken.">
+<meta name="keywords" content="Konzept, Lambda, Delegate">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Variablen einfangen mit Lambda-Ausdrücken">
+<meta name="twitter:description" content="Die 2 wichtigsten Grundsätze für externe Variablen in Lambda-Ausdrücken.">
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:63266/images/banner/lernmoment-csharp.jpg">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="de_DE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Variablen einfangen mit Lambda-Ausdrücken">
+<meta property="og:description" content="Die 2 wichtigsten Grundsätze für externe Variablen in Lambda-Ausdrücken.">
+<meta property="og:url" content="http://localhost:63266/csharp-programmieren/variablen-einfangen-mit-lambda-ausdruecken/">
+<meta property="og:site_name" content="LernMoment.de">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="sPPXWqQjaSqa_ZgqYPNCyVLLaFzVAFCuf3xDBC-ofwE">
+
+
+
+<link rel="canonical" href="http://localhost:63266/csharp-programmieren/variablen-einfangen-mit-lambda-ausdruecken/">
+<link href="http://localhost:63266/feed.xml" type="application/atom+xml" rel="alternate" title="LernMoment.de Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:63266/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:63266/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:63266/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:63266/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:63266/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:63266/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:63266/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:63266/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+
+
+<div class="navigation-banner">
+	
+	
+
+	Lerne programmieren mit mir im Kurs: <a href="http://localhost:63266/einstieg-csharp/" >Einstieg in C# -></a>
+</div>
+
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:63266/kurse/" >Kurse</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/schwerpunkt/" >Dein Weg zum C# Entwickler</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/projekt-start/" >Entwicklung & Mentoring</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/blog/" >Blog</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	
+		<div class="wrap">
+			<a href="http://localhost:63266/" class="site-logo" rel="home" title="LernMoment.de"><img src="http://localhost:63266/images/site-logo.png" width="200" height="200" alt="LernMoment.de logo" class="animated fadeInDown"></a>
+		</div>
+	
+</header><!-- /.masthead -->
+
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <img src="http://localhost:63266/images/banner/lernmoment-csharp.jpg" class="entry-feature-image" alt="Variablen einfangen mit Lambda-Ausdrücken" >
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"><a href="http://localhost:63266/tags/#Konzept" title="Pages tagged Konzept">Konzept</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Lambda" title="Pages tagged Lambda">Lambda</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Delegate" title="Pages tagged Delegate">Delegate</a></span>
+        
+          <h1 class="entry-title">Variablen einfangen mit Lambda-Ausdrücken</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <span class="author vcard">Von <span class="fn">Jan Suchotzki</span></span>
+        <span class="entry-date date published"><time datetime="2015-09-11T10:00:00+02:00"><i class="fa fa-calendar-o"></i> 11. September 2015</time></span>
+        
+        
+        
+        
+      </footer>
+      <div class="entry-content">
+        <p>Weißt du noch wie der kürzeste Lambda-Ausdruck zum multiplizieren zweier Zahlen ist? Wenn nicht, lies nochmals den LernMoment <a href="/csharp-programmieren/lambda-ausdruecke-erstellen/">Lambda-Ausdrücke erstellen</a> bevor du hier weiter machst.</p>
+
+<p>Innerhalb eines Lambda-Ausdrucks kannst du Daten aus dem Kontext, also von außerhalb des Lambda-Ausdrucks, verwenden. Das könnte zum Beispiel so aussehen:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">void</span> <span class="nf">IrgendeineMethode</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="kt">int</span> <span class="n">dieMagischeZahl</span> <span class="p">=</span> <span class="m">42</span><span class="p">;</span>
+
+  <span class="n">Func</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">&gt;</span> <span class="n">multipliziereMitMagischerZahl</span> <span class="p">=</span> <span class="n">zahl</span> <span class="p">=&gt;</span> <span class="n">zahl</span> <span class="p">*</span> <span class="n">dieMagischeZahl</span><span class="p">;</span>
+
+  <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span> <span class="nf">multipliziereMitMagischerZahl</span><span class="p">(</span><span class="m">2</span><span class="p">)</span> <span class="p">);</span> <span class="c1">// Gibt 84 aus</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Die Verwendung von Daten die außerhalb des Lambda-Ausdrucks existieren wird im Englischen als <em>“capturing variable”</em> bezeichnet. Es geht also um das <em>“Einfangen”</em> von Variablen.</p>
+
+<h4 id="grundsatz-1">Grundsatz 1</h4>
+
+<p>Der wichtigste Grundsatz, mit dem du dir einige Eigenheiten erklären kannst, lautet:</p>
+
+<blockquote>
+  <p>Eine “captured variable” wird ausgewertet, wenn ein Delegate ausgeführt wird, nicht wenn der ihm zugewiesene Lambda-Ausdruck definiert wird.</p>
+</blockquote>
+
+<p>Mit diesem Grundsatz im Kopf, was glaubst du passiert, wenn das Beispiel von oben wie folgt erweitert wird?</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">void</span> <span class="nf">IrgendeineAndereMethode</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="kt">int</span> <span class="n">dieMagischeZahl</span> <span class="p">=</span> <span class="m">42</span><span class="p">;</span>
+
+  <span class="n">Func</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">&gt;</span> <span class="n">multipliziereMitMagischerZahl</span> <span class="p">=</span> <span class="n">zahl</span> <span class="p">=&gt;</span> <span class="n">zahl</span> <span class="p">*</span> <span class="n">dieMagischeZahl</span><span class="p">;</span>
+
+  <span class="n">dieMagischeZahl</span> <span class="p">=</span> <span class="m">10</span><span class="p">;</span>
+
+  <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span> <span class="nf">multipliziereMitMagischerZahl</span><span class="p">(</span><span class="m">2</span><span class="p">)</span> <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Richtig, diese Methode wird <code class="highlighter-rouge">20</code> ausgeben. In diesem trivialen Beispiel ist das erstmal nicht sonderlich erstaunlich. Da es ein Grundsatz ist, gilt er aber auch für alle nicht so trivialen Beispiele. Häufig verwende ich Lambdas in Kombination mit der <em>TPL</em>. Gerade dann, aber auch in vielen anderen Situationen, ist es immens wichtig, dass du dir diesen Grundsatz verinnerlichst.</p>
+
+<h4 id="grundsatz-2">Grundsatz 2</h4>
+
+<p>In diesem Zusammenhang gibt es einen weiteren Aspekt, den du kennen solltest. Die Kurzform des ersten Grundsatzes könnte lauten: <em>Für Delegates werden Variablen und nicht Werte eingefangen.</em> Dieses <em>Einfangen</em> kannst du wörtlich nehmen. Verwendest du eine Variable in einem Lambda-Ausdruck, welche außerhalb de Ausdrucks definiert ist, bleibt diese solange verfügbar, wie das Delegate lebt.</p>
+
+<blockquote>
+  <p>Eine “captured variable” in einem Lambda-Ausdruck lebt solange, wie das Delegate, dem der Ausdruck zugewiesen wurde.</p>
+</blockquote>
+
+<p>Auch dieser zweite Grundsatz für sich ist erstmal nicht sonderlich umwerfend. Er gibt dir allerdings einen ersten Einblick wie der Compiler und die CLR mit Daten in Lambda-Ausdrücken umgeht. In einem weiteren LernMoment werde ich dir einige Fälle zeigen, die auf den ersten Blick nicht zu erklären sind. Mit diesen beiden Grundsätze ist das jedoch ganz einfach.</p>
+
+<h4 id="one-more-thing-">“One more thing …”</h4>
+
+<p>Die beiden Grundsätze gelten nur für Variablen die über Inklusion im Lambda-Ausdruck verwendet werden. Definierst du also einen Lambda-Ausdruck dem Parameter übergeben werden, ist das ein ganz anderes Thema. Hier noch ein abschließendes Beispiel um dies zu verdeutlichen:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">void</span> <span class="nf">EineVoelligAndereMethode</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="kt">int</span> <span class="n">dieMagischeZahl</span> <span class="p">=</span> <span class="m">42</span><span class="p">;</span>
+
+  <span class="n">Func</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">&gt;</span> <span class="n">multipliziereZahlen</span> <span class="p">=</span> <span class="p">(</span><span class="n">zahl1</span><span class="p">,</span> <span class="n">zahl2</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">zahl1</span> <span class="p">*</span> <span class="n">zahl2</span><span class="p">;</span>
+
+  <span class="n">dieMagischeZahl</span> <span class="p">=</span> <span class="m">10</span><span class="p">;</span>
+
+  <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span> <span class="nf">multipliziereZahlen</span><span class="p">(</span><span class="n">dieMagischeZahl</span><span class="p">,</span> <span class="m">25</span><span class="p">)</span> <span class="p">);</span> <span class="c1">// Gibt 250 aus</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Jetzt erstmal viel Spaß mit dem Einfangen von Variablen</p>
+
+<p>Jan</p>
+
+<h3 id="merke">Merke</h3>
+
+<ul>
+  <li><em>Capturing Variable</em> bedeutet, dass in einem Lambda-Ausdruck eine Variable verwendet wird, die nicht lokal im Ausdruck definiert ist oder dem Ausdruck als Parameter übergeben wird.</li>
+  <li>Die deutsche Übersetzung - <em>eingefangene Variable</em> - ist durch aus wörtlich zu nehmen.</li>
+  <li>Eine <em>captured variable</em> wird ausgewertet, wenn ein Delegate ausgeführt wird, nicht wenn der ihm zugewiesene Lambda-Ausdruck definiert wird.</li>
+  <li>Eine <em>captured variable</em> in einem Lambda-Ausdruck lebt solange, wie das Delegate, dem der Ausdruck zugewiesen wurde.</li>
+</ul>
+
+<h3 id="lernquiz">Lernquiz</h3>
+
+<p>Verwende folgende Fragen, um das Gelernte von heute zu festigen:</p>
+
+<ul>
+  <li>Was verstehst du unter einer <em>eingefangenen Variable</em>?</li>
+  <li>Wie lange lebt eine <em>eingefangene Variable</em>?</li>
+  <li>Wann wird der Wert einer <em>eingefangenen Variablen</em> verwendet?</li>
+</ul>
+
+<p>Am besten schaust du dir morgen und dann nochmal in ein paar Tagen die vorherigen Fragen an und beantwortest sie, ohne den Text vorher gelesen zu haben.</p>
+
+<h3 id="weitere-informationen">Weitere Informationen</h3>
+
+<ul>
+  <li>Den kompletten Quelltext zum heutigen Lernmoment findest du <a href="https://github.com/LernMoment/csharp/tree/master/LambdaEingefangeneVariablen">hier</a>.</li>
+  <li>Eine Erklärung mit verständlichem Beispiel wie das <em>Einfangen</em> geht, findest du in <a href="http://blogs.msdn.com/b/matt/archive/2008/03/01/understanding-variable-capturing-in-c.aspx">diesem Artikel</a> von Matthew Manela (Mitarbeiter von Microsoft).</li>
+  <li>Die grundlegende Idee für den 2. Grundsatz habe ich von <a href="http://csharp.2000things.com/2014/09/10/1179-captured-variables-lifetime-matches-delegate/">diesem Artikel</a>.</li>
+</ul>
+
+        
+          <div class="subscribe-notice">
+            <h5>Dieser LernMoment hat dir gefallen? <br> Dann melde dich an und du wirst über neue LernMomente informiert:</h5>
+                <form action="https://lernmoment.us9.list-manage.com/subscribe/post" method="POST" target="_blank">
+      <input type="hidden" name="u" value="d0206d57f5002e40b651a0f60">
+      <input type="hidden" name="id" value="8845c28e62">
+      <input type="email" class="subscribe-notice-input-box" autocapitalize="off" autocorrect="off" name="MERGE0" id="MERGE0" size="25" value="" placeholder="Deine E-Mail-Adresse">
+      <input type="text" class="subscribe-notice-input-box" name="MERGE1" id="MERGE1" size="25" value="" placeholder="Dein Vorname (optional)">
+      
+        <input type="checkbox" id="group_1" name="group[20205][1]" value="1" checked="true" style="display:none">
+      
+      <input type="submit" class="subscribe-notice-button" name="submit" value="Ich bin dabei!">
+      <legend class="subscribe-notice-legend">Du bekommst in unregelmäßigen Abständen Mails von mir, in denen ich dich auf neue Artikel oder Angebote hinweise, die in das gleiche Themengebiet fallen wie dieser Artikel.</legend>
+    </form>
+
+          </div>
+        
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:63266/csharp-programmieren/initialisierung-mit-konstruktor-und-object-initializer/" class="btn" title="Initialisierung mit Konstruktor und Object Initializer">Vorheriger</a>
+      
+      
+        <a href="http://localhost:63266/csharp-programmieren/parallel-foreach-und-threadlokale-daten/" class="btn" title="Parallel.ForEach und thread-lokale Daten">Nächster</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<div class="social-icons">
+	
+	
+	
+	<a href="http://www.youtube.com/channel/UC5jCUQ6IPHtQP5r4y9byCqA" title="Jan Suchotzki on YouTube" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
+	
+	<a href="http://stackoverflow.com/users/5258906/jan-suchotzki" title="Jan Suchotzki on StackExchange" target="_blank"><i class="fa fa-stack-exchange fa-2x"></i></a>
+	
+	
+	<a href="http://github.com/lernmoment" title="Jan Suchotzki on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+    
+	
+  <a href="http://localhost:63266/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+<span>Danke an <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> und <a href="http://mademistakes.com/so-simple/" rel="nofollow">Made Mistakes</a> für hervorragende Tools.</span>
+<br>
+<span><a href="http://localhost:63266/kein-copyright/">Kein Copyright</a>    -    <a href="http://localhost:63266/impressum/">Impressum</a>    -    <a href="http://localhost:63266/datenschutz/">Datenschutz</a></span>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:63266';
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:63266/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:63266/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

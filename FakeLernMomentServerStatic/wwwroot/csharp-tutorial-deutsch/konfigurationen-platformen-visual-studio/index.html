@@ -1,0 +1,232 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Visual Studio für Einsteiger: Debug, Release und AnyCPU &#8211; LernMoment.de</title>
+<meta name="description" content="Wofür gibt es den Konfigurations-Manager? Wann verwendest du Debug und wann Release? Was bedeutet Any CPU?">
+<meta name="keywords" content="Werkzeug, Visual Studio">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Visual Studio für Einsteiger: Debug, Release und AnyCPU">
+<meta name="twitter:description" content="Wofür gibt es den Konfigurations-Manager? Wann verwendest du Debug und wann Release? Was bedeutet Any CPU?">
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:63266/images/banner/lernmoment-vs.jpg">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="de_DE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Visual Studio für Einsteiger: Debug, Release und AnyCPU">
+<meta property="og:description" content="Wofür gibt es den Konfigurations-Manager? Wann verwendest du Debug und wann Release? Was bedeutet Any CPU?">
+<meta property="og:url" content="http://localhost:63266/csharp-tutorial-deutsch/konfigurationen-platformen-visual-studio/">
+<meta property="og:site_name" content="LernMoment.de">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="sPPXWqQjaSqa_ZgqYPNCyVLLaFzVAFCuf3xDBC-ofwE">
+
+
+
+<link rel="canonical" href="http://localhost:63266/csharp-tutorial-deutsch/konfigurationen-platformen-visual-studio/">
+<link href="http://localhost:63266/feed.xml" type="application/atom+xml" rel="alternate" title="LernMoment.de Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:63266/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:63266/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:63266/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:63266/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:63266/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:63266/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:63266/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:63266/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+
+
+<div class="navigation-banner">
+	
+	
+
+	Lerne programmieren mit mir im Kurs: <a href="http://localhost:63266/einstieg-csharp/" >Einstieg in C# -></a>
+</div>
+
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:63266/kurse/" >Kurse</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/schwerpunkt/" >Dein Weg zum C# Entwickler</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/projekt-start/" >Entwicklung & Mentoring</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/blog/" >Blog</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	
+		<div class="wrap">
+			<a href="http://localhost:63266/" class="site-logo" rel="home" title="LernMoment.de"><img src="http://localhost:63266/images/site-logo.png" width="200" height="200" alt="LernMoment.de logo" class="animated fadeInDown"></a>
+		</div>
+	
+</header><!-- /.masthead -->
+
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <img src="http://localhost:63266/images/banner/lernmoment-vs.jpg" class="entry-feature-image" alt="Visual Studio für Einsteiger: Debug, Release und AnyCPU" >
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"><a href="http://localhost:63266/tags/#Werkzeug" title="Pages tagged Werkzeug">Werkzeug</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Visual Studio" title="Pages tagged Visual Studio">Visual Studio</a></span>
+        
+          <h1 class="entry-title">Visual Studio für Einsteiger: Debug, Release und AnyCPU</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <span class="author vcard">Von <span class="fn">Jan Suchotzki</span></span>
+        <span class="entry-date date published"><time datetime="2020-04-01T10:13:09+02:00"><i class="fa fa-calendar-o"></i> 01. April 2020</time></span>
+        
+        
+        
+        
+      </footer>
+      <div class="entry-content">
+        <p>Mmmmmoin und willkommen zu deinem LernMoment!</p>
+
+<p>Wenn du dir die Oberfläche von <em>Visual Studio</em> (insbesondere rund um den <code class="highlighter-rouge">Starten</code> Button) schon etwas genauer angesehen hast, dann bist du vielleicht über die <code class="highlighter-rouge">Kombobox</code> mit dem Inhalt <strong><em>Debug</em></strong> gestolpert. Das ist eine von 2 Standardkonfigurationen für die Projektmappe. Neben <em>Debug</em> gibt es in der Kombobox noch die Möglichkeit <strong><em>Release</em></strong> und <strong><em>Konfigurations-Manager</em></strong> auszuwählen.</p>
+
+<p>Über <em>Debug</em> und <em>Release</em> kannst du u.a. steuern wie gut der <em>Debugger</em> deine Anwendung ausführen kann. Mit <em>Debug</em> werden die für den <em>Debugger</em> notwendigen Informationen vom <em>Compiler</em> erzeugt und der erzeugte <strong>Binärcode ist nicht optimiert</strong>. Verwendest du jedoch <em>Release</em>, dann versucht der <em>Compiler</em> einiges an Optimierungen für deinen Code umzusetzen und damit ist an einigen Stellen das Debugging nicht mehr ohne weiteres möglich.</p>
+
+<p>Etwas mehr Details zum Thema <em>Binärcode</em> und was der <em>Compiler</em> mit dem Quellcode macht habe ich <a href="https://youtu.be/xhD1HCVj5V0?t=1783">an dieser Stelle</a> im <a href="https://youtu.be/xhD1HCVj5V0?t=1783">Visual Studio 2019 Tutorial</a> erklärt.</p>
+
+<p>Die von <em>Visual Studio</em> verwendeten <em>Compiler</em> sind bei der Optimierung von Code ziemlich gut. Daher empfehle ich auch, dass du deinen Quellcode so schreibst, dass er <strong>aussagekräftig und gut lesbar</strong> ist. Häufig bekomme ich zuhören, dass beispielsweise durch die intensive Verwendung von Methoden die Anwendung langsam wird. Das ist definitiv nicht der Fall. Wenn du die verwendete Konfiguration auf <em>Release</em> stellst, dann wird an vielen Stellen der Code aus einer Methode genommen und direkt in die aufrufende Methode kopiert (das wird als <em>Inlining</em> bezeichnet). Dabei entscheiden die Compiler anhand verschiedenster Parameter wo eine solche Optimierung Sinn macht und wo nicht.</p>
+
+<p>Der letzte Eintrag ist dann <strong><em>Konfigurationsmanager</em></strong>. Dieses ist ein separates Fenster in dem du für jedes <em>Projekt</em> einer <em>Projektmappe</em> festlegen kannst welche Konfiguration verwendet wird und auch für welche <em>Platform</em> das <em>Projekt</em> übersetzt werden soll. Neben den bereits vordefinierten Konfigurationen kannst du hier bei Bedarf auch eigene erstellen.</p>
+
+<p>Bleibt noch die Frage was ist mit <em>Platform</em> gemeint und <strong>wofür steht <em>Any CPU</em>?</strong> Auch hier gibt es wie beim Thema <em>Optimierung</em> viele Details. Für den Start solltest du dir erstmal merken, dass <em>Any CPU</em> die “zuverlässigste” Variante ist. Mit <em>Any CPU</em> wird deine Anwendung so kompiliert, dass sie nach Möglichkeit als 64-Bit Prozess ausgeführt werden kann und wechselt zurück zu 32-Bit, wenn nur dieser Modus verfügbar ist (für weitere Optionen siehe <a href="https://docs.microsoft.com/de-de/dotnet/csharp/language-reference/compiler-options/platform-compiler-option">hier</a>). Die gängigen Alternativen sind <em>x64</em> mit denen deine Anwendung nur als 64-Bit Prozess ausgeführt wird (und somit nicht als 32-Bit Prozess laufen kann) und <em>x86</em> womit deine Anwendung nur als 32-Bit Prozess ausgeführt wird.</p>
+
+<p>In einigen Fällen musst du die Konfiguration explizit auf <em>x86</em> oder <em>x64</em> setzen. Das kann beispielweise dann der Fall sein, wenn du externe Bibliotheken einbindest die nur in einer bestimmten Version verfügbar sind. Womit wir auch schon beim nächsten Thema sind.</p>
+
+<p><em>Tipp für Fortgeschrittene: Möchtest du dich intensiver mit dem Thema Debug, Release und deren Bedeutung für das Debugging beschäftigen, dann kann ich dir <a href="https://benhall.io/c-debug-vs-release-builds-and-debugging-in-visual-studio-from-novice-to-expert-in-one-blog-article/">diesen Artikel empfehlen</a>. Er ist allerdings auf Englisch.</em></p>
+
+<p>Viel Spaß auf deinem Weg vom Einsteiger zum C# Entwickler</p>
+
+<p>Jan von LernMoment.de</p>
+
+        
+          <div class="subscribe-notice">
+            <h5>Dieser LernMoment hat dir gefallen? <br> Dann melde dich an und du wirst über neue LernMomente informiert:</h5>
+                <form action="https://lernmoment.us9.list-manage.com/subscribe/post" method="POST" target="_blank">
+      <input type="hidden" name="u" value="d0206d57f5002e40b651a0f60">
+      <input type="hidden" name="id" value="8845c28e62">
+      <input type="email" class="subscribe-notice-input-box" autocapitalize="off" autocorrect="off" name="MERGE0" id="MERGE0" size="25" value="" placeholder="Deine E-Mail-Adresse">
+      <input type="text" class="subscribe-notice-input-box" name="MERGE1" id="MERGE1" size="25" value="" placeholder="Dein Vorname (optional)">
+      
+        <input type="checkbox" id="group_1" name="group[20205][1]" value="1" checked="true" style="display:none">
+      
+      <input type="submit" class="subscribe-notice-button" name="submit" value="Ich bin dabei!">
+      <legend class="subscribe-notice-legend">Du bekommst in unregelmäßigen Abständen Mails von mir, in denen ich dich auf neue Artikel oder Angebote hinweise, die in das gleiche Themengebiet fallen wie dieser Artikel.</legend>
+    </form>
+
+          </div>
+        
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:63266/alle/projekt-auf-github-veroeffentlichen/" class="btn" title="Synchronisiere dein Visual Studio 2019 Projekt mit GitHub">Vorheriger</a>
+      
+      
+        <a href="http://localhost:63266/alle/xaml-code-behind/" class="btn" title="XAML, *.g.i.cs und code-behind in WPF">Nächster</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<div class="social-icons">
+	
+	
+	
+	<a href="http://www.youtube.com/channel/UC5jCUQ6IPHtQP5r4y9byCqA" title="Jan Suchotzki on YouTube" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
+	
+	<a href="http://stackoverflow.com/users/5258906/jan-suchotzki" title="Jan Suchotzki on StackExchange" target="_blank"><i class="fa fa-stack-exchange fa-2x"></i></a>
+	
+	
+	<a href="http://github.com/lernmoment" title="Jan Suchotzki on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+    
+	
+  <a href="http://localhost:63266/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+<span>Danke an <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> und <a href="http://mademistakes.com/so-simple/" rel="nofollow">Made Mistakes</a> für hervorragende Tools.</span>
+<br>
+<span><a href="http://localhost:63266/kein-copyright/">Kein Copyright</a>    -    <a href="http://localhost:63266/impressum/">Impressum</a>    -    <a href="http://localhost:63266/datenschutz/">Datenschutz</a></span>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:63266';
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:63266/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:63266/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

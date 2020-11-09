@@ -1,0 +1,327 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Versionskontrolle mit Git und Visual Studio 2015 &#8211; LernMoment.de</title>
+<meta name="description" content="Die wichtigsten Schritte um Quellcode mit Visual Studio in Git zu verwalten.">
+<meta name="keywords" content="Werkzeug, Versionsverwaltung">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Versionskontrolle mit Git und Visual Studio 2015">
+<meta name="twitter:description" content="Die wichtigsten Schritte um Quellcode mit Visual Studio in Git zu verwalten.">
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:63266/images/banner/lernmoment-git.jpg">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="de_DE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Versionskontrolle mit Git und Visual Studio 2015">
+<meta property="og:description" content="Die wichtigsten Schritte um Quellcode mit Visual Studio in Git zu verwalten.">
+<meta property="og:url" content="http://localhost:63266/alle/git-mit-visual-studio/">
+<meta property="og:site_name" content="LernMoment.de">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="sPPXWqQjaSqa_ZgqYPNCyVLLaFzVAFCuf3xDBC-ofwE">
+
+
+
+<link rel="canonical" href="http://localhost:63266/alle/git-mit-visual-studio/">
+<link href="http://localhost:63266/feed.xml" type="application/atom+xml" rel="alternate" title="LernMoment.de Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:63266/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:63266/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:63266/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:63266/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:63266/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:63266/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:63266/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:63266/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+
+
+<div class="navigation-banner">
+	
+	
+
+	Lerne programmieren mit mir im Kurs: <a href="http://localhost:63266/einstieg-csharp/" >Einstieg in C# -></a>
+</div>
+
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:63266/kurse/" >Kurse</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/schwerpunkt/" >Dein Weg zum C# Entwickler</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/projekt-start/" >Entwicklung & Mentoring</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/blog/" >Blog</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	
+		<div class="wrap">
+			<a href="http://localhost:63266/" class="site-logo" rel="home" title="LernMoment.de"><img src="http://localhost:63266/images/site-logo.png" width="200" height="200" alt="LernMoment.de logo" class="animated fadeInDown"></a>
+		</div>
+	
+</header><!-- /.masthead -->
+
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <img src="http://localhost:63266/images/banner/lernmoment-git.jpg" class="entry-feature-image" alt="Versionskontrolle mit Git und Visual Studio 2015" >
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"><a href="http://localhost:63266/tags/#Werkzeug" title="Pages tagged Werkzeug">Werkzeug</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Versionsverwaltung" title="Pages tagged Versionsverwaltung">Versionsverwaltung</a></span>
+        
+          <h1 class="entry-title">Versionskontrolle mit Git und Visual Studio 2015</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <span class="author vcard">Von <span class="fn">Jan Suchotzki</span></span>
+        <span class="entry-date date published"><time datetime="2016-08-19T07:00:00+02:00"><i class="fa fa-calendar-o"></i> 19. August 2016</time></span>
+        
+        
+        
+        
+      </footer>
+      <div class="entry-content">
+        <p>Im <a href="https://www.youtube.com/playlist?list=PLP2TrPpx5VNlLOYo5pook-0_0Uy0YLdHW">GitHub Tutorial Deutsch</a> habe ich dir bereits gezeigt wie du Projekte in <em>Visual Studio 2015</em> erstellst, diese lokal mit <em>Git</em> verwaltest und sie insbesondere nach <em>GitHub</em> synchronisierst.</p>
+
+<p>Neben dem Bereitstellen deines Quellcodes auf <em>GitHub</em> kannst du allerdings auch <em>Visual Studio</em> und <em>Git</em> verwenden um deine Änderungen am Quellcode lokal zu verwalten. Du kannst also Änderungen an deinem Quellcode mit einem Zeitstempel und einer Beschreibung speichern. Der passende Fachbegriff dafür ist <em>einen Commit erstellen</em>.</p>
+
+<p>Hast du nun mehrere <em>Commits</em> erstellt, kannst du dir die Historie anschauen und auch auf den Stand eines ganz spezifischen <em>Commits</em> aus der Vergangenheit zurückfallen. Dank <em>Git</em> kannst du das alles lokal auf deinem Rechner machen ohne irgendetwas zusätzliches zu installieren (außer Visual Studio ;). Möchtest du dann später doch dein Projekt öffentlich verfügbar machen, kannst du immer noch deine lokalen Änderungen mit <em>GitHub</em> synchronisieren.</p>
+
+<p>In dieser Kurzanleitung zeige ich dir die wichtigsten Schritte um mit <em>Visual Studio</em> und <em>Git</em></p>
+
+<ol>
+  <li>ein Projekt zu erstellen / initialisieren,</li>
+  <li>einen Commit aus deinen Änderungen zu erstellen,</li>
+  <li>den aktuellen Verlauf deiner Commits anzuschauen und</li>
+  <li>auf einen älteren Commit zurück zufallen.</li>
+</ol>
+
+<div class="subscribe-notice">
+<h5>Lerne GitHub mit Visual Studio zu verwenden!</h5>
+<a href="https://www.udemy.com/github-fuer-entwickler/?referralCode=D2FD5CBAC0A15B17A09E" class="notice-button">Zum Online-Kurs "Einstieg in GitHub" &gt;&gt;</a>
+</div>
+
+<h2 id="ein-projekt-erstellen">Ein Projekt erstellen</h2>
+
+<p>Jedesmal, wenn du ein <em>neues Projekt</em> erstellst (in Visual Studio das Menü <code class="highlighter-rouge">Datei -&gt; Neu -&gt; Projekt...</code> auswählen), kannst du über die <em>Checkbox:</em> <code class="highlighter-rouge">Neues Git-Repository erstellen</code> (direkt über dem <code class="highlighter-rouge">OK</code> Button) auswählen ob dein Projekt mit <em>Git</em> verwaltet werden soll.</p>
+
+<p>Wählst du diese Option, was du eigentlich immer machen solltest ;-), wird automatisch im obersten Verzeichnis deines Projektes ein Ordner mit dem Namen <code class="highlighter-rouge">.git</code> angelegt. Darin werden sämtliche Informationen von <em>Git</em> gespeichert.</p>
+
+<p>Zusätzlich zum <code class="highlighter-rouge">.git</code> Verzeichnis werden auch gleich 2 <em>Commits</em> erstellt. Damit sind dann bereits alle zum Projekt gehörenden Dateien zur Versionsverwaltung hinzugefügt. Dieses wird dir im <code class="highlighter-rouge">Projektmappen-Explorer</code> in <em>Visual Studio</em> angezeigt. Dort siehst du vor den Dateien (z.B. <code class="highlighter-rouge">App.config</code>) ein Symbol welches aussieht wie ein Vorhängeschloss. Damit wird dir angezeigt, dass alle Änderungen in <em>Git</em> gespeichert sind.</p>
+
+<p>Sobald du in einer Datei eine Änderung vornimmst, ändert sich das Symbol und zeigt einen <em>roten Haken</em> an. Dieser sagt dir, dass es Änderungen in der Datei gibt, für die bisher noch kein <em>Commit in Git</em> erstellt wurde.</p>
+
+<p><strong>Die wichtigsten Schritte:</strong></p>
+
+<p>Projekt erstellen mit:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Datei -&gt; Neu -&gt; Projekt...
+</code></pre></div></div>
+
+<p>Git aktivieren durch auswählen von</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Neues Git-Repository erstellen
+</code></pre></div></div>
+
+<h2 id="einen-commit-erstellen">Einen Commit erstellen</h2>
+
+<p>Nachdem du nun dein Projekt von <em>Git</em> verwalten lässt, solltest du deine Änderungen von Zeit zu Zeit mit einem <em>Commit</em> bei <em>Git</em> “abliefern”. <em>Git</em> sind alle deine Änderungen bekannt, aber es weiß nicht was deine Änderungen für dich bedeuten.</p>
+
+<p>Hast du mehrere Dateien geändert, dann weiß <em>Git</em> auch nicht welche Änderungen für dich einen logischen Zusammenhang haben. Du könntest beispielsweise mehrere Änderungen gemacht haben, die dein Projekt um verschiedene Funktionalitäten erweitern. Ich versuche immer möglichst kleine <em>Commits</em> zu machen. Das bedeutet, dass ich nach wenigen Änderungen bereits ein Commit erstelle. Bevor ich hier jedoch wieder abschweife, zurück zur eigentlichen Anleitung (eine genauere Beschreibung der “best practices” für einen Commit bekommst du dann in einem späteren Artikel).</p>
+
+<p>Der einfachste Weg alle deine aktuellen Änderungen in einen Commit zu packen ist, dass du in den <code class="highlighter-rouge">Team Explorer</code> gehst und dort den Bereich <code class="highlighter-rouge">Änderungen</code> auswählst. Dieser wird dir üblicherweise direkt angezeigt. Sollte das nicht der Fall sein, dann kannst du über das Haussymbol (<code class="highlighter-rouge">Startseite</code>) eine Übersichtsseite aufrufen und dort <code class="highlighter-rouge">Änderungen</code> auswählen.</p>
+
+<p>Unterhalb vom gelben Textfeld siehst du alle aktuellen Änderungen aufgelistet. Diese Auflistung umfasst alle Dateien, die du seit dem letzten <em>Commit</em> geändert hast. Wenn du nun einfach eine Beschreibung für diese Änderung(en) in das gelbe Textfeld eingibst und den Button <code class="highlighter-rouge">Commit für alle</code> betätigst, hast du einen Commit erstellt. Damit verschwindet die Auflistung der Änderungen, weil diese ja nun in einem <em>Commit</em> beschrieben sind.</p>
+
+<p>Diesen Prozess solltest du nun kontinuierlich wiederholen. Damit kannst du dann im nächsten Schritt sehen welche Änderungen du wann und warum gemacht hast.</p>
+
+<p><strong>Die wichtigsten Schritte:</strong></p>
+
+<p>Im <code class="highlighter-rouge">Team Explorer:</code></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Commit-Beschreibung eingeben
+
+"Commit für alle" betätigen
+</code></pre></div></div>
+
+<h2 id="aktuellen-verlauf-anzeigen">Aktuellen Verlauf anzeigen</h2>
+
+<p>Sobald du einige <em>Commits</em> erstellt hast, kannst du dir in <em>Visual Studio</em> den bisherigen Verlauf anschauen. Dazu gehst du am besten in den <code class="highlighter-rouge">Projektmappen-Explorer</code>. Darin kannst du auf der Datei für die du den Verlauf sehen möchtest das Kontextmenü (rechte Maustaste) öffnen und <code class="highlighter-rouge">Verlauf anzeigen...</code> auswählen. Dies öffnet einen weiteren Tab.</p>
+
+<p>Darin siehst du für jeden <em>Commit</em> sowohl das Datum und auch die Nachricht. Wenn du zu einem <em>Commit</em> die Details sehen möchtest, dann gehst du einfach auf diesen <em>Commit</em> im <em>Verlauf</em> und rufst über das <em>Kontextmenü</em> den Punkt <code class="highlighter-rouge">Commitdetails anzeigen</code> auf. Damit wechselt <em>Visual Studio</em> automatisch vom <code class="highlighter-rouge">Projektmappen-Explorer</code> zum <code class="highlighter-rouge">Team Explorer</code>. Darin siehst du auch welche Dateien vom <em>Commit</em> verändert wurden.</p>
+
+<p>Insbesondere im Verlauf siehst du warum gute <em>Commit-Beschreibungen</em> wichtig sind. Sobald du nämlich einige <em>Commits</em> gemacht hast, wird es immer schwieriger einzelne <em>Commits</em> wiederzufinden. Insbesondere wenn einige Tage oder gar Wochen vergangen sind, dann kommst du mit kryptischen Beschreibungen nicht wirklich weiter.</p>
+
+<p>Möchtest du den Verlauf für das ganze Projekt sehen, dann musst du den <code class="highlighter-rouge">Team Explorer</code> bemühen. Darin gehst du am besten über das Haussymbol zur <code class="highlighter-rouge">Startseite</code> wechseln. Dort wählst du dann <code class="highlighter-rouge">Branches</code> aus. Üblicherweise siehst du in der folgenden Auflistung nur den Projektnamen und dadrunter den Eintrag <code class="highlighter-rouge">master</code>. Solltest du mehrere <em>Branches</em> haben, dann wird dir der Aktive mit fettgedruckten Buchstaben angezeigt.</p>
+
+<div class="subscribe-notice">
+<h5>Du kennst dich noch nicht mit Visual Studio aus?</h5>
+<a href="https://www.udemy.com/course/einstieg-in-csharp-software-programmieren-wie-ein-profi/?couponCode=CS_20-1120_LMDE" class="notice-button">Hier geht's zum Online-Kurs "Einstieg in C#" &gt;&gt;</a>
+</div>
+
+<p>Auf dem gewünschten Branch kannst du im <em>Kontextmenü</em> ebenfalls <code class="highlighter-rouge">Verlauf anzeigen...</code> auswählen. Dann siehst du alle Commits die es bisher in dem ausgewählten Branch gegeben hat.</p>
+
+<p>Solltest du das Thema <em>Branches</em> noch nicht kennen ist das kein Problem. Verwende einfach erstmal <code class="highlighter-rouge">master</code>.</p>
+
+<p><strong>Die wichtigsten Schritte:</strong></p>
+
+<p>Im <code class="highlighter-rouge">Projektmappen-Explorer:</code></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Via Kontextmenü "Verlauf anzeigen..." auf der gewünschten Datei ausführen
+</code></pre></div></div>
+
+<h2 id="eine-ältere-version-commit-verwenden">Eine ältere Version (Commit) verwenden</h2>
+
+<p>Gerade wenn es darum geht auf eine ältere Version zurück zu gehen gibt es bei <em>Git</em> ein paar Herausforderungen zu meistern. Wenn du im <em>Verlauf</em> (siehe vorherigen Abschnitt) einen <em>Commit</em> auswählst und dir das Kontextmenü anzeigen lässt, dann findest du den Eintrag <code class="highlighter-rouge">Zurücksetzen</code>.</p>
+
+<p>Dieser Eintrag setzt jedoch nicht dein ganzes Projekt auf den Stand des <em>Commits</em> zurück, sondern macht genau diesen einen <em>Commit</em> rückgängig. Hast du beispielsweise im letzten Commit einen Fehler gemacht, dann kannst du ihn auf diese Weise rückgängig machen.</p>
+
+<p>Ich würde dir erstmal davon abraten das <code class="highlighter-rouge">Zurücksetzen</code> in einem anderen Kontext auszuführen. Es macht dir zwar nichts kaputt, weil das <code class="highlighter-rouge">Zurücksetzen</code> als ein weiterer <em>Commit</em>  im <em>Verlauf</em>  auftaucht, aber es wird dann unübersichtlich und kompliziert.</p>
+
+<p>Eine Alternative bekommst du mit der Funktionalität <code class="highlighter-rouge">Neuer Branch...</code>. Diese kannst du ebenfalls aus dem Kontextmenü eines <em>Commits</em> im <em>Verlauf</em> aufrufen. Wenn du diese Funktionalität verwendest, erstellst du einen neuen Zweig in <em>Git</em>. Das bedeutet, dass alle bisherigen Änderungen erhalten bleiben und du unabhängig davon eine andere Lösung ausprobieren kannst.</p>
+
+<p>Bevor du einen neuen <em>Branch</em> erstellen kannst, musst du alle noch ausstehenden Änderungen per <em>Commit</em> abgeben. Wenn es noch Änderungen gibt, dann kannst du keinen neuen <em>Branch</em> erstellen.</p>
+
+<p>Willst du also dein Projekt ab einer gewissen Stelle im <em>Verlauf</em> verändern, dann gehst du auf den entsprechenden <em>Commit</em>, wählst <code class="highlighter-rouge">Neuer Branch...</code> aus dem Kontextmenü und gibst im <code class="highlighter-rouge">Team Explorer</code> einen Namen für deinen Branch ein. Dies könnte zum Beispiel sein <em>“Lösungsweg2”</em>. Es ist bereits <code class="highlighter-rouge">Branch auschecken</code> ausgewählt und dies solltest du auch belassen. Nun einfach den Button <code class="highlighter-rouge">Branch erstellen</code> betätigen und du hast einen neuen Branch mit dem Projektstand zum ausgewählten <em>Commit</em> erstellt. In diesem Branch kannst du Änderungen machen und beliebig viele <em>Commits</em> erstellen.</p>
+
+<p>Hast du nun in deinem neuen Branch deine Lösung soweit entwickelt wie nötig, kannst du diesen Branch zurück führen in deinen Ausgangsbranch (das wird <em>Merge</em> genannt). Somit hast du nicht mehr zwei parallele Zweige an denen entwickelt werden kann.</p>
+
+<p>Nachdem du alle Änderungen in deinem Branch per <em>Commit</em> abgegeben hast, kannst du zurück in den <code class="highlighter-rouge">master</code> Branch wecheseln. Das machst du im <code class="highlighter-rouge">Team Explorer</code> im Bereich <code class="highlighter-rouge">Branches</code>. Dort siehst du, dass der von dir erstellte Branch momentan fettgedruckt ist. D.h. er ist momentan aktiv. Mache nun einen Doppelklick auf den Branch <code class="highlighter-rouge">master</code> direkt im <code class="highlighter-rouge">Team Explorer</code>. Damit wird dieser aktiv gesetzt.</p>
+
+<p>Wenn nun der <code class="highlighter-rouge">master</code> Branch aktiv ist, kannst du auf ihm im <code class="highlighter-rouge">Team Explorer</code> per Kontextmenü die Funktion <code class="highlighter-rouge">Mergen aus...</code> auswählen. Damit öffnet sich eine neue Eingabe im <code class="highlighter-rouge">Team Explorer</code> bei der du deinen Branch im Bereich <code class="highlighter-rouge">Mergen aus Branch:</code> auswählen kannst. Die restlichen Einstellungen können so bleiben und du führst mit einem Klick auf den Button <code class="highlighter-rouge">Merge</code> den Vorgang aus.</p>
+
+<p>Nun kann es passieren, dass du noch <em>Konflikte</em> auflösen musst. Dabei solltest du dir alles im Detail anschauen, aber üblicherweise kannst du immer die Änderungen aus der <code class="highlighter-rouge">Quelle</code> übernehmen.</p>
+
+<p>Hoffentlich hat dir diese Anleitung ein wenig geholfen beim Umgang mit Git und Visual Studio. Momentan fehlen dieser Anleitung noch ein paar Bilder. Diese werde ich in den nächsten Tagen nachliefern.</p>
+
+<p>Viel Erfolg beim Verwalten deiner Versionen mit Git und Visual Studio</p>
+
+<p>Jan</p>
+
+        
+          <div class="subscribe-notice">
+            <h5>Dieser LernMoment hat dir gefallen? <br> Dann melde dich an und du wirst über neue LernMomente informiert:</h5>
+                <form action="https://lernmoment.us9.list-manage.com/subscribe/post" method="POST" target="_blank">
+      <input type="hidden" name="u" value="d0206d57f5002e40b651a0f60">
+      <input type="hidden" name="id" value="8845c28e62">
+      <input type="email" class="subscribe-notice-input-box" autocapitalize="off" autocorrect="off" name="MERGE0" id="MERGE0" size="25" value="" placeholder="Deine E-Mail-Adresse">
+      <input type="text" class="subscribe-notice-input-box" name="MERGE1" id="MERGE1" size="25" value="" placeholder="Dein Vorname (optional)">
+      
+        <input type="checkbox" id="group_2" name="group[20205][2]" value="1" checked="true" style="display:none">
+      
+      <input type="submit" class="subscribe-notice-button" name="submit" value="Ich bin dabei!">
+      <legend class="subscribe-notice-legend">Du bekommst in unregelmäßigen Abständen Mails von mir, in denen ich dich auf neue Artikel oder Angebote hinweise, die in das gleiche Themengebiet fallen wie dieser Artikel.</legend>
+    </form>
+
+          </div>
+        
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:63266/alle/aktivitaeten-zur-fehlervermeidung/" class="btn" title="Spare Zeit mit diesen 3 Taktiken zur Fehlervermeidung.">Vorheriger</a>
+      
+      
+        <a href="http://localhost:63266/alle/gratis-github-tutorial/" class="btn" title="NEU - Gratis GitHub Tutorial">Nächster</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<div class="social-icons">
+	
+	
+	
+	<a href="http://www.youtube.com/channel/UC5jCUQ6IPHtQP5r4y9byCqA" title="Jan Suchotzki on YouTube" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
+	
+	<a href="http://stackoverflow.com/users/5258906/jan-suchotzki" title="Jan Suchotzki on StackExchange" target="_blank"><i class="fa fa-stack-exchange fa-2x"></i></a>
+	
+	
+	<a href="http://github.com/lernmoment" title="Jan Suchotzki on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+    
+	
+  <a href="http://localhost:63266/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+<span>Danke an <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> und <a href="http://mademistakes.com/so-simple/" rel="nofollow">Made Mistakes</a> für hervorragende Tools.</span>
+<br>
+<span><a href="http://localhost:63266/kein-copyright/">Kein Copyright</a>    -    <a href="http://localhost:63266/impressum/">Impressum</a>    -    <a href="http://localhost:63266/datenschutz/">Datenschutz</a></span>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:63266';
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:63266/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:63266/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

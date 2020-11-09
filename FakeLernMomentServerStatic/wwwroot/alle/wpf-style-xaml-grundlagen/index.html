@@ -1,0 +1,393 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Grundlagen vom WPF Style Element in XAML &#8211; LernMoment.de</title>
+<meta name="description" content="Eine der coolsten Funktionalitäten von WPF ist das Styling. Hier lernst du die Grundlagen anhand eines Beispiels kennen.">
+<meta name="keywords" content="WPF, XAML, Controls">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Grundlagen vom WPF Style Element in XAML">
+<meta name="twitter:description" content="Eine der coolsten Funktionalitäten von WPF ist das Styling. Hier lernst du die Grundlagen anhand eines Beispiels kennen.">
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:63266/images/banner/lernmoment-wpf.jpg">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="de_DE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Grundlagen vom WPF Style Element in XAML">
+<meta property="og:description" content="Eine der coolsten Funktionalitäten von WPF ist das Styling. Hier lernst du die Grundlagen anhand eines Beispiels kennen.">
+<meta property="og:url" content="http://localhost:63266/alle/wpf-style-xaml-grundlagen/">
+<meta property="og:site_name" content="LernMoment.de">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="sPPXWqQjaSqa_ZgqYPNCyVLLaFzVAFCuf3xDBC-ofwE">
+
+
+
+<link rel="canonical" href="http://localhost:63266/alle/wpf-style-xaml-grundlagen/">
+<link href="http://localhost:63266/feed.xml" type="application/atom+xml" rel="alternate" title="LernMoment.de Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:63266/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:63266/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:63266/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:63266/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:63266/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:63266/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:63266/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:63266/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+
+
+<div class="navigation-banner">
+	
+	
+
+	Sammle Erfahrung in C# mit mir im Kurs: <a href="https://www.udemy.com/csharp-uebungskurs-einfach-verschluesselt/?referralCode=C976277144B75813267C" >C# Grundlagen üben mit System -></a>
+</div>
+
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:63266/kurse/" >Kurse</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/schwerpunkt/" >Dein Weg zum C# Entwickler</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/projekt-start/" >Entwicklung & Mentoring</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/blog/" >Blog</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	
+		<div class="wrap">
+			<a href="http://localhost:63266/" class="site-logo" rel="home" title="LernMoment.de"><img src="http://localhost:63266/images/site-logo.png" width="200" height="200" alt="LernMoment.de logo" class="animated fadeInDown"></a>
+		</div>
+	
+</header><!-- /.masthead -->
+
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <img src="http://localhost:63266/images/banner/lernmoment-wpf.jpg" class="entry-feature-image" alt="Grundlagen vom WPF Style Element in XAML" >
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"><a href="http://localhost:63266/tags/#WPF" title="Pages tagged WPF">WPF</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#XAML" title="Pages tagged XAML">XAML</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Controls" title="Pages tagged Controls">Controls</a></span>
+        
+          <h1 class="entry-title">Grundlagen vom WPF Style Element in XAML</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <span class="author vcard">Von <span class="fn">Jan Suchotzki</span></span>
+        <span class="entry-date date published"><time datetime="2020-03-21T11:00:09+01:00"><i class="fa fa-calendar-o"></i> 21. March 2020</time></span>
+        
+        
+        
+        
+      </footer>
+      <div class="entry-content">
+        <p>Eine von Microsofts Kernideen bei der Erstellung von <em>WPF</em> war die Trennung von Design und Entwicklung. Vielleicht hast du auch schon eine Anwendung gesehen bei der du dachtest: “Ein Entwickler sollte nicht die Gestaltung der Oberfläche übernehmen!” Dies ist zumindest einer der Gründe warum <em>WPF</em> sowohl Designer (mithilfe von <em>XAML</em> und <a href="https://docs.microsoft.com/en-us/visualstudio/xaml-tools/creating-a-ui-by-using-blend-for-visual-studio?view=vs-2019"><em>Blend for Visual Studio</em></a>) wie auch Entwickler ansprechen will.</p>
+
+<p><em>WPF</em> bietet für Designer (oder design affine Entwickler wie uns ;) fast uneingeschränkte Möglichkeiten das Aussehen sämtlicher Steuerelemente zu verändern. Eine ganz triviale Einstellung ist beispielsweise die Hintergrundfarbe eines <code class="highlighter-rouge">Button</code> zu ändern:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;Button</span> <span class="na">x:Name=</span><span class="s">"startButton"</span> <span class="na">Content=</span><span class="s">"Start"</span> <span class="na">Background=</span><span class="s">"#00A8C6"</span><span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<p>Natürlich könntest du auch etwas wagen und deinem <code class="highlighter-rouge">Button</code> einen Farbverlauf spendieren (denk aber dran das Entwickler häufig nicht die besten Designer sind ;):</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;Button</span> <span class="na">x:Name=</span><span class="s">"startButton"</span> <span class="na">Content=</span><span class="s">"Start"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;Button.Background&gt;</span>
+          <span class="nt">&lt;LinearGradientBrush&gt;</span>
+              <span class="nt">&lt;GradientStop</span> <span class="na">Offset=</span><span class="s">"0.0"</span> <span class="na">Color=</span><span class="s">"#00A8C6"</span> <span class="nt">/&gt;</span>
+              <span class="nt">&lt;GradientStop</span> <span class="na">Offset=</span><span class="s">"1.0"</span> <span class="na">Color=</span><span class="s">"#F9F2E7"</span> <span class="nt">/&gt;</span>
+          <span class="nt">&lt;/LinearGradientBrush&gt;</span>
+      <span class="nt">&lt;/Button.Background&gt;</span>
+  <span class="nt">&lt;/Button&gt;</span>
+</code></pre></div></div>
+
+<p>Möchtest du jedoch viele <code class="highlighter-rouge">Buttons</code> in dieser Art anpassen (wie z.B. im kostenlosen <a href="/lernmail-kurse/wpf-tictactoe-fuer-einsteiger/">WPF-Übungskurs</a>), dann führt das zu ziemlich viel kopieren und redudantem XAML-Code. Daher gibt es in WPF den <code class="highlighter-rouge">Style</code>.</p>
+
+<p><strong>Merke:</strong> Mit einem <code class="highlighter-rouge">Style</code> kannst du das Aussehen von Steuerelementen verändern. Dabei kann ein <code class="highlighter-rouge">Style</code> an zentraler Stelle zur Verfügung gestellt werden und nach verschiedenen Kriterien den existierenden Steuerelementen zugewiesen werden.</p>
+
+<h3 id="wie-ist-ein-style-aufgebaut">Wie ist ein <code class="highlighter-rouge">Style</code> aufgebaut?</h3>
+<p>Das Aussehen von Steuerelementen wird über ihre Eigenschaften bestimmt. Ein Beispiel ist der <code class="highlighter-rouge">Background</code> den ich dir in den Beispielen in der Einführung bereits gezeigt habe. Das <em>XAML</em>-Element für einen <code class="highlighter-rouge">Style</code> ist erstmal total unspektakulär: <code class="highlighter-rouge">&lt;Style&gt; &lt;/Style&gt;</code>. Innerhalb des <code class="highlighter-rouge">&lt;Style&gt;</code>-Elements kannst du mithilfe des <code class="highlighter-rouge">&lt;Setter&gt;</code>-Elements jeweils eine Eigenschaft auf einen spezifischen Wert setzen:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;Style&gt;</span>
+      <span class="nt">&lt;Setter</span> <span class="na">Property=</span><span class="s">"Button.Background"</span> <span class="na">Value=</span><span class="s">"#00A8C6"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/Style&gt;</span>
+</code></pre></div></div>
+
+<p>Mit diesem <code class="highlighter-rouge">Style</code> wird also der Hintergrund auf das “LernMoment-Türkis” gesetzt. Natürlich kannst du auch den Farbverlauf so umsetzen. Dazu nimmst du den <code class="highlighter-rouge">Value</code> aus dem Einzeiler raus und definierst ihn innerhalb des <code class="highlighter-rouge">Setter</code>:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;Style&gt;</span>
+      <span class="nt">&lt;Setter</span> <span class="na">Property=</span><span class="s">"Button.Background"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;Setter.Value&gt;</span>
+          <span class="nt">&lt;LinearGradientBrush&gt;</span>
+            <span class="nt">&lt;GradientStop</span> <span class="na">Offset=</span><span class="s">"0.0"</span> <span class="na">Color=</span><span class="s">"#00A8C6"</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;GradientStop</span> <span class="na">Offset=</span><span class="s">"1.0"</span> <span class="na">Color=</span><span class="s">"#F9F2E7"</span> <span class="nt">/&gt;</span>
+          <span class="nt">&lt;/LinearGradientBrush&gt;</span>
+        <span class="nt">&lt;/Setter.Value&gt;</span>
+      <span class="nt">&lt;/Setter&gt;</span>
+  <span class="nt">&lt;/Style&gt;</span>
+</code></pre></div></div>
+
+<p>Anstelle des <code class="highlighter-rouge">Setter</code> gibt es noch einige weitere spannende Elemente die du innerhalb eines <code class="highlighter-rouge">Style</code> verwenden kannst. Das ist jedoch Futter für einen weiteren Artikel.</p>
+
+<p>Da du ein aufmerksamer Leser bist, hast du dich bestimmt schon gefragt wieso ich die <code class="highlighter-rouge">Property</code> im <code class="highlighter-rouge">Setter</code> auf <code class="highlighter-rouge">Button.Background</code> und nicht einfach <code class="highlighter-rouge">Background</code> gesetzt habe. Um diese Frage zu lösen schauen wir uns erstmal an wie ein <code class="highlighter-rouge">Style</code> einem Steuerelement zugewiesen wird.</p>
+
+<h3 id="einen-definierten-style-zuweisen">Einen definierten <code class="highlighter-rouge">Style</code> zuweisen</h3>
+<p>Grundsätzlich gibt es 2,5 Möglichkeiten wie du definierst welches Steuerelement welchen <code class="highlighter-rouge">Style</code> bekommt:</p>
+
+<ol>
+  <li>Zuweisung zu allen Steuerelementen eines <code class="highlighter-rouge">TargetType</code></li>
+  <li>Explizite Zuweisung mit <code class="highlighter-rouge">x:Key</code></li>
+</ol>
+
+<p>Okay, das sind nun nur 2. Was ist also mit der 0,5? Ganz einfach:</p>
+
+<blockquote>
+  <p><strong>Merke:</strong> Unabhängig vom verwendeten <code class="highlighter-rouge">Style</code> hat die Definition an einem Steuerelement immer vorang!</p>
+</blockquote>
+
+<p>Definierst du also den <code class="highlighter-rouge">Background</code> über einen <code class="highlighter-rouge">Style</code> als rot, weist diesen <code class="highlighter-rouge">Style</code> einem <code class="highlighter-rouge">Button</code> zu und änderst an dem <code class="highlighter-rouge">Button</code> den <code class="highlighter-rouge">Background</code> auf weiß, dann wird der Hintergrund des <code class="highlighter-rouge">Button</code> weiß sein.</p>
+
+<p>Nun schauen wir uns jedoch die ersten beiden Möglichkeiten im Detail an.</p>
+
+<h4 id="allgemeine-zuweisung-per-targettype">Allgemeine Zuweisung per <code class="highlighter-rouge">TargetType</code></h4>
+<p>Möchtest du alle Steuerelemente eines Typs (z.B. <code class="highlighter-rouge">Button</code> oder <code class="highlighter-rouge">Label</code>) mit dem gleichen Aussehen gestalten, dann verwendest du den <code class="highlighter-rouge">TargetType</code>:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;Style</span> <span class="na">TargetType=</span><span class="s">"Button"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;Setter</span> <span class="na">Property=</span><span class="s">"Background"</span> <span class="na">Value=</span><span class="s">"#00A8C6"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/Style&gt;</span>
+</code></pre></div></div>
+
+<p>Mit dieser Definition bekommt einfach jeder <code class="highlighter-rouge">Button</code> im Geltungsbereich (dazu gleich mehr) des <code class="highlighter-rouge">Style</code> den türkisenen Hintergrund. Du kannst also einfach einen <code class="highlighter-rouge">Button</code> (z.B. in einem <code class="highlighter-rouge">Grid</code>) anlegen und dieser wird dann automatisch entsprechend des <code class="highlighter-rouge">Style</code> dargestellt:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;Grid&gt;</span>
+    <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">"Drück mich!"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/Grid&gt;</span>
+</code></pre></div></div>
+
+<p>Wenn du dir den <code class="highlighter-rouge">Setter</code> genau ansiehst, dann merkst du, dass dort plötzlich <code class="highlighter-rouge">Background</code> steht und nicht <code class="highlighter-rouge">Button.Background</code>. Das liegt daran, dass nun klar ist, dass dieser <code class="highlighter-rouge">Style</code> nur für <code class="highlighter-rouge">Button</code> verwendet wird. Der Compiler kann also überprüfen ob der <code class="highlighter-rouge">Button</code> eine Eigenschaft <code class="highlighter-rouge">Background</code> hat (was er hat) und alles ist gut.</p>
+
+<p>Im vorherigen Beispiel wurde kein <code class="highlighter-rouge">TargetType</code> angegeben und somit weiß der Compiler nicht auf was für eine Klasse sich die Eigenschaft bezieht. Dazu mehr beim Thema <code class="highlighter-rouge">x:Key</code>.</p>
+
+<h4 id="explizite-zuweisung-per-xkey">Explizite Zuweisung per <code class="highlighter-rouge">x:Key</code></h4>
+<p>Nicht immer ist es sinnvoll alle Instanzen eines Steuerelements gleich zu gestalten. Vielleicht möchtest du jeden <em>Ok</em>-<code class="highlighter-rouge">Button</code> speziell hervorheben. Dann kannst du einen <code class="highlighter-rouge">Style</code> mit einem eindeutigen Schlüssel definieren:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;Style</span> <span class="na">x:Key=</span><span class="s">"okStyle"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;Setter</span> <span class="na">Property=</span><span class="s">"Button.Background"</span> <span class="na">Value=</span><span class="s">"#00A8C6"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/Style&gt;</span>
+</code></pre></div></div>
+
+<p>Nun reicht es jedoch nicht mehr aus einfach nur einen <code class="highlighter-rouge">Button</code> anzulegen, sondern du musst explizit sagen, dass dieser den <code class="highlighter-rouge">Style</code> bekommen soll:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;Grid&gt;</span>
+    <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">"Ok"</span> <span class="na">Style=</span><span class="s">"{StaticResource okStyle}"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">"Drück mich!"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/Grid&gt;</span>
+</code></pre></div></div>
+
+<p>So wird also der erste <code class="highlighter-rouge">Button</code> mit türkisenem Hintergrund dargestellt und der zweite Button ganz normal.</p>
+
+<p>In dieser Art der Zuweisung ist allerdings für den Compiler nicht ersichtlich welchem Steuerelement der <code class="highlighter-rouge">Style</code> zugewiesen wird. Damit kann er auch nicht überprüfen ob es die entsprechenden Eigenschaften im <code class="highlighter-rouge">Style</code> überhaupt am Steuerelement gibt.</p>
+
+<p>Verwendest du also diese explizite Art der Zuweisung, dann musst du bei der <code class="highlighter-rouge">Property</code> nicht nur den Namen der Eigenschaft angeben, sondern auch den Klassennamen des Steuerelements (also z.B. <code class="highlighter-rouge">Button.Background</code>).</p>
+
+<p><strong>Pro-Tipp:</strong> Manchmal möchtest du vielleicht das Aussehen verschiedener Steuerelemente beeinflussen die auch alle eine gewisse Eigenschaft haben. Dann kannst du in der Vererbungshierarchie der Steuerelemente nach oben gehen. Viele Steuerelemente werden beispielsweise von der Klasse <code class="highlighter-rouge">Control</code> abgeleitet. Wenn du die Eigenschaften der Klasse <code class="highlighter-rouge">Control</code> anschaust, dann siehst du, dass es dort beispielsweise <code class="highlighter-rouge">Background</code> und auch viele <code class="highlighter-rouge">Font</code>-bezogene Eigenschaften gibt. Möchtest du also beispielsweise einen Style erstellen der sowohl für <code class="highlighter-rouge">Button</code> wie auch <code class="highlighter-rouge">Label</code> verwendet werden kann, dann würde das so aussehen:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;Style</span> <span class="na">x:Key=</span><span class="s">"proStyle"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;Setter</span> <span class="na">Property=</span><span class="s">"Control.Background"</span> <span class="na">Value=</span><span class="s">"#00A8C6"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/Style&gt;</span>
+</code></pre></div></div>
+
+<p>Über den Schlüssel <code class="highlighter-rouge">proStyle</code> kannst du nun den verschiedesten Steuerelementen einen türkisenen Hintergrund verpassen.</p>
+
+<h3 id="wo-ist-ein-style-verfügbar">Wo ist ein <code class="highlighter-rouge">Style</code> verfügbar?</h3>
+<p>Eben habe ich bereits erwähnt, dass es einen Geltungsbereich für einen <code class="highlighter-rouge">Style</code> gibt. Der Ort an dem du einen <code class="highlighter-rouge">Style</code> definierst legt auch zugleich seinen Geltungsbereich fest:</p>
+
+<ol>
+  <li>Lokal am Steuerelement - Es ist tatsächlich möglich an einem Steuerelement einen <code class="highlighter-rouge">Style</code> zu definieren. Dieser wäre dann auch nur für das jeweilige Steuerelement gültig. Daher ist es relativ sinnlos, weil du ein einzelnes Steuerelement viel leichter über seine Eigenschaften anpassen kannst als über <code class="highlighter-rouge">Style</code>, <code class="highlighter-rouge">Setter</code> usw.</li>
+  <li>Am umgebenden Container - Der visuelle Bereich einer <em>WPF</em>-Anwendung ist hierarchisch aufgebaut. Die oberste Ebene ist die <code class="highlighter-rouge">App</code>. Darin enthalten sind ein oder mehrere <code class="highlighter-rouge">Window</code>. Darin enthalten sind wiederum Steuerelement wie das <code class="highlighter-rouge">Grid</code> oder auch <code class="highlighter-rouge">StackPanel</code> die als Container weitere Steuerelemente enthalten. Auf jeder Ebene gibt es den <code class="highlighter-rouge">Resources</code> Bereich und in diesem kannst du einen <code class="highlighter-rouge">Style</code> definieren.</li>
+</ol>
+
+<p>Hier nun ein paar Beispiele für die Definition unseres <code class="highlighter-rouge">Style</code> auf unterschiedlichen Ebenen.</p>
+
+<h4 id="app-in-appxaml"><code class="highlighter-rouge">App</code> in App.xaml</h4>
+<p>In jedem <em>WPF</em>-Projekt gibt es die Datei <code class="highlighter-rouge">App.xaml</code>. Sie ist die oberste Ebene. Wenn du hier einen <code class="highlighter-rouge">Style</code> definierst ist dieser innerhalb deiner kompletten Anwendung verfügbar:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;Application</span> <span class="na">x:Class=</span><span class="s">"TicTacToeWPF.App"</span> 
+     <span class="na">xmlns=</span><span class="s">"http://schemas.microsoft.com/winfx/2006/xaml/presentation"</span>
+     <span class="na">xmlns:x=</span><span class="s">"http://schemas.microsoft.com/winfx/2006/xaml"</span>
+     <span class="na">StartupUri=</span><span class="s">"MainWindow.xaml"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Application.Resources&gt;</span>
+    <span class="nt">&lt;Style</span> <span class="na">TargetType=</span><span class="s">"Button"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;Setter</span> <span class="na">Property=</span><span class="s">"Background"</span> <span class="na">Value=</span><span class="s">"#00A8C6"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/Style&gt;</span>
+  <span class="nt">&lt;/Application.Resources&gt;</span>
+<span class="nt">&lt;/Application&gt;</span>
+</code></pre></div></div>
+
+<h4 id="window-zb-in-mainwindowxaml"><code class="highlighter-rouge">Window</code> z.B. in MainWindow.xaml</h4>
+<p>Jedes <em>WPF</em>-Projekt hat mindestens ein <code class="highlighter-rouge">Window</code>. Definierst du einen <code class="highlighter-rouge">Style</code> an einem <code class="highlighter-rouge">Window</code> dann ist er “nur” innerhalb dieses Fensters verfügbar.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;Window</span> <span class="na">x:Class=</span><span class="s">"TicTacToeWPF.MainWindow"</span>
+        <span class="na">xmlns=</span><span class="s">"http://schemas.microsoft.com/winfx/2006/xaml/presentation"</span>
+        <span class="na">xmlns:x=</span><span class="s">"http://schemas.microsoft.com/winfx/2006/xaml"</span>
+        <span class="na">xmlns:d=</span><span class="s">"http://schemas.microsoft.com/expression/blend/2008"</span>
+        <span class="na">xmlns:mc=</span><span class="s">"http://schemas.openxmlformats.org/markup-compatibility/2006"</span>
+        <span class="na">xmlns:local=</span><span class="s">"clr-namespace:TicTacToeWPF"</span>
+        <span class="na">mc:Ignorable=</span><span class="s">"d"</span>
+        <span class="na">Title=</span><span class="s">"LernMoments TicTacToe in WPF"</span> <span class="na">Height=</span><span class="s">"500"</span> <span class="na">Width=</span><span class="s">"500"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;Window.Resources&gt;</span>
+        <span class="nt">&lt;Style</span> <span class="na">x:Key=</span><span class="s">"türkiserButton"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;Setter</span> <span class="na">Property=</span><span class="s">"Button.Background"</span> <span class="na">Value=</span><span class="s">"#00A8C6"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/Style&gt;</span>
+    <span class="nt">&lt;/Window.Resources&gt;</span>
+<span class="nt">&lt;/Window&gt;</span>
+</code></pre></div></div>
+
+<h4 id="stackpanel-in-einem-grid-in-einem-window"><code class="highlighter-rouge">StackPanel</code> in einem <code class="highlighter-rouge">Grid</code> in einem <code class="highlighter-rouge">Window</code></h4>
+<p>Möchtest du noch weiter runter gehen und den <code class="highlighter-rouge">Style</code> nur in einem Teil eines Fensters verwenden, dann kannst du dieses auch machen:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;Grid&gt;</span>
+    <span class="nt">&lt;StackPanel</span> <span class="na">x:Name=</span><span class="s">"ersterStack"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;StackPanel.Resources&gt;</span>
+          <span class="nt">&lt;Style</span> <span class="na">x:Key=</span><span class="s">"türkiserButton"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;Setter</span> <span class="na">Property=</span><span class="s">"Button.Background"</span> <span class="na">Value=</span><span class="s">"#00A8C6"</span><span class="nt">/&gt;</span>
+          <span class="nt">&lt;/Style&gt;</span>
+      <span class="nt">&lt;/StackPanel.Resources&gt;</span>
+    <span class="nt">&lt;/StackPanel&gt;</span>
+    <span class="nt">&lt;StackPanel</span> <span class="na">x:Name=</span><span class="s">"zweiterStack"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;/StackPanel.Resources&gt;</span>
+    <span class="nt">&lt;/StackPanel&gt;</span>
+  <span class="nt">&lt;/Grid&gt;</span>
+</code></pre></div></div>
+
+<p>Mit dieser Definition ist der <code class="highlighter-rouge">Style</code> im <code class="highlighter-rouge">ersterStack</code> verfügbar, aber nicht im <code class="highlighter-rouge">zweiterStack</code>. Allerdings wird es wohl wirklich wenig Anwendungsfälle geben wo du diese Variante einsetzen kannst.</p>
+
+<p>Möchtest du das hier gelernte direkt in die Praxis umsetzen? Dann probiere meinen WPF-Übungskurs aus. Schon in der 2. Einheit geht es um das Styling.</p>
+
+<div class="subscribe-notice">
+  <h5>Melde dich jetzt für den kostenlosen WPF Übungskurs an:</h5>
+  <a href="http://localhost:63266/lernmail-kurse/wpf-tictactoe-fuer-einsteiger/" class="notice-button">Los gehts &gt;&gt;</a>
+</div>
+
+<p>So viel erstmal zu den absoluten Grundlagen im Bereich <code class="highlighter-rouge">Style</code>. Es gibt noch viel mehr spannende Funktionalitäten wie beispielsweise:</p>
+<ul>
+  <li>Definition eines <code class="highlighter-rouge">Style</code> in einer separaten Datei (z.B. <code class="highlighter-rouge">MeinCoolerButtonStyle.xaml</code>) der dann auch zwischen verschiedenen Projekten ausgetauscht werden kann. Damit ist beispielsweise auch eine Art einheitliche “Design-Bibliothek” für alle Anwendungen in einer Firma realisierbar.</li>
+  <li>Änderung des Aussehens von Controls anhand von definierten Ereignissen oder Werten einer bestimmten Variable.</li>
+  <li>Animationen</li>
+</ul>
+
+<p>Viel Spaß auf deinem Weg vom Einsteiger zum C# Entwickler</p>
+
+<p>Jan von LernMoment.de</p>
+
+        
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:63266/alle/wpf-grid-panel-xaml-grundlagen/" class="btn" title="Grundlagen des WPF Grid-Panels in XAML">Vorheriger</a>
+      
+      
+        <a href="http://localhost:63266/csharp-tutorial-deutsch/typkonvertierung-mit-cast/" class="btn" title="Was macht ein Cast (Typkonvertierung / Umwandlung) in C#?">Nächster</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<div class="social-icons">
+	
+	
+	
+	<a href="http://www.youtube.com/channel/UC5jCUQ6IPHtQP5r4y9byCqA" title="Jan Suchotzki on YouTube" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
+	
+	<a href="http://stackoverflow.com/users/5258906/jan-suchotzki" title="Jan Suchotzki on StackExchange" target="_blank"><i class="fa fa-stack-exchange fa-2x"></i></a>
+	
+	
+	<a href="http://github.com/lernmoment" title="Jan Suchotzki on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+    
+	
+  <a href="http://localhost:63266/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+<span>Danke an <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> und <a href="http://mademistakes.com/so-simple/" rel="nofollow">Made Mistakes</a> für hervorragende Tools.</span>
+<br>
+<span><a href="http://localhost:63266/kein-copyright/">Kein Copyright</a>    -    <a href="http://localhost:63266/impressum/">Impressum</a>    -    <a href="http://localhost:63266/datenschutz/">Datenschutz</a></span>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:63266';
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:63266/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:63266/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

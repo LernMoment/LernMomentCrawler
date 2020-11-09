@@ -1,0 +1,302 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Command.CanExecute &#8211; LernMoment.de</title>
+<meta name="description" content="Wie du mit nur 3 Schritten deinem Benutzer die Bedienung erleichterst">
+<meta name="keywords" content="Syntax, WPF, MVVM">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Command.CanExecute">
+<meta name="twitter:description" content="Wie du mit nur 3 Schritten deinem Benutzer die Bedienung erleichterst">
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:63266/images/banner/lernmoment-wpf.jpg">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="de_DE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Command.CanExecute">
+<meta property="og:description" content="Wie du mit nur 3 Schritten deinem Benutzer die Bedienung erleichterst">
+<meta property="og:url" content="http://localhost:63266/csharp-programmieren/command-canexecute/">
+<meta property="og:site_name" content="LernMoment.de">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="sPPXWqQjaSqa_ZgqYPNCyVLLaFzVAFCuf3xDBC-ofwE">
+
+
+
+<link rel="canonical" href="http://localhost:63266/csharp-programmieren/command-canexecute/">
+<link href="http://localhost:63266/feed.xml" type="application/atom+xml" rel="alternate" title="LernMoment.de Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:63266/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:63266/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:63266/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:63266/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:63266/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:63266/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:63266/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:63266/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+
+
+<div class="navigation-banner">
+	
+	
+
+	Lerne programmieren mit mir im Kurs: <a href="http://localhost:63266/einstieg-csharp/" >Einstieg in C# -></a>
+</div>
+
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:63266/kurse/" >Kurse</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/schwerpunkt/" >Dein Weg zum C# Entwickler</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/projekt-start/" >Entwicklung & Mentoring</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/blog/" >Blog</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	
+		<div class="wrap">
+			<a href="http://localhost:63266/" class="site-logo" rel="home" title="LernMoment.de"><img src="http://localhost:63266/images/site-logo.png" width="200" height="200" alt="LernMoment.de logo" class="animated fadeInDown"></a>
+		</div>
+	
+</header><!-- /.masthead -->
+
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <img src="http://localhost:63266/images/banner/lernmoment-wpf.jpg" class="entry-feature-image" alt="Command.CanExecute" >
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"><a href="http://localhost:63266/tags/#Syntax" title="Pages tagged Syntax">Syntax</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#WPF" title="Pages tagged WPF">WPF</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#MVVM" title="Pages tagged MVVM">MVVM</a></span>
+        
+          <h1 class="entry-title">Command.CanExecute</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <span class="author vcard">Von <span class="fn">Jan Suchotzki</span></span>
+        <span class="entry-date date published"><time datetime="2015-07-26T16:47:19+02:00"><i class="fa fa-calendar-o"></i> 26. July 2015</time></span>
+        
+        
+        
+        
+      </footer>
+      <div class="entry-content">
+        <p>Egal welche, von den vielen Möglichkeiten zur Oberflächenerstellung in C# du verwendest, es ist immer wichtig, dass sie möglichst einfach für deinen Benutzer zu bedienen ist. Es macht also Sinn, Funktionen die gerade nicht verfügbar sind, auch gar nicht erst durch den Benutzer ausführen zu lassen.</p>
+
+<p>Wenn du <a href="https://msdn.microsoft.com/de-de/library/aa970268(v=vs.110).aspx">WPF</a> und den MVVM (Model-View-ViewModel) Ansatz verwendest, dann kann dir das <code class="highlighter-rouge">ICommand</code> Interface behilflich sein. In diesem Interface gibt es die <code class="highlighter-rouge">CanExecute</code> Methode.</p>
+
+<p>Über diese Methode kann WPF heraus finden ob ein Kommando momentan ausgeführt werden kann oder nicht. Wenn du zum Beispiel etwas aus der Oberfläche heraus speichern möchtest, dieses aber länger dauert, könnte dein ViewModel ein asynchrones <code class="highlighter-rouge">SpeichernCommand</code> anbieten.</p>
+
+<p>In dessen <code class="highlighter-rouge">Execute</code> Methode definierst du was wie gespeichert werden soll. In der <code class="highlighter-rouge">CanExecute</code> Methode sagst du, dass <code class="highlighter-rouge">Execute</code> nicht nochmal aufgerufen werden sollte, so lange es läuft.</p>
+
+<p>Die Syntax der <code class="highlighter-rouge">CanExecute</code> Methode im <code class="highlighter-rouge">ICommand</code> Interface ist so:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">bool</span> <span class="nf">CanExecute</span><span class="p">(</span><span class="n">Object</span> <span class="n">parameter</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Wenn du die Methode implementierst, gibst du also immer ein bool zurück. Der Aufrufer will ja wissen ob das <code class="highlighter-rouge">ICommand</code> momentan ausgeführt werden kann oder nicht. Den <code class="highlighter-rouge">parameter</code> kannst du erstmal ignorieren. Bei Bedarf könntest du einen Parameter übergeben, aber das ist wieder ein neuer LernMoment.</p>
+
+<p>Hier die 3 Schritte um ein Bedienelement zu aktivieren / deaktivieren je nachdem ob die Funktion gerade verfügbar ist, oder nicht:</p>
+
+<h4 id="schritt-1---icommand-mit-einer-passenden-canexecute-methode-implementieren">Schritt 1 - <code class="highlighter-rouge">ICommand</code> mit einer passenden <code class="highlighter-rouge">CanExecute</code> Methode implementieren</h4>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">SpeichernCommand</span> <span class="p">:</span> <span class="n">ICommand</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="kt">bool</span> <span class="n">istSpeichernAktiv</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="kt">bool</span> <span class="nf">CanExecute</span><span class="p">(</span><span class="kt">object</span> <span class="n">parameter</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// Das Kommando kann ausgeführt werden, wenn gerade nicht gespeichert wird.</span>
+        <span class="k">return</span> <span class="n">istSpeichernAktiv</span> <span class="p">==</span> <span class="k">false</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Execute Methode und CanExecuteChanged Event sind im Beispiel realisiert</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="schritt-2---das-neu-definierte-kommando-im-viewmodel-verfügbar-machen">Schritt 2 - Das neu definierte Kommando im ViewModel verfügbar machen</h4>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">private</span> <span class="n">SpeichernCommand</span> <span class="n">dateiSpeichernCommand</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+
+<span class="k">public</span> <span class="n">ICommand</span> <span class="n">DateiSpeichernCommand</span>
+<span class="p">{</span>
+    <span class="k">get</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">dateiSpeichernCommand</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">dateiSpeichernCommand</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">SpeichernCommand</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="n">dateiSpeichernCommand</span><span class="p">;</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="schritt-3---das-kommando-und-das-bedienelement-verbinden">Schritt 3 - Das Kommando und das Bedienelement verbinden</h4>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;Button</span> <span class="na">Content=</span><span class="s">"Speichern"</span> <span class="na">Command=</span><span class="s">"{Binding DateiSpeichernCommand}"</span> <span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<p>Der letzte Schritt in Kombination mit der Implementierung von <code class="highlighter-rouge">CanExecuteChanged</code> (siehe <a href="#weitere-informationen">Quellcode</a>) sind die “Magie”, die es WPF ermöglichen automatisch deine <code class="highlighter-rouge">CanExecute</code> Methode aufzurufen, wenn sich an der Oberfläche etwas ändert. Zu dieser Magie mehr in einem weiteren LernMoment.</p>
+
+<p>Jetzt viel Spaß mit der Verbesserung deiner Oberfläche</p>
+
+<p>Jan</p>
+
+<h3 id="merke">Merke</h3>
+
+<ul>
+  <li>Bedienelemente die momentan nicht benutzt werden können, oder sollen, solltest du deaktivieren. So vereinfachst du die Bedienung der Oberfläche.</li>
+  <li>Achtung: sich ständig an und ausschaltende Bedienelemente können den Benutzer auch verwirren. Überleg dir also, ob das Verhalten für den Benutzer nachvollziehbar ist.</li>
+  <li>WPF nimmt dir den Großteil der Arbeit ab, wenn du <code class="highlighter-rouge">ICommand</code> verwendest.</li>
+  <li>Das Resultat der <code class="highlighter-rouge">CanExecute</code> Methode wird verwendet um die <code class="highlighter-rouge">IsEnabled</code> Eigenschaft vieler Bedienelemente zu setzen.</li>
+  <li>Kommandos immer wieder selber zu implementieren ist auf die Dauer zu kompliziert. Es gibt Alternativen <a href="#weitere-informationen">siehe unten</a>.</li>
+</ul>
+
+<h3 id="lernquiz">Lernquiz</h3>
+
+<p>Verwende folgende Fragen um das gelernte von heute zu festigen:</p>
+
+<ul>
+  <li>Warum kann es Sinn machen Bedienelemente auszuschalten, wenn ihre Funktion aktuell nicht verfügbar ist?</li>
+  <li>Wie heißt das Interface und die für diese Funktion relevante Methode?</li>
+  <li>Was musst du tun damit ein Bedienelement dein Kommando im ViewModel verwendet und sich automatisch aktiviert/deaktiviert?</li>
+</ul>
+
+<p>Am besten du schaust dir morgen und dann nochmal in ein paar Tagen die vorherigen Fragen an und beantwortest sie ohne den Text vorher gelesen zu haben.</p>
+
+<h3 id="weitere-informationen">Weitere Informationen</h3>
+
+<ul>
+  <li>Das komplette Beispielprogramm zu diesem LernMoment findest du <a href="https://github.com/LernMoment/csharp/tree/master/CommandCanExecute">hier</a></li>
+  <li>Um nicht immer <code class="highlighter-rouge">ICommand</code> implementieren zu müssen, kannst du eine Standardimplementierung mit Delegates oder ähnliches verwenden. Wie zum Beispiel das <a href="https://msdn.microsoft.com/en-us/magazine/dd419663.aspx">RelayCommand</a>. Leider gibt es keine gute Erklärung auf Deutsch.</li>
+  <li>Das <a href="https://msdn.microsoft.com/de-de/library/system.windows.input.routedcommand(v=vs.110).aspx">RoutedCommand</a>, welches direkt im Framework definiert ist, kannst du auch verwenden. Es ist allerdings etwas komplizierter. Dafür kann es auch mehr.</li>
+</ul>
+
+        
+          <div class="subscribe-notice">
+            <h5>Dieser LernMoment hat dir gefallen? <br> Dann melde dich an und du wirst über neue LernMomente informiert:</h5>
+                <form action="https://lernmoment.us9.list-manage.com/subscribe/post" method="POST" target="_blank">
+      <input type="hidden" name="u" value="d0206d57f5002e40b651a0f60">
+      <input type="hidden" name="id" value="8845c28e62">
+      <input type="email" class="subscribe-notice-input-box" autocapitalize="off" autocorrect="off" name="MERGE0" id="MERGE0" size="25" value="" placeholder="Deine E-Mail-Adresse">
+      <input type="text" class="subscribe-notice-input-box" name="MERGE1" id="MERGE1" size="25" value="" placeholder="Dein Vorname (optional)">
+      
+        <input type="checkbox" id="group_1" name="group[20205][1]" value="1" checked="true" style="display:none">
+      
+      <input type="submit" class="subscribe-notice-button" name="submit" value="Ich bin dabei!">
+      <legend class="subscribe-notice-legend">Du bekommst in unregelmäßigen Abständen Mails von mir, in denen ich dich auf neue Artikel oder Angebote hinweise, die in das gleiche Themengebiet fallen wie dieser Artikel.</legend>
+    </form>
+
+          </div>
+        
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:63266/csharp-programmieren/nuget-pakete-restaurieren/" class="btn" title="NuGet Pakete Restaurieren">Vorheriger</a>
+      
+      
+        <a href="http://localhost:63266/csharp-programmieren/anonyme-methode/" class="btn" title="Anonyme Methoden">Nächster</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<div class="social-icons">
+	
+	
+	
+	<a href="http://www.youtube.com/channel/UC5jCUQ6IPHtQP5r4y9byCqA" title="Jan Suchotzki on YouTube" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
+	
+	<a href="http://stackoverflow.com/users/5258906/jan-suchotzki" title="Jan Suchotzki on StackExchange" target="_blank"><i class="fa fa-stack-exchange fa-2x"></i></a>
+	
+	
+	<a href="http://github.com/lernmoment" title="Jan Suchotzki on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+    
+	
+  <a href="http://localhost:63266/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+<span>Danke an <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> und <a href="http://mademistakes.com/so-simple/" rel="nofollow">Made Mistakes</a> für hervorragende Tools.</span>
+<br>
+<span><a href="http://localhost:63266/kein-copyright/">Kein Copyright</a>    -    <a href="http://localhost:63266/impressum/">Impressum</a>    -    <a href="http://localhost:63266/datenschutz/">Datenschutz</a></span>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:63266';
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:63266/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:63266/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

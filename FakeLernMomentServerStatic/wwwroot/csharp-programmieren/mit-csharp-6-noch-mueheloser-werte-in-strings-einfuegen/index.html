@@ -1,0 +1,243 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Mit C# 6.0 noch müheloser Werte in Strings einfügen &#8211; LernMoment.de</title>
+<meta name="description" content="InspirationsMoment - String Interpolation">
+<meta name="keywords" content="Inspiration, Datentypen, C# 6.0">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Mit C# 6.0 noch müheloser Werte in Strings einfügen">
+<meta name="twitter:description" content="InspirationsMoment - String Interpolation">
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:63266/images/banner/lernmoment-csharp.jpg">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="de_DE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mit C# 6.0 noch müheloser Werte in Strings einfügen">
+<meta property="og:description" content="InspirationsMoment - String Interpolation">
+<meta property="og:url" content="http://localhost:63266/csharp-programmieren/mit-csharp-6-noch-mueheloser-werte-in-strings-einfuegen/">
+<meta property="og:site_name" content="LernMoment.de">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="sPPXWqQjaSqa_ZgqYPNCyVLLaFzVAFCuf3xDBC-ofwE">
+
+
+
+<link rel="canonical" href="http://localhost:63266/csharp-programmieren/mit-csharp-6-noch-mueheloser-werte-in-strings-einfuegen/">
+<link href="http://localhost:63266/feed.xml" type="application/atom+xml" rel="alternate" title="LernMoment.de Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:63266/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:63266/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:63266/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:63266/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:63266/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:63266/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:63266/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:63266/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+
+
+<div class="navigation-banner">
+	
+	
+
+	Lerne programmieren mit mir im Kurs: <a href="http://localhost:63266/einstieg-csharp/" >Einstieg in C# -></a>
+</div>
+
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:63266/kurse/" >Kurse</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/schwerpunkt/" >Dein Weg zum C# Entwickler</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/projekt-start/" >Entwicklung & Mentoring</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/blog/" >Blog</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	
+		<div class="wrap">
+			<a href="http://localhost:63266/" class="site-logo" rel="home" title="LernMoment.de"><img src="http://localhost:63266/images/site-logo.png" width="200" height="200" alt="LernMoment.de logo" class="animated fadeInDown"></a>
+		</div>
+	
+</header><!-- /.masthead -->
+
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <img src="http://localhost:63266/images/banner/lernmoment-csharp.jpg" class="entry-feature-image" alt="Mit C# 6.0 noch müheloser Werte in Strings einfügen" >
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"><a href="http://localhost:63266/tags/#Inspiration" title="Pages tagged Inspiration">Inspiration</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Datentypen" title="Pages tagged Datentypen">Datentypen</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#C# 6.0" title="Pages tagged C# 6.0">C# 6.0</a></span>
+        
+          <h1 class="entry-title">Mit C# 6.0 noch müheloser Werte in Strings einfügen</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <span class="author vcard">Von <span class="fn">Jan Suchotzki</span></span>
+        <span class="entry-date date published"><time datetime="2015-09-25T06:00:00+02:00"><i class="fa fa-calendar-o"></i> 25. September 2015</time></span>
+        
+        
+        
+        
+      </footer>
+      <div class="entry-content">
+        <p>Du weißt nicht was ein InspirationsMoment ist? Mit jedem InspirationsMoment zeige ich dir eine kleine Klasse, Methode oder Idee die dir helfen kann deinen C# Code zu verbessern. Dazu gibt es Links zu weiteren Details damit du selber recherchieren kannst wie du es für dich am besten umsetzt.</p>
+
+<h3 id="string-interpolation---der-turbo-für-kombinierte-formatierung">String Interpolation - Der Turbo für “Kombinierte Formatierung”</h3>
+
+<p>Das Thema <em>kombinierte Formatierung</em> kennst du bestimmt schon aus einem dieser LernMomente:</p>
+
+<ul>
+  <li><a href="/csharp-programmieren/kombinierte-formatierung-fuer-konsole-datei/">Kombinierte Formatierung für Konsole, Datei, …</a></li>
+  <li><a href="/csharp-programmieren/kombinierte-formatierung-zahlenformate/">Kombinierte Formatierung - Zahlenformate</a></li>
+  <li><a href="/csharp-programmieren/kombinierte-formatierung-enumformate/">Kombinierte Formatierung - Enumformate</a></li>
+  <li><a href="/csharp-programmieren/mit-der-ausrichtungskomponente-zu-erstaunlichen-ausgaben/">Mit der Ausrichtungskomponente zu erstaunlichen Ausgaben</a></li>
+</ul>
+
+<p>Nun gibt es in C# 6.0 die neue Funktionalität <em>“String Interpolation”</em>. Es ist sozusagen eine Verbesserung der <em>kombinierten Formatierung</em>. Du kannst jetzt einfach folgendes schreiben, wenn du einen Wert als Teil eines <code class="highlighter-rouge">string</code> ausgeben willst:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>int einWert = 42;
+Console.WriteLine($"{einWert} ist die Antwort auf die Frage des Lebens.");
+</code></pre></div></div>
+
+<p>Wie du siehst entfällt durch Verwendung der <em>String Interpolation</em> das Einfügen der Werte via Index. Du kannst ganz einfach die Werte inklusive der optionalen Formatierung und Ausrichtung in deinen <code class="highlighter-rouge">string</code> einfügen. Dazu muss der <code class="highlighter-rouge">string</code> mit einem <em>$</em> vor den Anführungszeichen beginnen. Jeden Wert den du einfügen möchtest, must du dann in geschweifte Klammern setzen. Der Compiler sorgt  dafür, dass aus diesem <code class="highlighter-rouge">string</code> eine <em>kombinierte Formatierung</em> mit Index gamcht wird.</p>
+
+<h3 id="interessante-links">Interessante Links</h3>
+
+<ul>
+  <li>Die Einführung in dieses Thema bietet wie immer <a href="https://msdn.microsoft.com/de-de/library/dn961160.aspx">MSDN</a></li>
+</ul>
+
+<p>Viel Spaß beim einfachen Ausgeben deiner Werte</p>
+
+<p>Jan</p>
+
+<p>PS: Gefällt dir das Konzept des InspirationsMoment? Über ein kurzes <a href="mailto:jan@lernmoment.de">Feedback</a> würde ich mich freuen.</p>
+
+        
+          <div class="subscribe-notice">
+            <h5>Dieser LernMoment hat dir gefallen? <br> Dann melde dich an und du wirst über neue LernMomente informiert:</h5>
+                <form action="https://lernmoment.us9.list-manage.com/subscribe/post" method="POST" target="_blank">
+      <input type="hidden" name="u" value="d0206d57f5002e40b651a0f60">
+      <input type="hidden" name="id" value="8845c28e62">
+      <input type="email" class="subscribe-notice-input-box" autocapitalize="off" autocorrect="off" name="MERGE0" id="MERGE0" size="25" value="" placeholder="Deine E-Mail-Adresse">
+      <input type="text" class="subscribe-notice-input-box" name="MERGE1" id="MERGE1" size="25" value="" placeholder="Dein Vorname (optional)">
+      
+        <input type="checkbox" id="group_1" name="group[20205][1]" value="1" checked="true" style="display:none">
+      
+      <input type="submit" class="subscribe-notice-button" name="submit" value="Ich bin dabei!">
+      <legend class="subscribe-notice-legend">Du bekommst in unregelmäßigen Abständen Mails von mir, in denen ich dich auf neue Artikel oder Angebote hinweise, die in das gleiche Themengebiet fallen wie dieser Artikel.</legend>
+    </form>
+
+          </div>
+        
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:63266/csharp-programmieren/yield-schluesselwort-fuer-verzoegerte-ausfuehrung/" class="btn" title="yield return - Schlüsselwort für verzögerte Ausführung">Vorheriger</a>
+      
+      
+        <a href="http://localhost:63266/csharp-programmieren/extension-method-in-4-trivialen-schritten-jede-klasse-erweitern/" class="btn" title="Extension Method - Wie du in 4 trivialen Schritten jede Klasse erweitern kannst">Nächster</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<div class="social-icons">
+	
+	
+	
+	<a href="http://www.youtube.com/channel/UC5jCUQ6IPHtQP5r4y9byCqA" title="Jan Suchotzki on YouTube" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
+	
+	<a href="http://stackoverflow.com/users/5258906/jan-suchotzki" title="Jan Suchotzki on StackExchange" target="_blank"><i class="fa fa-stack-exchange fa-2x"></i></a>
+	
+	
+	<a href="http://github.com/lernmoment" title="Jan Suchotzki on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+    
+	
+  <a href="http://localhost:63266/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+<span>Danke an <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> und <a href="http://mademistakes.com/so-simple/" rel="nofollow">Made Mistakes</a> für hervorragende Tools.</span>
+<br>
+<span><a href="http://localhost:63266/kein-copyright/">Kein Copyright</a>    -    <a href="http://localhost:63266/impressum/">Impressum</a>    -    <a href="http://localhost:63266/datenschutz/">Datenschutz</a></span>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:63266';
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:63266/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:63266/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

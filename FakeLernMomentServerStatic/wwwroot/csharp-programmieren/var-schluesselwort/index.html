@@ -1,0 +1,285 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Var Schluesselwort &#8211; LernMoment.de</title>
+<meta name="description" content="Warum einfach, wenn es auch mit implizit typisierten lokalen Variablen geht?">
+<meta name="keywords" content="Syntax, Datentypen">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Var Schluesselwort">
+<meta name="twitter:description" content="Warum einfach, wenn es auch mit implizit typisierten lokalen Variablen geht?">
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:63266/images/banner/lernmoment-csharp.jpg">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="de_DE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Var Schluesselwort">
+<meta property="og:description" content="Warum einfach, wenn es auch mit implizit typisierten lokalen Variablen geht?">
+<meta property="og:url" content="http://localhost:63266/csharp-programmieren/var-schluesselwort/">
+<meta property="og:site_name" content="LernMoment.de">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="sPPXWqQjaSqa_ZgqYPNCyVLLaFzVAFCuf3xDBC-ofwE">
+
+
+
+<link rel="canonical" href="http://localhost:63266/csharp-programmieren/var-schluesselwort/">
+<link href="http://localhost:63266/feed.xml" type="application/atom+xml" rel="alternate" title="LernMoment.de Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:63266/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:63266/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:63266/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:63266/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:63266/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:63266/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:63266/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:63266/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+
+
+<div class="navigation-banner">
+	
+	
+
+	Lerne programmieren mit mir im Kurs: <a href="http://localhost:63266/einstieg-csharp/" >Einstieg in C# -></a>
+</div>
+
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:63266/kurse/" >Kurse</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/schwerpunkt/" >Dein Weg zum C# Entwickler</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/projekt-start/" >Entwicklung & Mentoring</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/blog/" >Blog</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	
+		<div class="wrap">
+			<a href="http://localhost:63266/" class="site-logo" rel="home" title="LernMoment.de"><img src="http://localhost:63266/images/site-logo.png" width="200" height="200" alt="LernMoment.de logo" class="animated fadeInDown"></a>
+		</div>
+	
+</header><!-- /.masthead -->
+
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <img src="http://localhost:63266/images/banner/lernmoment-csharp.jpg" class="entry-feature-image" alt="Var Schluesselwort" >
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"><a href="http://localhost:63266/tags/#Syntax" title="Pages tagged Syntax">Syntax</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Datentypen" title="Pages tagged Datentypen">Datentypen</a></span>
+        
+          <h1 class="entry-title">Var Schluesselwort</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <span class="author vcard">Von <span class="fn">Jan Suchotzki</span></span>
+        <span class="entry-date date published"><time datetime="2015-07-26T16:22:36+02:00"><i class="fa fa-calendar-o"></i> 26. July 2015</time></span>
+        <span class="entry-date date modified"><time datetime="2016-03-11 15:22:36 +0200"><i class="fa fa-pencil"></i> 11. March 2016</time></span>
+        
+        
+        
+      </footer>
+      <div class="entry-content">
+        <p>Wenn ich bisher in einem Quellcode die Verwendung von <code class="highlighter-rouge">var</code> gesehen habe, dann konnte ich immer ein leichtes Unbehagen verspühren. Das liegt wohl daran, dass mir bisher noch nicht klar war, was die Verwendung des Schlüsselwortes bedeutet. Bisher hatte ich den Eindruck, dass damit die Typisierung aufgehoben wird. Aber:</p>
+
+<blockquote>
+  <p>Das var-Schlüsselwort weist den Compiler an, den Typ der Variable aus dem Ausdruck an der rechten Seite der Initialisierungsanweisung abzuleiten.
+– <cite><a href="https://msdn.microsoft.com/de-de/library/bb384061.aspx">MSDN</a></cite></p>
+</blockquote>
+
+<p>Wie du siehst, geht es nicht darum, die Typisierung aufzuheben. Vielmehr überlässt du es dem Compiler den besten Typ auszuwählen. Dies ist ein klarer Unterschied zu beispielsweise JavaScript! Nun aber zu den Beispielen.</p>
+
+<p>Gerade bei anonymen Typen und LINQ-Abfragen kommst du ohne <code class="highlighter-rouge">var</code> nicht zurecht. Ob du deren Einsatz brauchst oder für sinnvoll erachtest, bleibt dir überlassen. Hier Quellcode den ich in diesem Kontext interessant finde:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// mit var - ohne Wissen von LINQ und anonymen Typen kann ich nicht erklären</span>
+<span class="c1">// wie genau die Abfrage funktioniert.</span>
+<span class="c1">// Allerdings kann ich erahnen, dass Name und Alter aller Kunden abgefragt wird.</span>
+<span class="kt">var</span> <span class="n">query</span> <span class="p">=</span> <span class="k">from</span> <span class="n">c</span> <span class="k">in</span> <span class="n">customers</span> <span class="k">select</span> <span class="k">new</span> <span class="p">{</span><span class="n">c</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span> <span class="n">c</span><span class="p">.</span><span class="n">Age</span><span class="p">};</span>
+
+<span class="c1">// eine Möglichkeit ohne var - hier kann ich weder sagen, was passiert, noch wie</span>
+<span class="c1">// es passiert. Für mich die schlechtere Variante.</span>
+<span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">NameAndAge</span><span class="p">&gt;</span> <span class="n">query</span> 
+      <span class="p">=</span> <span class="n">Enumerable</span><span class="p">.</span><span class="n">Select</span><span class="p">&lt;</span><span class="n">Customers</span><span class="p">,</span> <span class="n">NameAndAge</span><span class="p">&gt;(</span><span class="n">customers</span><span class="p">,</span> <span class="n">NameAndAgeExtractor</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Einen weiteren vermeintlichen Vorteil zeigt folgendes Beispiel:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">var</span> <span class="n">resultat</span> <span class="p">=</span> <span class="n">apfel</span><span class="p">.</span><span class="nf">VergleicheMit</span><span class="p">(</span><span class="n">birne</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Apfel hat folgende Unterschiede zu Birne: "</span> <span class="p">+</span> <span class="n">resultat</span><span class="p">.</span><span class="nf">ToString</span><span class="p">());</span>
+</code></pre></div></div>
+
+<p>Wenn die Methode <code class="highlighter-rouge">VergleicheMit</code> ihren Rückgabewert ändert, z.B. durch ein Refactoring, brauchst du den aufrufenden Code nicht zu ändern. Für mich ist das kein gutes Beispiel für die Verwendung von <code class="highlighter-rouge">var</code>, weil ich es bevorzuge diese Stellen anzuschauen. Vielleicht macht die Ausgabe des neuen Rückgabetyps gar keinen Sinn mehr. Da finde ich es besser, dass der Compiler mir sagt, dass die Typen nicht zusammen passen und ich die Stellen von Hand ändere. Das ist natürlich zusätzlicher Aufwand.</p>
+
+<p>Ein wichtiger Fall in dem die Verwendung von <code class="highlighter-rouge">var</code> Sinn macht, ist die Reduzierung von Redundanz. Schau dir folgendes Beispiel an:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//explizite Definition ohne var</span>
+<span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">decimal</span><span class="p">&gt;&gt;</span> <span class="n">rabatteProKunde</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">decimal</span><span class="p">&gt;&gt;();</span>
+
+<span class="c1">//implizite Definition mit var</span>
+<span class="kt">var</span> <span class="n">rabatteProKunde</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">decimal</span><span class="p">&gt;&gt;();</span>
+</code></pre></div></div>
+
+<p>Die Version ohne <code class="highlighter-rouge">var</code> bringt keinerlei zusätzliche Information oder Nutzen. Also verwende ich zukünftig <code class="highlighter-rouge">var</code> in solchen Fällen. Mit Ausnahme von anonymen Typen und LINQ, scheint mir Lesbarkeit das entscheidende Kriterium für die Verwendung von <code class="highlighter-rouge">var</code> zu sein. Du kannst mit diesem Schlüsselwort die Lesbarkeit sowohl positiv wie auch negativ beeinflussen.</p>
+
+<p>Jetzt erstmal viel Spaß beim reflektieren wie du <code class="highlighter-rouge">var</code> besser einsetzen kannst als bisher.</p>
+
+<p>Jan</p>
+
+<h3 id="merke">Merke</h3>
+
+<p>Die folgenden Punkte basieren auf dem <a href="http://blogs.msdn.com/b/ericlippert/archive/2011/04/20/uses-and-misuses-of-implicit-typing.aspx">hervorragenden Artikel</a> von Eric Lippert:</p>
+
+<ul>
+  <li>Verwende <code class="highlighter-rouge">var</code>, wenn du anonyme Typen verwendest.</li>
+  <li>Vermeide Redundanz und verwende <code class="highlighter-rouge">var</code>, wenn der Typ offensichtlich von der Initialisierung ist.</li>
+  <li>Überlege ob du <code class="highlighter-rouge">var</code> verwendest, wenn der daraus entstehende Quellcode das “Was” in den Fokus setzt und das “Wie” verbirgt.</li>
+  <li>Verwende <em>immer</em> beschreibende Variablennamen, egal ob due <code class="highlighter-rouge">var</code> einsetzt oder nicht. <code class="highlighter-rouge">zinssatz</code> ist besser als <code class="highlighter-rouge">dezimalWert</code>.</li>
+</ul>
+
+<h3 id="lernquiz">Lernquiz</h3>
+
+<ul>
+  <li>Legst du mit <code class="highlighter-rouge">var</code> eine nicht typisierte Variable an?</li>
+  <li>Wie wird der Datentyp für eine mit <code class="highlighter-rouge">var</code> definierte Variable ermittelt?</li>
+  <li>Welchen Einfluss hat <code class="highlighter-rouge">var</code> auf die Lesbarkeit des Quellcodes?</li>
+  <li>Gibt es Fälle in denen du <code class="highlighter-rouge">var</code> verwenden musst?</li>
+</ul>
+
+<p>Am besten du schaust dir morgen und dann nochmal in ein paar Tagen die vorherigen Fragen an und beantwortest sie ohne den Text vorher gelesen zu haben.</p>
+
+<h3 id="weitere-informationen">Weitere Informationen</h3>
+
+<ul>
+  <li>Zu diesem LernMoment gibt es keinen zusätzlichen Quellcode.</li>
+  <li>Eine Einführung und (teilweise etwas komische) Beispiele findest du bei <a href="https://msdn.microsoft.com/de-de/library/bb384061.aspx">MSDN</a></li>
+  <li>Eine super Erklärung, allerdings nur auf Englisch, gibt der <a href="http://blogs.msdn.com/b/ericlippert/archive/2011/04/20/uses-and-misuses-of-implicit-typing.aspx">Artikel von Eric Lippert</a>.</li>
+</ul>
+
+        
+          <div class="subscribe-notice">
+            <h5>Dieser LernMoment hat dir gefallen? <br> Dann melde dich an und du wirst über neue LernMomente informiert:</h5>
+                <form action="https://lernmoment.us9.list-manage.com/subscribe/post" method="POST" target="_blank">
+      <input type="hidden" name="u" value="d0206d57f5002e40b651a0f60">
+      <input type="hidden" name="id" value="8845c28e62">
+      <input type="email" class="subscribe-notice-input-box" autocapitalize="off" autocorrect="off" name="MERGE0" id="MERGE0" size="25" value="" placeholder="Deine E-Mail-Adresse">
+      <input type="text" class="subscribe-notice-input-box" name="MERGE1" id="MERGE1" size="25" value="" placeholder="Dein Vorname (optional)">
+      
+        <input type="checkbox" id="group_1" name="group[20205][1]" value="1" checked="true" style="display:none">
+      
+      <input type="submit" class="subscribe-notice-button" name="submit" value="Ich bin dabei!">
+      <legend class="subscribe-notice-legend">Du bekommst in unregelmäßigen Abständen Mails von mir, in denen ich dich auf neue Artikel oder Angebote hinweise, die in das gleiche Themengebiet fallen wie dieser Artikel.</legend>
+    </form>
+
+          </div>
+        
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:63266/csharp-programmieren/die-klasse-file/" class="btn" title="Die Klasse File">Vorheriger</a>
+      
+      
+        <a href="http://localhost:63266/csharp-programmieren/nuget-pakete-restaurieren/" class="btn" title="NuGet Pakete Restaurieren">Nächster</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<div class="social-icons">
+	
+	
+	
+	<a href="http://www.youtube.com/channel/UC5jCUQ6IPHtQP5r4y9byCqA" title="Jan Suchotzki on YouTube" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
+	
+	<a href="http://stackoverflow.com/users/5258906/jan-suchotzki" title="Jan Suchotzki on StackExchange" target="_blank"><i class="fa fa-stack-exchange fa-2x"></i></a>
+	
+	
+	<a href="http://github.com/lernmoment" title="Jan Suchotzki on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+    
+	
+  <a href="http://localhost:63266/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+<span>Danke an <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> und <a href="http://mademistakes.com/so-simple/" rel="nofollow">Made Mistakes</a> für hervorragende Tools.</span>
+<br>
+<span><a href="http://localhost:63266/kein-copyright/">Kein Copyright</a>    -    <a href="http://localhost:63266/impressum/">Impressum</a>    -    <a href="http://localhost:63266/datenschutz/">Datenschutz</a></span>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:63266';
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:63266/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:63266/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

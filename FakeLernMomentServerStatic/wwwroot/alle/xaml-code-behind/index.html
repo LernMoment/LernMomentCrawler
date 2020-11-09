@@ -1,0 +1,286 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>XAML, *.g.i.cs und code-behind in WPF &#8211; LernMoment.de</title>
+<meta name="description" content="Zu jeder XAML-Datei gibt es eine code-behind Datei. In diesem Artikel erfährst du alles über die Zusammenhänge und dazugehörige Code-Generierung.">
+<meta name="keywords" content="WPF, XAML, Controls">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="XAML, *.g.i.cs und code-behind in WPF">
+<meta name="twitter:description" content="Zu jeder XAML-Datei gibt es eine code-behind Datei. In diesem Artikel erfährst du alles über die Zusammenhänge und dazugehörige Code-Generierung.">
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:63266/images/banner/lernmoment-wpf.jpg">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="de_DE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="XAML, *.g.i.cs und code-behind in WPF">
+<meta property="og:description" content="Zu jeder XAML-Datei gibt es eine code-behind Datei. In diesem Artikel erfährst du alles über die Zusammenhänge und dazugehörige Code-Generierung.">
+<meta property="og:url" content="http://localhost:63266/alle/xaml-code-behind/">
+<meta property="og:site_name" content="LernMoment.de">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="sPPXWqQjaSqa_ZgqYPNCyVLLaFzVAFCuf3xDBC-ofwE">
+
+
+
+<link rel="canonical" href="http://localhost:63266/alle/xaml-code-behind/">
+<link href="http://localhost:63266/feed.xml" type="application/atom+xml" rel="alternate" title="LernMoment.de Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:63266/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:63266/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:63266/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:63266/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:63266/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:63266/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:63266/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:63266/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+
+
+<div class="navigation-banner">
+	
+	
+
+	Sammle Erfahrung in C# mit mir im Kurs: <a href="https://www.udemy.com/csharp-uebungskurs-einfach-verschluesselt/?referralCode=C976277144B75813267C" >C# Grundlagen üben mit System -></a>
+</div>
+
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:63266/kurse/" >Kurse</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/schwerpunkt/" >Dein Weg zum C# Entwickler</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/projekt-start/" >Entwicklung & Mentoring</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/blog/" >Blog</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	
+		<div class="wrap">
+			<a href="http://localhost:63266/" class="site-logo" rel="home" title="LernMoment.de"><img src="http://localhost:63266/images/site-logo.png" width="200" height="200" alt="LernMoment.de logo" class="animated fadeInDown"></a>
+		</div>
+	
+</header><!-- /.masthead -->
+
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <img src="http://localhost:63266/images/banner/lernmoment-wpf.jpg" class="entry-feature-image" alt="XAML, *.g.i.cs und code-behind in WPF" >
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"><a href="http://localhost:63266/tags/#WPF" title="Pages tagged WPF">WPF</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#XAML" title="Pages tagged XAML">XAML</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Controls" title="Pages tagged Controls">Controls</a></span>
+        
+          <h1 class="entry-title">XAML, *.g.i.cs und code-behind in WPF</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <span class="author vcard">Von <span class="fn">Jan Suchotzki</span></span>
+        <span class="entry-date date published"><time datetime="2020-04-02T12:00:09+02:00"><i class="fa fa-calendar-o"></i> 02. April 2020</time></span>
+        
+        
+        
+        
+      </footer>
+      <div class="entry-content">
+        <p>Mmmmmoin und willkommen zu deinem LernMoment!</p>
+
+<p>Das Aussehen einer <em>WPF</em>-Anwendung definierst du überlicherweise in <em>XAML</em>. Neben (dem bevorzugten Weg) der Datenbindung, hast du auch die Möglichkeit deiner Anwendung Leben einzuflößen, in dem du <em>EventHandler</em> und weitere Logik im <em>code-behind</em> definierst. Doch was ist überhaupt <em>code-behind</em>, wie ist der Zusammenhang mit <em>XAML</em> und warum ist es möglich im <em>code-behind</em> auf die Steuerelemente zu zugreifen? Das alles erfährst du in diesem Artikel.</p>
+
+<h3 id="xaml-und-das-code-behind">XAML und das code-behind</h3>
+<p class="pull-right"><img src="http://localhost:63266/images/xaml-code-behind/projektmappen-explorer.jpg" alt="Dateien im Projektmappen-Explorer" /></p>
+
+<p>Jede <em>XAML</em>-Datei in <em>WPF</em> hat eine mit ihr verbundene <em>C#</em>-Quellcodedatei. Im gezeigten Beispiel siehst du eine <code class="highlighter-rouge">MainWindow.xaml</code>. Klappst du den Knoten im <em>Projektmappen-Explorer</em> auf, dann findest du dort die <code class="highlighter-rouge">MainWindow.xaml.cs</code>. Diese Datei wird auch <em>code-behind</em> genannt. Der Name kommt aus der Überlegung, dass es der (<em>C#</em>)-Quellcode hinter einem <code class="highlighter-rouge">XAML</code>-Container ist.</p>
+
+<p>Um das etwas genauer zu verstehen, schauen wir uns die initiale <code class="highlighter-rouge">MainWindow.xaml</code> an:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;Window</span> <span class="na">x:Class=</span><span class="s">"TicTacToeWPF.MainWindow"</span>
+        <span class="na">xmlns=</span><span class="s">"http://schemas.microsoft.com/winfx/2006/xaml/presentation"</span>
+        <span class="na">xmlns:x=</span><span class="s">"http://schemas.microsoft.com/winfx/2006/xaml"</span>
+        <span class="na">xmlns:d=</span><span class="s">"http://schemas.microsoft.com/expression/blend/2008"</span>
+        <span class="na">xmlns:mc=</span><span class="s">"http://schemas.openxmlformats.org/markup-compatibility/2006"</span>
+        <span class="na">xmlns:local=</span><span class="s">"clr-namespace:TicTacToeWPF"</span>
+        <span class="na">mc:Ignorable=</span><span class="s">"d"</span>
+        <span class="na">Title=</span><span class="s">"MainWindow"</span> <span class="na">Height=</span><span class="s">"500"</span> <span class="na">Width=</span><span class="s">"500"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Grid&gt;</span>
+  <span class="nt">&lt;/Grid&gt;</span>
+<span class="nt">&lt;/Window&gt;</span>
+</code></pre></div></div>
+
+<p>In dieser <em>XAML</em>-Datei ist das <code class="highlighter-rouge">Window</code> das <em>Root Element</em>. Jede <em>XAML</em>-Datei benötigt genau ein <em>Root Element</em> welches das äußerste <em>XAML</em>-Element ist. In <em>WPF</em> wird üblicherweise eines der folgenden Elemente als <em>Root</em> verwendet:</p>
+<ul>
+  <li><code class="highlighter-rouge">&lt;Page&gt;</code> – Eine Seite mit Inhalten die in einem Browser angezeigt werden können (System.Windows.Controls.Page)</li>
+  <li><code class="highlighter-rouge">&lt;Window&gt;</code> – Ein WPF-Fenster (System.Windows.Window)</li>
+  <li><code class="highlighter-rouge">&lt;Application&gt;</code> – Eine WPF-Anwendung (System.Windows.Application)</li>
+  <li><code class="highlighter-rouge">&lt;ResourceDictionary&gt;</code> – Eine Sammlung von Ressourcen (System.Windows.ResourceDictionary)</li>
+  <li><code class="highlighter-rouge">&lt;UserControl&gt;</code> – Ein benutzerdefiniertes Steuerelement (System.Windows.Controls.UserControl)</li>
+</ul>
+
+<p>Für dieses <em>Root Element</em> ist nun in der <em>XAML</em>-Datei, mithilfe des <code class="highlighter-rouge">x:Class</code> Attributs, definiert welche Klasse den zugehörigen <em>code behind</em> beinhaltet. In folgendem Quellcode siehst du, wie die Verbindung zwischen dem <em>XAML</em>-Element <code class="highlighter-rouge">Window</code> und der Klasse <code class="highlighter-rouge">MainWindow</code> in der Datei <code class="highlighter-rouge">MainWindow.xaml.cs</code> hergestellt wird:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">namespace</span> <span class="nn">TicTacToeWPF</span>
+<span class="p">{</span>
+    <span class="c1">/// &lt;summary&gt;</span>
+    <span class="c1">/// Interaction logic for MainWindow.xaml</span>
+    <span class="c1">/// &lt;/summary&gt;</span>
+    <span class="k">public</span> <span class="k">partial</span> <span class="k">class</span> <span class="nc">MainWindow</span> <span class="p">:</span> <span class="n">Window</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="nf">MainWindow</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="nf">InitializeComponent</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Wie du siehst wird die Klasse <code class="highlighter-rouge">MainWindow</code> von der Klasse <code class="highlighter-rouge">Window</code> abgeleitet. Vereinfacht gesagt, gibt es also passend zum <code class="highlighter-rouge">Window</code> als <em>Root Element</em> in <em>XAML</em> die <em>C#</em>-Klasse <code class="highlighter-rouge">Window</code>.</p>
+
+<h3 id="alles-ist-ein-objekt">Alles ist ein Objekt!</h3>
+<p>Mit dem Aufruf der Methode <code class="highlighter-rouge">InitializeComponent</code> im Konstruktor von <code class="highlighter-rouge">MainWindow</code> kommen wir nun zum Abschluss dieses Ausflugs in die Theorie. Diese Methode zusammen mit einem <em>Code-Generator</em> ist das Bindeglied zwischen dem was du in deiner <em>XAML</em>-Datei definierst und dem was du im dazugehörigen <em>code-behind</em> verwenden kannst. Klappst du die Datei <code class="highlighter-rouge">MainWindow.xaml.cs</code> im <em>Projektmappen-Explrer</em> weiter auf, dann siehst du zum einen die Klasse <code class="highlighter-rouge">MainWindow</code>, aber auch die darin enthaltenen Attribute (Microsoft spricht hier von Feldern) und Methoden. Schaust du dir nun über einen Doppelklick den Quellcode der Methode <code class="highlighter-rouge">IntializeComponent</code> an, dann öffnet dir <em>Visual Studio</em> die Datei <code class="highlighter-rouge">MainWindow.g.i.cs</code>.</p>
+
+<p>In den ersten Zeilen dieser Datei steht, dass es sich um eine automatisch generierte Datei handelt. Dieses kannst du sehen, wenn du dir den Inhalt der Datei anschaust, dann in der <code class="highlighter-rouge">MainWindow.xaml</code> ein Steuerelement hinzufügst und dir nochmals den Inhalt der Datei <code class="highlighter-rouge">MainWindow.g.i.cs</code> anschaust. Mit jeder Änderung der <code class="highlighter-rouge">*.xaml</code>-Datei, generiert <em>Visual Studio</em> die <code class="highlighter-rouge">*.g.i.cs</code> neu. Zwischen vielen (für uns) unwichtigen Informationen kannst du sehen, dass in dieser Datei die tatsächlichen Instanzen der Steuerelemente angelegt werden. Hier ein Beispiel:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#line 36 "..\..\..\MainWindow.xaml"
+</span><span class="p">[</span><span class="n">System</span><span class="p">.</span><span class="n">Diagnostics</span><span class="p">.</span><span class="n">CodeAnalysis</span><span class="p">.</span><span class="nf">SuppressMessageAttribute</span><span class="p">(</span><span class="s">"Microsoft.Performance"</span><span class="p">,</span> <span class="s">"CA1823:AvoidUnusedPrivateFields"</span><span class="p">)]</span>
+<span class="k">internal</span> <span class="n">System</span><span class="p">.</span><span class="n">Windows</span><span class="p">.</span><span class="n">Controls</span><span class="p">.</span><span class="n">Button</span> <span class="n">kaestchen_0_0</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Mit diesem Quellcode aus meiner <code class="highlighter-rouge">MainWindow.g.i.cs</code> wird nun der <code class="highlighter-rouge">Button</code> mit dem Bezeichner <code class="highlighter-rouge">kaestchen_0_0</code> angelegt. Für das weitere Verständnis wichtig ist noch in welcher Klasse diese Instanz angelegt wird:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">namespace</span> <span class="nn">TicTacToeWPF</span> <span class="p">{</span>    
+    
+    <span class="c1">/// &lt;summary&gt;</span>
+    <span class="c1">/// MainWindow</span>
+    <span class="c1">/// &lt;/summary&gt;</span>
+    <span class="k">public</span> <span class="k">partial</span> <span class="k">class</span> <span class="nc">MainWindow</span> <span class="p">:</span> <span class="n">System</span><span class="p">.</span><span class="n">Windows</span><span class="p">.</span><span class="n">Window</span><span class="p">,</span> <span class="n">System</span><span class="p">.</span><span class="n">Windows</span><span class="p">.</span><span class="n">Markup</span><span class="p">.</span><span class="n">IComponentConnector</span> <span class="p">{</span>
+<span class="c1">// den weiteren Quellcode lass ich aus platzgründen weg.</span>
+</code></pre></div></div>
+
+<p>Setzt du nun die einzelnen Puzzleteile zusammen, dann siehst du, dass ein Teil der Klasse <code class="highlighter-rouge">MainWindow</code> in der Datei <code class="highlighter-rouge">MainWindow.xaml.cs</code> definiert ist und ein weiterer Teil dieser Klasse in der Datei <code class="highlighter-rouge">MainWindow.g.i.cs</code>. Da in beiden Klassen das Schlüsselwort <code class="highlighter-rouge">partial</code> verwendet wird, weiß der <em>Compiler</em> nun, dass es sich um eine Klasse handelt die in 2 Dateien definiert ist.</p>
+
+<p>Fazit:</p>
+<ol>
+  <li>Es ist elementar, dass du verstehst, dass jedes Element (sowohl <em>Root Element</em> wie auch alle darin enthaltenen <em>Elemente</em>) letztlich im <em>C#</em>-Quellcode als Instanzen der jeweiligen Klassen angelegt werden.</li>
+  <li>Jedes Steuerelement aus einer <em>XAML</em>-Datei wird automatisch als Attribut im umgebenden <em>Root Element</em> im <em>C#</em>-Quellcode instanziiert.</li>
+  <li>Die Werte die du für Steuerelemente in einer <em>XAML</em>-Datei definierst, werden durch einen <em>Code-Generator</em> letztlich an die Instanzen (siehe 2.) übergeben.</li>
+</ol>
+
+<div class="subscribe-notice">
+  <h5>Hast du die Schnauze voll von Theorie?</h5>
+  <h5>Melde dich jetzt für den kostenlosen WPF Übungskurs an:</h5>
+  <a href="http://localhost:63266/lernmail-kurse/wpf-tictactoe-fuer-einsteiger/" class="notice-button">Los gehts &gt;&gt;</a>
+</div>
+
+<p>Viel Spaß auf deinem Weg vom Einsteiger zum C# Entwickler</p>
+
+<p>Jan von LernMoment.de</p>
+
+        
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:63266/csharp-tutorial-deutsch/konfigurationen-platformen-visual-studio/" class="btn" title="Visual Studio für Einsteiger: Debug, Release und AnyCPU">Vorheriger</a>
+      
+      
+        <a href="http://localhost:63266/alle/hinweise-anzeigen-mit-messagebox/" class="btn" title="Hinweise anzeigen mit WPF-MessageBox">Nächster</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<div class="social-icons">
+	
+	
+	
+	<a href="http://www.youtube.com/channel/UC5jCUQ6IPHtQP5r4y9byCqA" title="Jan Suchotzki on YouTube" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
+	
+	<a href="http://stackoverflow.com/users/5258906/jan-suchotzki" title="Jan Suchotzki on StackExchange" target="_blank"><i class="fa fa-stack-exchange fa-2x"></i></a>
+	
+	
+	<a href="http://github.com/lernmoment" title="Jan Suchotzki on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+    
+	
+  <a href="http://localhost:63266/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+<span>Danke an <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> und <a href="http://mademistakes.com/so-simple/" rel="nofollow">Made Mistakes</a> für hervorragende Tools.</span>
+<br>
+<span><a href="http://localhost:63266/kein-copyright/">Kein Copyright</a>    -    <a href="http://localhost:63266/impressum/">Impressum</a>    -    <a href="http://localhost:63266/datenschutz/">Datenschutz</a></span>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:63266';
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:63266/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:63266/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

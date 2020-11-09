@@ -1,0 +1,336 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Data-Templates - Stelle mühelos Details deiner Objekte in WPF dar &#8211; LernMoment.de</title>
+<meta name="description" content="Die wichtigsten Klassen und Eigenschaften zur Verwendung von DataTemplate.">
+<meta name="keywords" content="Syntax, WPF, Datentypen">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Data-Templates - Stelle mühelos Details deiner Objekte in WPF dar">
+<meta name="twitter:description" content="Die wichtigsten Klassen und Eigenschaften zur Verwendung von DataTemplate.">
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:63266/images/banner/lernmoment-wpf.jpg">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="de_DE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Data-Templates - Stelle mühelos Details deiner Objekte in WPF dar">
+<meta property="og:description" content="Die wichtigsten Klassen und Eigenschaften zur Verwendung von DataTemplate.">
+<meta property="og:url" content="http://localhost:63266/csharp-programmieren/datatemplate-stelle-mhelos-details-deiner-objekte-in-wpf-dar/">
+<meta property="og:site_name" content="LernMoment.de">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="sPPXWqQjaSqa_ZgqYPNCyVLLaFzVAFCuf3xDBC-ofwE">
+
+
+
+<link rel="canonical" href="http://localhost:63266/csharp-programmieren/datatemplate-stelle-mhelos-details-deiner-objekte-in-wpf-dar/">
+<link href="http://localhost:63266/feed.xml" type="application/atom+xml" rel="alternate" title="LernMoment.de Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:63266/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:63266/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:63266/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:63266/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:63266/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:63266/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:63266/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:63266/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+
+
+<div class="navigation-banner">
+	
+	
+
+	Lerne programmieren mit mir im Kurs: <a href="http://localhost:63266/einstieg-csharp/" >Einstieg in C# -></a>
+</div>
+
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:63266/kurse/" >Kurse</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/schwerpunkt/" >Dein Weg zum C# Entwickler</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/projekt-start/" >Entwicklung & Mentoring</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/blog/" >Blog</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	
+		<div class="wrap">
+			<a href="http://localhost:63266/" class="site-logo" rel="home" title="LernMoment.de"><img src="http://localhost:63266/images/site-logo.png" width="200" height="200" alt="LernMoment.de logo" class="animated fadeInDown"></a>
+		</div>
+	
+</header><!-- /.masthead -->
+
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <img src="http://localhost:63266/images/banner/lernmoment-wpf.jpg" class="entry-feature-image" alt="Data-Templates - Stelle mühelos Details deiner Objekte in WPF dar" >
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"><a href="http://localhost:63266/tags/#Syntax" title="Pages tagged Syntax">Syntax</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#WPF" title="Pages tagged WPF">WPF</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Datentypen" title="Pages tagged Datentypen">Datentypen</a></span>
+        
+          <h1 class="entry-title">Data-Templates - Stelle mühelos Details deiner Objekte in WPF dar</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <span class="author vcard">Von <span class="fn">Jan Suchotzki</span></span>
+        <span class="entry-date date published"><time datetime="2015-10-05T06:00:00+02:00"><i class="fa fa-calendar-o"></i> 05. October 2015</time></span>
+        
+        
+        
+        
+      </footer>
+      <div class="entry-content">
+        <p>Hast du schon versucht eine Liste von Objekten in einer <a href="https://msdn.microsoft.com/de-de/library/system.windows.controls.listbox(v=vs.110).aspx" title="Beschreibung der Klasse ListBox auf MSDN">ListBox</a> darzustellen? Dann weisst du bestimmt auch, dass WPF dies über die <code class="highlighter-rouge">ToString</code> Methode versucht. Obwohl das logisch ist, denn woher soll WPF nun wissen welche Daten aus deinem Objekt es wie darstellen soll, führt es häufig dazu, dass in deiner <a href="https://msdn.microsoft.com/de-de/library/system.windows.controls.listbox(v=vs.110).aspx" title="Beschreibung der Klasse ListBox auf MSDN">ListBox</a> lediglich der Klassenname steht.</p>
+
+<p>Damit du selber entscheiden kannst, wie die einzelnen Elemente aus einer Auflistung angezeigt werden, haben <em>Controls</em> wie <code class="highlighter-rouge">ComboBox</code>, <code class="highlighter-rouge">ListView</code> oder auch <code class="highlighter-rouge">GridView</code> die Eigenschaft <a href="https://msdn.microsoft.com/de-de/library/system.windows.controls.itemscontrol.itemtemplate(v=vs.110).aspx" title="Beschreibung von ListBox.ItemTemplate auf MSDN">ItemTemplate</a>. Mit dieser kannst du definieren welches <a href="https://msdn.microsoft.com/de-de/library/system.windows.datatemplate(v=vs.110).aspx" title="Beschreibung der Klasse DataTemplate auf MSDN">DataTemplate</a> für jedes Element von <a href="https://msdn.microsoft.com/de-de/library/system.windows.controls.itemscontrol.items(v=vs.110).aspx" title="Beschreibung von ListBox.Items auf MSDN">Items</a> verwendet werden soll.</p>
+
+<blockquote>
+  <p>Ein <a href="https://msdn.microsoft.com/de-de/library/system.windows.datatemplate(v=vs.110).aspx" title="Beschreibung der Klasse DataTemplate auf MSDN">DataTemplate</a> beschreibt also wie genau <em>ein Element</em> der Auflistung dargestellt wird.</p>
+</blockquote>
+
+<p>Der schnellste Weg erste Resultate zu sehen ist, wenn du einfach ein <a href="https://msdn.microsoft.com/de-de/library/system.windows.datatemplate(v=vs.110).aspx" title="Beschreibung der Klasse DataTemplate auf MSDN">DataTemplate</a> <em>inline</em> an deinem <em>Control</em> verwendest:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ListBox</span> <span class="na">Width=</span><span class="s">"400"</span> <span class="na">Margin=</span><span class="s">"10"</span>
+         <span class="na">ItemsSource=</span><span class="s">"{Binding Source={StaticResource myTodoList}}"</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;ListBox.ItemTemplate&gt;</span>
+     <span class="nt">&lt;DataTemplate&gt;</span>
+       <span class="nt">&lt;StackPanel&gt;</span>
+         <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">"{Binding Path=TaskName}"</span> <span class="nt">/&gt;</span>
+         <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">"{Binding Path=Description}"</span><span class="nt">/&gt;</span>
+         <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">"{Binding Path=Priority}"</span><span class="nt">/&gt;</span>
+       <span class="nt">&lt;/StackPanel&gt;</span>
+     <span class="nt">&lt;/DataTemplate&gt;</span>
+   <span class="nt">&lt;/ListBox.ItemTemplate&gt;</span>
+ <span class="nt">&lt;/ListBox&gt;</span>
+</code></pre></div></div>
+
+<p>In diesem Beispiel gibt es an deinem <code class="highlighter-rouge">DataContext</code> eine Eigenschaft mit dem Namen <code class="highlighter-rouge">myTodoList</code>. Die Objekte in der Auflistung <code class="highlighter-rouge">myTodoList</code> haben drei Eigenschaften, die an je einen <a href="https://msdn.microsoft.com/de-de/library/system.windows.controls.textblock(v=vs.110).aspx" title="Beschreibung der Klasse TextBlock auf MSDN">TextBlock</a> gebunden werden. Dieses Beispiel ist nun äußerst einfach. Normalerweise wird deine Aufbereitung wesentlich komplexer sein. Daher sind bei der Definition des <a href="https://msdn.microsoft.com/de-de/library/system.windows.datatemplate(v=vs.110).aspx" title="Beschreibung der Klasse DataTemplate auf MSDN">DataTemplate</a> deine Möglichkeiten fast unbegrenzt.</p>
+
+<h4 id="wiederverwendbares-datatemplate">Wiederverwendbares DataTemplate</h4>
+
+<p>Das vorherige Beispiel begrenzt dich in den Möglichkeiten bzw. insbesondere in der Verwendung des <a href="https://msdn.microsoft.com/de-de/library/system.windows.datatemplate(v=vs.110).aspx" title="Beschreibung der Klasse DataTemplate auf MSDN">DataTemplate</a>. Besser ist es, wenn du das <a href="https://msdn.microsoft.com/de-de/library/system.windows.datatemplate(v=vs.110).aspx" title="Beschreibung der Klasse DataTemplate auf MSDN">DataTemplate</a> in einer <em>Resource</em> definierst. Dies kannst du sowohl in der gleichen <em>XAML-Datei</em> machen oder auch in einer separaten. Dann kannst du das gleiche <a href="https://msdn.microsoft.com/de-de/library/system.windows.datatemplate(v=vs.110).aspx" title="Beschreibung der Klasse DataTemplate auf MSDN">DataTemplate</a> sowohl für unterschiedliche <em>Controls</em> wie auch in unterschiedlichen Anwendungen einsetzen. Eine Möglichkeit es in einer <em>Resource</em> zu definieren ist so:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;Window.Resources&gt;</span>
+
+...
+
+<span class="nt">&lt;DataTemplate</span> <span class="na">x:Key=</span><span class="s">"myTaskTemplate"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;StackPanel&gt;</span>
+    <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">"{Binding Path=TaskName}"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">"{Binding Path=Description}"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">"{Binding Path=Priority}"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/StackPanel&gt;</span>
+<span class="nt">&lt;/DataTemplate&gt;</span>
+
+...
+
+<span class="nt">&lt;/Window.Resources&gt;</span>
+
+</code></pre></div></div>
+
+<p>Ein so erstelltes <a href="https://msdn.microsoft.com/de-de/library/system.windows.datatemplate(v=vs.110).aspx" title="Beschreibung der Klasse DataTemplate auf MSDN">DataTemplate</a> kannst du dann im <em>XAML</em> über <a href="https://msdn.microsoft.com/de-de/library/ms750950(v=vs.110).aspx" title="Beschreibung des Markup-Elements StaticResource auf MSDN">StaticResource</a> wie folgt verwenden:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ListBox</span> <span class="na">Width=</span><span class="s">"400"</span> <span class="na">Margin=</span><span class="s">"10"</span>
+         <span class="na">ItemsSource=</span><span class="s">"{Binding Source={StaticResource myTodoList}}"</span>
+         <span class="na">ItemTemplate=</span><span class="s">"{StaticResource myTaskTemplate}"</span><span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<h4 id="dürfen-es-ein-paar-mehr-sein">Dürfen es ein paar mehr sein?</h4>
+
+<p>Neben der <a href="https://msdn.microsoft.com/de-de/library/system.windows.controls.itemscontrol.itemtemplate(v=vs.110).aspx" title="Beschreibung von ListBox.ItemTemplate auf MSDN">ItemTemplate</a> Eigenschaft haben Controls für Auflistungen die Eigenschaft <a href="https://msdn.microsoft.com/de-de/library/system.windows.controls.itemscontrol.itemtemplateselector(v=vs.110).aspx" title="Beschreibung von ListBox.ItemTemplateSelector auf MSDN">ItemTemplateSelector</a>. Dieser kannst du einen eigenen <a href="https://msdn.microsoft.com/de-de/library/system.windows.controls.datatemplateselector(v=vs.110).aspx" title="Beschreibung der Klasse DataTemplateSelector auf MSDN">DataTemplateSelector</a> zuweisen. Nun kannst du nicht nur ein <a href="https://msdn.microsoft.com/de-de/library/system.windows.datatemplate(v=vs.110).aspx" title="Beschreibung der Klasse DataTemplate auf MSDN">DataTemplate</a> verwenden, sondern gleich mehrere. Dabei entscheidet der <a href="https://msdn.microsoft.com/de-de/library/system.windows.controls.datatemplateselector(v=vs.110).aspx" title="Beschreibung der Klasse DataTemplateSelector auf MSDN">DataTemplateSelector</a> basierend auf Werten in den anzuzeigenden Objekten, welches <a href="https://msdn.microsoft.com/de-de/library/system.windows.datatemplate(v=vs.110).aspx" title="Beschreibung der Klasse DataTemplate auf MSDN">DataTemplate</a> benutzt werden soll.</p>
+
+<p>Für das bisherige Beispiel könntest du sagen, dass alle Objekte mit einer Priorität gleich 1, besonders hervorgehoben werden sollen. Dazu ist es notwendig, dass du einen <a href="https://msdn.microsoft.com/de-de/library/system.windows.controls.datatemplateselector(v=vs.110).aspx" title="Beschreibung der Klasse DataTemplateSelector auf MSDN">DataTemplateSelector</a> mit seiner <a href="https://msdn.microsoft.com/de-de/library/system.windows.controls.datatemplateselector.selecttemplate(v=vs.110).aspx" title="Beschreibung der Methode DataTemplateSelector.SelectTemplate auf MSDN">SelectTemplate</a> Methode implementierst. Im Kontext der bisherigen Beispiele würde das dann so aussehen:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">TaskListDataTemplateSelector</span> <span class="p">:</span> <span class="n">DataTemplateSelector</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">override</span> <span class="n">DataTemplate</span>
+        <span class="nf">SelectTemplate</span><span class="p">(</span><span class="kt">object</span> <span class="n">item</span><span class="p">,</span> <span class="n">DependencyObject</span> <span class="n">container</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">FrameworkElement</span> <span class="n">element</span> <span class="p">=</span> <span class="n">container</span> <span class="k">as</span> <span class="n">FrameworkElement</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">element</span> <span class="p">!=</span> <span class="k">null</span> <span class="p">&amp;&amp;</span> <span class="n">item</span> <span class="p">!=</span> <span class="k">null</span> <span class="p">&amp;&amp;</span> <span class="n">item</span> <span class="k">is</span> <span class="n">Task</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">Task</span> <span class="n">taskitem</span> <span class="p">=</span> <span class="n">item</span> <span class="k">as</span> <span class="n">Task</span><span class="p">;</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">taskitem</span><span class="p">.</span><span class="n">Priority</span> <span class="p">==</span> <span class="m">1</span><span class="p">)</span>
+                <span class="k">return</span>
+                    <span class="n">element</span><span class="p">.</span><span class="nf">FindResource</span><span class="p">(</span><span class="s">"importantTaskTemplate"</span><span class="p">)</span> <span class="k">as</span> <span class="n">DataTemplate</span><span class="p">;</span>
+            <span class="k">else</span>
+                <span class="k">return</span>
+                    <span class="n">element</span><span class="p">.</span><span class="nf">FindResource</span><span class="p">(</span><span class="s">"myTaskTemplate"</span><span class="p">)</span> <span class="k">as</span> <span class="n">DataTemplate</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Für dieses Beispiel brauchst du nun zwei verschiedene <a href="https://msdn.microsoft.com/de-de/library/system.windows.datatemplate(v=vs.110).aspx" title="Beschreibung der Klasse DataTemplate auf MSDN">DataTemplate</a>. Eines mit dem Namen <code class="highlighter-rouge">myTaskTemplate</code>, zum Beispiel so wie in dem vorherigen Beispiel, und ein weiteres mit dem Namen <code class="highlighter-rouge">importantTaskTemplate</code>. Nun gibst du an deinem <em>Control</em> nicht mehr direkt ein <a href="https://msdn.microsoft.com/de-de/library/system.windows.datatemplate(v=vs.110).aspx" title="Beschreibung der Klasse DataTemplate auf MSDN">DataTemplate</a> über die Eigenschaft <a href="https://msdn.microsoft.com/de-de/library/system.windows.controls.itemscontrol.itemtemplate(v=vs.110).aspx" title="Beschreibung von ListBox.ItemTemplate auf MSDN">ItemTemplate</a> an, sondern du gibst nur noch den <em>Selector</em> an:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ListBox</span> <span class="na">Width=</span><span class="s">"400"</span> <span class="na">Margin=</span><span class="s">"10"</span>
+         <span class="na">ItemsSource=</span><span class="s">"{Binding Source={StaticResource myTodoList}}"</span>
+         <span class="na">ItemTemplateSelector=</span><span class="s">"{StaticResource myDataTemplateSelector}"</span>
+         <span class="na">HorizontalContentAlignment=</span><span class="s">"Stretch"</span><span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<p>Jetzt erstmal viel Spaß mit dem Visualisieren deiner Daten</p>
+
+<p>Jan</p>
+
+<h3 id="merke">Merke</h3>
+
+<ul>
+  <li>Ein <a href="https://msdn.microsoft.com/de-de/library/system.windows.datatemplate(v=vs.110).aspx" title="Beschreibung der Klasse DataTemplate auf MSDN">DataTemplate</a> verwendest du um eine individuelle Visualisierung deiner Datenobjekte zu erstellen.</li>
+  <li>Insbesondere um die einzelnen Objekte einer Auflistung in <em>Controls</em> wie <code class="highlighter-rouge">ComboBox</code> oder <code class="highlighter-rouge">GridView</code> darzustellen, kann dir ein <a href="https://msdn.microsoft.com/de-de/library/system.windows.datatemplate(v=vs.110).aspx" title="Beschreibung der Klasse DataTemplate auf MSDN">DataTemplate</a> serh helfen.</li>
+  <li>Du definierst es am besten als <em>Resource</em> wie zum Beispiel innerhalb von <code class="highlighter-rouge">&lt;Window.Resources&gt;</code>.</li>
+  <li>Ein als <em>Resource</em> definiertes <a href="https://msdn.microsoft.com/de-de/library/system.windows.datatemplate(v=vs.110).aspx" title="Beschreibung der Klasse DataTemplate auf MSDN">DataTemplate</a> kannst du mit <a href="https://msdn.microsoft.com/de-de/library/ms750950(v=vs.110).aspx" title="Beschreibung des Markup-Elements StaticResource auf MSDN">StaticResource</a> einbinden.</li>
+  <li>Wenn du für eine Auflistung verschiedene <a href="https://msdn.microsoft.com/de-de/library/system.windows.datatemplate(v=vs.110).aspx" title="Beschreibung der Klasse DataTemplate auf MSDN">DataTemplate</a> verwenden möchtest, brauchst du einen <a href="https://msdn.microsoft.com/de-de/library/system.windows.controls.datatemplateselector(v=vs.110).aspx" title="Beschreibung der Klasse DataTemplateSelector auf MSDN">DataTemplateSelector</a> den du der Eigenschaft <a href="https://msdn.microsoft.com/de-de/library/system.windows.controls.itemscontrol.itemtemplateselector(v=vs.110).aspx" title="Beschreibung von ListBox.ItemTemplateSelector auf MSDN">ItemTemplateSelector</a> deines <em>Controls</em> übergibst.</li>
+</ul>
+
+<h3 id="lernquiz">Lernquiz</h3>
+
+<p>Verwende folgende Fragen, um das Gelernte von heute zu festigen:</p>
+
+<ul>
+  <li>Wann kommt ein <code class="highlighter-rouge">DataTemplate</code> hauptsächlich zum Einsatz?</li>
+  <li>Wie lautet die Syntax um ein als <em>Resource</em> definiertes <code class="highlighter-rouge">DataTemplate</code> mit dem Namen <code class="highlighter-rouge">meinTemplate</code> an einer <code class="highlighter-rouge">ListBox</code> zu verwenden?</li>
+  <li>Wozu kannst du einen <code class="highlighter-rouge">DataTemplateSelector</code> verwenden?</li>
+</ul>
+
+<p>Am besten schaust du dir morgen und dann nochmal in ein paar Tagen die vorherigen Fragen an und beantwortest sie, ohne den Text vorher gelesen zu haben.</p>
+
+<h3 id="weitere-informationen">Weitere Informationen</h3>
+
+<ul>
+  <li>Alle in diesem LernMoment verwendeten Beispiele stammen aus diesem <a href="https://msdn.microsoft.com/de-de/library/ms742521(v=vs.100).aspx">MSDN-Artikel</a>. Dort findest du auch eine umfangreichere Beschreibung.</li>
+  <li>Eine weitere Einführung in das Thema findest du in diesem <a href="http://openbook.rheinwerk-verlag.de/visual_csharp_2010/visual_csharp_2010_21_004.htm#mj3d941c87fadf52ce2fc6bc3a80d63ed8">OpenBook</a></li>
+</ul>
+
+
+        
+          <div class="subscribe-notice">
+            <h5>Dieser LernMoment hat dir gefallen? <br> Dann melde dich an und du wirst über neue LernMomente informiert:</h5>
+                <form action="https://lernmoment.us9.list-manage.com/subscribe/post" method="POST" target="_blank">
+      <input type="hidden" name="u" value="d0206d57f5002e40b651a0f60">
+      <input type="hidden" name="id" value="8845c28e62">
+      <input type="email" class="subscribe-notice-input-box" autocapitalize="off" autocorrect="off" name="MERGE0" id="MERGE0" size="25" value="" placeholder="Deine E-Mail-Adresse">
+      <input type="text" class="subscribe-notice-input-box" name="MERGE1" id="MERGE1" size="25" value="" placeholder="Dein Vorname (optional)">
+      
+        <input type="checkbox" id="group_1" name="group[20205][1]" value="1" checked="true" style="display:none">
+      
+      <input type="submit" class="subscribe-notice-button" name="submit" value="Ich bin dabei!">
+      <legend class="subscribe-notice-legend">Du bekommst in unregelmäßigen Abständen Mails von mir, in denen ich dich auf neue Artikel oder Angebote hinweise, die in das gleiche Themengebiet fallen wie dieser Artikel.</legend>
+    </form>
+
+          </div>
+        
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:63266/csharp-programmieren/weisst-du-wie-die-versionsnummern-von-c-und-net-zusammen-passen/" class="btn" title="Weißt du wie die Versionsnummern von C# und .NET zusammenpassen?">Vorheriger</a>
+      
+      
+        <a href="http://localhost:63266/csharp-programmieren/herausforderung-schaffst-du-es-ein-singleton-zu-implementieren/" class="btn" title="Herausforderung - Schaffst du es ein Singleton zu implementieren?">Nächster</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<div class="social-icons">
+	
+	
+	
+	<a href="http://www.youtube.com/channel/UC5jCUQ6IPHtQP5r4y9byCqA" title="Jan Suchotzki on YouTube" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
+	
+	<a href="http://stackoverflow.com/users/5258906/jan-suchotzki" title="Jan Suchotzki on StackExchange" target="_blank"><i class="fa fa-stack-exchange fa-2x"></i></a>
+	
+	
+	<a href="http://github.com/lernmoment" title="Jan Suchotzki on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+    
+	
+  <a href="http://localhost:63266/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+<span>Danke an <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> und <a href="http://mademistakes.com/so-simple/" rel="nofollow">Made Mistakes</a> für hervorragende Tools.</span>
+<br>
+<span><a href="http://localhost:63266/kein-copyright/">Kein Copyright</a>    -    <a href="http://localhost:63266/impressum/">Impressum</a>    -    <a href="http://localhost:63266/datenschutz/">Datenschutz</a></span>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:63266';
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:63266/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:63266/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,273 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Ist C# unsicher per Design? &#8211; LernMoment.de</title>
+<meta name="description" content="Wie du das Schlüsselwort unsafe verwendest.">
+<meta name="keywords" content="Syntax, Konzept, Zeiger">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Ist C# unsicher per Design?">
+<meta name="twitter:description" content="Wie du das Schlüsselwort unsafe verwendest.">
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:63266/images/banner/lernmoment-csharp.jpg">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="de_DE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ist C# unsicher per Design?">
+<meta property="og:description" content="Wie du das Schlüsselwort unsafe verwendest.">
+<meta property="og:url" content="http://localhost:63266/csharp-programmieren/unsicher-per-design/">
+<meta property="og:site_name" content="LernMoment.de">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="sPPXWqQjaSqa_ZgqYPNCyVLLaFzVAFCuf3xDBC-ofwE">
+
+
+
+<link rel="canonical" href="http://localhost:63266/csharp-programmieren/unsicher-per-design/">
+<link href="http://localhost:63266/feed.xml" type="application/atom+xml" rel="alternate" title="LernMoment.de Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:63266/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:63266/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:63266/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:63266/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:63266/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:63266/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:63266/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:63266/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+
+
+<div class="navigation-banner">
+	
+	
+
+	Lerne programmieren mit mir im Kurs: <a href="http://localhost:63266/einstieg-csharp/" >Einstieg in C# -></a>
+</div>
+
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:63266/kurse/" >Kurse</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/schwerpunkt/" >Dein Weg zum C# Entwickler</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/projekt-start/" >Entwicklung & Mentoring</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/blog/" >Blog</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	
+		<div class="wrap">
+			<a href="http://localhost:63266/" class="site-logo" rel="home" title="LernMoment.de"><img src="http://localhost:63266/images/site-logo.png" width="200" height="200" alt="LernMoment.de logo" class="animated fadeInDown"></a>
+		</div>
+	
+</header><!-- /.masthead -->
+
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <img src="http://localhost:63266/images/banner/lernmoment-csharp.jpg" class="entry-feature-image" alt="Ist C# unsicher per Design?" >
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"><a href="http://localhost:63266/tags/#Syntax" title="Pages tagged Syntax">Syntax</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Konzept" title="Pages tagged Konzept">Konzept</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Zeiger" title="Pages tagged Zeiger">Zeiger</a></span>
+        
+          <h1 class="entry-title">Ist C# unsicher per Design?</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <span class="author vcard">Von <span class="fn">Jan Suchotzki</span></span>
+        <span class="entry-date date published"><time datetime="2015-08-11T06:00:00+02:00"><i class="fa fa-calendar-o"></i> 11. August 2015</time></span>
+        
+        
+        
+        
+      </footer>
+      <div class="entry-content">
+        <p>Bei der Definition und Entwicklung von C# hat das Team rund um <a href="https://de.wikipedia.org/wiki/Anders_Hejlsberg">Anders Hejlsberg</a>, Chef-Architekt von C#, versucht, viele Anwendungsfälle zu berücksichtigen. Ein wichtiger war dabei, dass du selbst entscheiden kannst, ob dir Performance oder Interoperabilität wichtiger sind als Speicherverwaltung, Typsicherheit und so weiter. Anders als in anderen Programmiersprachen mit Laufzeitumgebung (wie beispielsweise Java oder Smalltalk), kannst du direkt in C# Zeiger verwenden, ohne Marshalling.</p>
+
+<p>C# bietet dir das Schlüsselwort <code class="highlighter-rouge">unsafe</code>. Damit kannst du Zeiger in deinem Quelltext verwenden. Somit kannst du manchmal die Performance verbessern und es ist möglich, mit Programmen bzw. Bibliotheken außerhalb von managed .NET zu interagieren.</p>
+
+<p>Mit diesem Schlüsselwort kannst du einfach einen Block in einer Funktion definieren:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="kt">var</span> <span class="p">=</span> <span class="m">20</span><span class="p">;</span>
+
+    <span class="k">unsafe</span>
+    <span class="p">{</span>
+    	<span class="kt">int</span><span class="p">*</span> <span class="n">p</span> <span class="p">=</span> <span class="p">&amp;</span><span class="kt">var</span><span class="p">;</span>
+    	<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Der Wert der Variable ist: {0} "</span><span class="p">,</span>  <span class="kt">var</span><span class="p">);</span>
+    	<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Der Wert der Variable, auf die der Zeiger zeigt: {0} "</span><span class="p">,</span>  <span class="n">p</span><span class="p">-&gt;</span><span class="nf">ToString</span><span class="p">());</span>
+    	<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Die Adresse der Variable ist: {0}"</span><span class="p">,</span>  <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">p</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">Console</span><span class="p">.</span><span class="nf">ReadKey</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Du kannst <code class="highlighter-rouge">unsafe</code> auch auf Methoden, Klassen und Strukturen verwenden. Alleine die Verwendung des Schlüsselwortes <code class="highlighter-rouge">unsafe</code> reicht allerdings nicht aus. Du musst dem Compiler ganz explizit sagen, dass dein Quelltext diese Funktion verwenden darf. Dazu gibt es die Compiler-Option <code class="highlighter-rouge">/unsafe</code>. Ein entsprechendes Häkchen findest du in den Projekteinstellungen deiner Entwicklungsumgebung.</p>
+
+<p>Mit diesem Schlüsselwort schaltest du nicht nur die Typsicherheit aus, sondern musst dich auch selbst um den <a href="/csharp-programmieren/der-garbage-collector/">Garbage Collector</a> kümmern. Dieser versucht nämlich, im Hintergrund die Speicherbelegung zu optimieren. Dazu kann er Objekte im Speicher hin und her schieben. Ein Zeiger ist jedoch letztlich nichts anderes als eine Speicheradresse. So kann es passieren, dass der Garbage Collector das Objekt bereits an eine andere Stelle geschoben hat und dein Zeiger ins “Nichts” bzw. auf ein falsches Objekt zeigt.</p>
+
+<p>Wenn es dir um den Zugriff auf native Programme/Bibliotheken geht, sollte dir bewusst sein, dass es einige Alternativen gibt. Anstelle von <code class="highlighter-rouge">unsafe</code> und Zeigern, kannst du beispielsweise auch <code class="highlighter-rouge">IntPtr</code> oder <code class="highlighter-rouge">SafeHandle</code> verwenden. Sie sind nicht komplett vergleichbar weil sie etwas unterschiedliche Probleme lösen. Allerdings bieten diese Alternativen mehr Sicherheit.</p>
+
+<p>Jetzt erstmal viel Spaß mit unsicherem Quelltext</p>
+
+<p>Jan</p>
+
+<h3 id="merke">Merke</h3>
+
+<ul>
+  <li>Die Verwendung von Zeigern und <code class="highlighter-rouge">unsafe</code> in C# war eine bewusste Entscheidung der C# Entwickler.</li>
+  <li>Wenn du mit dieser Methode Zeiger in C# verwendest, gehst du ein höheres Risiko ein als in C/C++, weil du die Eigenheiten von C# und .NET bezüglich Zeigern kennen musst.</li>
+  <li>Der GarbageCollector schiebt Objekte im Speicher ganz nach Bedarf hin und her. Daher kann ein Zeiger plötzlich ins “Nichts” zeigen.</li>
+  <li><code class="highlighter-rouge">unsafe</code> kann als Block in einer Methode oder auch auf einer kompletten Methode, Klasse oder Struktur verwendet werden.</li>
+  <li>Die aus C/C++ bekannten Zeigeroperationen wie Dereferenzierung und Arithmetik sind auch in C# im <code class="highlighter-rouge">unsafe</code> Kontext verfügbar.</li>
+</ul>
+
+<h3 id="lernquiz">Lernquiz</h3>
+
+<p>Verwende folgende Fragen, um das Gelernte von heute zu festigen:</p>
+
+<ul>
+  <li>Was kannst du mit dem Schlüsselwort <code class="highlighter-rouge">unsafe</code> erreichen?</li>
+  <li>Auf welche Elemente kannst du <code class="highlighter-rouge">unsafe</code> verwenden?</li>
+  <li>Was sind Probleme bzw. Risiken bei der Verwendung von <code class="highlighter-rouge">unsafe</code>?</li>
+</ul>
+
+<p>Am besten schaust du dir morgen und dann nochmal in ein paar Tagen die vorherigen Fragen an und beantwortest sie, ohne den Text vorher gelesen zu haben.</p>
+
+<h3 id="weitere-informationen">Weitere Informationen</h3>
+
+<ul>
+  <li>Den kompletten Quelltext zum heutigen Lernmoment findest du <a href="https://github.com/LernMoment/csharp/tree/master/UnsafeEinfuehrung">hier</a>.</li>
+  <li><a href="http://openbook.rheinwerk-verlag.de/visual_csharp_2012/1997_10_010.html#dodtp6507ea6d-ba13-49af-9560-8059bb666759">Hier</a> eine recht allgemeine und oberflächliche Einführung in das Thema <code class="highlighter-rouge">unsafe</code></li>
+  <li>In <a href="http://www.windowsdevcenter.com/pub/a/oreilly/windows/news/hejlsberg%5F0800.html">diesem Interview</a> begründet Anders Hejlsberg, warum <code class="highlighter-rouge">unsafe</code> wichtig ist für C#.</li>
+  <li><a href="https://msdn.microsoft.com/de-de/library/t2yzs44b.aspx">MSDN</a> hat auch eine Einführung in die Verwendung von <code class="highlighter-rouge">unsafe</code>.</li>
+</ul>
+
+        
+          <div class="subscribe-notice">
+            <h5>Dieser LernMoment hat dir gefallen? <br> Dann melde dich an und du wirst über neue LernMomente informiert:</h5>
+                <form action="https://lernmoment.us9.list-manage.com/subscribe/post" method="POST" target="_blank">
+      <input type="hidden" name="u" value="d0206d57f5002e40b651a0f60">
+      <input type="hidden" name="id" value="8845c28e62">
+      <input type="email" class="subscribe-notice-input-box" autocapitalize="off" autocorrect="off" name="MERGE0" id="MERGE0" size="25" value="" placeholder="Deine E-Mail-Adresse">
+      <input type="text" class="subscribe-notice-input-box" name="MERGE1" id="MERGE1" size="25" value="" placeholder="Dein Vorname (optional)">
+      
+        <input type="checkbox" id="group_1" name="group[20205][1]" value="1" checked="true" style="display:none">
+      
+      <input type="submit" class="subscribe-notice-button" name="submit" value="Ich bin dabei!">
+      <legend class="subscribe-notice-legend">Du bekommst in unregelmäßigen Abständen Mails von mir, in denen ich dich auf neue Artikel oder Angebote hinweise, die in das gleiche Themengebiet fallen wie dieser Artikel.</legend>
+    </form>
+
+          </div>
+        
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:63266/csharp-programmieren/zuverlaessig-entsorgen-mit-der-using-anweisung/" class="btn" title="Zuverlässig Entsorgen mit der using Anweisung">Vorheriger</a>
+      
+      
+        <a href="http://localhost:63266/csharp-programmieren/kombinierte-formatierung-fuer-konsole-datei/" class="btn" title="Kombinierte Formatierung für Konsole, Datei, ...">Nächster</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<div class="social-icons">
+	
+	
+	
+	<a href="http://www.youtube.com/channel/UC5jCUQ6IPHtQP5r4y9byCqA" title="Jan Suchotzki on YouTube" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
+	
+	<a href="http://stackoverflow.com/users/5258906/jan-suchotzki" title="Jan Suchotzki on StackExchange" target="_blank"><i class="fa fa-stack-exchange fa-2x"></i></a>
+	
+	
+	<a href="http://github.com/lernmoment" title="Jan Suchotzki on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+    
+	
+  <a href="http://localhost:63266/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+<span>Danke an <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> und <a href="http://mademistakes.com/so-simple/" rel="nofollow">Made Mistakes</a> für hervorragende Tools.</span>
+<br>
+<span><a href="http://localhost:63266/kein-copyright/">Kein Copyright</a>    -    <a href="http://localhost:63266/impressum/">Impressum</a>    -    <a href="http://localhost:63266/datenschutz/">Datenschutz</a></span>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:63266';
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:63266/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:63266/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

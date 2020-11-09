@@ -1,0 +1,275 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Unterstützt deine WPF-Anwendung Tastenkombinationen? &#8211; LernMoment.de</title>
+<meta name="description" content="KeyBinding - Die einfachste Möglichkeit Tastenkombinationen zu definieren.">
+<meta name="keywords" content="Syntax, WPF, MVVM">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Unterstützt deine WPF-Anwendung Tastenkombinationen?">
+<meta name="twitter:description" content="KeyBinding - Die einfachste Möglichkeit Tastenkombinationen zu definieren.">
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:63266/images/banner/lernmoment-wpf.jpg">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="de_DE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unterstützt deine WPF-Anwendung Tastenkombinationen?">
+<meta property="og:description" content="KeyBinding - Die einfachste Möglichkeit Tastenkombinationen zu definieren.">
+<meta property="og:url" content="http://localhost:63266/csharp-programmieren/tastatureingabe-an-icommands-binden/">
+<meta property="og:site_name" content="LernMoment.de">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="sPPXWqQjaSqa_ZgqYPNCyVLLaFzVAFCuf3xDBC-ofwE">
+
+
+
+<link rel="canonical" href="http://localhost:63266/csharp-programmieren/tastatureingabe-an-icommands-binden/">
+<link href="http://localhost:63266/feed.xml" type="application/atom+xml" rel="alternate" title="LernMoment.de Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:63266/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:63266/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:63266/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:63266/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:63266/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:63266/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:63266/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:63266/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+
+
+<div class="navigation-banner">
+	
+	
+
+	Lerne programmieren mit mir im Kurs: <a href="http://localhost:63266/einstieg-csharp/" >Einstieg in C# -></a>
+</div>
+
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:63266/kurse/" >Kurse</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/schwerpunkt/" >Dein Weg zum C# Entwickler</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/projekt-start/" >Entwicklung & Mentoring</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/blog/" >Blog</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	
+		<div class="wrap">
+			<a href="http://localhost:63266/" class="site-logo" rel="home" title="LernMoment.de"><img src="http://localhost:63266/images/site-logo.png" width="200" height="200" alt="LernMoment.de logo" class="animated fadeInDown"></a>
+		</div>
+	
+</header><!-- /.masthead -->
+
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <img src="http://localhost:63266/images/banner/lernmoment-wpf.jpg" class="entry-feature-image" alt="Unterstützt deine WPF-Anwendung Tastenkombinationen?" >
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"><a href="http://localhost:63266/tags/#Syntax" title="Pages tagged Syntax">Syntax</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#WPF" title="Pages tagged WPF">WPF</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#MVVM" title="Pages tagged MVVM">MVVM</a></span>
+        
+          <h1 class="entry-title">Unterstützt deine WPF-Anwendung Tastenkombinationen?</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <span class="author vcard">Von <span class="fn">Jan Suchotzki</span></span>
+        <span class="entry-date date published"><time datetime="2015-08-31T06:00:00+02:00"><i class="fa fa-calendar-o"></i> 31. August 2015</time></span>
+        
+        
+        
+        
+      </footer>
+      <div class="entry-content">
+        <p>Das du Benutzereingaben vom View zum ViewModel deiner WPF-Anwendung über <code class="highlighter-rouge">ICommand</code> schicken kannst, habe ich bereits im LernMoment <a href="/csharp-programmieren/command-canexecute/">Command.CanExecute</a> beschrieben. Seit WPF 4.0 (veröffentlicht mit .NET 4.0) kannst du mit wenigen XAML-Anweisungen eine Taste an dein <code class="highlighter-rouge">Command</code> binden.</p>
+
+<p>Die WPF Bedienelemente erben alle von <code class="highlighter-rouge">System.Windows.UIElement</code>. Diese Klasse bietet die für diesen Zweck relevante Eigenschaft <code class="highlighter-rouge">InputBindings</code>. Dabei handelt es sich um eine Auflistung von Instanzen der Klasse <code class="highlighter-rouge">InputBinding</code> bzw. Instanzen der von ihr abgeleiteten Klassen <code class="highlighter-rouge">KeyBinding</code> oder <code class="highlighter-rouge">MouseBinding</code>.</p>
+
+<p>Wenn du beispielsweise ganz allgemein eine Tastenkombination (wie Ctrl+S) zum Speichern einer Datei oder ähnliches an deiner Anwendung definieren willst, dann kannst du das wie folgt machen:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;Window.InputBindings&gt;</span>
+		<span class="nt">&lt;KeyBinding</span> <span class="na">Gesture=</span><span class="s">"Ctrl+S"</span> <span class="na">Command=</span><span class="s">"{Binding DateiSpeichernCommand}"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/Window.InputBingings&gt;</span>
+</code></pre></div></div>
+
+<p>Nun kannst du einfach “Ctrl + S” drücken und das Speichernkommando wird ausgeführt. Dabei ist es egal welches Bedienelement gerade den Fokus hat. Damit dies funktioniert, muss dein ViewModel als <code class="highlighter-rouge">DataContext</code> zur Verfügung stehen und ein <code class="highlighter-rouge">ICommand</code> mit dem Namen <code class="highlighter-rouge">DateiSpeichernCommand</code> anbieten. Im zugehörigen <a href="https://github.com/LernMoment/csharp/tree/master/CommandCanExecute">Beispiel</a> findest du alle Details.</p>
+
+<p>Du kannst Tastenkombinationen auch an spezifische Bedienelemente binden. Dann wird das Kommando nur ausgeführt, wenn das Bedienelement den Fokus hat und du dann die Tastenkombination betätigst. Da alle Bedienelemente von <code class="highlighter-rouge">System.Windows.UIElement</code> erben, geht das genau so wie im vorherigen Beispiel:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;TextBox</span> <span class="na">BorderBrush=</span><span class="s">"Black"</span> <span class="na">BorderThickness=</span><span class="s">"2"</span> <span class="na">Margin=</span><span class="s">"50"</span> <span class="na">TextWrapping=</span><span class="s">"Wrap"</span><span class="nt">&gt;</span>
+	Sobald diese TextBox den Fokus hat, kannst du mit der Tastenkombination "Ctrl + Shift + S" speichern.
+	<span class="nt">&lt;TextBox.InputBindings&gt;</span>
+		<span class="nt">&lt;KeyBinding</span> <span class="na">Gesture=</span><span class="s">"Ctrl+Shift+S"</span> <span class="na">Command=</span><span class="s">"{Binding DateiSpeichernCommand}"</span><span class="nt">/&gt;</span>
+	<span class="nt">&lt;/TextBox.InputBindings&gt;</span>
+<span class="nt">&lt;/TextBox&gt;</span>
+</code></pre></div></div>
+
+<p>Möchtest du ein <code class="highlighter-rouge">KeyBinding</code> erstellen, welches nur eine Taste und nicht eine Tastenkombination umfasst, dann verwendest du die Eigenschaft <code class="highlighter-rouge">Key</code> anstelle von <code class="highlighter-rouge">Gesture</code>. So könntest du beispielsweise <em>F5</em> zum erneuten Laden des Inhalts deiner Anwendung verwenden:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;Window.InputBindings&gt;</span>
+		<span class="nt">&lt;KeyBinding</span> <span class="na">Key=</span><span class="s">"F5"</span> <span class="na">Command=</span><span class="s">"{Binding NeuLadenCommand}"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/Window.InputBingings&gt;</span>
+</code></pre></div></div>
+
+<p>Jetzt erstmal viel Spaß mit drücken von Tasten</p>
+
+<p>Jan</p>
+
+<p>PS: Beachten solltest du, dass das <code class="highlighter-rouge">KeyBinding</code> immer auf <code class="highlighter-rouge">KeyDown</code> reagiert. Dies kann über <code class="highlighter-rouge">KeyBinding</code> nicht geändert werden.</p>
+
+<h3 id="merke">Merke</h3>
+
+<ul>
+  <li>Die meisten Bedien- und Anzeigeelemente in WPF haben die Eigenschaft <code class="highlighter-rouge">InputBindings</code>, welche von <code class="highlighter-rouge">System.Windows.UIElement</code> vererbt wird.</li>
+  <li>Der Eigenschaft <code class="highlighter-rouge">InputBindings</code> kannst du sowohl Instanzen von <code class="highlighter-rouge">KeyBinding</code> wie auch <code class="highlighter-rouge">MouseBinding</code> zuweisen.</li>
+  <li>Willst du einzelne Tasten verwenden, dann ist die Eigenschaft <code class="highlighter-rouge">KeyBinding.Key</code> das richtige für dich.</li>
+  <li>Eine Tastenkombination kannst du der Eigenschaft <code class="highlighter-rouge">KeyBinding.Gesture</code> übergeben. Dabei trennst du die einzelnen Tasten mit einem <code class="highlighter-rouge">+</code>.</li>
+  <li>Verwendest du <code class="highlighter-rouge">KeyBinding</code>, wird dein Kommando immer bei <code class="highlighter-rouge">KeyDown</code> und nicht bei <code class="highlighter-rouge">KeyUp</code> ausgeführt.</li>
+</ul>
+
+<h3 id="lernquiz">Lernquiz</h3>
+
+<p>Verwende folgende Fragen, um das Gelernte von heute zu festigen:</p>
+
+<ul>
+  <li>An welchen Elementen kannst du ein <code class="highlighter-rouge">KeyBinding</code> verwenden?</li>
+  <li>Wie definierst du für eine Anwendung, dass das Kommando <code class="highlighter-rouge">HilfeCommand</code> beim drücken von <em>Shift</em> und <em>F1</em> ausgeführt wird?</li>
+  <li>Welche Klasse ist noch wichtig im Kontext von <code class="highlighter-rouge">KeyBinding</code>?</li>
+</ul>
+
+<p>Am besten schaust du dir morgen und dann nochmal in ein paar Tagen die vorherigen Fragen an und beantwortest sie, ohne den Text vorher gelesen zu haben.</p>
+
+<h3 id="weitere-informationen">Weitere Informationen</h3>
+
+<ul>
+  <li>Den kompletten Quelltext zum heutigen Lernmoment findest du <a href="https://github.com/LernMoment/csharp/tree/master/CommandCanExecute">hier</a>.</li>
+  <li>Die Beschreibung der Klasse <code class="highlighter-rouge">KeyBinding</code> findest auf <a href="https://msdn.microsoft.com/de-de/library/system.windows.input.keybinding(v=vs.110).aspx">MSDN</a></li>
+</ul>
+
+        
+          <div class="subscribe-notice">
+            <h5>Dieser LernMoment hat dir gefallen? <br> Dann melde dich an und du wirst über neue LernMomente informiert:</h5>
+                <form action="https://lernmoment.us9.list-manage.com/subscribe/post" method="POST" target="_blank">
+      <input type="hidden" name="u" value="d0206d57f5002e40b651a0f60">
+      <input type="hidden" name="id" value="8845c28e62">
+      <input type="email" class="subscribe-notice-input-box" autocapitalize="off" autocorrect="off" name="MERGE0" id="MERGE0" size="25" value="" placeholder="Deine E-Mail-Adresse">
+      <input type="text" class="subscribe-notice-input-box" name="MERGE1" id="MERGE1" size="25" value="" placeholder="Dein Vorname (optional)">
+      
+        <input type="checkbox" id="group_1" name="group[20205][1]" value="1" checked="true" style="display:none">
+      
+      <input type="submit" class="subscribe-notice-button" name="submit" value="Ich bin dabei!">
+      <legend class="subscribe-notice-legend">Du bekommst in unregelmäßigen Abständen Mails von mir, in denen ich dich auf neue Artikel oder Angebote hinweise, die in das gleiche Themengebiet fallen wie dieser Artikel.</legend>
+    </form>
+
+          </div>
+        
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:63266/csharp-programmieren/kombinierte-formatierung-enumformate/" class="btn" title="Kombinierte Formatierung - Enumformate">Vorheriger</a>
+      
+      
+        <a href="http://localhost:63266/csharp-programmieren/verwende-deine-bibliothek-in-anderen-net-sprachen/" class="btn" title="Verwende deine C# Bibliothek in anderen .NET Sprachen">Nächster</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<div class="social-icons">
+	
+	
+	
+	<a href="http://www.youtube.com/channel/UC5jCUQ6IPHtQP5r4y9byCqA" title="Jan Suchotzki on YouTube" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
+	
+	<a href="http://stackoverflow.com/users/5258906/jan-suchotzki" title="Jan Suchotzki on StackExchange" target="_blank"><i class="fa fa-stack-exchange fa-2x"></i></a>
+	
+	
+	<a href="http://github.com/lernmoment" title="Jan Suchotzki on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+    
+	
+  <a href="http://localhost:63266/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+<span>Danke an <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> und <a href="http://mademistakes.com/so-simple/" rel="nofollow">Made Mistakes</a> für hervorragende Tools.</span>
+<br>
+<span><a href="http://localhost:63266/kein-copyright/">Kein Copyright</a>    -    <a href="http://localhost:63266/impressum/">Impressum</a>    -    <a href="http://localhost:63266/datenschutz/">Datenschutz</a></span>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:63266';
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:63266/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:63266/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

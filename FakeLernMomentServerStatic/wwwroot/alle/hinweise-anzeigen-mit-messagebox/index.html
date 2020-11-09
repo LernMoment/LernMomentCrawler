@@ -1,0 +1,274 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Hinweise anzeigen mit WPF-MessageBox &#8211; LernMoment.de</title>
+<meta name="description" content="Für die Interaktion mit dem Benutzer ist es häufig notwendig in einer WPF Anwendung Hinweise anzuzeigen. Eine Möglichkeit dafür ist die MessageBox.">
+<meta name="keywords" content="WPF, XAML, Controls">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Hinweise anzeigen mit WPF-MessageBox">
+<meta name="twitter:description" content="Für die Interaktion mit dem Benutzer ist es häufig notwendig in einer WPF Anwendung Hinweise anzuzeigen. Eine Möglichkeit dafür ist die MessageBox.">
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:63266/images/banner/lernmoment-wpf.jpg">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="de_DE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hinweise anzeigen mit WPF-MessageBox">
+<meta property="og:description" content="Für die Interaktion mit dem Benutzer ist es häufig notwendig in einer WPF Anwendung Hinweise anzuzeigen. Eine Möglichkeit dafür ist die MessageBox.">
+<meta property="og:url" content="http://localhost:63266/alle/hinweise-anzeigen-mit-messagebox/">
+<meta property="og:site_name" content="LernMoment.de">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="sPPXWqQjaSqa_ZgqYPNCyVLLaFzVAFCuf3xDBC-ofwE">
+
+
+
+<link rel="canonical" href="http://localhost:63266/alle/hinweise-anzeigen-mit-messagebox/">
+<link href="http://localhost:63266/feed.xml" type="application/atom+xml" rel="alternate" title="LernMoment.de Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:63266/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:63266/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:63266/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:63266/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:63266/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:63266/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:63266/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:63266/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+
+
+<div class="navigation-banner">
+	
+	
+
+	Sammle Erfahrung in C# mit mir im Kurs: <a href="https://www.udemy.com/csharp-uebungskurs-einfach-verschluesselt/?referralCode=C976277144B75813267C" >C# Grundlagen üben mit System -></a>
+</div>
+
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:63266/kurse/" >Kurse</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/schwerpunkt/" >Dein Weg zum C# Entwickler</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/projekt-start/" >Entwicklung & Mentoring</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/blog/" >Blog</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	
+		<div class="wrap">
+			<a href="http://localhost:63266/" class="site-logo" rel="home" title="LernMoment.de"><img src="http://localhost:63266/images/site-logo.png" width="200" height="200" alt="LernMoment.de logo" class="animated fadeInDown"></a>
+		</div>
+	
+</header><!-- /.masthead -->
+
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <img src="http://localhost:63266/images/banner/lernmoment-wpf.jpg" class="entry-feature-image" alt="Hinweise anzeigen mit WPF-MessageBox" >
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"><a href="http://localhost:63266/tags/#WPF" title="Pages tagged WPF">WPF</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#XAML" title="Pages tagged XAML">XAML</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Controls" title="Pages tagged Controls">Controls</a></span>
+        
+          <h1 class="entry-title">Hinweise anzeigen mit WPF-MessageBox</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <span class="author vcard">Von <span class="fn">Jan Suchotzki</span></span>
+        <span class="entry-date date published"><time datetime="2020-04-03T10:00:09+02:00"><i class="fa fa-calendar-o"></i> 03. April 2020</time></span>
+        
+        
+        
+        
+      </footer>
+      <div class="entry-content">
+        <p>Mmmmmoin und willkommen zu deinem LernMoment!</p>
+
+<p>Es gibt verschiedene Szenarien in denen es hilfreich ist dem Benutzer einer <em>WPF</em>-Anwendung einen Hinweis anzuzeigen. Hier ein paar Möglichkeiten:</p>
+
+<ul>
+  <li>Der Benutzer macht eine ungültige Eingabe</li>
+  <li>Der Benutzer möchte eine Funktionalität ausführen die momentan nicht verfügbar ist (z.B. weil die Verbindung zu einem Server fehlt)</li>
+  <li>Der Benutzer muss eine Eingabe bestätigen (z.B. das Löschen eines Datensatzes)</li>
+  <li>Die Anwendung braucht zusätzliche Informationen um weiter machen zu können</li>
+</ul>
+
+<p>Die einfachste Möglichkeit um solche Interaktionen mit dem Benutzer in <em>WPF</em> abzubilden ist die <code class="highlighter-rouge">MessageBox</code>:</p>
+
+<p><img src="http://localhost:63266/images/hinweise-anzeigen-mit-messagebox/messagebox-fehler-ok.jpg" alt="Anzeigen eines Fehlers mit einer MessageBox" /></p>
+
+<p><strong>WICHTIG:</strong> Auch wenn die <code class="highlighter-rouge">MessageBox</code> einfach zu vewenden ist, ist sie häufig nicht die passende Wahl. Für die meisten Szenarien gibt es in WPF bessere Mittel, weil die <code class="highlighter-rouge">MessageBox</code> nicht das optimale <em>Bedienerlebnis (User Experience oder UX auf Englisch)</em> bietet. So ist es beispielsweise sinnvoller direkt an einer <code class="highlighter-rouge">TextBox</code> einen Eingabefehler kenntlich zu machen als einen Dialog anzuzeigen der nochmals vom Benutzer bestätigt werden muss. Trotzdem wirst du gerade beim Einstieg in <em>WPF</em> häufig die <code class="highlighter-rouge">MessageBox</code> verwenden was auch okay ist. Bessere Varianten zeige ich dir in weiteren Artikeln 😉.</p>
+
+<h3 id="text--überschrift-in-einer-messagebox-anzeigen">Text &amp; Überschrift in einer MessageBox anzeigen</h3>
+<p>Die Klasse <code class="highlighter-rouge">MessageBox</code> bietet lediglich eine statische Methode mit unterschiedlichen Parametern an. Mithilfe von <code class="highlighter-rouge">MessageBox.Show("")</code> kannst du einen modalen Dialog anzeigen. In dieser einfachsten Form hat der Dialog keine Überschrift, kein zusätzliches Icon und lediglich einen <code class="highlighter-rouge">Button</code> (<em>Ok</em>):</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">MessageBox</span><span class="p">.</span><span class="nf">Show</span><span class="p">(</span><span class="s">"Dieses Kästchen ist bereits belegt! Wähle ein anderes."</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Wahrend der Ausführung bekommst du damit diesen Dialog angezeigt:</p>
+
+<p><img src="http://localhost:63266/images/hinweise-anzeigen-mit-messagebox/messagebox-default.jpg" alt="Einfachste Form einer MessageBox" /></p>
+
+<p>Da es sich bei der <code class="highlighter-rouge">Show</code>-Methode um einen synchronen Aufruf handelt, wird deine Anwendung solange blockiert, bis der Anwender den Dialog wieder schließt. Verwendest du also <code class="highlighter-rouge">MessageBox.Show</code> an einer Stelle in deinem Quellcode, wird die nächste Zeile im Quellcode erst dann ausgeführt, wenn der Benutzer einen <code class="highlighter-rouge">Button</code> oder das <code class="highlighter-rouge">X</code> geklickt hat.</p>
+
+<p>Der nächste Parameter in <code class="highlighter-rouge">MessageBox.Show()</code> ist dann die Überschrift:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">MessageBox</span><span class="p">.</span><span class="nf">Show</span><span class="p">(</span><span class="s">"Dieses Kästchen ist bereits belegt! Wähle ein anderes."</span><span class="p">,</span> <span class="s">"Unzulässiger Zug"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Damit wird in der Titelzeile des Dialogs die Überschrift “Unzulässiger Zug” angezeigt (siehe Bild am Anfang des Artikels).</p>
+
+<h3 id="fragen-stellen-mit-der-messagebox">Fragen stellen mit der MessageBox</h3>
+<p>Über einen weiteren Parameter in der <code class="highlighter-rouge">Show</code> Methode kannst du beeinflussen welche <code class="highlighter-rouge">Button</code> im Dialog angezeigt werden. Der Parameter hat den Typ <code class="highlighter-rouge">MessageBoxButton</code> welches ein <code class="highlighter-rouge">enum</code> mit den folgenden Werte ist:</p>
+<ul>
+  <li><code class="highlighter-rouge">OK</code></li>
+  <li><code class="highlighter-rouge">OKCancel</code></li>
+  <li><code class="highlighter-rouge">YesNoCancel</code></li>
+  <li><code class="highlighter-rouge">YesNo</code></li>
+</ul>
+
+<p>Damit hast du eine gute Möglichkeit deinem Benutzer Fragen wie beispielsweise “Möchtest du die Änderungen wirklich verwerfen?” zustellen.</p>
+
+<p>Nun reicht es natürlich nicht nur die <code class="highlighter-rouge">Button</code> anzuzeigen, sondern du möchtest bestimmt auch wissen welchen Button der Benutzer geklickt hat. Dazu gibt die <code class="highlighter-rouge">Show</code> Methode einen Wert vom Typ <code class="highlighter-rouge">MessageBoxResult</code> zurück. Die verschiedenen Werte und deren Bedeutung ist auf <a href="https://docs.microsoft.com/de-de/dotnet/api/system.windows.messageboxresult?view=netcore-3.1">Microsoft Docs</a> erklärt.  Hier noch ein Beispiel:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">MessageBoxResult</span> <span class="n">antwort</span> <span class="p">=</span> <span class="n">MessageBox</span><span class="p">.</span><span class="nf">Show</span><span class="p">(</span><span class="s">"Alle ungespeicherten Änderungen gehen verloren."</span><span class="p">,</span> <span class="s">"Anwendung wirklich schießen?"</span><span class="p">,</span> <span class="n">MessageBoxButton</span><span class="p">.</span><span class="n">OKCancel</span><span class="p">);</span>
+
+<span class="k">if</span><span class="p">(</span><span class="n">antwort</span> <span class="p">==</span> <span class="n">MessageBoxResult</span><span class="p">.</span><span class="n">OK</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">System</span><span class="p">.</span><span class="n">Windows</span><span class="p">.</span><span class="n">Application</span><span class="p">.</span><span class="n">Current</span><span class="p">.</span><span class="nf">Shutdown</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Bitte beachte</strong>, dass die Bedeutung von <code class="highlighter-rouge">MessageBoxResult</code> davon abhängig ist welche <code class="highlighter-rouge">MessageBoxButton</code> angezeigt werden. Wird nur der <code class="highlighter-rouge">MessageBoxButton.OK</code> angezeigt, dann kommt <code class="highlighter-rouge">MessageBoxResult.OK</code> zurück egal ob der Anwender den <code class="highlighter-rouge">Button</code> klickt, <code class="highlighter-rouge">ESC</code> drückt oder den Dialog über das <code class="highlighter-rouge">X</code> schließt. Wird jedoch <code class="highlighter-rouge">MessageBoxButton.OKCancel</code> angezeigt, dann kommt für <code class="highlighter-rouge">X</code> und <code class="highlighter-rouge">ESC</code> ein <code class="highlighter-rouge">MessageBoxResult.Cancel</code> zurück!</p>
+
+<h3 id="besseres-bedienerlebnis-mit-image">Besseres Bedienerlebnis mit Image</h3>
+<p>Wie du am Anfang des Artikels gesehen hast, ist es auch möglich vordefinierte Bilder im Dialog anzuzeigen. Dazu gibt es die Auflistung <code class="highlighter-rouge">MessageBoxImage</code>. Die möglichen Werte kannst du dir auf <a href="https://docs.microsoft.com/de-de/dotnet/api/system.windows.messageboximage?view=netcore-3.1">Microsoft Docs</a> anschauen.</p>
+
+<p>Die <code class="highlighter-rouge">MessageBox</code> am Anfang des Artikels wurde mit folgendem Quellcode erstellt:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">MessageBox</span><span class="p">.</span><span class="nf">Show</span><span class="p">(</span><span class="s">"Dieses Kästchen ist bereits belegt! Wähle ein anderes."</span><span class="p">,</span> <span class="s">"Unzulässiger Zug"</span><span class="p">,</span> <span class="n">MessageBoxButton</span><span class="p">.</span><span class="n">OK</span><span class="p">,</span> <span class="n">MessageBoxImage</span><span class="p">.</span><span class="n">Error</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Mit solchen Bildern im Dialog machst du es dem Benutzer etwas einfacher zu erkennen worum es sich bei deinem Hinweis genau handelt.</p>
+
+<p>Damit solltest du die wichtigsten Funktionen von <code class="highlighter-rouge">MessageBox.Show()</code> kennen. Möchtest du sie vielleicht gleich in der Praxis ausprobieren?</p>
+
+<div class="subscribe-notice">
+  <h5>Setze die MessageBox jetzt im kostenlosen WPF Übungskurs ein:</h5>
+  <a href="http://localhost:63266/lernmail-kurse/wpf-tictactoe-fuer-einsteiger/" class="notice-button">Erfahre mehr &gt;&gt;</a>
+</div>
+
+<p>Viel Spaß auf deinem Weg vom Einsteiger zum C# Entwickler</p>
+
+<p>Jan von LernMoment.de</p>
+
+        
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:63266/alle/xaml-code-behind/" class="btn" title="XAML, *.g.i.cs und code-behind in WPF">Vorheriger</a>
+      
+      
+        <a href="http://localhost:63266/alle/zugriff-wpf-controls-code-behind/" class="btn" title="Eigenschaften von WPF-Steuerelementen im Quellcode setzen">Nächster</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<div class="social-icons">
+	
+	
+	
+	<a href="http://www.youtube.com/channel/UC5jCUQ6IPHtQP5r4y9byCqA" title="Jan Suchotzki on YouTube" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
+	
+	<a href="http://stackoverflow.com/users/5258906/jan-suchotzki" title="Jan Suchotzki on StackExchange" target="_blank"><i class="fa fa-stack-exchange fa-2x"></i></a>
+	
+	
+	<a href="http://github.com/lernmoment" title="Jan Suchotzki on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+    
+	
+  <a href="http://localhost:63266/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+<span>Danke an <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> und <a href="http://mademistakes.com/so-simple/" rel="nofollow">Made Mistakes</a> für hervorragende Tools.</span>
+<br>
+<span><a href="http://localhost:63266/kein-copyright/">Kein Copyright</a>    -    <a href="http://localhost:63266/impressum/">Impressum</a>    -    <a href="http://localhost:63266/datenschutz/">Datenschutz</a></span>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:63266';
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:63266/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:63266/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

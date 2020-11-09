@@ -36,7 +36,7 @@ namespace LernMomentCrawler
                 timerTickHandler, 
                 Application.Current.Dispatcher);
 
-            _searchEngine = new TagSearchEngine("http://localhost:63093/lernmoment/5", "lernmoment.de");
+            _searchEngine = new TagSearchEngine("http://localhost:63266/", "localhost:63266");
         }
 
         private void LoadWebSiteButton_Click(object sender, RoutedEventArgs e)

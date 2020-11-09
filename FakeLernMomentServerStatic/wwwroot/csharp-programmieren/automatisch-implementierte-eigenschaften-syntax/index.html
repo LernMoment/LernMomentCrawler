@@ -1,0 +1,288 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Automatisch Implementierte Eigenschaften - Die C# 6.0 Syntax &#8211; LernMoment.de</title>
+<meta name="description" content="Wie du mit .NET 4.6 eine Eigenschaft mit nur get automatisch implementieren kannst.">
+<meta name="keywords" content="Syntax, Eigenschaften, C# 6.0">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Automatisch Implementierte Eigenschaften - Die C# 6.0 Syntax">
+<meta name="twitter:description" content="Wie du mit .NET 4.6 eine Eigenschaft mit nur get automatisch implementieren kannst.">
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:63266/images/banner/lernmoment-csharp.jpg">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="de_DE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Automatisch Implementierte Eigenschaften - Die C# 6.0 Syntax">
+<meta property="og:description" content="Wie du mit .NET 4.6 eine Eigenschaft mit nur get automatisch implementieren kannst.">
+<meta property="og:url" content="http://localhost:63266/csharp-programmieren/automatisch-implementierte-eigenschaften-syntax/">
+<meta property="og:site_name" content="LernMoment.de">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="sPPXWqQjaSqa_ZgqYPNCyVLLaFzVAFCuf3xDBC-ofwE">
+
+
+
+<link rel="canonical" href="http://localhost:63266/csharp-programmieren/automatisch-implementierte-eigenschaften-syntax/">
+<link href="http://localhost:63266/feed.xml" type="application/atom+xml" rel="alternate" title="LernMoment.de Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:63266/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:63266/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:63266/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:63266/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:63266/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:63266/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:63266/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:63266/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+
+
+<div class="navigation-banner">
+	
+	
+
+	Lerne programmieren mit mir im Kurs: <a href="http://localhost:63266/einstieg-csharp/" >Einstieg in C# -></a>
+</div>
+
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:63266/kurse/" >Kurse</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/schwerpunkt/" >Dein Weg zum C# Entwickler</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/projekt-start/" >Entwicklung & Mentoring</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/blog/" >Blog</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	
+		<div class="wrap">
+			<a href="http://localhost:63266/" class="site-logo" rel="home" title="LernMoment.de"><img src="http://localhost:63266/images/site-logo.png" width="200" height="200" alt="LernMoment.de logo" class="animated fadeInDown"></a>
+		</div>
+	
+</header><!-- /.masthead -->
+
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <img src="http://localhost:63266/images/banner/lernmoment-csharp.jpg" class="entry-feature-image" alt="Automatisch Implementierte Eigenschaften - Die C# 6.0 Syntax" >
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"><a href="http://localhost:63266/tags/#Syntax" title="Pages tagged Syntax">Syntax</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Eigenschaften" title="Pages tagged Eigenschaften">Eigenschaften</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#C# 6.0" title="Pages tagged C# 6.0">C# 6.0</a></span>
+        
+          <h1 class="entry-title">Automatisch Implementierte Eigenschaften - Die C# 6.0 Syntax</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <span class="author vcard">Von <span class="fn">Jan Suchotzki</span></span>
+        <span class="entry-date date published"><time datetime="2015-08-04T06:00:00+02:00"><i class="fa fa-calendar-o"></i> 04. August 2015</time></span>
+        
+        
+        
+        
+      </footer>
+      <div class="entry-content">
+        <p>Die Syntax von automatisch implementierten Eigenschaften ist nicht wirklich kompliziert. Mit C# in der Sprachversion 6.0 sind einige Neuerungen insbesondere für die Initialisierung hinzu gekommen.</p>
+
+<p>Seit C# 3.0 konntest du einfach eine Eigenschaft ohne explizite Definition von <code class="highlighter-rouge">get</code> und <code class="highlighter-rouge">set</code> machen:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">Eigenschaft</span>
+<span class="p">{</span>
+	<span class="k">public</span> <span class="kt">int</span> <span class="n">AutoEigenschaft</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+	<span class="k">public</span> <span class="kt">int</span> <span class="n">AutoEigenschaftNurLesbar</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">private</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Ab C# 6.0, also .NET 4.6, gibt es auch die Möglichkeit, dass du eine automatisch implementierte Eigenschaft nur mit <code class="highlighter-rouge">get</code> definierst. Dann wird, die vom Compiler automatisch generierte Variable, die den Wert deiner Eigenschaft hält, als <code class="highlighter-rouge">readonly</code> angelegt. Außerdem ist es nun auch möglich, dass du einfach einen Initialwert definierst.</p>
+
+<p>Somit kannst du einfach einen zur Laufzeit nicht veränderbaren Datentypen mit automatisch implementierten Eigenschaften erstellen:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">ValueObject</span>
+<span class="p">{</span>
+	<span class="k">public</span> <span class="kt">int</span> <span class="n">UnveraenderbareEigenschaft</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span> <span class="p">=</span> <span class="m">42</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Vielleicht wunderst du dich wofür eine Eigenschaft mit Konstante gut sein soll. Die Entwickler von C# 6.0 haben es daher auch ermöglicht die Initialisierung im Konstruktor zu machen:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">ValueObject</span>
+<span class="p">{</span>
+	<span class="k">public</span> <span class="kt">int</span> <span class="n">UnveraenderbareEigenschaft</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+
+	<span class="k">public</span> <span class="nf">ValueObject</span><span class="p">(</span><span class="kt">int</span> <span class="n">wert</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">UnveraenderbareEigenschaft</span> <span class="p">=</span> <span class="n">wert</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Du kannst auch die <code class="highlighter-rouge">get</code> Methode mit <a href="/csharp-programmieren/anonyme-methode/">anonymer Methode</a> und <a href="/csharp-programmieren/lambda-ausdruecke-erstellen/">Lambda-Ausdruck</a> definieren:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">ValueObject</span>
+<span class="p">{</span>
+	<span class="k">public</span> <span class="kt">int</span> <span class="n">UnveraenderbareEigenschaft</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span> <span class="p">=</span> <span class="m">42</span><span class="p">;</span>
+	<span class="k">public</span> <span class="kt">double</span> <span class="n">Kehrwert</span> <span class="p">=&gt;</span> <span class="m">1</span> <span class="p">/</span> <span class="p">((</span><span class="kt">double</span><span class="p">)</span><span class="n">UnveraenderbareEigenschaft</span><span class="p">);</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>Dies ist vielleicht ein wenig gewöhnungsbedürftig und du solltest auch genau überlegen wie du eine solche Eigenschaft einsetzt. Denn obwohl es offenbar eine Eigenschaft nur mit <code class="highlighter-rouge">get</code> ist, kann sich der Wert verändern. Ich habe keine genau Definition gefunden was bei der Verwendung von Lambda bei nur <code class="highlighter-rouge">get</code> Eigenschaften passieren soll. Allerdings ist es so, dass du teilweise überraschende Ergebnisse bekommst, wenn du Abhängigkeiten zwischen Eigenschaften einführst. Insbesondere, wenn du Eigenschaften mit <code class="highlighter-rouge">get</code> und <code class="highlighter-rouge">set</code> und solche mit nur <code class="highlighter-rouge">get</code> kombinierst.</p>
+
+<p>Jetzt erstmal viel Spaß beim experimentieren mit automatisch implementierten Eigenschaften in C# 6.0</p>
+
+<p>Jan</p>
+
+<h3 id="merke">Merke</h3>
+
+<ul>
+  <li>C# 6.0 erlaubt die Definition von Eigenschaften nur mit der <code class="highlighter-rouge">get</code> Methode.</li>
+  <li>Wenn du eine Eigenschaft nur mit <code class="highlighter-rouge">get</code> definierst, dann legt der Compiler den Speicherplatz dafür als <code class="highlighter-rouge">readonly</code> an.</li>
+  <li>Alle Arten von automatisch implementierten Eigenschaften können bei der Definition oder im Konstruktor initialisiert werden.</li>
+  <li>Anstelle der vom Compiler automatisch implementierten <code class="highlighter-rouge">get</code> Methode, kannst du auch einen Lambda-Ausdruck verwenden.</li>
+  <li>Die Definition einer <code class="highlighter-rouge">private set</code> Methode ist immer noch möglich.</li>
+</ul>
+
+<h3 id="lernquiz">Lernquiz</h3>
+
+<p>Verwende folgende Fragen um das gelernte von heute zu festigen:</p>
+
+<ul>
+  <li>Wie definierst du eine automatisch implementierte Eigenschaft mit Initialwert?</li>
+  <li>Kann der Wert einer automatisch implementierten Eigenschaft mit nur <code class="highlighter-rouge">get</code> verändert werden?</li>
+  <li>Wie kannst du Lambda-Ausdrücke in Eigenschaften verwenden?</li>
+</ul>
+
+<p>Am besten du schaust dir morgen und dann nochmal in ein paar Tagen die vorherigen Fragen an und beantwortest sie ohne den Text vorher gelesen zu haben.</p>
+
+<h3 id="weitere-informationen">Weitere Informationen</h3>
+
+<ul>
+  <li>Den kompletten Quellcode zum heutigen Lernmoment findest du <a href="https://github.com/LernMoment/csharp/tree/master/AutomatischImplementierteEigenschaftenVerwenden">hier</a>.</li>
+</ul>
+
+        
+          <div class="subscribe-notice">
+            <h5>Dieser LernMoment hat dir gefallen? <br> Dann melde dich an und du wirst über neue LernMomente informiert:</h5>
+                <form action="https://lernmoment.us9.list-manage.com/subscribe/post" method="POST" target="_blank">
+      <input type="hidden" name="u" value="d0206d57f5002e40b651a0f60">
+      <input type="hidden" name="id" value="8845c28e62">
+      <input type="email" class="subscribe-notice-input-box" autocapitalize="off" autocorrect="off" name="MERGE0" id="MERGE0" size="25" value="" placeholder="Deine E-Mail-Adresse">
+      <input type="text" class="subscribe-notice-input-box" name="MERGE1" id="MERGE1" size="25" value="" placeholder="Dein Vorname (optional)">
+      
+        <input type="checkbox" id="group_1" name="group[20205][1]" value="1" checked="true" style="display:none">
+      
+      <input type="submit" class="subscribe-notice-button" name="submit" value="Ich bin dabei!">
+      <legend class="subscribe-notice-legend">Du bekommst in unregelmäßigen Abständen Mails von mir, in denen ich dich auf neue Artikel oder Angebote hinweise, die in das gleiche Themengebiet fallen wie dieser Artikel.</legend>
+    </form>
+
+          </div>
+        
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:63266/csharp-programmieren/kovariante-felder/" class="btn" title="Kovarianz und Felder">Vorheriger</a>
+      
+      
+        <a href="http://localhost:63266/csharp-programmieren/optimierung-mit-stringbuilder/" class="btn" title="Vorsicht Optimierung: Die Klasse StringBuilder">Nächster</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<div class="social-icons">
+	
+	
+	
+	<a href="http://www.youtube.com/channel/UC5jCUQ6IPHtQP5r4y9byCqA" title="Jan Suchotzki on YouTube" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
+	
+	<a href="http://stackoverflow.com/users/5258906/jan-suchotzki" title="Jan Suchotzki on StackExchange" target="_blank"><i class="fa fa-stack-exchange fa-2x"></i></a>
+	
+	
+	<a href="http://github.com/lernmoment" title="Jan Suchotzki on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+    
+	
+  <a href="http://localhost:63266/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+<span>Danke an <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> und <a href="http://mademistakes.com/so-simple/" rel="nofollow">Made Mistakes</a> für hervorragende Tools.</span>
+<br>
+<span><a href="http://localhost:63266/kein-copyright/">Kein Copyright</a>    -    <a href="http://localhost:63266/impressum/">Impressum</a>    -    <a href="http://localhost:63266/datenschutz/">Datenschutz</a></span>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:63266';
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:63266/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:63266/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

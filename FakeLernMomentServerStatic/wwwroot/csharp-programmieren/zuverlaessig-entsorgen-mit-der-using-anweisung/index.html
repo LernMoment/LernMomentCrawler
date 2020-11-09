@@ -1,0 +1,279 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Zuverlässig Entsorgen mit der using Anweisung &#8211; LernMoment.de</title>
+<meta name="description" content="Wie du auch in Ausnahmefällen sicherstellst, dass Dispose aufgerufen wird.">
+<meta name="keywords" content="Syntax, Dispose, Garbage Collection">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Zuverlässig Entsorgen mit der using Anweisung">
+<meta name="twitter:description" content="Wie du auch in Ausnahmefällen sicherstellst, dass Dispose aufgerufen wird.">
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:63266/images/banner/lernmoment-csharp.jpg">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="de_DE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Zuverlässig Entsorgen mit der using Anweisung">
+<meta property="og:description" content="Wie du auch in Ausnahmefällen sicherstellst, dass Dispose aufgerufen wird.">
+<meta property="og:url" content="http://localhost:63266/csharp-programmieren/zuverlaessig-entsorgen-mit-der-using-anweisung/">
+<meta property="og:site_name" content="LernMoment.de">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="sPPXWqQjaSqa_ZgqYPNCyVLLaFzVAFCuf3xDBC-ofwE">
+
+
+
+<link rel="canonical" href="http://localhost:63266/csharp-programmieren/zuverlaessig-entsorgen-mit-der-using-anweisung/">
+<link href="http://localhost:63266/feed.xml" type="application/atom+xml" rel="alternate" title="LernMoment.de Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:63266/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:63266/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:63266/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:63266/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:63266/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:63266/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:63266/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:63266/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+
+
+<div class="navigation-banner">
+	
+	
+
+	Lerne programmieren mit mir im Kurs: <a href="http://localhost:63266/einstieg-csharp/" >Einstieg in C# -></a>
+</div>
+
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:63266/kurse/" >Kurse</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/schwerpunkt/" >Dein Weg zum C# Entwickler</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/projekt-start/" >Entwicklung & Mentoring</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/blog/" >Blog</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	
+		<div class="wrap">
+			<a href="http://localhost:63266/" class="site-logo" rel="home" title="LernMoment.de"><img src="http://localhost:63266/images/site-logo.png" width="200" height="200" alt="LernMoment.de logo" class="animated fadeInDown"></a>
+		</div>
+	
+</header><!-- /.masthead -->
+
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <img src="http://localhost:63266/images/banner/lernmoment-csharp.jpg" class="entry-feature-image" alt="Zuverlässig Entsorgen mit der using Anweisung" >
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"><a href="http://localhost:63266/tags/#Syntax" title="Pages tagged Syntax">Syntax</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Dispose" title="Pages tagged Dispose">Dispose</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Garbage Collection" title="Pages tagged Garbage Collection">Garbage Collection</a></span>
+        
+          <h1 class="entry-title">Zuverlässig Entsorgen mit der using Anweisung</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <span class="author vcard">Von <span class="fn">Jan Suchotzki</span></span>
+        <span class="entry-date date published"><time datetime="2015-08-07T06:00:00+02:00"><i class="fa fa-calendar-o"></i> 07. August 2015</time></span>
+        
+        
+        
+        
+      </footer>
+      <div class="entry-content">
+        <p>Das <code class="highlighter-rouge">using</code> Schlüsselwort wird in zwei Bereichen eingesetzt. Du brauchst es einmal um Namensräume bekannt zu machen und als Anweisung in einer Methode:</p>
+
+<blockquote>
+  <p>Stellt [sie] eine intuitive Syntax bereit, die die richtige Verwendung von IDisposable-Objekten sicherstellt.
+– <cite><a href="https://msdn.microsoft.com/de-de/library/yh598w02.aspx">MSDN</a></cite></p>
+</blockquote>
+
+<p>Ein Quelltextausschnitt, den du häufig sehen wirst ist folgender:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">writer</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamWriter</span><span class="p">(</span><span class="s">"LernMomentLog.txt"</span><span class="p">))</span> 
+<span class="p">{</span>
+	<span class="c1">// Hier mehr Quelltext um tatsächlich in die Datei zuschreiben</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Die Idee bei der <code class="highlighter-rouge">using</code> Anweisung ist, dass Objekte, die <code class="highlighter-rouge">IDisposable</code> implementieren, immer richtig vom <a href="/csharp-programmieren/der-garbage-collector/">Garbage Collector</a> abgeräumt werden. Dabei brauchst du dich um nichts weiter zu kümmern. Egal ob der Quelltext innerhalb der <code class="highlighter-rouge">using</code> Anweisung durch eine Exception abgebrochen wird, oder einfach normal beendet wird, die <code class="highlighter-rouge">Dispose</code> Methode von <code class="highlighter-rouge">sw</code> wird aufgerufen. So wird sichergestellt, dass die letzten Daten in die Datei geschrieben werden und diese dann geschlossen wird.</p>
+
+<p>Somit kannst du dir als Regel merken, dass du <code class="highlighter-rouge">using</code> immer verwenden kannst (und solltest), wenn du eine Instanz einer Klasse anlegst, die <code class="highlighter-rouge">IDisposable</code> implementiert. Du kannst <code class="highlighter-rouge">using</code> allerdings nur innerhalb einer Methode anwenden. Wenn es also darum geht, dass du Klassenattribute hast die einen Typ mit <code class="highlighter-rouge">IDisposable</code> verwenden, dann musst du selber sicherstellen, dass <code class="highlighter-rouge">Dispose</code> aufgerufen wird.</p>
+
+<p>Sofern du mehrere Objekte der gleichen Klasse in einem Block verwenden willst, kannst du einfach durch Komma separiert die Objekte erzeugen:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="p">(</span><span class="n">StreamWriter</span> <span class="n">logWriter</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamWriter</span><span class="p">(</span><span class="s">"LernMomentLog.txt"</span><span class="p">),</span>
+		   			<span class="n">textWriter</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamWriter</span><span class="p">(</span><span class="s">"LernMoment.txt"</span><span class="p">))</span>
+<span class="p">{</span>
+	<span class="c1">// Hier mehr Quelltext um tatsächlich in die Datei zuschreiben</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Dabei ist zu beachten, dass du nicht <code class="highlighter-rouge">var</code> verwenden kannst. Du musst dann explizit den Datentyp definieren. Eine <code class="highlighter-rouge">using</code> Anweisung ist immer nur für einen Datentypen. Die Objekte auf die sich das <code class="highlighter-rouge">using</code> bezieht, also das was in den runden Klammern steht, können innerhalb des <code class="highlighter-rouge">using</code> Blocks nicht geändert werden. Du kannst ihnen also nicht einen neuen Wert zuweisen.</p>
+
+<p>Auch solltest du beachten, dass, die innerhalb der <code class="highlighter-rouge">using</code> Anweisung angelegten Objekte, nach der <code class="highlighter-rouge">using</code> Anweisung “verschwinden”. Somit kannst du keine Factory-Methoden mit dieser Anweisung erstellen. Natürlich kannst du dir ein Objekt aus einer Factory-Methode geben lassen und innerhalb einer <code class="highlighter-rouge">using</code> Anweisung verwenden.</p>
+
+<p>Wirklich gut ist die Integration mit <code class="highlighter-rouge">async</code> und <code class="highlighter-rouge">await</code> gelöst. Du kannst das <code class="highlighter-rouge">await</code> Schlüsselwort an jeder beliebigen Stelle innerhalb der <code class="highlighter-rouge">using</code> Anweisung benutzen. Das ist auch nicht weiter verwunderlich. Wie im <a href="/csharp-programmieren/einfuehrung-in-async-und-await/">LernMoment - Einführung in Async/ Await</a> erklärt, wird eine Methode am <code class="highlighter-rouge">await</code> Schlüsselwort “nur” unterbrochen.</p>
+
+<p>Jetzt erstmal viel Spaß beim einfachen und sicheren Verwenden von Klassen mit <code class="highlighter-rouge">IDisposable</code></p>
+
+<p>Jan</p>
+
+<h3 id="merke">Merke</h3>
+
+<ul>
+  <li>Mit <code class="highlighter-rouge">using</code> stellst du sicher, dass <code class="highlighter-rouge">Dispose</code> auf jeden Fall aufgerufen wird.</li>
+  <li>Die Anweisung kann nur mit Objekten einer Klasse verwendet werden, die <code class="highlighter-rouge">IDisposable</code> implementiert.</li>
+  <li>Es können auch mehrere Objekt in einer <code class="highlighter-rouge">using</code> Anweisung verwendet werden. Sie müssen allerdings den gleichen Typ haben.</li>
+  <li>Du kannst <code class="highlighter-rouge">var</code> in einer <code class="highlighter-rouge">using</code> Definition verwenden, wenn du nur ein Objekt hast.</li>
+  <li><code class="highlighter-rouge">using</code> kann ohne Probleme mit <code class="highlighter-rouge">await</code> kombiniert werden.</li>
+</ul>
+
+<h3 id="lernquiz">Lernquiz</h3>
+
+<p>Verwende folgende Fragen, um das Gelernte von heute zu festigen:</p>
+
+<ul>
+  <li>Auf welchen Objekten kannst du <code class="highlighter-rouge">using</code> anwenden?</li>
+  <li>Was steht in den runden Klammern einer <code class="highlighter-rouge">using</code> Anweisung?</li>
+  <li>Kannst du ein Objekt, welches in einer <code class="highlighter-rouge">using</code> Anweisung angelegt wurde später (nach der geschlossenen geschweiften Klammer) noch verwenden?</li>
+</ul>
+
+<p>Am besten schaust du dir morgen und dann nochmal in ein paar Tagen die vorherigen Fragen an und beantwortest sie, ohne den Text vorher gelesen zu haben.</p>
+
+<h3 id="weitere-informationen">Weitere Informationen</h3>
+
+<ul>
+  <li>Den kompletten Quellcode zum heutigen Lernmoment findest du <a href="https://github.com/LernMoment/csharp/tree/master/UsingAnweisung">hier</a>.</li>
+  <li>Mehr Details zu der <code class="highlighter-rouge">using</code> Anweisung findest du bei <a href="https://msdn.microsoft.com/de-de/library/yh598w02.aspx">MSDN</a>.</li>
+  <li>Ein paar Probleme scheint es zugeben bei der Verwendung von <code class="highlighter-rouge">using</code> im Kontext von <a href="https://msdn.microsoft.com/de-de/library/aa355056.aspx">Windows Communication Foundation</a>.</li>
+  <li><a href="http://stackoverflow.com/questions/16566547/do-using-statements-and-await-keywords-play-nicely-in-c-sharp">Beispiele und Erklärungen</a> zum Thema <code class="highlighter-rouge">await</code> und <code class="highlighter-rouge">using</code>.</li>
+</ul>
+
+        
+          <div class="subscribe-notice">
+            <h5>Dieser LernMoment hat dir gefallen? <br> Dann melde dich an und du wirst über neue LernMomente informiert:</h5>
+                <form action="https://lernmoment.us9.list-manage.com/subscribe/post" method="POST" target="_blank">
+      <input type="hidden" name="u" value="d0206d57f5002e40b651a0f60">
+      <input type="hidden" name="id" value="8845c28e62">
+      <input type="email" class="subscribe-notice-input-box" autocapitalize="off" autocorrect="off" name="MERGE0" id="MERGE0" size="25" value="" placeholder="Deine E-Mail-Adresse">
+      <input type="text" class="subscribe-notice-input-box" name="MERGE1" id="MERGE1" size="25" value="" placeholder="Dein Vorname (optional)">
+      
+        <input type="checkbox" id="group_1" name="group[20205][1]" value="1" checked="true" style="display:none">
+      
+      <input type="submit" class="subscribe-notice-button" name="submit" value="Ich bin dabei!">
+      <legend class="subscribe-notice-legend">Du bekommst in unregelmäßigen Abständen Mails von mir, in denen ich dich auf neue Artikel oder Angebote hinweise, die in das gleiche Themengebiet fallen wie dieser Artikel.</legend>
+    </form>
+
+          </div>
+        
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:63266/csharp-programmieren/der-garbage-collector/" class="btn" title="Der Garbage Collector">Vorheriger</a>
+      
+      
+        <a href="http://localhost:63266/csharp-programmieren/unsicher-per-design/" class="btn" title="Ist C# unsicher per Design?">Nächster</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<div class="social-icons">
+	
+	
+	
+	<a href="http://www.youtube.com/channel/UC5jCUQ6IPHtQP5r4y9byCqA" title="Jan Suchotzki on YouTube" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
+	
+	<a href="http://stackoverflow.com/users/5258906/jan-suchotzki" title="Jan Suchotzki on StackExchange" target="_blank"><i class="fa fa-stack-exchange fa-2x"></i></a>
+	
+	
+	<a href="http://github.com/lernmoment" title="Jan Suchotzki on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+    
+	
+  <a href="http://localhost:63266/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+<span>Danke an <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> und <a href="http://mademistakes.com/so-simple/" rel="nofollow">Made Mistakes</a> für hervorragende Tools.</span>
+<br>
+<span><a href="http://localhost:63266/kein-copyright/">Kein Copyright</a>    -    <a href="http://localhost:63266/impressum/">Impressum</a>    -    <a href="http://localhost:63266/datenschutz/">Datenschutz</a></span>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:63266';
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:63266/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:63266/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

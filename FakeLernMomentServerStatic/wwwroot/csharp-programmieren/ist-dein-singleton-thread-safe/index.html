@@ -1,0 +1,336 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Ist dein Singleton thread-safe? &#8211; LernMoment.de</title>
+<meta name="description" content="Zwei Varianten wie du ein Singleton implementieren kannst. Und eine die du besser nicht verwendest.">
+<meta name="keywords" content="Syntax, Pattern, Async">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Ist dein Singleton thread-safe?">
+<meta name="twitter:description" content="Zwei Varianten wie du ein Singleton implementieren kannst. Und eine die du besser nicht verwendest.">
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:63266/images/banner/lernmoment-csharp.jpg">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="de_DE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ist dein Singleton thread-safe?">
+<meta property="og:description" content="Zwei Varianten wie du ein Singleton implementieren kannst. Und eine die du besser nicht verwendest.">
+<meta property="og:url" content="http://localhost:63266/csharp-programmieren/ist-dein-singleton-thread-safe/">
+<meta property="og:site_name" content="LernMoment.de">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="sPPXWqQjaSqa_ZgqYPNCyVLLaFzVAFCuf3xDBC-ofwE">
+
+
+
+<link rel="canonical" href="http://localhost:63266/csharp-programmieren/ist-dein-singleton-thread-safe/">
+<link href="http://localhost:63266/feed.xml" type="application/atom+xml" rel="alternate" title="LernMoment.de Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:63266/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:63266/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:63266/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:63266/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:63266/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:63266/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:63266/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:63266/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:63266/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+
+
+<div class="navigation-banner">
+	
+	
+
+	Lerne programmieren mit mir im Kurs: <a href="http://localhost:63266/einstieg-csharp/" >Einstieg in C# -></a>
+</div>
+
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:63266/kurse/" >Kurse</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/schwerpunkt/" >Dein Weg zum C# Entwickler</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/projekt-start/" >Entwicklung & Mentoring</a></li>
+		  
+		    
+		    <li><a href="http://localhost:63266/blog/" >Blog</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	
+		<div class="wrap">
+			<a href="http://localhost:63266/" class="site-logo" rel="home" title="LernMoment.de"><img src="http://localhost:63266/images/site-logo.png" width="200" height="200" alt="LernMoment.de logo" class="animated fadeInDown"></a>
+		</div>
+	
+</header><!-- /.masthead -->
+
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <img src="http://localhost:63266/images/banner/lernmoment-csharp.jpg" class="entry-feature-image" alt="Ist dein Singleton thread-safe?" >
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"><a href="http://localhost:63266/tags/#Syntax" title="Pages tagged Syntax">Syntax</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Pattern" title="Pages tagged Pattern">Pattern</a>&nbsp;&bull;&nbsp;<a href="http://localhost:63266/tags/#Async" title="Pages tagged Async">Async</a></span>
+        
+          <h1 class="entry-title">Ist dein Singleton thread-safe?</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        <span class="author vcard">Von <span class="fn">Jan Suchotzki</span></span>
+        <span class="entry-date date published"><time datetime="2015-10-01T06:00:00+02:00"><i class="fa fa-calendar-o"></i> 01. October 2015</time></span>
+        
+        
+        
+        
+      </footer>
+      <div class="entry-content">
+        <p>In C# gibt es einige Möglichkeiten ein <em>Singleton</em> zu implementieren. Die Hauptunterschiede dieser Varianten liegen darin ob sie <em>thread-safe</em> sind und wie einfach sie zu verstehen sind. Unabhängig davon welche Realisierungsvariante du verwendest, solltest du folgende Punkte berücksichtigen:</p>
+
+<ol>
+  <li>Es gibt nur einen Konstruktor. Dieser hat keine Parameter und ist <code class="highlighter-rouge">private</code>. So können nicht mehrere Instanzen angelegt werden und du bekommst auch keine Probleme damit, dass von deiner Klasse abgeleitet wird.</li>
+  <li>Wenn eine <em>Singleton</em>-Klasse abgeleitet wird, ist es nicht mehr eindeutig, dass es nur eine Instanz deiner <em>Singleton</em>-Klasse gibt. Daher solltest du sie immer <code class="highlighter-rouge">sealed</code> deklarieren. Außerdem kann der Compiler dadurch auch nochmals optimieren.</li>
+  <li>Ein weiterer Aspekt bei einem <em>Singleton</em> ist die verzögerte Erstellung. Die Instanz des <em>Singleton</em> wird also erst dann angelegt, wenn das erste Mal darauf zugegriffen wird. Das ist insbesondere dann interessant, wenn das Anlegen der Instanz länger dauert.</li>
+</ol>
+
+<p>Ein wichtiger Aspekt, denn du bei der Verwendung von <em>Singleton</em> berücksichtigen solltest, ist, dass es häufig Probleme bei <em>Unittests</em> macht. Dadurch, dass es nur eine Instanze gibt und dass von einem <em>Singleton</em> nicht abgeleitet werden kann, ist es für Tests schwer, einen <em>Mock</em> für dieses Objekt zu erstellen.</p>
+
+<p>Im Folgenden nun einige Beispiele wie du ein <em>Singleton</em> realisieren kannst und wie du es besser nicht machst. Es gibt noch weitere Möglichkeiten, aber die hier vorgestellten sind die, die am einfachsten zu verstehen sind und die Punkte von vorher erfüllen.</p>
+
+<h4 id="die-schlechte-realisierungsvariante">Die “schlechte” Realisierungsvariante</h4>
+
+<p>Eine der Varianten die häufig verwendet wird um ein <em>Singleton</em> zu implementieren, sieht so aus:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">sealed</span> <span class="k">class</span> <span class="nc">Singleton</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="k">static</span> <span class="n">Singleton</span> <span class="n">instance</span><span class="p">=</span><span class="k">null</span><span class="p">;</span>
+
+    <span class="k">private</span> <span class="nf">Singleton</span><span class="p">()</span>
+    <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="n">Singleton</span> <span class="n">Instance</span>
+    <span class="p">{</span>
+        <span class="k">get</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">instance</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">instance</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Singleton</span><span class="p">();</span>
+            <span class="p">}</span>
+            <span class="k">return</span> <span class="n">instance</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Für eine Anwendung in der es keine Probleme mit dem Zugriff aus mehreren <em>Threads</em> gibt, ist diese Variante anwendbar. Um dich aber nicht unnötigen Risiken auszusetzen, solltest du diese Variante <strong>nicht</strong> anwenden. Insbesondere die Abfrage <code class="highlighter-rouge">if (instance == null)</code> könnte gleichzeitig von mehreren <em>Threads</em> ausgewertet werden, somit <code class="highlighter-rouge">true</code> ergeben und infolgedessen könnten mehrere Instanzen erstellt werden.</p>
+
+<h4 id="einfache-thread-safe-variante">Einfache “thread-safe” Variante</h4>
+
+<p>Wie immer, wenn es um die Synchronisation von <em>Threads</em> geht, kannst du <code class="highlighter-rouge">lock</code> verwenden. Dies ist aus Sicht der Performance nicht immer optimal, aber es ist einfach zu verstehen. Willst du das folgende <em>Singleton</em> beispielsweise in einer Schleife verwenden, die in jeder Iteration auf die <em>Instanz</em> zugreift, solltest du bei diesem Ansatz die <em>Instanz</em> in einer lokalen Variable halten. Somit greifst du nicht immer auf das <code class="highlighter-rouge">lock</code>zu.</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">sealed</span> <span class="k">class</span> <span class="nc">Singleton</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="k">static</span> <span class="n">Singleton</span> <span class="n">instance</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+    <span class="k">private</span> <span class="k">static</span> <span class="k">readonly</span> <span class="kt">object</span> <span class="n">singletonLock</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">object</span><span class="p">();</span>
+
+    <span class="nf">Singleton</span><span class="p">()</span>
+    <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="n">Singleton</span> <span class="n">Instance</span>
+    <span class="p">{</span>
+        <span class="k">get</span>
+        <span class="p">{</span>
+            <span class="k">lock</span> <span class="p">(</span><span class="n">singletonLock</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">instance</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="n">instance</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Singleton</span><span class="p">();</span>
+                <span class="p">}</span>
+                <span class="k">return</span> <span class="n">instance</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Da diese Variante einfach zu verstehen und <em>thread-safe</em> ist, verwende ich sie in den meisten Fällen. Auswirkungen auf die <em>Performance</em> gibt es nur dann, wenn du häufig auf <code class="highlighter-rouge">Instance</code> zugreifst.</p>
+
+<h4 id="die-variante-für-net-40">Die Variante für .NET 4.0</h4>
+
+<p>Seit .NET 4.0 gibt es den Datentyp <code class="highlighter-rouge">Lazy&lt;T&gt;</code>. Du findest ihn im Namensraum <code class="highlighter-rouge">System</code>. Er wird verwendet, um ein Objekt vom angegebenen Datentyp erst dann zu erstellen, wenn auf die Eigenschaft <code class="highlighter-rouge">Lazy&lt;T&gt;.Value</code> zugegriffen wird. Hier das Beispiel</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">sealed</span> <span class="k">class</span> <span class="nc">Singleton</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="k">static</span> <span class="k">readonly</span> <span class="n">Lazy</span><span class="p">&lt;</span><span class="n">Singleton</span><span class="p">&gt;</span> <span class="n">lazy</span> <span class="p">=</span>
+        <span class="k">new</span> <span class="n">Lazy</span><span class="p">&lt;</span><span class="n">Singleton</span><span class="p">&gt;(()</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="nf">Singleton</span><span class="p">());</span>
+    
+    <span class="k">public</span> <span class="k">static</span> <span class="n">Singleton</span> <span class="n">Instance</span> <span class="p">{</span> <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="n">lazy</span><span class="p">.</span><span class="n">Value</span><span class="p">;</span> <span class="p">}</span> <span class="p">}</span>
+
+    <span class="k">private</span> <span class="nf">Singleton</span><span class="p">()</span>
+    <span class="p">{</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Alle öffentlichen <em>Member</em> von <code class="highlighter-rouge">Lazy&lt;T&gt;</code> sind <em>thread-safe</em>. Somit gibt es beim Zugriff aus mehreren <em>Threads</em> keine Probleme.</p>
+
+<p>Jetzt erstmal viel Spaß mit dem “Es kann nur einen geben” Prinzip</p>
+
+<p>Jan</p>
+
+<p>PS: Danke an Jon Skeet für die Grundlagenforschung zu diesem Thema. Seinen detaillierten Artikel findest du auf <a href="http://csharpindepth.com/Articles/General/Singleton.aspx">C# in Depth</a>.</p>
+
+<h3 id="merke">Merke</h3>
+
+<ul>
+  <li>Eine <em>Singleton</em>-Klasse sollte <code class="highlighter-rouge">sealed</code> sein und einen parameterlosen Konstruktor haben, der <code class="highlighter-rouge">private</code> ist.</li>
+  <li>Üblicherweise wird die einzige Instanz deines <em>Singleton</em> erst dann angelegt, wenn das erste Mal drauf zugegriffen wird.</li>
+  <li>Die einfachste Realisierungsvariante ist nicht <em>thread-safe</em> und sollte <strong>nicht</strong> verwendet werden.</li>
+  <li>Die Verwendung von <em>Singleton</em> führt bei <em>Unittests</em> häufig zu Problemen, weil ein <em>Singleton</em> nicht <em>“gemockt”</em> werden kann.</li>
+  <li>Es gibt verschiedene Realisierungsvarianten. Dabei solltest du immer darauf achten, dass dein <em>Singleton</em> einfach zu verstehen ist.</li>
+</ul>
+
+<h3 id="lernquiz">Lernquiz</h3>
+
+<p>Verwende folgende Fragen, um das Gelernte von heute zu festigen:</p>
+
+<ul>
+  <li>Wie kannst du ein <em>Singleton</em> implementieren, welches <em>thread-safe</em> ist?</li>
+  <li>Welchen Typ gibt es in .NET 4.0 der dir bei der Realisierung helfen kann?</li>
+  <li>Warum wird ein <em>Singleton</em> mit <code class="highlighter-rouge">sealed</code> implementiert?</li>
+</ul>
+
+<p>Am besten schaust du dir morgen und dann nochmal in ein paar Tagen die vorherigen Fragen an und beantwortest sie, ohne den Text vorher gelesen zu haben.</p>
+
+<h3 id="weitere-informationen">Weitere Informationen</h3>
+
+<ul>
+  <li>Eine Diskussion (in Englisch) über den Sinn und Unsinn von Vererbung bei <em>Singletons</em> findest du bei <a href="http://bytes.com/topic/c-sharp/answers/432029-inheritance-singleton-class">bytes.com</a>.</li>
+  <li>Eine Beschreibung der Probleme mit <em>Singleton</em> beim Testen findest du auf <a href="http://www.just-about.net/boese-singletons">just-about.net</a>.</li>
+</ul>
+
+        
+          <div class="subscribe-notice">
+            <h5>Dieser LernMoment hat dir gefallen? <br> Dann melde dich an und du wirst über neue LernMomente informiert:</h5>
+                <form action="https://lernmoment.us9.list-manage.com/subscribe/post" method="POST" target="_blank">
+      <input type="hidden" name="u" value="d0206d57f5002e40b651a0f60">
+      <input type="hidden" name="id" value="8845c28e62">
+      <input type="email" class="subscribe-notice-input-box" autocapitalize="off" autocorrect="off" name="MERGE0" id="MERGE0" size="25" value="" placeholder="Deine E-Mail-Adresse">
+      <input type="text" class="subscribe-notice-input-box" name="MERGE1" id="MERGE1" size="25" value="" placeholder="Dein Vorname (optional)">
+      
+        <input type="checkbox" id="group_1" name="group[20205][1]" value="1" checked="true" style="display:none">
+      
+      <input type="submit" class="subscribe-notice-button" name="submit" value="Ich bin dabei!">
+      <legend class="subscribe-notice-legend">Du bekommst in unregelmäßigen Abständen Mails von mir, in denen ich dich auf neue Artikel oder Angebote hinweise, die in das gleiche Themengebiet fallen wie dieser Artikel.</legend>
+    </form>
+
+          </div>
+        
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:63266/csharp-programmieren/wie-du-wpf-oberfaelchen-programmatisch-bearbeitest/" class="btn" title="Wie du WPF Oberflächen programmatisch bearbeitest und testest">Vorheriger</a>
+      
+      
+        <a href="http://localhost:63266/csharp-programmieren/weisst-du-wie-die-versionsnummern-von-c-und-net-zusammen-passen/" class="btn" title="Weißt du wie die Versionsnummern von C# und .NET zusammenpassen?">Nächster</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<div class="social-icons">
+	
+	
+	
+	<a href="http://www.youtube.com/channel/UC5jCUQ6IPHtQP5r4y9byCqA" title="Jan Suchotzki on YouTube" target="_blank"><i class="fa fa-youtube fa-2x"></i></a>
+	
+	<a href="http://stackoverflow.com/users/5258906/jan-suchotzki" title="Jan Suchotzki on StackExchange" target="_blank"><i class="fa fa-stack-exchange fa-2x"></i></a>
+	
+	
+	<a href="http://github.com/lernmoment" title="Jan Suchotzki on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+    
+	
+  <a href="http://localhost:63266/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+<span>Danke an <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> und <a href="http://mademistakes.com/so-simple/" rel="nofollow">Made Mistakes</a> für hervorragende Tools.</span>
+<br>
+<span><a href="http://localhost:63266/kein-copyright/">Kein Copyright</a>    -    <a href="http://localhost:63266/impressum/">Impressum</a>    -    <a href="http://localhost:63266/datenschutz/">Datenschutz</a></span>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:63266';
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:63266/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:63266/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>
