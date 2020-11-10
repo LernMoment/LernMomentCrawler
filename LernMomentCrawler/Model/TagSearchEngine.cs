@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Text;
 
 namespace LernMomentCrawlerUI.Model
@@ -28,7 +29,7 @@ namespace LernMomentCrawlerUI.Model
             _tagFinder = new TagFinder();
         }
 
-        public TagSearchResult FindTagRecursive(string tag, int recursionDepth)
+        public IEnumerable<ISearchPageResult> FindTagRecursive(string tag, int recursionDepth)
         {
             Queue<SearchJob> jobsToProcess = new Queue<SearchJob>();
             List<TagSearchResult> allResults = new List<TagSearchResult>();
@@ -37,7 +38,17 @@ namespace LernMomentCrawlerUI.Model
             while (jobsToProcess.Count > 0)
             {
                 var currentJob = jobsToProcess.Dequeue();
-                var currentResult = ProcessSingleUrl(currentJob.Url, tag);
+                TagSearchResult currentResult;
+                try
+                {
+                    currentResult = ProcessSingleUrl(currentJob.Url, tag);
+                }
+                catch (WebException ex)
+                {
+                    Debug.WriteLine($"Die Url '{currentJob.Url}' konnte nicht geladen werden: {ex}");
+                    continue;
+                }
+
                 allResults.Add(currentResult);
 
                 if (currentJob.AllowedRecursionsFromHere > 1)
@@ -45,30 +56,14 @@ namespace LernMomentCrawlerUI.Model
                     foreach (var link in currentResult.LinksOnPage)
                     {
                         jobsToProcess.Enqueue(new SearchJob(link, tag, currentJob.AllowedRecursionsFromHere - 1));
+                        Debug.WriteLine($"Adding {link} from {currentJob.Url} for processing.");
                     }
                 }
             }
 
-            var result = new TagSearchResult(_rootUrl, _domain, tag);
-            var resultsWithoutDuplicates = allResults.Distinct().ToList();
-            foreach (var searchResult in resultsWithoutDuplicates)
-            {
-                List<string> allLinks;
-                if (result.LinksOnPage == null)
-                {
-                    allLinks = new List<string>();
-                }
-                else
-                {
-                    allLinks = new List<string>(result.LinksOnPage);
-
-                }
-                allLinks.AddRange(searchResult.LinksOnPage);
-                result.AddLinks(allLinks, result.LinkSearchTimeInMs + searchResult.LinkSearchTimeInMs);
-                result.AddTagCount(result.TagCount + searchResult.TagCount, result.TagCountSearchTimeInMs + searchResult.TagCountSearchTimeInMs);
-            }
-
-            return result;
+            var resultsWithoutDuplicates = allResults.GroupBy(result => result.Url).Select(group => group.OrderByDescending(x => x.TagCount).First());
+            var resultsContainingTag = resultsWithoutDuplicates.Where(x => x.TagCount > 0);
+            return resultsContainingTag;
         }
 
         private TagSearchResult ProcessSingleUrl(string url, string tag)
@@ -78,7 +73,7 @@ namespace LernMomentCrawlerUI.Model
             var result = new TagSearchResult(url, _domain, tag);
 
             // download Page
-            var page = _downloadManager.DownloadPage(_rootUrl);
+            var page = _downloadManager.DownloadPage(url);
             result.AddPage(page, _downloadManager.DurationOfLastDownloadInMs);
 
             // find links to other pages

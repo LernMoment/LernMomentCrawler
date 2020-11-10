@@ -1,20 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Navigation;
 
 namespace LernMomentCrawlerUI.Model
 {
-    class TagSearchResult
+    class TagSearchResult : ISearchPageResult, ISearchPageProfilingData
     {
         public string Url { get; private set; }
         public string Domain { get; private set; }
         public string TagName { get; private set; }
         public string Page { get; private set; }
-        public long PageDownloadTimeInMs { get; private set; }
         public IEnumerable<string> LinksOnPage { get; private set; }
-        public long LinkSearchTimeInMs { get; private set; }
         public int TagCount { get; private set; }
+
+        public IEnumerable<string> TagOccurencesInContext => throw new NotImplementedException();
+
+        public IEnumerable<string> GetChildUrls => throw new NotImplementedException();
+
+        #region ProfilingData
+        public ISearchPageProfilingData ProfilingData => this;
+        public long PageDownloadTimeInMs { get; private set; }
+        public long LinkSearchTimeInMs { get; private set; }
         public long TagCountSearchTimeInMs { get; private set; }
+        public long CompleteProcessingTimInMs => throw new NotImplementedException();
+
+        #endregion
 
         public TagSearchResult(string url, string domain, string tagName)
         {

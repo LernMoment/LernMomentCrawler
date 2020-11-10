@@ -1,6 +1,7 @@
 ﻿using LernMomentCrawlerUI;
 using LernMomentCrawlerUI.Model;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
@@ -52,8 +53,8 @@ namespace LernMomentCrawler
 
             try
             {
-                var searchResult = _searchEngine.FindTagRecursive("task", 2);
-                resultHtmlView.Text = ConvertToStringWithDetails(searchResult);
+                var searchResult = _searchEngine.FindTagRecursive("task", 3);
+                resultHtmlView.Text = ConvertToStringWithDetails(searchResult, "task");
             }
             catch(TaskCanceledException)
             {
@@ -73,23 +74,13 @@ namespace LernMomentCrawler
             _cts.Cancel();
         }
 
-        private string ConvertToStringWithDetails(TagSearchResult searchResult)
+        private string ConvertToStringWithDetails(IEnumerable<ISearchPageResult> searchResults, string tag)
         {
-            string result;
+            string result = $"Es wurden {searchResults.Count()} Seiten mit dem Begriff '{tag}' gefunden" + Environment.NewLine;
 
-            result = $"Es wurde {searchResult.TagCount} mal der Tag '{searchResult.TagName}' und {searchResult.LinksOnPage.Count()} weiterführende Links gefunden.";
-            result += Environment.NewLine;
-
-            result += "Benötigte Zeit (in ms):" + Environment.NewLine;
-            result += $"Download: {searchResult.PageDownloadTimeInMs}" + Environment.NewLine;
-            result += $"Link-Suche: {searchResult.LinkSearchTimeInMs}" + Environment.NewLine;
-            result += $"Tag-Suche: {searchResult.TagCountSearchTimeInMs}" + Environment.NewLine;
-            result += $"Gesamt: {_searchEngine.DurationOfLastSearchInMs}" + Environment.NewLine;
-            result += Environment.NewLine;
-
-            foreach (var link in searchResult.LinksOnPage)
+            foreach (var item in searchResults)
             {
-                result += link + Environment.NewLine;
+                result += $"{item.Url}, {item.TagCount}" + Environment.NewLine;
             }
 
             return result;
