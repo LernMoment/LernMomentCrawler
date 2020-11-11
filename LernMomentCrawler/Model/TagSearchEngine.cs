@@ -17,7 +17,10 @@ namespace LernMomentCrawlerUI.Model
         private LinkFinder _linkFinder;
         private TagFinder _tagFinder;
 
-        public long DurationOfLastSearchInMs { get; private set; }
+        public long DurationOfLastSearchInMs { get; private set; } = 0;
+        public long DurationOfDownloadInLastSearchInMs { get; private set; } = 0;
+        public long DurationOfLinkSearchInLastSearchInMs { get; private set; } = 0;
+        public long DurationOfTagSearchInLastSearchInMs { get; private set; } = 0;
 
         public TagSearchEngine(string rootUrl, string domain)
         {
@@ -31,8 +34,11 @@ namespace LernMomentCrawlerUI.Model
 
         public IEnumerable<ISearchPageResult> FindTagRecursive(string tag, int recursionDepth)
         {
+            var watch = Stopwatch.StartNew();
+
             Queue<SearchJob> jobsToProcess = new Queue<SearchJob>();
             List<TagSearchResult> allResults = new List<TagSearchResult>();
+            ResetDurationCounters();
 
             jobsToProcess.Enqueue(new SearchJob(_rootUrl, tag, recursionDepth));
             while (jobsToProcess.Count > 0)
@@ -63,29 +69,39 @@ namespace LernMomentCrawlerUI.Model
 
             var resultsWithoutDuplicates = allResults.GroupBy(result => result.Url).Select(group => group.OrderByDescending(x => x.TagCount).First());
             var resultsContainingTag = resultsWithoutDuplicates.Where(x => x.TagCount > 0);
+
+            watch.Stop();
+            DurationOfLastSearchInMs = watch.ElapsedMilliseconds;
+
             return resultsContainingTag;
+        }
+
+        private void ResetDurationCounters()
+        {
+            DurationOfLastSearchInMs = 0;
+            DurationOfDownloadInLastSearchInMs = 0;
+            DurationOfLinkSearchInLastSearchInMs = 0;
+            DurationOfTagSearchInLastSearchInMs = 0;
         }
 
         private TagSearchResult ProcessSingleUrl(string url, string tag)
         {
-            var watch = Stopwatch.StartNew();
-
             var result = new TagSearchResult(url, _domain, tag);
 
             // download Page
             var page = _downloadManager.DownloadPage(url);
             result.AddPage(page, _downloadManager.DurationOfLastDownloadInMs);
+            DurationOfDownloadInLastSearchInMs += _downloadManager.DurationOfLastDownloadInMs;
 
             // find links to other pages
             var links = _linkFinder.FindLinksOnPage(page);
             result.AddLinks(links, _linkFinder.DurationOfLastLinkSearchInMs);
+            DurationOfLinkSearchInLastSearchInMs += _linkFinder.DurationOfLastLinkSearchInMs;
 
             // find tags
             var tagsInContext = _tagFinder.FindTagOccurencesOnPage(page, tag);
             result.AddTagOccurences(tagsInContext, _tagFinder.DurationOfLastSearchInMs);
-
-            watch.Stop();
-            DurationOfLastSearchInMs = watch.ElapsedMilliseconds;
+            DurationOfTagSearchInLastSearchInMs += _tagFinder.DurationOfLastSearchInMs;
 
             return result;
         }

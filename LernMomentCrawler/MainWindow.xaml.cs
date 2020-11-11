@@ -69,8 +69,12 @@ namespace LernMomentCrawler
                 resultDataGrid.Items.SortDescriptions.Clear();
                 resultDataGrid.Items.SortDescriptions.Add(new SortDescription("TagCount", ListSortDirection.Descending));
                 resultDataGrid.Items.Refresh();
+                completeProcessingTimeTB.Text = $"{_searchEngine.DurationOfLastSearchInMs}ms";
+                downloadTimeTB.Text = $"{_searchEngine.DurationOfDownloadInLastSearchInMs}ms";
+                searchLinkTimeTB.Text = $"{_searchEngine.DurationOfLinkSearchInLastSearchInMs}ms";
+                searchTagTimeTB.Text = $"{_searchEngine.DurationOfTagSearchInLastSearchInMs}ms";
             }
-            catch(TaskCanceledException)
+            catch (TaskCanceledException)
             {
                 //resultHtmlView.Text = "Download von Index-Seite abgebrochen.";
             }

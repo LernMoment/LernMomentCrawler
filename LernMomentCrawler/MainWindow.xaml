@@ -25,6 +25,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Button x:Name="restartTimerButton" Style="{DynamicResource MaterialDesignFloatingActionAccentButton}" MaxHeight="25" MaxWidth="25" Content="{materialDesign:PackIcon Refresh}" Margin="5" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Right" Click="RestartTimerButton_Click"/>
         <Button x:Name="stopTimerButton" Style="{DynamicResource MaterialDesignFloatingActionAccentButton}" MaxHeight="25" MaxWidth="25" Content="{materialDesign:PackIcon Stop}" Margin="5" Grid.Column="3" Grid.Row="0" HorizontalAlignment="Left" Click="StopTimerButton_Click"/>
@@ -48,6 +49,16 @@
                 </DataGrid.RowDetailsTemplate>
             </DataGrid>
         </materialDesign:ColorZone>
+        <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5" Orientation="Horizontal">
+            <Label Content="Bearbeitungszeit:" Margin="5,0,0,0"/>
+            <TextBlock x:Name="completeProcessingTimeTB" Text="0ms" VerticalAlignment="Center" Margin="0,0,5,0"/>
+            <Label Content="Download-Zeit:" Margin="5,0,0,0"/>
+            <TextBlock x:Name="downloadTimeTB" Text="0ms" VerticalAlignment="Center" Margin="0,0,5,0"/>
+            <Label Content="Crawl-Zeit:" Margin="5,0,0,0"/>
+            <TextBlock x:Name="searchLinkTimeTB" Text="0ms" VerticalAlignment="Center" Margin="0,0,5,0"/>
+            <Label Content="Tag-Suche-Zeit:" Margin="5,0,0,0"/>
+            <TextBlock x:Name="searchTagTimeTB" Text="0ms" VerticalAlignment="Center" Margin="0,0,5,0"/>
+        </StackPanel>
     </Grid>
 
 </Window>
