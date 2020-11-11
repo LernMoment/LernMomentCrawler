@@ -8,7 +8,7 @@ namespace LernMomentCrawlerUI.Model
     {
         public long PageDownloadTimeInMs { get; }
         public long LinkSearchTimeInMs { get; }
-        public long TagCountSearchTimeInMs { get; }
+        public long TagSearchTimeInMs { get; }
         public long CompleteProcessingTimInMs { get; }
     }
 }

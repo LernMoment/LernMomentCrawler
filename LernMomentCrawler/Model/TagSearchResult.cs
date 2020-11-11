@@ -36,7 +36,7 @@ namespace LernMomentCrawlerUI.Model
         public ISearchPageProfilingData ProfilingData => this;
         public long PageDownloadTimeInMs { get; private set; }
         public long LinkSearchTimeInMs { get; private set; }
-        public long TagCountSearchTimeInMs { get; private set; }
+        public long TagSearchTimeInMs { get; private set; }
         public long CompleteProcessingTimInMs => throw new NotImplementedException();
 
         #endregion
@@ -63,7 +63,7 @@ namespace LernMomentCrawlerUI.Model
         public void AddTagOccurences(IEnumerable<string> occurences, long searchTimeInMs)
         {
             TagOccurencesInContext = occurences;
-            TagCountSearchTimeInMs = searchTimeInMs;
+            TagSearchTimeInMs = searchTimeInMs;
         }
     }
 }
