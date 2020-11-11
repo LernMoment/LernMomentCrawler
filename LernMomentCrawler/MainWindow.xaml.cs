@@ -81,6 +81,10 @@ namespace LernMomentCrawler
             foreach (var item in searchResults)
             {
                 result += $"{item.Url}, {item.TagCount}" + Environment.NewLine;
+                foreach (var occurence in item.TagOccurencesInContext)
+                {
+                    result += $"    {occurence}" + Environment.NewLine;
+                }
             }
 
             return result;

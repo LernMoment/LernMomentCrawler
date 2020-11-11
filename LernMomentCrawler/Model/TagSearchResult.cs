@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows.Navigation;
 
@@ -12,9 +13,22 @@ namespace LernMomentCrawlerUI.Model
         public string TagName { get; private set; }
         public string Page { get; private set; }
         public IEnumerable<string> LinksOnPage { get; private set; }
-        public int TagCount { get; private set; }
+        public int TagCount 
+        { 
+            get
+            {
+                if (TagOccurencesInContext == null)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return TagOccurencesInContext.Count();
+                }
+            }
+        }
 
-        public IEnumerable<string> TagOccurencesInContext => throw new NotImplementedException();
+        public IEnumerable<string> TagOccurencesInContext { get; private set; } = null;
 
         public IEnumerable<string> GetChildUrls => throw new NotImplementedException();
 
@@ -46,9 +60,9 @@ namespace LernMomentCrawlerUI.Model
             LinkSearchTimeInMs = searchTimeInMs;
         }
 
-        public void AddTagCount(int count, long searchTimeInMs)
+        public void AddTagOccurences(IEnumerable<string> occurences, long searchTimeInMs)
         {
-            TagCount = count;
+            TagOccurencesInContext = occurences;
             TagCountSearchTimeInMs = searchTimeInMs;
         }
     }

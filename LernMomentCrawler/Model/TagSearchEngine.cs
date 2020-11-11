@@ -81,8 +81,8 @@ namespace LernMomentCrawlerUI.Model
             result.AddLinks(links, _linkFinder.DurationOfLastLinkSearchInMs);
 
             // find tags
-            var tagCount = _tagFinder.CountTagsOnPage(page, tag);
-            result.AddTagCount(tagCount, _tagFinder.DurationOfLastSearchInMs);
+            var tagsInContext = _tagFinder.FindTagOccurencesOnPage(page, tag);
+            result.AddTagOccurences(tagsInContext, _tagFinder.DurationOfLastSearchInMs);
 
             watch.Stop();
             DurationOfLastSearchInMs = watch.ElapsedMilliseconds;
