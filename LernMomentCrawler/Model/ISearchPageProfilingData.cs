@@ -4,7 +4,7 @@ using System.Text;
 
 namespace LernMomentCrawlerUI.Model
 {
-    interface ISearchPageProfilingData
+    public interface ISearchPageProfilingData
     {
         public long PageDownloadTimeInMs { get; }
         public long LinkSearchTimeInMs { get; }

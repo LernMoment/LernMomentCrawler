@@ -2,6 +2,8 @@
 using LernMomentCrawlerUI.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
@@ -23,9 +25,14 @@ namespace LernMomentCrawler
         private readonly TagSearchEngine _searchEngine;
         private CancellationTokenSource _cts;
 
+        public ObservableCollection<ISearchPageResult> TagSearchResults { get; private set; } = new ObservableCollection<ISearchPageResult>();
+
+
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = this;
+
             var timerTickHandler = new EventHandler((sender, args) =>
             {
                 timerView.Text = _secondsSinceStart.ToString("c");
@@ -49,16 +56,23 @@ namespace LernMomentCrawler
         {
             loadWebSiteButton.IsEnabled = false;
             cancelLoadWebSiteButton.IsEnabled = true;
-            resultHtmlView.Text = "Hole Daten vom Server!";
+            //resultHtmlView.Text = "Hole Daten vom Server!";
+            TagSearchResults.Clear();
 
             try
             {
                 var searchResult = _searchEngine.FindTagRecursive("task", 3);
-                resultHtmlView.Text = ConvertToStringWithDetails(searchResult, "task");
+                foreach (var item in searchResult)
+                {
+                    TagSearchResults.Add(item);
+                }
+                resultDataGrid.Items.SortDescriptions.Clear();
+                resultDataGrid.Items.SortDescriptions.Add(new SortDescription("TagCount", ListSortDirection.Descending));
+                resultDataGrid.Items.Refresh();
             }
             catch(TaskCanceledException)
             {
-                resultHtmlView.Text = "Download von Index-Seite abgebrochen.";
+                //resultHtmlView.Text = "Download von Index-Seite abgebrochen.";
             }
             finally
             {
@@ -91,7 +105,7 @@ namespace LernMomentCrawler
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            resultHtmlView.Text = "Hier werden die geladenen Daten angezeigt!";
+            //resultHtmlView.Text = "Hier werden die geladenen Daten angezeigt!";
             _secondsSinceStart = new TimeSpan(0);
             _timer.Start();
         }

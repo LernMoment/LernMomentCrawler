@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LernMomentCrawler"
         mc:Ignorable="d"
-        Title="LernMoment Crawler" Height="450" Width="800"
+        Title="LernMoment Crawler" Height="450" Width="1000"
         Loaded="Window_Loaded"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -32,9 +32,21 @@
         <Button x:Name="loadWebSiteButton" Margin="5" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" HorizontalAlignment="Center" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Content="Lade LernMoment.de" Click="LoadWebSiteButton_Click"/>
         <Button x:Name="cancelLoadWebSiteButton" Margin="5" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1" HorizontalAlignment="Center" IsEnabled="False" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Content="Abbruch" Click="CancelLoadWebSiteButton_Click"/>
         <materialDesign:ColorZone Mode="PrimaryLight" Padding="16" Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="2">
-            <ScrollViewer >
-                <TextBlock x:Name="resultHtmlView" Foreground="{DynamicResource MaterialDesignDarkForeground}" Text="Warte auf Daten vom Server!"/>
-            </ScrollViewer>
+            <DataGrid x:Name="resultDataGrid" ItemsSource="{Binding TagSearchResults}" AutoGenerateColumns="False" RowDetailsVisibilityMode="VisibleWhenSelected">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Url" Binding="{Binding Url}" IsReadOnly="True" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" />
+                    <DataGridTextColumn Header="Tag-Anzahl" Binding="{Binding TagCount}" IsReadOnly="True" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"/>
+                </DataGrid.Columns>
+                <DataGrid.RowDetailsTemplate>
+                    <DataTemplate>
+                        <DataGrid ItemsSource="{Binding TagOccurencesInContext}" AutoGenerateColumns="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Ausschnitt mit Tag" Binding="{Binding}" IsReadOnly="True"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </DataTemplate>
+                </DataGrid.RowDetailsTemplate>
+            </DataGrid>
         </materialDesign:ColorZone>
     </Grid>
 

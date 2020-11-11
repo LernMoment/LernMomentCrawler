@@ -4,7 +4,7 @@ using System.Text;
 
 namespace LernMomentCrawlerUI.Model
 {
-    interface ISearchPageResult
+    public interface ISearchPageResult
     {
         public string Url { get; }
         public string TagName { get; }
