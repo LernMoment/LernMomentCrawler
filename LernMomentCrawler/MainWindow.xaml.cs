@@ -86,6 +86,9 @@ namespace LernMomentCrawler
 
         private void LoadLernMomentDe()
         {
+            ShowLoadingState();
+            TagSearchResults.Clear();
+
             try
             {
                 var searchResult = _searchEngine.FindTagRecursive("task", 3);
@@ -115,13 +118,12 @@ namespace LernMomentCrawler
             Debug.WriteLine("LoadLernMomentDe Methode wird verlassen!");
         }
 
-        private async Task EnableLoadingState()
+        private void ShowLoadingState()
         {
             loadWebSiteButton.IsEnabled = false;
             cancelLoadWebSiteButton.IsEnabled = true;
             IsResultViewHidden = true;
             IsInfoDialog = false;
-            TagSearchResults.Clear();
         }
 
         private void CancelLoadWebSiteButton_Click(object sender, RoutedEventArgs e)
