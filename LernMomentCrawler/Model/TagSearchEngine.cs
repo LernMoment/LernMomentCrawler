@@ -10,12 +10,12 @@ namespace LernMomentCrawlerUI.Model
 {
     class TagSearchEngine
     {
-        private string _rootUrl;
-        private string _domain;
+        private readonly string _rootUrl;
+        private readonly string _domain;
 
-        private DownloadManager _downloadManager;
-        private LinkFinder _linkFinder;
-        private TagFinder _tagFinder;
+        private readonly DownloadManager _downloadManager;
+        private readonly LinkFinder _linkFinder;
+        private readonly TagFinder _tagFinder;
 
         public long DurationOfLastSearchInMs { get; private set; } = 0;
         public long DurationOfDownloadInLastSearchInMs { get; private set; } = 0;

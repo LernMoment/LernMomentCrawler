@@ -8,7 +8,7 @@ namespace LernMomentCrawlerUI.Model
 {
     class TagFinder
     {
-        private static readonly int _sectionLength = 60;
+        private const int _sectionLength = 60;
 
         public long DurationOfLastSearchInMs { get; private set; }
 
