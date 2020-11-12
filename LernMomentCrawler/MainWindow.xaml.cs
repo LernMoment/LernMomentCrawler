@@ -41,15 +41,15 @@ namespace LernMomentCrawlerUI
             }
         }
 
-        private bool _isInfoDialog = true;
-        public bool IsInfoDialog
+        private DialogConfiguration _configurationForDialog;
+        public DialogConfiguration ConfigurationForDialog
         {
-            get { return _isInfoDialog; }
+            get { return _configurationForDialog; }
             private set
             {
-                if (value != _isInfoDialog)
+                if (value != _configurationForDialog)
                 {
-                    _isInfoDialog = value;
+                    _configurationForDialog = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -73,6 +73,7 @@ namespace LernMomentCrawlerUI
                 Application.Current.Dispatcher);
 
             _searchEngine = new TagSearchEngine("http://localhost:63266/", "localhost:63266");
+            ConfigurationForDialog = new DialogConfiguration(DialogType.StaticText, "Daten werden hier angezeigt, wenn du 'Lade Lernmoment.de' geklickt hast!");
         }
 
         private void LoadWebSiteButton_Click(object sender, RoutedEventArgs e)
@@ -115,7 +116,7 @@ namespace LernMomentCrawlerUI
             loadWebSiteButton.IsEnabled = false;
             cancelLoadWebSiteButton.IsEnabled = true;
             IsResultViewHidden = true;
-            IsInfoDialog = false;
+            ConfigurationForDialog = new DialogConfiguration(DialogType.Progress);
         }
 
         private void CancelLoadWebSiteButton_Click(object sender, RoutedEventArgs e)

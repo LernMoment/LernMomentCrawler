@@ -16,7 +16,7 @@
     <Window.Resources>
         <DataTemplate x:Key="infoDialogTemplate">
             <StackPanel Margin="16">
-                <TextBlock Text="Daten werden hier angezeigt, wenn du 'Lade Lernmoment.de' geklickt hast!" FontSize="14"/>
+                <TextBlock Text="{Binding Message}" FontSize="14"/>
             </StackPanel>
         </DataTemplate>
 
@@ -51,7 +51,7 @@
         <Button x:Name="cancelLoadWebSiteButton" Margin="5" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1" HorizontalAlignment="Center" IsEnabled="False" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Content="Abbruch" Click="CancelLoadWebSiteButton_Click"/>
         <materialDesign:DialogHost DialogTheme="Inherit" Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="2"
                                    IsOpen="{Binding IsResultViewHidden, Mode=OneWay}" 
-                                   DialogContent="{Binding IsInfoDialog, Mode=OneWay}"
+                                   DialogContent="{Binding ConfigurationForDialog, Mode=OneWay}"
                                    DialogContentTemplateSelector="{StaticResource dialogTemplateSelector}">
             <materialDesign:ColorZone Mode="PrimaryLight" Padding="16" >
                 <Grid>
