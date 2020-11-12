@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:LernMomentCrawler"
+        xmlns:local="clr-namespace:LernMomentCrawlerUI"
         mc:Ignorable="d"
         Title="LernMoment Crawler" Height="450" Width="1000"
         Loaded="Window_Loaded"
@@ -13,6 +13,24 @@
         TextElement.FontWeight="Medium"
         TextElement.FontSize="14"
         FontFamily="{materialDesign:MaterialDesignFont}">
+    <Window.Resources>
+        <DataTemplate x:Key="infoDialogTemplate">
+            <StackPanel Margin="16">
+                <TextBlock Text="Daten werden hier angezeigt, wenn du 'Lade Lernmoment.de' geklickt hast!" FontSize="14"/>
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="progressDialogTemplate">
+            <ProgressBar Width="48" Height="48" Margin="16"
+                 Style="{DynamicResource MaterialDesignCircularProgressBar}"
+                 IsIndeterminate="True"
+                 Value="33"/>
+        </DataTemplate>
+
+        <local:DialogTemplateSelector x:Key="dialogTemplateSelector"
+                                    InfoTemplate="{StaticResource infoDialogTemplate}"
+                                    ProgressTemplate="{StaticResource progressDialogTemplate}"/>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -31,12 +49,10 @@
         <TextBlock x:Name="timerView" Text="00:00:00" FontSize="20" Margin="5" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center"/>
         <Button x:Name="loadWebSiteButton" Margin="5" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" HorizontalAlignment="Center" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Content="Lade LernMoment.de" Click="LoadWebSiteButton_Click"/>
         <Button x:Name="cancelLoadWebSiteButton" Margin="5" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1" HorizontalAlignment="Center" IsEnabled="False" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Content="Abbruch" Click="CancelLoadWebSiteButton_Click"/>
-        <materialDesign:DialogHost DialogTheme="Inherit" IsOpen="{Binding IsResultViewHidden, Mode=OneWay}" Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="2">
-            <materialDesign:DialogHost.DialogContent>
-                <StackPanel Margin="16">
-                    <TextBlock Text="Daten werden hier angezeigt, wenn du 'Lade Lernmoment.de' geklickt hast!" FontSize="14"/>
-                </StackPanel>
-            </materialDesign:DialogHost.DialogContent>
+        <materialDesign:DialogHost DialogTheme="Inherit" Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="2"
+                                   IsOpen="{Binding IsResultViewHidden, Mode=OneWay}" 
+                                   DialogContent="{Binding IsInfoDialog, Mode=OneWay}"
+                                   DialogContentTemplateSelector="{StaticResource dialogTemplateSelector}">
             <materialDesign:ColorZone Mode="PrimaryLight" Padding="16" >
                 <Grid>
                     <Grid.ColumnDefinitions>

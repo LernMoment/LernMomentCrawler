@@ -1,5 +1,6 @@
 ﻿using LernMomentCrawlerUI;
 using LernMomentCrawlerUI.Model;
+using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -29,6 +30,7 @@ namespace LernMomentCrawler
         public event PropertyChangedEventHandler PropertyChanged;
 
         public ObservableCollection<ISearchPageResult> TagSearchResults { get; private set; } = new ObservableCollection<ISearchPageResult>();
+        
         private bool _isResultViewHidden = true;
         public bool IsResultViewHidden 
         {
@@ -42,6 +44,21 @@ namespace LernMomentCrawler
                 }
             }
         }
+
+        private bool _isInfoDialog = true;
+        public bool IsInfoDialog
+        {
+            get { return _isInfoDialog; }
+            private set
+            {
+                if (value != _isInfoDialog)
+                {
+                    _isInfoDialog = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
 
         public MainWindow()
         {
@@ -69,12 +86,6 @@ namespace LernMomentCrawler
 
         private void LoadLernMomentDe()
         {
-            loadWebSiteButton.IsEnabled = false;
-            cancelLoadWebSiteButton.IsEnabled = true;
-            IsResultViewHidden = true;
-            //resultHtmlView.Text = "Hole Daten vom Server!";
-            TagSearchResults.Clear();
-
             try
             {
                 var searchResult = _searchEngine.FindTagRecursive("task", 3);
@@ -102,6 +113,15 @@ namespace LernMomentCrawler
             }
 
             Debug.WriteLine("LoadLernMomentDe Methode wird verlassen!");
+        }
+
+        private async Task EnableLoadingState()
+        {
+            loadWebSiteButton.IsEnabled = false;
+            cancelLoadWebSiteButton.IsEnabled = true;
+            IsResultViewHidden = true;
+            IsInfoDialog = false;
+            TagSearchResults.Clear();
         }
 
         private void CancelLoadWebSiteButton_Click(object sender, RoutedEventArgs e)
