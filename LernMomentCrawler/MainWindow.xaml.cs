@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -17,7 +18,7 @@ namespace LernMomentCrawler
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
         private readonly DispatcherTimer _timer;
         private TimeSpan _secondsSinceStart;
@@ -25,8 +26,22 @@ namespace LernMomentCrawler
         private readonly TagSearchEngine _searchEngine;
         private CancellationTokenSource _cts;
 
-        public ObservableCollection<ISearchPageResult> TagSearchResults { get; private set; } = new ObservableCollection<ISearchPageResult>();
+        public event PropertyChangedEventHandler PropertyChanged;
 
+        public ObservableCollection<ISearchPageResult> TagSearchResults { get; private set; } = new ObservableCollection<ISearchPageResult>();
+        private bool _isResultViewHidden = true;
+        public bool IsResultViewHidden 
+        {
+            get { return _isResultViewHidden; } 
+            private set
+            {
+                if (value != _isResultViewHidden)
+                {
+                    _isResultViewHidden = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
 
         public MainWindow()
         {
@@ -56,6 +71,7 @@ namespace LernMomentCrawler
         {
             loadWebSiteButton.IsEnabled = false;
             cancelLoadWebSiteButton.IsEnabled = true;
+            IsResultViewHidden = true;
             //resultHtmlView.Text = "Hole Daten vom Server!";
             TagSearchResults.Clear();
 
@@ -73,6 +89,7 @@ namespace LernMomentCrawler
                 downloadTimeTB.Text = $"{_searchEngine.DurationOfDownloadInLastSearchInMs}ms";
                 searchLinkTimeTB.Text = $"{_searchEngine.DurationOfLinkSearchInLastSearchInMs}ms";
                 searchTagTimeTB.Text = $"{_searchEngine.DurationOfTagSearchInLastSearchInMs}ms";
+                IsResultViewHidden = false;
             }
             catch (TaskCanceledException)
             {
@@ -124,6 +141,11 @@ namespace LernMomentCrawler
             _timer.Stop();
             _secondsSinceStart = new TimeSpan(0);
             _timer.Start();
+        }
+
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

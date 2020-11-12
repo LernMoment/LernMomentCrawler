@@ -25,40 +25,67 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Button x:Name="restartTimerButton" Style="{DynamicResource MaterialDesignFloatingActionAccentButton}" MaxHeight="25" MaxWidth="25" Content="{materialDesign:PackIcon Refresh}" Margin="5" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Right" Click="RestartTimerButton_Click"/>
         <Button x:Name="stopTimerButton" Style="{DynamicResource MaterialDesignFloatingActionAccentButton}" MaxHeight="25" MaxWidth="25" Content="{materialDesign:PackIcon Stop}" Margin="5" Grid.Column="3" Grid.Row="0" HorizontalAlignment="Left" Click="StopTimerButton_Click"/>
         <TextBlock x:Name="timerView" Text="00:00:00" FontSize="20" Margin="5" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center"/>
         <Button x:Name="loadWebSiteButton" Margin="5" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" HorizontalAlignment="Center" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Content="Lade LernMoment.de" Click="LoadWebSiteButton_Click"/>
         <Button x:Name="cancelLoadWebSiteButton" Margin="5" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1" HorizontalAlignment="Center" IsEnabled="False" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Content="Abbruch" Click="CancelLoadWebSiteButton_Click"/>
-        <materialDesign:ColorZone Mode="PrimaryLight" Padding="16" Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="2">
-            <DataGrid x:Name="resultDataGrid" ItemsSource="{Binding TagSearchResults}" AutoGenerateColumns="False" RowDetailsVisibilityMode="VisibleWhenSelected">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Url" Binding="{Binding Url}" IsReadOnly="True" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" />
-                    <DataGridTextColumn Header="Tag-Anzahl" Binding="{Binding TagCount}" IsReadOnly="True" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"/>
-                </DataGrid.Columns>
-                <DataGrid.RowDetailsTemplate>
-                    <DataTemplate>
-                        <DataGrid ItemsSource="{Binding TagOccurencesInContext}" AutoGenerateColumns="False">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="Ausschnitt mit Tag" Binding="{Binding}" IsReadOnly="True"/>
-                            </DataGrid.Columns>
-                        </DataGrid>
-                    </DataTemplate>
-                </DataGrid.RowDetailsTemplate>
-            </DataGrid>
-        </materialDesign:ColorZone>
-        <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5" Orientation="Horizontal">
-            <Label Content="Bearbeitungszeit:" Margin="5,0,0,0"/>
-            <TextBlock x:Name="completeProcessingTimeTB" Text="0ms" VerticalAlignment="Center" Margin="0,0,5,0"/>
-            <Label Content="Download-Zeit:" Margin="5,0,0,0"/>
-            <TextBlock x:Name="downloadTimeTB" Text="0ms" VerticalAlignment="Center" Margin="0,0,5,0"/>
-            <Label Content="Crawl-Zeit:" Margin="5,0,0,0"/>
-            <TextBlock x:Name="searchLinkTimeTB" Text="0ms" VerticalAlignment="Center" Margin="0,0,5,0"/>
-            <Label Content="Tag-Suche-Zeit:" Margin="5,0,0,0"/>
-            <TextBlock x:Name="searchTagTimeTB" Text="0ms" VerticalAlignment="Center" Margin="0,0,5,0"/>
-        </StackPanel>
+        <materialDesign:DialogHost DialogTheme="Inherit" IsOpen="{Binding IsResultViewHidden, Mode=OneWay}" Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="2">
+            <materialDesign:DialogHost.DialogContent>
+                <StackPanel Margin="16">
+                    <TextBlock Text="Daten werden hier angezeigt, wenn du 'Lade Lernmoment.de' geklickt hast!" FontSize="14"/>
+                </StackPanel>
+            </materialDesign:DialogHost.DialogContent>
+            <materialDesign:ColorZone Mode="PrimaryLight" Padding="16" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <DataGrid x:Name="resultDataGrid" Grid.Row="0" ItemsSource="{Binding TagSearchResults}" AutoGenerateColumns="False" RowDetailsVisibilityMode="VisibleWhenSelected">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Url" Binding="{Binding Url}" IsReadOnly="True" FontSize="14" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}">
+                                <DataGridTextColumn.HeaderStyle>
+                                    <Style TargetType="{x:Type DataGridColumnHeader}" BasedOn="{StaticResource MaterialDesignDataGridColumnHeader}">
+                                        <Setter Property="FontSize" Value="14" />
+                                    </Style>
+                                </DataGridTextColumn.HeaderStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Tag-Anzahl" Binding="{Binding TagCount}" IsReadOnly="True" FontSize="14" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}">
+                                <DataGridTextColumn.HeaderStyle>
+                                    <Style TargetType="{x:Type DataGridColumnHeader}" BasedOn="{StaticResource MaterialDesignDataGridColumnHeader}">
+                                        <Setter Property="FontSize" Value="14" />
+                                    </Style>
+                                </DataGridTextColumn.HeaderStyle>
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
+                        <DataGrid.RowDetailsTemplate>
+                            <DataTemplate>
+                                <DataGrid ItemsSource="{Binding TagOccurencesInContext}" AutoGenerateColumns="False">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Ausschnitt mit Tag" Binding="{Binding}" IsReadOnly="True" FontSize="14" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </DataTemplate>
+                        </DataGrid.RowDetailsTemplate>
+                    </DataGrid>
+                    <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0,16,0,0">
+                        <Label Content="Bearbeitungszeit:" Margin="0,0,0,0"/>
+                        <TextBlock x:Name="completeProcessingTimeTB" Text="0ms" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                        <Label Content="Download-Zeit:" Margin="5,0,0,0"/>
+                        <TextBlock x:Name="downloadTimeTB" Text="0ms" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                        <Label Content="Crawl-Zeit:" Margin="5,0,0,0"/>
+                        <TextBlock x:Name="searchLinkTimeTB" Text="0ms" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                        <Label Content="Tag-Suche-Zeit:" Margin="5,0,0,0"/>
+                        <TextBlock x:Name="searchTagTimeTB" Text="0ms" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:ColorZone>
+        </materialDesign:DialogHost>
     </Grid>
 
 </Window>
