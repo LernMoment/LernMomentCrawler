@@ -13,26 +13,17 @@ namespace LernMomentCrawlerUI
 
         public override DataTemplate SelectTemplate(object item, DependencyObject container)
         {
-            DataTemplate result = null;
-
             // Null value can be passed by IDE designer
             if (item == null) return null;
 
             var configuration = item as DialogConfiguration;
-            switch (configuration?.Type)
+            DataTemplate result = (configuration?.Type) switch
             {
-                case DialogType.StaticText:
-                    result = InfoTemplate;
-                    break;
-                case DialogType.Progress:
-                    result = ProgressTemplate;
-                    break;
-                case DialogType.Error:
-                    throw new NotImplementedException();
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-
+                DialogType.StaticText => InfoTemplate,
+                DialogType.Progress => ProgressTemplate,
+                DialogType.Error => throw new NotImplementedException(),
+                _ => throw new ArgumentOutOfRangeException(),
+            };
             return result;
         }
     }
