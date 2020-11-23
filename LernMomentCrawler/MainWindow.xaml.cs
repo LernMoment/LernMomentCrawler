@@ -73,7 +73,7 @@ namespace LernMomentCrawlerUI
                 Application.Current.Dispatcher);
 
             _searchEngine = new TagSearchEngine("http://localhost:63266/", "localhost:63266");
-            ConfigurationForDialog = new DialogConfiguration(DialogType.StaticText, "Daten werden hier angezeigt, wenn du 'Lade Lernmoment.de' geklickt hast!");
+            ConfigurationForDialog = new DialogConfiguration(DialogType.StaticText, "Daten werden hier angezeigt, wenn du 'Suche Tag ...' geklickt hast!");
         }
 
         private void LoadWebSiteButton_Click(object sender, RoutedEventArgs e)
