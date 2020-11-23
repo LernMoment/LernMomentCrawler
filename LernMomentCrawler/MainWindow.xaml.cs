@@ -76,12 +76,12 @@ namespace LernMomentCrawlerUI
             ConfigurationForDialog = new DialogConfiguration(DialogType.StaticText, "Daten werden hier angezeigt, wenn du 'Suchen ...' geklickt hast!");
         }
 
-        private void LoadWebSiteButton_Click(object sender, RoutedEventArgs e)
+        private async void LoadWebSiteButton_Click(object sender, RoutedEventArgs e)
         {
-            LoadLernMomentDe();
+            await LoadLernMomentDe();
         }
 
-        private void LoadLernMomentDe()
+        private async Task LoadLernMomentDe()
         {
             ShowLoadingState();
             TagSearchResults.Clear();
@@ -89,7 +89,7 @@ namespace LernMomentCrawlerUI
             try
             {
                 var tag = searchTagTB.Text;
-                var searchResult = _searchEngine.FindTagRecursive(tag, 3);
+                var searchResult = await Task.Run(() => _searchEngine.FindTagRecursive(tag, 3));
                 foreach (var item in searchResult)
                 {
                     TagSearchResults.Add(item);
