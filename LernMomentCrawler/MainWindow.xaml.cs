@@ -73,7 +73,7 @@ namespace LernMomentCrawlerUI
                 Application.Current.Dispatcher);
 
             _searchEngine = new TagSearchEngine("http://localhost:63266/", "localhost:63266");
-            ConfigurationForDialog = new DialogConfiguration(DialogType.StaticText, "Daten werden hier angezeigt, wenn du 'Suche Tag ...' geklickt hast!");
+            ConfigurationForDialog = new DialogConfiguration(DialogType.StaticText, "Daten werden hier angezeigt, wenn du 'Suchen ...' geklickt hast!");
         }
 
         private void LoadWebSiteButton_Click(object sender, RoutedEventArgs e)
@@ -88,7 +88,7 @@ namespace LernMomentCrawlerUI
 
             try
             {
-                var searchResult = _searchEngine.FindTagRecursive("task", 3);
+                var searchResult = _searchEngine.FindTagRecursive(searchTagTB.Text, 3);
                 foreach (var item in searchResult)
                 {
                     TagSearchResults.Add(item);

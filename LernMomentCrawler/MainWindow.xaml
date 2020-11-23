@@ -47,8 +47,12 @@
         <Button x:Name="restartTimerButton" Style="{DynamicResource MaterialDesignFloatingActionAccentButton}" MaxHeight="25" MaxWidth="25" Content="{materialDesign:PackIcon Refresh}" Margin="5" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Right" Click="RestartTimerButton_Click"/>
         <Button x:Name="stopTimerButton" Style="{DynamicResource MaterialDesignFloatingActionAccentButton}" MaxHeight="25" MaxWidth="25" Content="{materialDesign:PackIcon Stop}" Margin="5" Grid.Column="3" Grid.Row="0" HorizontalAlignment="Left" Click="StopTimerButton_Click"/>
         <TextBlock x:Name="timerView" Text="00:00:00" FontSize="20" Margin="5" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center"/>
-        <Button x:Name="loadWebSiteButton" Margin="5" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" HorizontalAlignment="Center" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Content="Suche Tag auf Seiten" Click="LoadWebSiteButton_Click"/>
-        <Button x:Name="cancelLoadWebSiteButton" Margin="5" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1" HorizontalAlignment="Center" IsEnabled="False" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Content="Abbruch" Click="CancelLoadWebSiteButton_Click"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5">
+            <Label Content="Zu suchender Begriff:" Margin="5" HorizontalAlignment="Center" Style="{DynamicResource MaterialDesignLabel}"/>
+            <TextBox x:Name="searchTagTB" MinWidth="100" Margin="5" HorizontalAlignment="Center" Style="{DynamicResource MaterialDesignTextBox}" Text="Task"/>
+            <Button x:Name="loadWebSiteButton" Margin="5" HorizontalAlignment="Center" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Content="Suchen auf Seiten" Click="LoadWebSiteButton_Click"/>
+            <Button x:Name="cancelLoadWebSiteButton" Margin="5" HorizontalAlignment="Center" IsEnabled="False" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Content="Abbruch" Click="CancelLoadWebSiteButton_Click"/>
+        </StackPanel>
         <materialDesign:DialogHost DialogTheme="Inherit" Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="2"
                                    IsOpen="{Binding IsResultViewHidden, Mode=OneWay}" 
                                    DialogContent="{Binding ConfigurationForDialog, Mode=OneWay}"
