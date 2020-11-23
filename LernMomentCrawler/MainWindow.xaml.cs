@@ -88,7 +88,8 @@ namespace LernMomentCrawlerUI
 
             try
             {
-                var searchResult = _searchEngine.FindTagRecursive(searchTagTB.Text, 3);
+                var tag = searchTagTB.Text;
+                var searchResult = _searchEngine.FindTagRecursive(tag, 3);
                 foreach (var item in searchResult)
                 {
                     TagSearchResults.Add(item);
