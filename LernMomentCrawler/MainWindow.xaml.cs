@@ -78,10 +78,10 @@ namespace LernMomentCrawlerUI
 
         private async void LoadWebSiteButton_Click(object sender, RoutedEventArgs e)
         {
-            await Task.Run(() => LoadLernMomentDe());
+            await LoadLernMomentDe();
         }
 
-        private void LoadLernMomentDe()
+        private async Task LoadLernMomentDe()
         {
             ShowLoadingState();
             TagSearchResults.Clear();
@@ -89,7 +89,7 @@ namespace LernMomentCrawlerUI
             try
             {
                 var tag = searchTagTB.Text;
-                var searchResult = _searchEngine.FindTagRecursive(tag, 3);
+                var searchResult = await _searchEngine.FindTagRecursive(tag, 3);
                 foreach (var item in searchResult)
                 {
                     TagSearchResults.Add(item);
