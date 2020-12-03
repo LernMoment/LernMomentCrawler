@@ -8,11 +8,18 @@ Hier findest du alle wichtigen Links und zusätzliche Informationen zum Online-K
 *ToDo: Links zu den wichtigsten Bereichen des Projektes einfügen!*
 
 ## Kapitel 2 - Async/await: Warten auf I/O-Operationen ohne zu blockieren
+Links die allgemein von Interesse sein könnten:
+  - https://channel9.msdn.com/Events/BUILD/BUILD2011/TOOL-829T - The zen of async: Best practices for best performance. Talk von Stephen Toub auf Channel9.
+  
+  
 ### Lektion 2.2 - Blockierende Aufrufe mit async/await vermeiden
 ### Lektion 2.3 - Was passiert bei einem await-Aufruf (in einer WPF-Anwendung)?
 ### Lektion 2.4 - Eine erste eigene Async-Methode erstellen
 ### Lektion 2.5 - Musterlösung zur Übung - Async zieht sich durch alle Aufrufe
 ### Lektion 2.6 - Verwende kein Task.Result oder Task.Wait anstelle von await
+#### Links
+ - https://blog.stephencleary.com/2012/07/dont-block-on-async-code.html
+ - https://devblogs.microsoft.com/pfxteam/await-and-ui-and-deadlocks-oh-my/
 
 ### Lektion 2.7 - Debugging von async Anwendungen Teil I
 #### Links
