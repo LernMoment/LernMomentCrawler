@@ -95,12 +95,12 @@ namespace LernMomentCrawlerUI.Model
             DurationOfDownloadInLastSearchInMs += _downloadManager.DurationOfLastDownloadInMs;
 
             // find links to other pages
-            var links = await Task.Run(() => _linkFinder.FindLinksOnPage(page));
+            var links = _linkFinder.FindLinksOnPage(page);
             result.AddLinks(links, _linkFinder.DurationOfLastLinkSearchInMs);
             DurationOfLinkSearchInLastSearchInMs += _linkFinder.DurationOfLastLinkSearchInMs;
 
             // find tags
-            var tagsInContext = await Task.Run(() => _tagFinder.FindTagOccurencesOnPage(page, tag));
+            var tagsInContext = _tagFinder.FindTagOccurencesOnPage(page, tag);
             result.AddTagOccurences(tagsInContext, _tagFinder.DurationOfLastSearchInMs);
             DurationOfTagSearchInLastSearchInMs += _tagFinder.DurationOfLastSearchInMs;
 
