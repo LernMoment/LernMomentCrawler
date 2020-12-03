@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace LernMomentCrawlerUI.Model
 {
@@ -32,7 +33,7 @@ namespace LernMomentCrawlerUI.Model
             _tagFinder = new TagFinder();
         }
 
-        public IEnumerable<ISearchPageResult> FindTagRecursive(string tag, int recursionDepth)
+        public async Task<IEnumerable<ISearchPageResult>> FindTagRecursive(string tag, int recursionDepth)
         {
             var watch = Stopwatch.StartNew();
 
@@ -47,7 +48,7 @@ namespace LernMomentCrawlerUI.Model
                 TagSearchResult currentResult;
                 try
                 {
-                    currentResult = ProcessSingleUrl(currentJob.Url, tag);
+                    currentResult = await ProcessSingleUrl(currentJob.Url, tag);
                 }
                 catch (WebException ex)
                 {
@@ -84,22 +85,22 @@ namespace LernMomentCrawlerUI.Model
             DurationOfTagSearchInLastSearchInMs = 0;
         }
 
-        private TagSearchResult ProcessSingleUrl(string url, string tag)
+        private async Task<TagSearchResult> ProcessSingleUrl(string url, string tag)
         {
             var result = new TagSearchResult(url, _domain, tag);
 
             // download Page
-            var page = _downloadManager.DownloadPage(url);
+            var page = await _downloadManager.DownloadPage(url);
             result.AddPage(page, _downloadManager.DurationOfLastDownloadInMs);
             DurationOfDownloadInLastSearchInMs += _downloadManager.DurationOfLastDownloadInMs;
 
             // find links to other pages
-            var links = _linkFinder.FindLinksOnPage(page);
+            var links = await Task.Run(() => _linkFinder.FindLinksOnPage(page));
             result.AddLinks(links, _linkFinder.DurationOfLastLinkSearchInMs);
             DurationOfLinkSearchInLastSearchInMs += _linkFinder.DurationOfLastLinkSearchInMs;
 
             // find tags
-            var tagsInContext = _tagFinder.FindTagOccurencesOnPage(page, tag);
+            var tagsInContext = await Task.Run(() => _tagFinder.FindTagOccurencesOnPage(page, tag));
             result.AddTagOccurences(tagsInContext, _tagFinder.DurationOfLastSearchInMs);
             DurationOfTagSearchInLastSearchInMs += _tagFinder.DurationOfLastSearchInMs;
 

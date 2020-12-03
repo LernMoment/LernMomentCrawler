@@ -89,7 +89,7 @@ namespace LernMomentCrawlerUI
             try
             {
                 var tag = searchTagTB.Text;
-                var searchResult = await Task.Run(() => _searchEngine.FindTagRecursive(tag, 3));
+                var searchResult = await _searchEngine.FindTagRecursive(tag, 3);
                 foreach (var item in searchResult)
                 {
                     TagSearchResults.Add(item);
